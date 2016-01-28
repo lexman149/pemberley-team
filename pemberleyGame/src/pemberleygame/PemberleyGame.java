@@ -19,8 +19,8 @@ public class PemberleyGame {
     public static void main(String[] args) {
       Player playerOne = new Player();
       
-      playerOne.setName("Fred Flintstone");
-     // playerOne.setLocation("Pemberley");
+      playerOne.setName("John Doe");
+      playerOne.setLocation("Library");
       playerOne.setGender("Male");
       
       String playerInfo = playerOne.toString();

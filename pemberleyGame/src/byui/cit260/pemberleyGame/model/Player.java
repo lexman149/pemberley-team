@@ -8,17 +8,18 @@ package byui.cit260.pemberleyGame.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 /**
  *
- * @author jpmanning
+ * @author lexmanning
  */
 public class Player implements Serializable{
     
     // class instance variables
     private String name;
-    //private String location;
+    private String location;
     private String gender;
-    private double location;
+    
 
     public Player() {
     }
@@ -33,19 +34,14 @@ public class Player implements Serializable{
         this.name = name;
     }
 
-    /*public String getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    /**
-     *
-     * @param location
-     */
-    
-    /*public void setLocation(String location) {
+    public void setLocation(String location) {
         this.location = location;
     }
-*/
+
     public String getGender() {
         return gender;
     }
@@ -55,11 +51,16 @@ public class Player implements Serializable{
     }
 
     @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", location=" + location + ", gender=" + gender + '}';
+    }
+
+    @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.location) ^ (Double.doubleToLongBits(this.location) >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.gender);
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 23 * hash + Objects.hashCode(this.location);
+        hash = 23 * hash + Objects.hashCode(this.gender);
         return hash;
     }
 
@@ -75,25 +76,27 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
-        if (Double.doubleToLongBits(this.location) != Double.doubleToLongBits(other.location)) {
-            return false;
-        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        return Objects.equals(this.gender, other.gender);
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.gender, other.gender)) {
+            return false;
+        }
+        return true;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" + "name=" + name + ", location=" + location + ", gender=" + gender + '}';
     }
 
-    public void setLocation(String pemberley) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
+
+  
+
+   
     
     
     
     
-}
+
