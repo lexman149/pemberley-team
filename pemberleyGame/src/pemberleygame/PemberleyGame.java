@@ -43,7 +43,7 @@ public class PemberleyGame {
      drawingRoom.setEast("diningRoom");
      drawingRoom.setSouth("greatHall");
      drawingRoom.setWest("gallery");
-
+     drawingRoom.setVisited(true);
 
      
      String roomInfo = drawingRoom.toString();
