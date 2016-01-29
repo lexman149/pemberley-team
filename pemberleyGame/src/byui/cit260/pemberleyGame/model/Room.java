@@ -18,7 +18,7 @@ Location already does that
 
 public class Room extends Location{
     
-    
+    //class instance variables
       private String north;
       private String east;
       private String south;
