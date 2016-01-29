@@ -5,6 +5,7 @@
  */
 package pemberleygame;
 
+import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
 
 /**
@@ -25,6 +26,13 @@ public class PemberleyGame {
       
       String playerInfo = playerOne.toString();
       System.out.println(playerInfo);
+      
+      Location library = new Location();
+      library.setName("Library");
+      library.setDescription("This is the library.  It is large and impressive");
+      
+      String locationInfo = library.toString();
+      System.out.println(locationInfo);
     }
     
 }
