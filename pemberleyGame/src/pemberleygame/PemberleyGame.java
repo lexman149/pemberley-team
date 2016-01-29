@@ -7,6 +7,7 @@ package pemberleygame;
 
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
+import byui.cit260.pemberleyGame.model.Room;
 
 /**
  *
@@ -33,6 +34,24 @@ public class PemberleyGame {
       
       String locationInfo = library.toString();
       System.out.println(locationInfo);
+      
+     Room drawingRoom = new Room();
+     
+     drawingRoom.setName("Drawing Room");
+     drawingRoom.setDescription("The drawing room is comfortable");
+     drawingRoom.setNorth("ballRoom");
+     drawingRoom.setEast("diningRoom");
+     drawingRoom.setSouth("greatHall");
+     drawingRoom.setWest("gallery");
+
+
+     
+     String roomInfo = drawingRoom.toString();
+     System.out.println(roomInfo);
+     
+     
+     
+      
     }
     
 }
