@@ -7,7 +7,6 @@ package byui.cit260.pemberleyGame.model;
 
 import java.util.Objects;
 
-       
 /**
  *
  * @author MMarriott
@@ -140,7 +139,8 @@ public class Room extends Location{
     public String toString() {
         return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", up=" + up + ", down=" + down + ", visited=" + visited + '}';
     }
-      
+
+
       
       
       
