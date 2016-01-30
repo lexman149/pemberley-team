@@ -1,7 +1,7 @@
 /*
  * Test files - instances of the classes
  */
-package pemberleyGame;
+package PemberleyGame;
 
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
