@@ -132,7 +132,7 @@ public class Room extends Location{
 
     @Override
     public String toString() {
-        return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", up=" + up + ", down=" + down + ", visited=" + visited + '}';
+        return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", up=" + up + ", down=" + down + ", visited=" + visited + " Location{" + "name=" + name + ", description=" + description + '}';
     }
 
 

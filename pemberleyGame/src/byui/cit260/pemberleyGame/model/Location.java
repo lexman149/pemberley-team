@@ -15,8 +15,8 @@ import java.util.Objects;
 public class Location implements Serializable{
 
     //class instance variables
-    private String name;
-    private String description;
+    protected String name;
+    protected String description;
     
     
     public Location() {
