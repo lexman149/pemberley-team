@@ -1,4 +1,4 @@
-package pemberleyGame.model;
+package byui.cit260.pemberleyGame.model;
 
 import java.io.Serializable;
 
