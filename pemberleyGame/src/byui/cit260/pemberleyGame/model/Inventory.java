@@ -11,6 +11,7 @@ public class Inventory implements Serializable {
     
     //class instance variables
     private String contents;
+    private double currentWeight;
 
     public Inventory() {
     }
@@ -25,18 +26,29 @@ public class Inventory implements Serializable {
         this.contents = contents;
     }
 
+    public double getCurrentWeight() {
+        return currentWeight;
+    }
+
+    public void setCurrentWeight(double currentWeight) {
+        this.currentWeight = currentWeight;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" + "contents=" + contents + ", currentWeight=" + currentWeight + '}';
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.contents);
+        hash = 37 * hash + Objects.hashCode(this.contents);
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.currentWeight) ^ (Double.doubleToLongBits(this.currentWeight) >>> 32));
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -47,22 +59,11 @@ public class Inventory implements Serializable {
         if (!Objects.equals(this.contents, other.contents)) {
             return false;
         }
+        if (Double.doubleToLongBits(this.currentWeight) != Double.doubleToLongBits(other.currentWeight)) {
+            return false;
+        }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Inventory{" + "contents=" + contents + '}';
-    }
-
-    public void setInventory(String keys) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
-    
-    
-    
     
 }
