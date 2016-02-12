@@ -11,15 +11,17 @@ public class Item implements Serializable{
 
     //class instance variables //
     private String name;
-    private String location;
+    private Location location;
     private String description;
-    private String type;
-
+    private boolean takable;
+    private String takeMessage;
+    
     // constructor function //
     public Item() {
     }
 
     // getters & setters //
+
     public String getName() {
         return name;
     }
@@ -28,11 +30,11 @@ public class Item implements Serializable{
         this.name = name;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -44,33 +46,38 @@ public class Item implements Serializable{
         this.description = description;
     }
 
-    public String getType() {
-        return type;
+    public boolean isTakable() {
+        return takable;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTakable(boolean takable) {
+        this.takable = takable;
     }
-    
-    // string, equals & hash //
 
-    @Override
-    public String toString() {
-        return "Item{" + "Item Name = " + name + ", Item Location = " + location + ", Item Ddescription = " + description + ", type = " + type + '}';
+    public String getTakeMessage() {
+        return takeMessage;
+    }
+
+    public void setTakeMessage(String takeMessage) {
+        this.takeMessage = takeMessage;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.name);
-        hash = 41 * hash + Objects.hashCode(this.location);
-        hash = 41 * hash + Objects.hashCode(this.description);
-        hash = 41 * hash + Objects.hashCode(this.type);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.location);
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + (this.takable ? 1 : 0);
+        hash = 97 * hash + Objects.hashCode(this.takeMessage);
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -78,19 +85,32 @@ public class Item implements Serializable{
             return false;
         }
         final Item other = (Item) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        if (this.takable != other.takable) {
             return false;
         }
-        if (!Objects.equals(this.location, other.location)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.type, other.type)) {
+        if (!Objects.equals(this.takeMessage, other.takeMessage)) {
+            return false;
+        }
+        if (!Objects.equals(this.location, other.location)) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" + "name=" + name + ", location=" + location + ", description=" + description + ", takable=" + takable + ", takeMessage=" + takeMessage + '}';
+    }
+
+    
+    
+    
+    
     
 }
