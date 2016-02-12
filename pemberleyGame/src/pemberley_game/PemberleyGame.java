@@ -579,7 +579,7 @@ rmUpstairsHallWest.setSouth(rmGrandStaircase);
 
       
       playerOne.setName("John Doe");
-      playerOne.setLocation("Library");
+      playerOne.setLocation(rmLibrary);
       playerOne.setGender("Male");
       
       String playerInfo = playerOne.toString();
