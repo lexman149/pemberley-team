@@ -82,11 +82,11 @@ public class Room extends Location{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.north);
-        hash = 53 * hash + Objects.hashCode(this.east);
-        hash = 53 * hash + Objects.hashCode(this.south);
-        hash = 53 * hash + Objects.hashCode(this.west);
-        hash = 53 * hash + (this.visited ? 1 : 0);
+        hash = 67 * hash + Objects.hashCode(this.north);
+        hash = 67 * hash + Objects.hashCode(this.east);
+        hash = 67 * hash + Objects.hashCode(this.south);
+        hash = 67 * hash + Objects.hashCode(this.west);
+        hash = 67 * hash + (this.visited ? 1 : 0);
         return hash;
     }
 
@@ -120,11 +120,12 @@ public class Room extends Location{
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", visited=" + visited + '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", visited=" + visited + '}';
+//    }
 
+    
    
     
 }
