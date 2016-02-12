@@ -4,14 +4,8 @@
  */
 package pemberley_game;
 
-import byui.cit260.pemberleyGame.model.Location;
-import byui.cit260.pemberleyGame.model.Player;
-import byui.cit260.pemberleyGame.model.Room;
-import byui.cit260.pemberleyGame.model.Game;
-import byui.cit260.pemberleyGame.model.Item;
-import byui.cit260.pemberleyGame.model.Map;
-import byui.cit260.pemberleyGame.model.Character;
-import byui.cit260.pemberleyGame.model.Inventory;
+import byui.cit260.pemberleyGame.control.*;
+import byui.cit260.pemberleyGame.model.*;
 
 
 
@@ -75,20 +69,20 @@ public class PemberleyGame {
 
     Item itemOne = new Item();
     itemOne.setDescription("love letter");
-    itemOne.setLocation("ballroom");
+    itemOne.setLocation(library);
     itemOne.setName("letter");
-    itemOne.setType("reusable");
+    itemOne.setTakable(true);
     String itemInfo = itemOne.toString();
     System.out.println(itemInfo);
     
     // instances inserted by alexis //
-    Character characterOne = new Character();
-    characterOne.setName("Mr. Darcy");
-    characterOne.setLocation("Dining Room");
-    characterOne.setDescription("Tall dark gentlemen");
-    characterOne.setCharacterScript("Hello, I'm Mr. Darcy");
-    String characterInfo = characterOne.toString();
-    System.out.println(characterInfo);
+    Actor actorOne = new Actor();
+    actorOne.setName("Mr. Darcy");
+    actorOne.setLocation(drawingRoom);
+    actorOne.setDescription("Tall dark gentlemen");
+    actorOne.setCharacterScript("Hello, I'm Mr. Darcy");
+    String actorInfo = actorOne.toString();
+    System.out.println(actorInfo);
 
     Inventory inventoryOne = new Inventory();
     inventoryOne.setContents("key");
