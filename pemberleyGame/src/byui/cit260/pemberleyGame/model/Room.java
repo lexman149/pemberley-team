@@ -14,63 +14,45 @@ Location already does that
 public class Room extends Location{
     
     //class instance variables
-      private String north;
-      private String east;
-      private String south;
-      private String west;
-      private String up;
-      private String down;
+      private Room north;
+      private Room east;
+      private Room south;
+      private Room west;
       private boolean visited; 
 
     public Room() {
     }
 
-    public String getNorth() {
+    public Room getNorth() {
         return north;
     }
 
-    public void setNorth(String north) {
+    public void setNorth(Room north) {
         this.north = north;
     }
 
-    public String getEast() {
+    public Room getEast() {
         return east;
     }
 
-    public void setEast(String east) {
+    public void setEast(Room east) {
         this.east = east;
     }
 
-    public String getSouth() {
+    public Room getSouth() {
         return south;
     }
 
-    public void setSouth(String south) {
+    public void setSouth(Room south) {
         this.south = south;
     }
 
-    public String getWest() {
+    public Room getWest() {
         return west;
     }
 
-    public void setWest(String west) {
+    public void setWest(Room west) {
         this.west = west;
-    }
-
-    public String getUp() {
-        return up;
-    }
-
-    public void setUp(String up) {
-        this.up = up;
-    }
-
-    public String getDown() {
-        return down;
-    }
-
-    public void setDown(String down) {
-        this.down = down;
     }
 
     public boolean isVisited() {
@@ -81,16 +63,30 @@ public class Room extends Location{
         this.visited = visited;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.north);
-        hash = 67 * hash + Objects.hashCode(this.east);
-        hash = 67 * hash + Objects.hashCode(this.south);
-        hash = 67 * hash + Objects.hashCode(this.west);
-        hash = 67 * hash + Objects.hashCode(this.up);
-        hash = 67 * hash + Objects.hashCode(this.down);
-        hash = 67 * hash + (this.visited ? 1 : 0);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.north);
+        hash = 53 * hash + Objects.hashCode(this.east);
+        hash = 53 * hash + Objects.hashCode(this.south);
+        hash = 53 * hash + Objects.hashCode(this.west);
+        hash = 53 * hash + (this.visited ? 1 : 0);
         return hash;
     }
 
@@ -121,23 +117,14 @@ public class Room extends Location{
         if (!Objects.equals(this.west, other.west)) {
             return false;
         }
-        if (!Objects.equals(this.up, other.up)) {
-            return false;
-        }
-        if (!Objects.equals(this.down, other.down)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", up=" + up + ", down=" + down + ", visited=" + visited + " Location{" + "name=" + name + ", description=" + description + '}';
+        return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", visited=" + visited + '}';
     }
 
-
-      
-      
-      
+   
     
 }
