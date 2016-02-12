@@ -12,14 +12,12 @@ public class Player implements Serializable{
     
     // class instance variables
     private String name;
-    private String location;
+    private Location location;
     private String gender;
     
 
     public Player() {
     }
-    
-    
 
     public String getName() {
         return name;
@@ -29,11 +27,11 @@ public class Player implements Serializable{
         this.name = name;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -46,16 +44,11 @@ public class Player implements Serializable{
     }
 
     @Override
-    public String toString() {
-        return "Player{" + "name=" + name + ", location=" + location + ", gender=" + gender + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + Objects.hashCode(this.location);
-        hash = 23 * hash + Objects.hashCode(this.gender);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 41 * hash + Objects.hashCode(this.location);
+        hash = 41 * hash + Objects.hashCode(this.gender);
         return hash;
     }
 
@@ -74,15 +67,22 @@ public class Player implements Serializable{
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.location, other.location)) {
+        if (!Objects.equals(this.gender, other.gender)) {
             return false;
         }
-        if (!Objects.equals(this.gender, other.gender)) {
+        if (!Objects.equals(this.location, other.location)) {
             return false;
         }
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", location=" + location + ", gender=" + gender + '}';
+    }
+    
+    
+    
     }
 
  
