@@ -25,4 +25,25 @@ public class InventoryControl {
         return newWeight;  
     }
     
+    
+public boolean checkCanGet(int quantityLimit, int currentQuantity, int newQuantity){ 
+
+    boolean itemCanBeAdded;
+
+    if (newQuantity < 0 || newQuantity > 9){
+
+        return false;
+    }
+
+    int potentialQuantity = quantityLimit - (currentQuantity + newQuantity);
+
+    if (potentialQuantity < 0){
+
+        return false;
+    }
+
+        return true;
+        
+}
+
 }
