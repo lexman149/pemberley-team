@@ -22,8 +22,8 @@ public class InventoryControlTest {
      * Test of calcInventoryWeight method, of class InventoryControl.
      */
     @Test
-    public void testCalcInventoryWeight() {
-        System.out.println("calcInventoryWeight");
+    public void testCalcAddInventoryWeight() {
+        System.out.println("calcAddInventoryWeight");
         
         /****************
          * Test Case #1
@@ -42,7 +42,7 @@ public class InventoryControlTest {
         double expResult = 19; // expected output returned value
         
         // call function to run test
-        double result = instance.calcInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        double result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
         
         //compare expected return value with the actual value returned
         assertEquals(expResult, result, 0.0);
@@ -61,7 +61,7 @@ public class InventoryControlTest {
         expResult = -1; // expected output returned value
         
         // call function to run test
-        result = instance.calcInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
         
         //compare expected return value with the actual value returned
         assertEquals(expResult, result, 0.0);
@@ -79,7 +79,7 @@ public class InventoryControlTest {
         expResult = -1; // expected output returned value
         
         // call function to run test
-        result = instance.calcInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
         
         //compare expected return value with the actual value returned
         assertEquals(expResult, result, 0.0);
@@ -97,7 +97,7 @@ public class InventoryControlTest {
         expResult = -1; // expected output returned value
         
         // call function to run test
-        result = instance.calcInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
         
         //compare expected return value with the actual value returned
         assertEquals(expResult, result, 0.0);   
@@ -115,7 +115,7 @@ public class InventoryControlTest {
         expResult = 20; // expected output returned value
         
         // call function to run test
-        result = instance.calcInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
         
         //compare expected return value with the actual value returned
         assertEquals(expResult, result, 0.0);
@@ -133,7 +133,7 @@ public class InventoryControlTest {
         expResult = 19; // expected output returned value
         
         // call function to run test
-        result = instance.calcInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
         
         //compare expected return value with the actual value returned
         assertEquals(expResult, result, 0.0); 
@@ -151,10 +151,150 @@ public class InventoryControlTest {
         expResult = 20; // expected output returned value
         
         // call function to run test
-        result = instance.calcInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
         
         //compare expected return value with the actual value returned
         assertEquals(expResult, result, 0.0);              
     }
     
+
+    /**
+     * Test of calcRemoveInventoryWeight method, of class RemoveInventoryControl.
+     */
+    @Test
+    public void testCalcRemoveInventoryWeight() {
+        System.out.println("calcRemoveInventoryWeight");
+        
+        /****************
+         * Test Case #1
+        *************/
+        System.out.println("\tTestCase#1");
+        
+        //input values for test case 1
+        double currentWeight = 8.0;
+        double newWeight = 2.0;
+        int newItemQuantity = 3;
+//        Inventory inventory = inventoryOne;
+        
+        // create instance of InventoryControl class
+        InventoryControl instance = new InventoryControl();
+        
+        double expResult = 2; // expected output returned value
+        
+        // call function to run test
+        double result = instance.calcRemoveInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        
+        //compare expected return value with the actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        
+        /****************
+         * Test Case #2
+        *************/
+        System.out.println("\tTestCase#2");
+        
+        //input values for test case 2
+        currentWeight = 8.0;
+        newWeight = 2.0;
+        newItemQuantity = -4;        
+        
+        expResult = -1; // expected output returned value
+        
+        // call function to run test
+        result = instance.calcRemoveInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        
+        //compare expected return value with the actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        /****************
+         * Test Case #3
+        *************/
+        System.out.println("\tTestCase#3");
+        
+        //input values for test case 3
+        currentWeight = 8.0;
+        newWeight = 2.0;
+        newItemQuantity = 10;        
+        
+        expResult = -1; // expected output returned value
+        
+        // call function to run test
+        result = instance.calcRemoveInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        
+        //compare expected return value with the actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+         /****************
+         * Test Case #4
+        *************/
+        System.out.println("\tTestCase#4");
+        
+        //input values for test case 4
+        currentWeight = 15.0;
+        newWeight = 2.0;
+        newItemQuantity = 8;        
+        
+        expResult = -1; // expected output returned value
+        
+        // call function to run test
+        result = instance.calcRemoveInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        
+        //compare expected return value with the actual value returned
+        assertEquals(expResult, result, 0.0);   
+        
+         /****************
+         * Test Case #5
+        *************/
+        System.out.println("\tTestCase#5");
+        
+        //input values for test case 5
+        currentWeight = 10.0;
+        newWeight = 2.0;
+        newItemQuantity = 0;        
+        
+        expResult = 10; // expected output returned value
+        
+        // call function to run test
+        result = instance.calcRemoveInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        
+        //compare expected return value with the actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        /****************
+         * Test Case #6
+        *************/
+        System.out.println("\tTestCase#6");
+        
+        //input values for test case 6
+        currentWeight = 20.0;
+        newWeight = 2.0;
+        newItemQuantity = 9;        
+        
+        expResult = 2; // expected output returned value
+        
+        // call function to run test
+        result = instance.calcRemoveInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        
+        //compare expected return value with the actual value returned
+        assertEquals(expResult, result, 0.0); 
+        
+        /****************
+         * Test Case #7
+        *************/
+        System.out.println("\tTestCase#7");
+        
+        //input values for test case 7
+        currentWeight = 20.0;
+        newWeight = 20.0;
+        newItemQuantity = 1;        
+        
+        expResult = 0; // expected output returned value
+        
+        // call function to run test
+        result = instance.calcRemoveInventoryWeight(currentWeight, newWeight, newItemQuantity);
+        
+        //compare expected return value with the actual value returned
+        assertEquals(expResult, result, 0.0);              
+    }
+
 }
