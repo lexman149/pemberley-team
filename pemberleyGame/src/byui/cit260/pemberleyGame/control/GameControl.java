@@ -5,10 +5,16 @@
  */
 package byui.cit260.pemberleyGame.control;
 
+import byui.cit260.pemberleyGame.model.Player;
+
 /**
  *
  * @author mbp
  */
 public class GameControl {
+
+    public static void createNewGame(Player player) {
+        System.out.println("\n*** createNew Game stub function called ***");
+    }
     
 }
