@@ -24,7 +24,7 @@ public class MainMenuView {
             + "\nG - Start game"
             + "\nH - Get help on how to play the game"
             + "\nS - Save game"
-            + "\nE - Exit"
+            + "\nX - Exit"
             + "\n----------------------------------------";
     
     public void displayMenu() {
@@ -83,7 +83,7 @@ public class MainMenuView {
             case 'S':
                 this.saveGame();
                 break;
-            case 'E':
+            case 'X':
                 return;
             default:
                 System.out.println("\n***Invalid Selection *** Try Again");
