@@ -25,7 +25,7 @@ public class HelpMenuView {
             + "\nA - How do I use actions?"
             + "\nC - How do I talk to game characters?"
             + "\nP - What do I type at the prompt?"
-            + "\nX - Quit"
+            + "\nX - Exit"
             + "\n----------------------------------------";
     
     public void displayMenu() {
