@@ -51,24 +51,38 @@ public class InventoryControl {
     }
 
     public String takeItem(String playerSelection, Player player, Item[] localItemArray) {
+//set default message.
         String takeMessage = "you can't take this";
         ItemControl itemControl = new ItemControl();
-        playerSelection = playerSelection.toUpperCase();
+/*take the array and make a new array containing the names of the items to make
+it searchable by name*/
         String[] localItemList = itemControl.createItemNameList(localItemArray);
+//call the function that checks user selection against each item name;
         int indexOfSelection = this.findIndexOfValue(playerSelection, localItemList);
-        System.out.println(indexOfSelection);
-        System.out.println(localItemArray[indexOfSelection].getName());
+//if the item's takable attribute is true, say the item is taken.
+//still needs to transfer item to inventory and incorporate other inventory controls
         if (localItemArray[indexOfSelection].isTakable()) {
-            takeMessage = "You take the " + playerSelection;
+            takeMessage = "You take the " + localItemArray[indexOfSelection].getName();
         }
         return takeMessage;
     }
 
     public int findIndexOfValue(String playerSelection, String[] localItemList) {
+//set the default to -1
         int indexOfValue = -1;
-        boolean doesContain;
+        /*loop through each string in the array to see if selection is anywhere 
+in the string. I am using this instead of a normal array contains both 
+to make it case insenstive and so that if any part of the players selection is 
+in the string it will return an index of its location.  For example, using this
+if the player says they want to get treats or dog treats instead of The 
+Dog Treats, it will still find it.*/
         for (int i = 0; i < localItemList.length; i++) {
-            if (localItemList[i].contains(playerSelection) == true) {
+//change players selection to upper case to make the search case insensitive
+            playerSelection = playerSelection.toUpperCase();
+//change each string in the array to upper case to make the search case insensitive
+            String localItemNameUpper = localItemList[i].toUpperCase();
+//if the string contains any part of the player's selection, return the index.
+            if (localItemNameUpper.contains(playerSelection) == true) {
                 indexOfValue = i;
             }
         }
