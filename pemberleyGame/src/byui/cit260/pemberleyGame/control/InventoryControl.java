@@ -67,7 +67,9 @@ it searchable by name*/
         return takeMessage;
     }
 
-    public int findIndexOfValue(String playerSelection, String[] localItemList) {
+
+//function that takes any string and finds it in an array of strings. Move to a different control?
+    public int findIndexOfValue(String playerSelection, String[] stringToCheck) {
 //set the default to -1
         int indexOfValue = -1;
         /*loop through each string in the array to see if selection is anywhere 
@@ -76,13 +78,13 @@ to make it case insenstive and so that if any part of the players selection is
 in the string it will return an index of its location.  For example, using this
 if the player says they want to get treats or dog treats instead of The 
 Dog Treats, it will still find it.*/
-        for (int i = 0; i < localItemList.length; i++) {
+        for (int i = 0; i < stringToCheck.length; i++) {
 //change players selection to upper case to make the search case insensitive
             playerSelection = playerSelection.toUpperCase();
 //change each string in the array to upper case to make the search case insensitive
-            String localItemNameUpper = localItemList[i].toUpperCase();
+            String stringToCheckUpper = stringToCheck[i].toUpperCase();
 //if the string contains any part of the player's selection, return the index.
-            if (localItemNameUpper.contains(playerSelection) == true) {
+            if (stringToCheckUpper.contains(playerSelection) == true) {
                 indexOfValue = i;
             }
         }
