@@ -9,29 +9,18 @@ import java.util.Objects;
  * @author jpmanning
  */
 public class Quest implements Serializable{
-    
+
     //class instance variables
     private Item needs;
     private boolean completed;
     private String completionScript;
-    private String completionAction;
-    boolean movesActor;
-    boolean movesItem;
-    boolean changesActorScript;
-    boolean movesPlayer;
-    boolean changesItemsTakable;
-    Actor actorToChange;
-    Item itemToChange;
-    Location potentialLocationActor1;
-    Location potentialLocationItem1;
-    String changeActorScript;
+    private Actor actorToChange;
+    private Item itemToChange;
+    private Player player;
+    private Room roomToChange;
+    private Room playerDestination;
     
     public Quest() {
-        
-        
-        
-        
-        
     }
 
     public Item getNeeds() {
@@ -58,54 +47,6 @@ public class Quest implements Serializable{
         this.completionScript = completionScript;
     }
 
-    public String getCompletionAction() {
-        return completionAction;
-    }
-
-    public void setCompletionAction(String completionAction) {
-        this.completionAction = completionAction;
-    }
-
-    public boolean isMovesActor() {
-        return movesActor;
-    }
-
-    public void setMovesActor(boolean movesActor) {
-        this.movesActor = movesActor;
-    }
-
-    public boolean isMovesItem() {
-        return movesItem;
-    }
-
-    public void setMovesItem(boolean movesItem) {
-        this.movesItem = movesItem;
-    }
-
-    public boolean isChangesActorScript() {
-        return changesActorScript;
-    }
-
-    public void setChangesActorScript(boolean changesActorScript) {
-        this.changesActorScript = changesActorScript;
-    }
-
-    public boolean isMovesPlayer() {
-        return movesPlayer;
-    }
-
-    public void setMovesPlayer(boolean movesPlayer) {
-        this.movesPlayer = movesPlayer;
-    }
-
-    public boolean isChangesItemsTakable() {
-        return changesItemsTakable;
-    }
-
-    public void setChangesItemsTakable(boolean changesItemsTakable) {
-        this.changesItemsTakable = changesItemsTakable;
-    }
-
     public Actor getActorToChange() {
         return actorToChange;
     }
@@ -122,47 +63,41 @@ public class Quest implements Serializable{
         this.itemToChange = itemToChange;
     }
 
-    public Location getPotentialLocationActor1() {
-        return potentialLocationActor1;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setPotentialLocationActor1(Location potentialLocationActor1) {
-        this.potentialLocationActor1 = potentialLocationActor1;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    public Location getPotentialLocationItem1() {
-        return potentialLocationItem1;
+    public Room getRoomToChange() {
+        return roomToChange;
     }
 
-    public void setPotentialLocationItem1(Location potentialLocationItem1) {
-        this.potentialLocationItem1 = potentialLocationItem1;
+    public void setRoomToChange(Room roomToChange) {
+        this.roomToChange = roomToChange;
     }
 
-    public String getChangeActorScript() {
-        return changeActorScript;
+    public Room getPlayerDestination() {
+        return playerDestination;
     }
 
-    public void setChangeActorScript(String changeActorScript) {
-        this.changeActorScript = changeActorScript;
+    public void setPlayerDestination(Room playerDestination) {
+        this.playerDestination = playerDestination;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.needs);
-        hash = 79 * hash + (this.completed ? 1 : 0);
-        hash = 79 * hash + Objects.hashCode(this.completionScript);
-        hash = 79 * hash + Objects.hashCode(this.completionAction);
-        hash = 79 * hash + (this.movesActor ? 1 : 0);
-        hash = 79 * hash + (this.movesItem ? 1 : 0);
-        hash = 79 * hash + (this.changesActorScript ? 1 : 0);
-        hash = 79 * hash + (this.movesPlayer ? 1 : 0);
-        hash = 79 * hash + (this.changesItemsTakable ? 1 : 0);
-        hash = 79 * hash + Objects.hashCode(this.actorToChange);
-        hash = 79 * hash + Objects.hashCode(this.itemToChange);
-        hash = 79 * hash + Objects.hashCode(this.potentialLocationActor1);
-        hash = 79 * hash + Objects.hashCode(this.potentialLocationItem1);
-        hash = 79 * hash + Objects.hashCode(this.changeActorScript);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.needs);
+        hash = 29 * hash + (this.completed ? 1 : 0);
+        hash = 29 * hash + Objects.hashCode(this.completionScript);
+        hash = 29 * hash + Objects.hashCode(this.actorToChange);
+        hash = 29 * hash + Objects.hashCode(this.itemToChange);
+        hash = 29 * hash + Objects.hashCode(this.player);
+        hash = 29 * hash + Objects.hashCode(this.roomToChange);
+        hash = 29 * hash + Objects.hashCode(this.playerDestination);
         return hash;
     }
 
@@ -181,28 +116,7 @@ public class Quest implements Serializable{
         if (this.completed != other.completed) {
             return false;
         }
-        if (this.movesActor != other.movesActor) {
-            return false;
-        }
-        if (this.movesItem != other.movesItem) {
-            return false;
-        }
-        if (this.changesActorScript != other.changesActorScript) {
-            return false;
-        }
-        if (this.movesPlayer != other.movesPlayer) {
-            return false;
-        }
-        if (this.changesItemsTakable != other.changesItemsTakable) {
-            return false;
-        }
         if (!Objects.equals(this.completionScript, other.completionScript)) {
-            return false;
-        }
-        if (!Objects.equals(this.completionAction, other.completionAction)) {
-            return false;
-        }
-        if (!Objects.equals(this.changeActorScript, other.changeActorScript)) {
             return false;
         }
         if (!Objects.equals(this.needs, other.needs)) {
@@ -214,24 +128,16 @@ public class Quest implements Serializable{
         if (!Objects.equals(this.itemToChange, other.itemToChange)) {
             return false;
         }
-        if (!Objects.equals(this.potentialLocationActor1, other.potentialLocationActor1)) {
+        if (!Objects.equals(this.player, other.player)) {
             return false;
         }
-        if (!Objects.equals(this.potentialLocationItem1, other.potentialLocationItem1)) {
+        if (!Objects.equals(this.roomToChange, other.roomToChange)) {
+            return false;
+        }
+        if (!Objects.equals(this.playerDestination, other.playerDestination)) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Quest{" + "needs=" + needs + ", completed=" + completed + ", completionScript=" + completionScript + ", completionAction=" + completionAction + ", movesActor=" + movesActor + ", movesItem=" + movesItem + ", changesActorScript=" + changesActorScript + ", movesPlayer=" + movesPlayer + ", changesItemsTakable=" + changesItemsTakable + ", actorToChange=" + actorToChange + ", itemToChange=" + itemToChange + ", potentialLocationActor1=" + potentialLocationActor1 + ", potentialLocationItem1=" + potentialLocationItem1 + ", changeActorScript=" + changeActorScript + '}';
-    }
-
-    
-    
-    
-    
-    
-    
+   
 }

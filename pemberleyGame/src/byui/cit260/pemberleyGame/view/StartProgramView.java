@@ -6,7 +6,10 @@
 package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.ProgramControl;
+import byui.cit260.pemberleyGame.model.Actor;
+import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Player;
+import byui.cit260.pemberleyGame.model.User;
 import java.util.*;
 
 /**
@@ -18,18 +21,18 @@ public class StartProgramView {
     public StartProgramView() {
     }
 
-    public void startProgram() {
+    public void startProgram(Player player, Item[] allItemArray, Actor[] allActorArray) {
 //Display the banner screen
         this.displayBanner();
 // prompt the player to enter their name Retrieve the name of the player
         String playersName = this.getPlayersName();
 // create and save the player object
-        Player player = ProgramControl.createPlayer(playersName);
+        User user = ProgramControl.createPlayer(playersName);
 // Display a personalized welcome message
-        this.displayWelcomeMessage(player);
+        this.displayWelcomeMessage(user);
 // Display the Main menu.
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.displayMenu(player, allItemArray, allActorArray);
     }
 
     private void displayBanner() {
@@ -73,7 +76,7 @@ public class StartProgramView {
         return playersName; // return the name
     }
 
-    private void displayWelcomeMessage(Player player) {
+    private void displayWelcomeMessage(User player) {
         System.out.println("\n\n=========================================");
         System.out.println("\tWelcome to the game " + player.getName());
         System.out.println("\tWe hope you have a lot of fun!");
