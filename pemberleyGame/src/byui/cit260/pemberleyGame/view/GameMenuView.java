@@ -23,6 +23,10 @@ public class GameMenuView {
             + "\n----------------------------------------"
             + "\n | Game Menu"
             + "\n----------------------------------------"
+            + "\nI - Inventory"
+            + "\nM - Map"
+            + "\nP - People"
+            + "\nT - Current Tasks"
             + "\nE - Explore"
             + "\nX - Exit"
             + "\n----------------------------------------";
@@ -71,6 +75,18 @@ public class GameMenuView {
     public void doAction(char choice, Player player, Item[] allItemArray, Actor[] allActorArray) {
         
         switch(choice){
+            case 'I':
+                this.displayInventory();
+                break;
+            case 'M':
+                this.displayMap();
+                break;
+            case 'P':
+                this.displayPeople();
+                break;
+            case 'T':
+                this.displayCurrentTasks();
+                break;
             case 'E':
                 this.displayExploreMenu(player, allItemArray, allActorArray);
                 break;
@@ -88,9 +104,28 @@ public class GameMenuView {
         exploreMenu.displayMenu(player, allItemArray, allActorArray);
     }
 
+    private void displayInventory() {
+        System.out.println("*** displayInventory function called ***");
+    }
+
+    private void displayMap() {
+        System.out.println("*** displayMap function called ***");
+    }
+
+    private void displayPeople() {
+        System.out.println("*** displayPeople function called ***");
+    }
+
+    private void displayCurrentTasks() {
+        System.out.println("*** displayCurrentTasks function called ***");
+    }
+
+    
+    }
 
 
-}
+
+
     
 
    
