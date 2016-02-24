@@ -91,6 +91,8 @@ Dog Treats, it will still find it.*/
                 indexOfValue = i;
             }
         }
+        
+     
         return indexOfValue;
     }   
     
