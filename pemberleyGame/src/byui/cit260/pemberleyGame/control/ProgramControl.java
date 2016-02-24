@@ -1,11 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package byui.cit260.pemberleyGame.control;
 
-import byui.cit260.pemberleyGame.model.Player;
+import byui.cit260.pemberleyGame.model.User;
+import java.util.ArrayList;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -14,18 +15,18 @@ import pemberley_game.PemberleyGame;
  */
 public class ProgramControl {
 
-    public static Player createPlayer(String name) {
-        
-        if (name ==null) {
+    public static User createPlayer(String name) {
+
+        if (name == null) {
             return null;
         }
-        
-        Player player = new Player();
+
+        User player = new User();
         player.setName(name);
-        
-        PemberleyGame.setPlayer(player); // save the player
-        
+
+        PemberleyGame.setUser(player); // save the player
+
         return player;
     }
+
 }
-    

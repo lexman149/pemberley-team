@@ -13,12 +13,15 @@ Location already does that
 
 public class Room extends Location{
     
+       
     //class instance variables
       private Room north;
       private Room east;
       private Room south;
       private Room west;
       private boolean visited; 
+      private boolean blocked; 
+      private boolean alternateBlocked; 
 
     public Room() {
     }
@@ -63,30 +66,32 @@ public class Room extends Location{
         this.visited = visited;
     }
 
-    public String getName() {
-        return name;
+    public boolean isBlocked() {
+        return blocked;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 
-    public String getDescription() {
-        return description;
+    public boolean isAlternateBlocked() {
+        return alternateBlocked;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAlternateBlocked(boolean alternateBlocked) {
+        this.alternateBlocked = alternateBlocked;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.north);
-        hash = 67 * hash + Objects.hashCode(this.east);
-        hash = 67 * hash + Objects.hashCode(this.south);
-        hash = 67 * hash + Objects.hashCode(this.west);
-        hash = 67 * hash + (this.visited ? 1 : 0);
+        int hash = 3;
+        hash = 43 * hash + Objects.hashCode(this.north);
+        hash = 43 * hash + Objects.hashCode(this.east);
+        hash = 43 * hash + Objects.hashCode(this.south);
+        hash = 43 * hash + Objects.hashCode(this.west);
+        hash = 43 * hash + (this.visited ? 1 : 0);
+        hash = 43 * hash + (this.blocked ? 1 : 0);
+        hash = 43 * hash + (this.alternateBlocked ? 1 : 0);
         return hash;
     }
 
@@ -105,6 +110,12 @@ public class Room extends Location{
         if (this.visited != other.visited) {
             return false;
         }
+        if (this.blocked != other.blocked) {
+            return false;
+        }
+        if (this.alternateBlocked != other.alternateBlocked) {
+            return false;
+        }
         if (!Objects.equals(this.north, other.north)) {
             return false;
         }
@@ -120,12 +131,6 @@ public class Room extends Location{
         return true;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Room{" + "north=" + north + ", east=" + east + ", south=" + south + ", west=" + west + ", visited=" + visited + '}';
-//    }
-
     
-   
     
 }

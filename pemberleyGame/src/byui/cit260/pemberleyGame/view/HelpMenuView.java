@@ -6,6 +6,8 @@
 package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.GameControl;
+import byui.cit260.pemberleyGame.model.Player;
+import byui.cit260.pemberleyGame.model.Room;
 import byui.cit260.pemberleyGame.view.GameMenuView;
 import java.util.Scanner;
 import pemberley_game.PemberleyGame;
@@ -14,7 +16,7 @@ import pemberley_game.PemberleyGame;
  *
  * @author Sheila
  */
-public class HelpMenuView {
+public class HelpMenuView{
 
    private final String MENU = "\n"
             + "\n----------------------------------------"
@@ -25,7 +27,7 @@ public class HelpMenuView {
             + "\nA - How do I use actions?"
             + "\nC - How do I talk to game characters?"
             + "\nP - What do I type at the prompt?"
-            + "\nX - Quit"
+            + "\nX - Exit"
             + "\n----------------------------------------";
     
     public void displayMenu() {

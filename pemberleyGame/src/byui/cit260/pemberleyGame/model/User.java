@@ -8,7 +8,7 @@ import java.util.Objects;
  *
  * @author lexmanning
  */
-public class Player implements Serializable{
+public class User implements Serializable{
        
     // class instance variables
     private String name;
@@ -16,7 +16,7 @@ public class Player implements Serializable{
     private String gender;
     
 
-    public Player() {
+    public User() {
     }
 
     public String getName() {
@@ -63,7 +63,7 @@ public class Player implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Player other = (Player) obj;
+        final User other = (User) obj;
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }

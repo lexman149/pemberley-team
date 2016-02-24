@@ -6,6 +6,9 @@
 package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.GameControl;
+import byui.cit260.pemberleyGame.model.Actor;
+import byui.cit260.pemberleyGame.model.Item;
+import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.view.GameMenuView;
 import java.util.Scanner;
 import pemberley_game.PemberleyGame;
@@ -27,7 +30,7 @@ public class MainMenuView {
             + "\nX - Exit"
             + "\n----------------------------------------";
     
-    public void displayMenu() {
+    public void displayMenu(Player player, Item[] allItemArray, Actor[] allActorArray) {
         
         char selection =' ';
         do{
@@ -37,7 +40,7 @@ public class MainMenuView {
             String input = this.getInput(); // get the user's selection
             selection = input.charAt(0); // get first character of string
             
-            this.doAction(selection); // do action based on selection
+            this.doAction(selection, player, allItemArray, allActorArray); // do action based on selection
             
         } while (selection != 'X' ); // a selection is not "Exit"
         
@@ -68,11 +71,11 @@ public class MainMenuView {
         return playersInput; // return the name
     }
 
-    public void doAction(char choice) {
+    public void doAction(char choice, Player player, Item[] allItemArray, Actor[] allActorArray) {
         
         switch(choice){
             case 'N':
-                this.startNewGame();
+                this.startNewGame(player, allItemArray, allActorArray);
                 break;
             case 'G':
                 this.startExistingGame();
@@ -92,12 +95,12 @@ public class MainMenuView {
 
     }
 
-    private void startNewGame() {
-        GameControl.createNewGame(PemberleyGame.getPlayer());
+    private void startNewGame(Player player, Item[] allItemArray, Actor[] allActorArray) {
+        GameControl.createNewGame(PemberleyGame.getUser());
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.displayMenu(player, allItemArray, allActorArray);
     }
 
     private void startExistingGame() {
