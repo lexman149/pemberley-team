@@ -28,7 +28,7 @@ public class LookMenuView {
             + "\nX - Exit"
             + "\n----------------------------------------";
     
-    public void displayMenu() {
+    public void displayMenu(Player player, Item[] localItemArray, Actor[] localActorArray) {
         
         char selection =' ';
         do{
