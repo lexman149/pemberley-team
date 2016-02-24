@@ -80,7 +80,7 @@ public class ExploreMenuView {
         Actor[] localActorArray = actorControl.createLocalActorArray(player, allActorArray);
         switch (choice) {
             case 'M':
-                this.movePlayer();
+                this.movePlayer(player);
                 break;
             case 'T':
                 this.takeItem(player, localItemArray);
@@ -106,8 +106,13 @@ public class ExploreMenuView {
 
     }
 
-    private void movePlayer() {
-        System.out.println("***movePlayer function called ***");
+    private void movePlayer(Player player) {
+        String prompt = "Which direction do you want to go?";
+        String playerSelection = this.getStringInput(prompt);
+        MapControl mapControl = new MapControl();
+        String roomDescription = mapControl.playerNavigate(playerSelection, player);
+        System.out.println(roomDescription);
+       
     }
 
     private void takeItem(Player player, Item[] localItemArray) {
