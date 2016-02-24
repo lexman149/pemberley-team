@@ -9,22 +9,23 @@ import byui.cit260.pemberleyGame.control.GameControl;
 import byui.cit260.pemberleyGame.view.GameMenuView;
 import java.util.Scanner;
 import pemberley_game.PemberleyGame;
+import byui.cit260.pemberleyGame.model.*;
 
 /**
  *
  * @author mbp
  */
-public class MainMenuView {
+public class LookMenuView {
 
     private final String MENU = "\n"
             + "\n----------------------------------------"
-            + "\n | Main Menu"
+            + "\n | Look Menu"
             + "\n----------------------------------------"
-            + "\nN - Start new game"
-            + "\nG - Start game"
-            + "\nH - Get help on how to play the game"
-            + "\nS - Save game"
-            + "\nE - Exit"
+            + "\nR - Look at the room"
+            + "\nC - Look at a character" // can I use C?
+            + "\nI - Look at an inventory item"
+            + "\nO - Look at an item other than inventory items"
+            + "\nX - Exit"
             + "\n----------------------------------------";
     
     public void displayMenu() {
@@ -39,7 +40,7 @@ public class MainMenuView {
             
             this.doAction(selection); // do action based on selection
             
-        } while (selection != 'E' ); // a selection is not "Exit"
+        } while (selection != 'X' ); // a selection is not "Exit"
         
     }
 
@@ -71,17 +72,17 @@ public class MainMenuView {
     public void doAction(char choice) {
         
         switch(choice){
-            case 'N':
-                this.startNewGame();
+            case 'R':
+                this.displayRoom();
                 break;
-            case 'G':
-                this.startExistingGame();
+            case 'C':
+                this.displayCharacter();
                 break;
-            case 'H':
-                this.displayHelpMe();
+            case 'I':
+                this.displayInventory();
                 break;
-            case 'S':
-                this.saveGame();
+            case 'O':
+                this.displayItem();
                 break;
             case 'X':
                 return;
@@ -92,32 +93,22 @@ public class MainMenuView {
 
     }
 
-    private void startNewGame() {
-        GameControl.createNewGame(PemberleyGame.getPlayer());
-        
-        // display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+    private void displayRoom() {
+        System.out.println("*** displayRoom function called ***");
     }
 
-    private void startExistingGame() {
+    private void displayCharacter() {
         System.out.println("*** startExistingGame function called ***");
     }
 
-    private void displayHelpMe() {
-        // System.out.println("*** displayHelpMenu function called ");
-        
-        // display the help menu
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
+    private void displayInventory() {
+        System.out.println("*** displayInventory function called *** ");
     }
 
-    private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+    private void displayItem() {
+        System.out.println("*** displayItem function called ***");
     }
 }
     
 
    
-
- 
