@@ -74,7 +74,6 @@ public class ExploreMenuView {
     }
 
     public void doAction(char choice, Player player, Item[] allItemArray, Actor[] allActorArray) {
-        InventoryControl inventoryControl = new InventoryControl();
         ActorControl actorControl = new ActorControl();
         ItemControl itemControl = new ItemControl();
         Item[] localItemArray = itemControl.createLocalItemArray(player, allItemArray);
@@ -112,17 +111,31 @@ public class ExploreMenuView {
     }
 
     private void takeItem(Player player, Item[] localItemArray) {
-        String gameMessage;
+        String gameMessage = "You can't take this";
+        int indexOfItem;
+        int quantityOfItem;
+        InventoryControl inventoryControl = new InventoryControl();
+        Inventory inventory = player.getInventory();
         
         if (localItemArray.length == 0) {
             gameMessage = "Nothing to Take";
         } else {
             String prompt = "What do you want to take?";
             String playerSelection = this.getStringInput(prompt);
-            InventoryControl inventoryControl = new InventoryControl();
-            gameMessage = inventoryControl.takeItem(playerSelection, player, localItemArray);
-        }
+            indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
+            Item selectedItem = localItemArray[indexOfItem];
+            if (selectedItem.isMultiple() == true) {
+                prompt = "How many do you want to get (select between 0-9)?";
+                playerSelection = this.getStringInput(prompt);
+                quantityOfItem = Integer.parseInt(playerSelection);
+            } else {
+                quantityOfItem = 1;
+            }
+        gameMessage = inventoryControl.takeItem(selectedItem, quantityOfItem, inventory);
+            
         
+        }
+
         System.out.println(gameMessage);
     }
 
