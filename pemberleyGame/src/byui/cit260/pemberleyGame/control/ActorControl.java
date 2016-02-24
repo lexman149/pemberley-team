@@ -31,4 +31,13 @@ public class ActorControl {
         return localActorArray;
     }
 
+    public String[] createActorNameList(Actor[] actorArray) {
+        ArrayList<String> actorList = new ArrayList<String>();
+        for (Actor i : actorArray) {
+            actorList.add(i.getName().toUpperCase());
+        }
+        String[] actorNameArray = actorList.toArray(new String[actorList.size()]);
+        return actorNameArray;
+    }
+    
 }
