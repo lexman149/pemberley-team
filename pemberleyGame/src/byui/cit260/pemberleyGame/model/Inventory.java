@@ -7,28 +7,26 @@ import java.util.Objects;
  *
  * @author jpmanning
  */
-public class Inventory implements Serializable {
+public class Inventory extends Location {
     
     //class instance variables
-    private String contents;
+    private double weight;
 
     public Inventory() {
     }
-    
-    
 
-    public String getContents() {
-        return contents;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.contents);
+        int hash = 5;
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
         return hash;
     }
 
@@ -44,7 +42,7 @@ public class Inventory implements Serializable {
             return false;
         }
         final Inventory other = (Inventory) obj;
-        if (!Objects.equals(this.contents, other.contents)) {
+        if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
             return false;
         }
         return true;
@@ -52,16 +50,8 @@ public class Inventory implements Serializable {
 
     @Override
     public String toString() {
-        return "Inventory{" + "contents=" + contents + '}';
+        return "Inventory{" + "weight=" + weight + '}';
     }
-
-    public void setInventory(String keys) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
-    
     
     
     

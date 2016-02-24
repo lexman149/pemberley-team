@@ -13,18 +13,13 @@ public class Player implements Serializable{
     // class instance variables
     private String name;
     private Room location;
-    private String gender;
-    
+    private Inventory inventory;
 
     public Player() {
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Room getLocation() {
@@ -35,20 +30,20 @@ public class Player implements Serializable{
         this.location = location;
     }
 
-    public String getGender() {
-        return gender;
+    public Inventory getInventory() {
+        return inventory;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.name);
-        hash = 59 * hash + Objects.hashCode(this.location);
-        hash = 59 * hash + Objects.hashCode(this.gender);
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.name);
+        hash = 61 * hash + Objects.hashCode(this.location);
+        hash = 61 * hash + Objects.hashCode(this.inventory);
         return hash;
     }
 
@@ -67,10 +62,10 @@ public class Player implements Serializable{
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.gender, other.gender)) {
+        if (!Objects.equals(this.location, other.location)) {
             return false;
         }
-        if (!Objects.equals(this.location, other.location)) {
+        if (!Objects.equals(this.inventory, other.inventory)) {
             return false;
         }
         return true;
@@ -78,10 +73,9 @@ public class Player implements Serializable{
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", location=" + location + ", gender=" + gender + '}';
+        return "Player{" + "name=" + name + ", location=" + location + ", inventory=" + inventory + '}';
     }
-    
-    
+
     
     
     }

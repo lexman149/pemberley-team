@@ -23,9 +23,7 @@ public class PemberleyGame {
     
     private static Game currentGame = null;
     private static User user = null;
-    private static Item[] allItemArray = null;
-    private static Actor[] allActorArray = null;
-    private static Room startingRoom = null;
+
     
     public static void main(String[] args) {
       //initialize everything
@@ -335,11 +333,12 @@ public class PemberleyGame {
         rmSecretLab.setBlocked(true);
         rmSecretLab.setAlternateBlocked(false);
 
-        itDogTreats.setDescription("A box of dog treats");
+        itDogTreats.setDescription("It is a box of dog treats sitting on the table");
         itDogTreats.setLocation(rmLivingRoom);
-        itDogTreats.setName("Box of Dog Treats");
+        itDogTreats.setName("Dog Treats");
         itDogTreats.setTakable(true);
         itDogTreats.setMultiple(true);
+        itDogTreats.setQuantity(0);
         itDogTreats.setWeight(0.25);
         
         itNote.setDescription("The note is being guarded by the hamster.  He won'tl let you get at the note");
@@ -361,7 +360,7 @@ public class PemberleyGame {
         qtTimeMachine.setPlayer(playerOne);
         qtTimeMachine.setPlayerDestination(rmPath);
 
-        atHamster.setName("Bruiser");
+        atHamster.setName("Bruiser the Hamster");
         atHamster.setLocation(rmLivingRoom);
         atHamster.setDescription("It is Uncle Finneas' Pet Hamster.  Uncle Finneas put dog brain matter in his head.");
         atHamster.setCharacterScript("GRRR.  Snarl.");
@@ -371,10 +370,9 @@ public class PemberleyGame {
         qtHamster.setItemToChange(itNote);
         qtHamster.setCompletionScript("Bruiser jumps on the dog treats and eats them with relish.  Then he licks your hand.");
 
-        inventoryOne.setContents("key");
-
-        GameControl gameControl = new GameControl();
-
+        inventoryOne.setWeight(0);
+        playerOne.setInventory(inventoryOne);
+        
         Item allItems[] = {itDogTreats, itNote, itTimeMachine};
         Actor allActors[] = {atHamster};
         
@@ -404,29 +402,6 @@ public class PemberleyGame {
         PemberleyGame.user = user;
     }
 
-    public static Item[] getAllItemArray() {
-        return allItemArray;
-    }
-
-    public static void setAllItemArray(Item[] allItemArray) {
-        PemberleyGame.allItemArray = allItemArray;
-    }
-
-    public static Actor[] getAllActorArray() {
-        return allActorArray;
-    }
-
-    public static void setAllActorArray(Actor[] allActorArray) {
-        PemberleyGame.allActorArray = allActorArray;
-    }
-
-    public static Room getStartingRoom() {
-        return startingRoom;
-    }
-
-    public static void setStartingRoom(Room startingRoom) {
-        PemberleyGame.startingRoom = startingRoom;
-    }
 
  
 }
