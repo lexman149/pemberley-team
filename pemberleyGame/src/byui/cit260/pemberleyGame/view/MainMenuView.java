@@ -24,7 +24,7 @@ public class MainMenuView {
             + "\nG - Start game"
             + "\nH - Get help on how to play the game"
             + "\nS - Save game"
-            + "\nE - Exit"
+            + "\nX - Exit"
             + "\n----------------------------------------";
     
     public void displayMenu() {
@@ -39,7 +39,7 @@ public class MainMenuView {
             
             this.doAction(selection); // do action based on selection
             
-        } while (selection != 'E' ); // a selection is not "Exit"
+        } while (selection != 'X' ); // a selection is not "Exit"
         
     }
 
