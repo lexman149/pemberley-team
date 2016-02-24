@@ -97,7 +97,7 @@ Dog Treats, it will still find it.*/
     }   
     
     public String takeItem(Item itemToTake, int quantityToTake, Inventory inventory) {
-        String takeMessage = "you can't take that";
+        String takeMessage = "You can't take that";
         boolean canTake;
         int currentQuantity = itemToTake.getQuantity();
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
