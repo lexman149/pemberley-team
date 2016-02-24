@@ -50,21 +50,24 @@ public class InventoryControl {
         return true;
     }
 
-    public String takeItem(String playerSelection, Player player, Item[] localItemArray) {
+    public int getItemIndex(String playerSelection, Player player, Item[] localItemArray) {
+        Inventory inventory = player.getInventory();
 //set default message.
-        String takeMessage = "you can't take this";
+        int itemIndex = -1;
         ItemControl itemControl = new ItemControl();
 /*take the array and make a new array containing the names of the items to make
 it searchable by name*/
         String[] localItemList = itemControl.createItemNameList(localItemArray);
 //call the function that checks user selection against each item name;
-        int indexOfSelection = this.findIndexOfValue(playerSelection, localItemList);
+        itemIndex = this.findIndexOfValue(playerSelection, localItemList);
 //if the item's takable attribute is true, say the item is taken.
 //still needs to transfer item to inventory and incorporate other inventory controls
-        if (localItemArray[indexOfSelection].isTakable()) {
-            takeMessage = "You take the " + localItemArray[indexOfSelection].getName();
-        }
-        return takeMessage;
+//        if (localItemArray[indexOfSelection].isTakable()) {
+//            if (localItemArray[indexOfSelection].isMultiple()==true){      
+//            } 
+//            takeMessage = "You take the " + localItemArray[indexOfSelection].getName();
+//        }
+       return itemIndex;
     }
 
 
@@ -89,5 +92,41 @@ Dog Treats, it will still find it.*/
             }
         }
         return indexOfValue;
+    }   
+    
+    public String takeItem(Item itemToTake, int quantityToTake, Inventory inventory) {
+        String takeMessage = "you can't take that";
+        boolean canTake;
+        int currentQuantity = itemToTake.getQuantity();
+        double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
+        System.out.println(potentialWeight);
+        if (itemToTake.isTakable() && itemToTake.isMultiple()) {
+            canTake = this.checkCanGet(9, currentQuantity, quantityToTake);
+
+            if (canTake && potentialWeight != -1) {
+
+                itemToTake.setLocation(inventory);
+                itemToTake.setQuantity(quantityToTake);
+                takeMessage = ("You get " + quantityToTake + " " + itemToTake.getName());
+                inventory.setWeight(inventory.getWeight() + potentialWeight);
+            }
+        } else if (itemToTake.isTakable() && potentialWeight != -1) {
+            itemToTake.setLocation(inventory);
+            takeMessage = ("You get " + itemToTake.getName());
+            inventory.setWeight(inventory.getWeight() + potentialWeight);
+
+        } else if (itemToTake.isTakable() && potentialWeight == -1) {
+
+            takeMessage = "It appears that you are trying to carry too much";
+
+        } else if (itemToTake.getTakeMessage() == null) {
+            takeMessage = "You can't get that at this time.";
+        } else {
+            takeMessage = itemToTake.getTakeMessage();
+        }
+
+        return takeMessage;
+
     }
+        
 }
