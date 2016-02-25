@@ -99,7 +99,7 @@ public class LookMenuView {
     }
 
     private void displayCharacter() {
-        System.out.println("*** startExistingGame function called ***");
+        System.out.println("*** displayCharacter function called ***");
     }
 
     private void displayInventory() {
