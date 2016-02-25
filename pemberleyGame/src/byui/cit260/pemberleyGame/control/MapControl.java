@@ -16,9 +16,6 @@ public class MapControl {
     public String playerNavigate(String direction, Player player) {
         Room currentRoom = player.getLocation();
         Room nextRoom;
-        direction = direction.toUpperCase();
-        direction = direction.trim();
-        System.out.println(direction);
         switch (direction) { 
         case"E":
         case"EAST":    
@@ -49,7 +46,8 @@ public class MapControl {
         }
         else {
             player.setLocation(nextRoom);
-            return nextRoom.getDescription();
+            String playerMessage = "You move to the " + nextRoom.getName() + "\n";
+            return playerMessage.concat(nextRoom.getDescription());
         }
     }
     
