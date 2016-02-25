@@ -21,14 +21,14 @@ public class InventoryControl {
 //currentWeight = inventory.getCurrentWeight(); /*needs to be created */
         newWeight = currentWeight + (newWeight * newItemQuantity);
         if (newWeight > 20) {
-            return -1;
+            return -2;
         }
         return newWeight;
     }
 
     public double calcRemoveInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) {
         if (newItemQuantity < 0 || newItemQuantity > 9) {
-            return -1;
+            return -2;
         }
 //currentWeight = inventory.getCurrentWeight(); /*needs to be created */
         newWeight = currentWeight - (newWeight * newItemQuantity);
@@ -55,7 +55,7 @@ public class InventoryControl {
 //set default message.
         int itemIndex = -1;
         ItemControl itemControl = new ItemControl();
-/*take the array and make a new array containing the names of the items to make
+        /*take the array and make a new array containing the names of the items to make
 it searchable by name*/
         String[] localItemList = itemControl.createItemNameList(localItemArray);
 //call the function that checks user selection against each item name;
@@ -67,9 +67,8 @@ it searchable by name*/
 //            } 
 //            takeMessage = "You take the " + localItemArray[indexOfSelection].getName();
 //        }
-       return itemIndex;
+        return itemIndex;
     }
-
 
 //function that takes any string and finds it in an array of strings. Move to a different control?
     public int findIndexOfValue(String playerSelection, String[] stringToCheck) {
@@ -91,44 +90,45 @@ Dog Treats, it will still find it.*/
                 indexOfValue = i;
             }
         }
-        
-     
+
         return indexOfValue;
-    }   
-    
+    }
+
     public String takeItem(Item itemToTake, int quantityToTake, Inventory inventory) {
         String takeMessage = "You can't take that";
         boolean canTake;
         int currentQuantity = itemToTake.getQuantity();
+        canTake = this.checkCanGet(9, currentQuantity, quantityToTake);
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
         System.out.println(potentialWeight);
-        if (itemToTake.isTakable() && itemToTake.isMultiple()) {
-            canTake = this.checkCanGet(9, currentQuantity, quantityToTake);
+        if (!itemToTake.isTakable()) {
+            if (itemToTake.getTakeMessage() == null) {
+                takeMessage = "You can't get that at this time.";
+            } else {
+                takeMessage = itemToTake.getTakeMessage();
+            }
+        } else if (potentialWeight == -1) {
+            return "That is not a valid quantity.";
+        } else if (potentialWeight == -2) {
+            return "That exceeds your weight limit.";
 
-            if (canTake && potentialWeight != -1) {
-
+        } else if (itemToTake.isMultiple()) {
+            if (canTake) {
                 itemToTake.setLocation(inventory);
                 itemToTake.setQuantity(quantityToTake);
                 takeMessage = ("You get " + quantityToTake + " " + itemToTake.getName());
                 inventory.setWeight(inventory.getWeight() + potentialWeight);
+            } else {
+                return "You cannot have that many " + itemToTake.getName() + " (limit 9)";
             }
-        } else if (itemToTake.isTakable() && potentialWeight != -1) {
+        } else {
             itemToTake.setLocation(inventory);
             takeMessage = ("You get " + itemToTake.getName());
             inventory.setWeight(inventory.getWeight() + potentialWeight);
-
-        } else if (itemToTake.isTakable() && potentialWeight == -1) {
-
-            takeMessage = "It appears that you are trying to carry too much";
-
-        } else if (itemToTake.getTakeMessage() == null) {
-            takeMessage = "You can't get that at this time.";
-        } else {
-            takeMessage = itemToTake.getTakeMessage();
         }
 
         return takeMessage;
 
     }
-        
+
 }
