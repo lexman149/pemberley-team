@@ -27,8 +27,9 @@ public class Item implements Serializable{
     private String useMessage;
     private String alternateUseMessage;
     private Quest quest;
-    private Quest alternateQuest;
-
+    private Item contains;
+    
+    
     public Item() {
     }
 
@@ -168,35 +169,35 @@ public class Item implements Serializable{
         this.quest = quest;
     }
 
-    public Quest getAlternateQuest() {
-        return alternateQuest;
+    public Item getContains() {
+        return contains;
     }
 
-    public void setAlternateQuest(Quest alternateQuest) {
-        this.alternateQuest = alternateQuest;
+    public void setContains(Item contains) {
+        this.contains = contains;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 73 * hash + Objects.hashCode(this.name);
-        hash = 73 * hash + Objects.hashCode(this.description);
-        hash = 73 * hash + Objects.hashCode(this.location);
-        hash = 73 * hash + Objects.hashCode(this.alternateLocation);
-        hash = 73 * hash + Objects.hashCode(this.alternateDescription);
-        hash = 73 * hash + (this.takable ? 1 : 0);
-        hash = 73 * hash + (this.alternateTakable ? 1 : 0);
-        hash = 73 * hash + (this.usable ? 1 : 0);
-        hash = 73 * hash + (this.alternateUsable ? 1 : 0);
-        hash = 73 * hash + (this.multiple ? 1 : 0);
-        hash = 73 * hash + this.quantity;
-        hash = 73 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
-        hash = 73 * hash + Objects.hashCode(this.takeMessage);
-        hash = 73 * hash + Objects.hashCode(this.alternateTakeMessage);
-        hash = 73 * hash + Objects.hashCode(this.useMessage);
-        hash = 73 * hash + Objects.hashCode(this.alternateUseMessage);
-        hash = 73 * hash + Objects.hashCode(this.quest);
-        hash = 73 * hash + Objects.hashCode(this.alternateQuest);
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 23 * hash + Objects.hashCode(this.description);
+        hash = 23 * hash + Objects.hashCode(this.location);
+        hash = 23 * hash + Objects.hashCode(this.alternateLocation);
+        hash = 23 * hash + Objects.hashCode(this.alternateDescription);
+        hash = 23 * hash + (this.takable ? 1 : 0);
+        hash = 23 * hash + (this.alternateTakable ? 1 : 0);
+        hash = 23 * hash + (this.usable ? 1 : 0);
+        hash = 23 * hash + (this.alternateUsable ? 1 : 0);
+        hash = 23 * hash + (this.multiple ? 1 : 0);
+        hash = 23 * hash + this.quantity;
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.takeMessage);
+        hash = 23 * hash + Objects.hashCode(this.alternateTakeMessage);
+        hash = 23 * hash + Objects.hashCode(this.useMessage);
+        hash = 23 * hash + Objects.hashCode(this.alternateUseMessage);
+        hash = 23 * hash + Objects.hashCode(this.quest);
+        hash = 23 * hash + Objects.hashCode(this.contains);
         return hash;
     }
 
@@ -263,7 +264,7 @@ public class Item implements Serializable{
         if (!Objects.equals(this.quest, other.quest)) {
             return false;
         }
-        if (!Objects.equals(this.alternateQuest, other.alternateQuest)) {
+        if (!Objects.equals(this.contains, other.contains)) {
             return false;
         }
         return true;
@@ -271,9 +272,8 @@ public class Item implements Serializable{
 
     @Override
     public String toString() {
-        return "Item{" + "name=" + name + ", description=" + description + ", location=" + location + ", alternateLocation=" + alternateLocation + ", alternateDescription=" + alternateDescription + ", takable=" + takable + ", alternateTakable=" + alternateTakable + ", usable=" + usable + ", alternateUsable=" + alternateUsable + ", multiple=" + multiple + ", quantity=" + quantity + ", weight=" + weight + ", takeMessage=" + takeMessage + ", alternateTakeMessage=" + alternateTakeMessage + ", useMessage=" + useMessage + ", alternateUseMessage=" + alternateUseMessage + ", quest=" + quest + ", alternateQuest=" + alternateQuest + '}';
+        return "Item{" + "name=" + name + ", description=" + description + ", location=" + location + ", alternateLocation=" + alternateLocation + ", alternateDescription=" + alternateDescription + ", takable=" + takable + ", alternateTakable=" + alternateTakable + ", usable=" + usable + ", alternateUsable=" + alternateUsable + ", multiple=" + multiple + ", quantity=" + quantity + ", weight=" + weight + ", takeMessage=" + takeMessage + ", alternateTakeMessage=" + alternateTakeMessage + ", useMessage=" + useMessage + ", alternateUseMessage=" + alternateUseMessage + ", quest=" + quest + ", contains=" + contains + '}';
     }
 
-    
     
 }
