@@ -112,7 +112,7 @@ public class ExploreMenuView {
         MapControl mapControl = new MapControl();
         String roomDescription = mapControl.playerNavigate(playerSelection, player);
         System.out.println(roomDescription);
-       
+
     }
 
     private void takeItem(Player player, Item[] localItemArray) {
@@ -123,34 +123,33 @@ public class ExploreMenuView {
         InventoryControl inventoryControl = new InventoryControl();
         Inventory inventory = player.getInventory();
         do {
-        if (localItemArray.length == 0) {
-            gameMessage = "Nothing to Take";
-        } else {
-            String prompt = "What do you want to take (type X to exit?";
-
-            playerSelection = this.getStringInput(prompt);
-
-            indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
-
-            if (indexOfItem != -1) {
-                Item selectedItem = localItemArray[indexOfItem];
-                if (selectedItem.isMultiple() == true) {
-                    prompt = "How many do you want to get (select between 0-9)?";
-                    playerSelection = this.getStringInput(prompt);
-                    quantityOfItem = Integer.parseInt(playerSelection);
-                } else {
-                    quantityOfItem = 1;
-                }
-                gameMessage = inventoryControl.takeItem(selectedItem, quantityOfItem, inventory);
+            if (localItemArray.length == 0) {
+                gameMessage = "Nothing to Take";
             } else {
+                String prompt = "What do you want to take (type X to exit?";
 
-                gameMessage = "Not sure what you are trying to take.";
+                playerSelection = this.getStringInput(prompt);
+
+                indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
+
+                if (indexOfItem != -1) {
+                    Item selectedItem = localItemArray[indexOfItem];
+                    if (selectedItem.isMultiple() == true) {
+                        prompt = "How many do you want to get (select between 0-9)?";
+                        playerSelection = this.getStringInput(prompt);
+                        quantityOfItem = Integer.parseInt(playerSelection);
+                    } else {
+                        quantityOfItem = 1;
+                    }
+                    gameMessage = inventoryControl.takeItem(selectedItem, quantityOfItem, inventory);
+                } else {
+
+                    gameMessage = "Not sure what you are trying to take.";
+                }
             }
-        }
-                System.out.println(gameMessage);
+            System.out.println(gameMessage);
         } while (!playerSelection.equalsIgnoreCase("X"));
 
-        
     }
 
     private void giveItem() {
