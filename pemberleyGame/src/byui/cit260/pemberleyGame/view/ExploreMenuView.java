@@ -119,14 +119,17 @@ public class ExploreMenuView {
         String gameMessage = "You can't take this";
         int indexOfItem;
         int quantityOfItem;
+        String playerSelection = "Nothing to take.";
         InventoryControl inventoryControl = new InventoryControl();
         Inventory inventory = player.getInventory();
-
+        do {
         if (localItemArray.length == 0) {
             gameMessage = "Nothing to Take";
         } else {
-            String prompt = "What do you want to take?";
-            String playerSelection = this.getStringInput(prompt);
+            String prompt = "What do you want to take (type X to exit?";
+
+            playerSelection = this.getStringInput(prompt);
+
             indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
 
             if (indexOfItem != -1) {
@@ -143,10 +146,11 @@ public class ExploreMenuView {
 
                 gameMessage = "Not sure what you are trying to take.";
             }
-
         }
+                System.out.println(gameMessage);
+        } while (!playerSelection.equalsIgnoreCase("X"));
 
-        System.out.println(gameMessage);
+        
     }
 
     private void giveItem() {
