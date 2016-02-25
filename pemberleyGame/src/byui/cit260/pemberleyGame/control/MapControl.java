@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Pemberley Game
+ * BYUi CIT260
+ * Manning, Marriott & Wilkerson
  */
 package byui.cit260.pemberleyGame.control;
 
@@ -9,7 +9,7 @@ import byui.cit260.pemberleyGame.model.*;
 
 /**
  *
- * @author mbp
+ * @author Alexis
  */
 public class MapControl {
     
@@ -47,6 +47,8 @@ public class MapControl {
             return playerMessage.concat(nextRoom.getDescription());
         }
     }
+    
+    // author Sheila
     public String lookAtRoom(Player player) {
         Room currentRoom = player.getLocation(); 
         String roomDescription = currentRoom.getDescription();

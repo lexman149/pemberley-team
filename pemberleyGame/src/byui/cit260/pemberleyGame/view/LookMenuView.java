@@ -12,7 +12,7 @@ import byui.cit260.pemberleyGame.model.*;
 
 /**
  *
- * @author mbp
+ * @author Sheila
  */
 public class LookMenuView {
 

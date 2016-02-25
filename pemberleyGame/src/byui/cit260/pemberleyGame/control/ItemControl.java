@@ -39,7 +39,7 @@ public class ItemControl {
         Item[] localItemArray = localItemList.toArray(new Item[localItemList.size()]);
         return localItemArray;
     }
-
+// author Melissa and Sheila
     public String lookAtItem(String playerSelection, Player player, Item[] localItemArray) {
         String[] localItemList = this.createItemNameList(localItemArray); // making a list of all the items in the localItemArray
         InventoryControl inventoryControl = new InventoryControl();

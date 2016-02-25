@@ -105,7 +105,7 @@ public class ExploreMenuView {
         }
 
     }
-
+// author Alexis
     private void movePlayer(Player player) {
         String prompt = "Which direction do you want to go? Type X to cancel.";
         String playerSelection;
@@ -168,6 +168,7 @@ public class ExploreMenuView {
         System.out.println("***UseItem function called ***");
     }
 
+    //author Melissa and Sheila
     private void lookAt(Player player, Item[] localItemArray, Actor[] localActorArray) {
         LookMenuView lookMenu = new LookMenuView();
         lookMenu.displayMenu(player, localItemArray, localActorArray);
@@ -189,7 +190,7 @@ public class ExploreMenuView {
             playersInput = playersInput.trim();
             playersInput = playersInput.toUpperCase(); 
 
-// if the selection is invlaid (less than two characters in length)
+// if the selection is invlaid (less than one characters in length)
             if (playersInput.length() < 1) {
                 System.out.println("Invalid selection - selection can not be blank");
                 continue; // and repeat again 
