@@ -5,11 +5,10 @@
  */
 package byui.cit260.pemberleyGame.view;
 
-import byui.cit260.pemberleyGame.control.GameControl;
-import byui.cit260.pemberleyGame.view.GameMenuView;
+import byui.cit260.pemberleyGame.control.*;
 import java.util.Scanner;
-import pemberley_game.PemberleyGame;
 import byui.cit260.pemberleyGame.model.*;
+
 
 /**
  *
@@ -22,9 +21,9 @@ public class LookMenuView {
             + "\n | Look Menu"
             + "\n----------------------------------------"
             + "\nR - Look at the room"
-            + "\nC - Look at a character" // can I use C?
+            + "\nC - Look at a character" 
             + "\nI - Look at an inventory item"
-            + "\nO - Look at an item other than inventory items"
+            + "\nH - Look at an items here"
             + "\nX - Exit"
             + "\n----------------------------------------";
     
@@ -38,7 +37,7 @@ public class LookMenuView {
             String input = this.getInput(); // get the user's selection
             selection = input.charAt(0); // get first character of string
             
-            this.doAction(selection); // do action based on selection
+            this.doAction(selection, player, localItemArray); // do action based on selection
             
         } while (selection != 'X' ); // a selection is not "Exit"
         
@@ -57,6 +56,7 @@ public class LookMenuView {
             // get the selecton from the keyboard and trim off the blanks
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
+            playersInput = playersInput.toUpperCase();
             
             // if the menu selection is invlaid (less than one character in length)
             if (playersInput.length() < 1) {
@@ -68,12 +68,12 @@ public class LookMenuView {
         
         return playersInput; // return the name
     }
-
-    public void doAction(char choice) {
+        
+    public void doAction(char choice, Player player, Item[] localItemArray) {
         
         switch(choice){
             case 'R':
-                this.displayRoom();
+                this.displayRoom(player);
                 break;
             case 'C':
                 this.displayCharacter();
@@ -81,8 +81,8 @@ public class LookMenuView {
             case 'I':
                 this.displayInventory();
                 break;
-            case 'O':
-                this.displayItem();
+            case 'H':
+                this.displayItem(player, localItemArray);
                 break;
             case 'X':
                 return;
@@ -90,11 +90,12 @@ public class LookMenuView {
                 System.out.println("\n***Invalid Selection *** Try Again");
                 break;
         }
-
     }
 
-    private void displayRoom() {
-        System.out.println("*** displayRoom function called ***");
+    private void displayRoom(Player player) {
+        MapControl mapControl = new MapControl();
+        String roomDescription = mapControl.lookAtRoom(player);
+        System.out.println(roomDescription);
     }
 
     private void displayCharacter() {
@@ -105,9 +106,42 @@ public class LookMenuView {
         System.out.println("*** displayInventory function called *** ");
     }
 
-    private void displayItem() {
-        System.out.println("*** displayItem function called ***");
+    private void displayItem(Player player, Item[] localItemArray) {
+        String prompt = "Which item do you want to look at? Type X to cancel.";
+        String playerSelection;
+        do {
+        playerSelection = this.getStringInput(prompt);
+        ItemControl itemControl = new ItemControl();
+        String roomDescription = itemControl.lookAtItem(playerSelection, player, localItemArray);
+        System.out.println(roomDescription);
+        } while(!playerSelection.equalsIgnoreCase("x"));
     }
+    private String getStringInput(String prompt) {
+        boolean valid = false; // indicates if the name has be retrieved
+        String playersInput = null;
+        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+
+        while (!valid) { // while a valid name has not been retrieved
+
+// prompt for the player's choice
+            System.out.println(prompt);
+
+// get the name from the keyboard and trim off the blanks CAPs ok
+            playersInput = keyboard.nextLine();
+            playersInput = playersInput.trim();
+            playersInput = playersInput.toUpperCase();
+
+// if the name is invlaid (less than two characters in length)
+            if (playersInput.length() < 1) {
+                System.out.println("Invalid selection - selection can not be blank");
+                continue; // and repeat again 
+            }
+            break; // out of the (exit) the repetition
+        }
+
+        return playersInput; // return the name
+    }
+
 }
     
 

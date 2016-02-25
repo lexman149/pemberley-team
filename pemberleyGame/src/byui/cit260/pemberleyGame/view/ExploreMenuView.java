@@ -57,7 +57,7 @@ public class ExploreMenuView {
 // prompt for the player's name
             System.out.println("Enter your selection below:");
 
-// get the selecton from the keyboard and trim off the blanks
+// get the selecton from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
             playersInput = playersInput.toUpperCase();
@@ -169,21 +169,8 @@ public class ExploreMenuView {
     }
 
     private void lookAt(Player player, Item[] localItemArray, Actor[] localActorArray) {
-        Room currentRoom = player.getLocation();
-        System.out.println(currentRoom.getDescription());
-        if (localItemArray.length != 0) {
-            System.out.println("These things are here: ");
-            for (Item i : localItemArray) {
-                System.out.println(i.getName() + ", ");
-            }
-        }
-
-        if (localActorArray.length != 0) {
-            System.out.println("These individuals are here: ");
-            for (Actor i : localActorArray) {
-                System.out.println(i.getName() + ", ");
-            }
-        }
+        LookMenuView lookMenu = new LookMenuView();
+        lookMenu.displayMenu(player, localItemArray, localActorArray);
 
     }
 
@@ -194,14 +181,15 @@ public class ExploreMenuView {
 
         while (!valid) { // while a valid name has not been retrieved
 
-// prompt for the player's name
+// prompt for the player's choice
             System.out.println(prompt);
 
-// get the name from the keyboard and trim off the blanks
+// get the selection from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
+            playersInput = playersInput.toUpperCase(); 
 
-// if the name is invlaid (less than two characters in length)
+// if the selection is invlaid (less than two characters in length)
             if (playersInput.length() < 1) {
                 System.out.println("Invalid selection - selection can not be blank");
                 continue; // and repeat again 

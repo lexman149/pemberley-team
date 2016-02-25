@@ -57,9 +57,10 @@ public class GameMenuView {
             // prompt for the player's name
             System.out.println("Enter your selection below:");
             
-            // get the selecton from the keyboard and trim off the blanks
+            // get the selecton from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
+            playersInput = playersInput.toUpperCase();
             
             // if the menu selection is invlaid (less than one character in length)
             if (playersInput.length() < 1) {
@@ -102,6 +103,7 @@ public class GameMenuView {
     private void displayExploreMenu(Player player, Item[] allItemArray, Actor[] allActorArray) {
         ExploreMenuView exploreMenu = new ExploreMenuView();
         exploreMenu.displayMenu(player, allItemArray, allActorArray);
+        
     }
 
     private void displayInventory() {

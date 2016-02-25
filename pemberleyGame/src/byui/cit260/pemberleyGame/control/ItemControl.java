@@ -40,4 +40,16 @@ public class ItemControl {
         return localItemArray;
     }
 
+    public String lookAtItem(String playerSelection, Player player, Item[] localItemArray) {
+        String[] localItemList = this.createItemNameList(localItemArray); // making a list of all the items in the localItemArray
+        InventoryControl inventoryControl = new InventoryControl();
+        int indexOfItem = inventoryControl.findIndexOfValue(playerSelection, localItemList); // compares player's selection to the String[] and pulls the location in the list 
+        if (indexOfItem != -1) {
+            return localItemArray[indexOfItem].getDescription(); // returns description of item
+        }
+        else {
+            return "That item is not available here.";
+        }
+    }
+
 }

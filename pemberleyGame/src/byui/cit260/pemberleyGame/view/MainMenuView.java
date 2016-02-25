@@ -56,9 +56,10 @@ public class MainMenuView {
             // prompt for the player's name
             System.out.println("Enter your selection below:");
             
-            // get the selecton from the keyboard and trim off the blanks
+            // get the selecton from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
+            playersInput = playersInput.toUpperCase();
             
             // if the menu selection is invlaid (less than one character in length)
             if (playersInput.length() < 1) {

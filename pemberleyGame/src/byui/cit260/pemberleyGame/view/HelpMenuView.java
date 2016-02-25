@@ -35,7 +35,7 @@ public class HelpMenuView{
         char selection =' ';
         do{
             
-            System.out.println(MENU); // display the manin menu
+            System.out.println(MENU); // display the main menu
             
             String input = this.getInput(); // get the user's selection
             selection = input.charAt(0); // get first character of string
@@ -56,9 +56,10 @@ public class HelpMenuView{
             // prompt for the player's name
             System.out.println("Enter your Help selection below:");
             
-            // get the selecton from the keyboard and trim off the blanks
+            // get the selecton from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
+            playersInput = playersInput.toUpperCase();
             
             // if the menu selection is invlaid (less than one character in length)
             if (playersInput.length() < 1) {
