@@ -94,41 +94,46 @@ Dog Treats, it will still find it.*/
         return indexOfValue;
     }
 
-    public String takeItem(Item itemToTake, int quantityToTake, Inventory inventory) {
-        String takeMessage = "You can't take that";
-        boolean canTake;
-        int currentQuantity = itemToTake.getQuantity();
-        canTake = this.checkCanGet(9, currentQuantity, quantityToTake);
+    public String takeSingleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
+
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
-        System.out.println(potentialWeight);
+
         if (!itemToTake.isTakable()) {
             if (itemToTake.getTakeMessage() == null) {
-                takeMessage = "You can't get that at this time.";
+                return "You can't get that at this time.";
             } else {
-                takeMessage = itemToTake.getTakeMessage();
+                return itemToTake.getTakeMessage();
             }
-        } else if (potentialWeight == -1) {
-            return "That is not a valid quantity.";
         } else if (potentialWeight == -2) {
-            return "That exceeds your weight limit.";
 
-        } else if (itemToTake.isMultiple()) {
-            if (canTake) {
-                itemToTake.setLocation(inventory);
-                itemToTake.setQuantity(quantityToTake);
-                takeMessage = ("You get " + quantityToTake + " " + itemToTake.getName());
-                inventory.setWeight(inventory.getWeight() + potentialWeight);
-            } else {
-                return "You cannot have that many " + itemToTake.getName() + " (limit 9)";
-            }
+            return "You are trying to carry too much weight.";
         } else {
             itemToTake.setLocation(inventory);
-            takeMessage = ("You get " + itemToTake.getName());
             inventory.setWeight(inventory.getWeight() + potentialWeight);
+            return ("You take " + itemToTake.getName());
+
         }
-
-        return takeMessage;
-
     }
+
+    public String takeMultipleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
+    itemToTake = itemToTake.getContains();
+        double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
+        int currentQuantity = itemToTake.getQuantity(); 
+        boolean canTake = this.checkCanGet(9, currentQuantity, quantityToTake);   
+        
+        if (!canTake) {
+            return "You already have " + currentQuantity + " " + itemToTake.getName() + "You can only have 9";
+        } else if (potentialWeight == -1) {
+            return "That is not a valid quantity";
+        } else if (potentialWeight == -2) {
+            return "That exceeds your weight limit";
+        } else  {
+                itemToTake.setLocation(inventory);
+                itemToTake.setQuantity(itemToTake.getQuantity() + quantityToTake);
+                inventory.setWeight(inventory.getWeight() + potentialWeight);
+		return ("You get " + quantityToTake + " " + itemToTake.getName());
+        }
+         }
+    
 
 }

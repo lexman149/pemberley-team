@@ -131,21 +131,20 @@ public class ExploreMenuView {
                 gameMessage = "Nothing to Take";
             } else {
                 String prompt = "What do you want to take (type X to exit?";
-
                 playerSelection = this.getStringInput(prompt);
-
                 indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
-
                 if (indexOfItem != -1) {
                     Item selectedItem = localItemArray[indexOfItem];
                     if (selectedItem.isMultiple() == true) {
                         prompt = "How many do you want to get (select between 0-9)?";
                         playerSelection = this.getStringInput(prompt);
                         quantityOfItem = Integer.parseInt(playerSelection);
+                        gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
                     } else {
                         quantityOfItem = 1;
+                        gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
                     }
-                    gameMessage = inventoryControl.takeItem(selectedItem, quantityOfItem, inventory);
+                    
                 } else {
 
                     gameMessage = "Not sure what you are trying to take.";
