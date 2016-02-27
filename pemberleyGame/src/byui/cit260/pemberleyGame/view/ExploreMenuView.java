@@ -6,7 +6,7 @@
 package byui.cit260.pemberleyGame.view;
 
 import java.util.Scanner;
-
+import java.lang.Character;
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.pemberleyGame.view.*;
@@ -120,10 +120,10 @@ public class ExploreMenuView {
     }
 
     private void takeItem(Player player, Item[] localItemArray) {
-        String gameMessage = "You can't take this";
+        String gameMessage; 
         int indexOfItem;
         int quantityOfItem;
-        String playerSelection = "Nothing to take.";
+        String playerSelection = " ";
         InventoryControl inventoryControl = new InventoryControl();
         Inventory inventory = player.getInventory();
         do {
@@ -136,8 +136,8 @@ public class ExploreMenuView {
                 if (indexOfItem != -1) {
                     Item selectedItem = localItemArray[indexOfItem];
                     if (selectedItem.isMultiple() == true) {
-                        prompt = "How many do you want to get (select between 0-9)?";
-                        playerSelection = this.getStringInput(prompt);
+                       prompt = "How Many do you want to take? (1 - 9)";
+                        playerSelection = this.getIntegerInput(prompt);
                         quantityOfItem = Integer.parseInt(playerSelection);
                         gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
                     } else {
@@ -200,4 +200,30 @@ public class ExploreMenuView {
         return playersInput; // return the name
     }
 
+    private String getIntegerInput(String prompt) {
+        boolean valid = false; // indicates if the name has be retrieved
+        String playersInput = null;
+        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+
+        while (!valid) { // while a valid name has not been retrieved
+
+// prompt for the player's choice
+            System.out.println(prompt);
+
+// get the selection from the keyboard and trim off the blanks CAPs ok
+            playersInput = keyboard.nextLine();
+            playersInput = playersInput.trim();
+            char ch = playersInput.charAt(0);
+            
+// if the selection is invlaid (less than one characters in length)
+            if (!Character.isDigit(ch)) {
+                System.out.println("Please enter a positive integer.");
+                continue; // and repeat again 
+            }
+            break; // out of the (exit) the repetition
+        }
+
+        return playersInput; // return the name
+    }
+    
 }
