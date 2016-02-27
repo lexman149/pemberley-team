@@ -33,6 +33,7 @@ public class PemberleyGame {
         Room rmFinnKithen = new Room();
         Room rmSecretLab = new Room();
         Room rmBlocked = new Room();
+        Item itBoxDogTreats = new Item();
         Item itDogTreats = new Item();
         Item itNote = new Item();
         Item itTimeMachine = new Item();
@@ -333,13 +334,18 @@ public class PemberleyGame {
         rmSecretLab.setBlocked(true);
         rmSecretLab.setAlternateBlocked(false);
 
-        itDogTreats.setDescription("It is a box of dog treats sitting on the table");
-        itDogTreats.setLocation(rmLivingRoom);
-        itDogTreats.setName("Dog Treats");
-        itDogTreats.setTakable(true);
-        itDogTreats.setMultiple(true);
+        itBoxDogTreats.setDescription("It is a box of dog treats sitting on the table");
+        itBoxDogTreats.setLocation(rmLivingRoom);
+        itBoxDogTreats.setName("Package of Dog Treats");
+        itBoxDogTreats.setTakable(false);
+        itBoxDogTreats.setMultiple(true);
+        itBoxDogTreats.setContains(itDogTreats);
         itDogTreats.setQuantity(0);
         itDogTreats.setWeight(0.25);
+        itDogTreats.setName("Dog Treats");
+        itDogTreats.setDescription("These dog treats are shaped like bones and smell like... dog treats.  They are rather small.");
+        itDogTreats.setTakable(true);
+        
         
         itNote.setDescription("The note is being guarded by the hamster.  He won'tl let you get at the note");
         itNote.setLocation(rmLivingRoom);
@@ -366,14 +372,14 @@ public class PemberleyGame {
         atHamster.setCharacterScript("GRRR.  Snarl.");
         atHamster.setAlternateCharacterScript("Woof Woof");
         atHamster.setQuest(qtHamster);
-        qtHamster.setNeeds(itDogTreats);
+        qtHamster.setNeeds(itBoxDogTreats);
         qtHamster.setItemToChange(itNote);
         qtHamster.setCompletionScript("Bruiser jumps on the dog treats and eats them with relish.  Then he licks your hand.");
 
         inventoryOne.setWeight(0);
         playerOne.setInventory(inventoryOne);
         
-        Item allItems[] = {itDogTreats, itNote, itTimeMachine};
+        Item allItems[] = {itBoxDogTreats, itNote, itTimeMachine};
         Actor allActors[] = {atHamster};
         
 

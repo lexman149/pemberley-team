@@ -27,7 +27,7 @@ public class Item implements Serializable{
     private String useMessage;
     private String alternateUseMessage;
     private Quest quest;
-    private Quest alternateQuest;
+    private Item contains;
 
     public Item() {
     }
@@ -168,13 +168,7 @@ public class Item implements Serializable{
         this.quest = quest;
     }
 
-    public Quest getAlternateQuest() {
-        return alternateQuest;
-    }
-
-    public void setAlternateQuest(Quest alternateQuest) {
-        this.alternateQuest = alternateQuest;
-    }
+   
 
     @Override
     public int hashCode() {
@@ -196,7 +190,7 @@ public class Item implements Serializable{
         hash = 73 * hash + Objects.hashCode(this.useMessage);
         hash = 73 * hash + Objects.hashCode(this.alternateUseMessage);
         hash = 73 * hash + Objects.hashCode(this.quest);
-        hash = 73 * hash + Objects.hashCode(this.alternateQuest);
+
         return hash;
     }
 
@@ -263,16 +257,19 @@ public class Item implements Serializable{
         if (!Objects.equals(this.quest, other.quest)) {
             return false;
         }
-        if (!Objects.equals(this.alternateQuest, other.alternateQuest)) {
-            return false;
-        }
+
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" + "name=" + name + ", description=" + description + ", location=" + location + ", alternateLocation=" + alternateLocation + ", alternateDescription=" + alternateDescription + ", takable=" + takable + ", alternateTakable=" + alternateTakable + ", usable=" + usable + ", alternateUsable=" + alternateUsable + ", multiple=" + multiple + ", quantity=" + quantity + ", weight=" + weight + ", takeMessage=" + takeMessage + ", alternateTakeMessage=" + alternateTakeMessage + ", useMessage=" + useMessage + ", alternateUseMessage=" + alternateUseMessage + ", quest=" + quest + ", alternateQuest=" + alternateQuest + '}';
+    public Item getContains() {
+        return contains;
     }
+
+    public void setContains(Item contains) {
+        this.contains = contains;
+    }
+
+   
 
     
     

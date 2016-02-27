@@ -6,7 +6,7 @@
 package byui.cit260.pemberleyGame.view;
 
 import java.util.Scanner;
-
+import java.lang.Character;
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.pemberleyGame.view.*;
@@ -120,39 +120,51 @@ public class ExploreMenuView {
     }
 
     private void takeItem(Player player, Item[] localItemArray) {
-        String gameMessage = "You can't take this";
+       //declare variables
+        String gameMessage; 
         int indexOfItem;
         int quantityOfItem;
-        String playerSelection = "Nothing to take.";
+        String playerSelection = " ";
         InventoryControl inventoryControl = new InventoryControl();
+        //designate the inventory
         Inventory inventory = player.getInventory();
+        //while player's selection is not X loop
         do {
+            //if there is nothing in the localItemArray say there is nothing to take.
             if (localItemArray.length == 0) {
                 gameMessage = "Nothing to Take";
             } else {
                 String prompt = "What do you want to take (type X to exit?";
-
+                //get input from the player
                 playerSelection = this.getStringInput(prompt);
-
+                //see if the player's selected item is in the room. return it's index in the array.
                 indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
-
-                if (indexOfItem != -1) {
+                
+                if (indexOfItem != -1) {//run this code if there was an index match
+                    //set the item to whatever item matched the players selection
                     Item selectedItem = localItemArray[indexOfItem];
+                    //if the item's multiple attribute is true run this code
                     if (selectedItem.isMultiple() == true) {
-                        prompt = "How many do you want to get (select between 0-9)?";
-                        playerSelection = this.getStringInput(prompt);
+                       prompt = "How Many do you want to take? (1 - 9)";
+                       //get the players selection and make sure it is an integer
+                        playerSelection = this.getIntegerInput(prompt);
+                        //make the player's selection an integer
                         quantityOfItem = Integer.parseInt(playerSelection);
-                    } else {
+                        //call the takeMultipleItem function.
+                        gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
+                    } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
+                        //call the takeSingleItem function
+                        gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
                     }
-                    gameMessage = inventoryControl.takeItem(selectedItem, quantityOfItem, inventory);
+                    
                 } else {
-
+                    //if the player's selection is not in the array send this message
                     gameMessage = "Not sure what you are trying to take.";
                 }
             }
             System.out.println(gameMessage);
-        } while (!playerSelection.equalsIgnoreCase("X"));
+        } while (!playerSelection.equalsIgnoreCase("X"));//loop
 
     }
 
@@ -201,4 +213,30 @@ public class ExploreMenuView {
         return playersInput; // return the name
     }
 
+    private String getIntegerInput(String prompt) {
+        boolean valid = false; // indicates if the name has be retrieved
+        String playersInput = null;
+        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+
+        while (!valid) { // while a valid name has not been retrieved
+
+// prompt for the player's choice
+            System.out.println(prompt);
+
+// get the selection from the keyboard and trim off the blanks CAPs ok
+            playersInput = keyboard.nextLine();
+            playersInput = playersInput.trim();
+            char ch = playersInput.charAt(0);
+            
+// if the selection is invlaid (less than one characters in length)
+            if (!Character.isDigit(ch)) {
+                System.out.println("Please enter a positive integer.");
+                continue; // and repeat again 
+            }
+            break; // out of the (exit) the repetition
+        }
+
+        return playersInput; // return the name
+    }
+    
 }
