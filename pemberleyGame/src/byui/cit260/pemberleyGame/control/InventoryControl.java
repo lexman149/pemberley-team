@@ -130,5 +130,30 @@ Dog Treats, it will still find it.*/
         return takeMessage;
 
     }
+    // SHEILA This will be for the help menu - displayInventory when completed. 
+//    public Inventory[] createLocalInventoryArray(Player player) {
+////the player is the location of inventory
+//        
+////create an ArrayList to hold all of the actors in the above location.
+//        ArrayList<Inventory> localInventoryList = new ArrayList<Inventory>();
+//        for (Inventory i : allInventoryArray) {
+//            if (currentInventoryLocation == player) {
+//                localInvetoryList.add(i);
+//            }
+//        }
+//        Actor[] localActorArray = localActorList.toArray(new Actor[localActorList.size()]);
+//        return localActorArray;
+//    }
 
+    // returns a string of player inventory
+//    public String[] createInventoryList(Player player) { 
+//        Inventory inventoryList = player.getInventory();
+//        ArrayList<String> actorList = new ArrayList<String>();
+//        for (Actor i : actorArray) {
+//            actorList.add(i.getName().toUpperCase());
+//        }
+//        String[] actorNameList = actorList.toArray(new String[actorList.size()]);
+//        return actorNameList;
+//        return inventoryList
+//    }
 }

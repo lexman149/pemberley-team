@@ -6,6 +6,7 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.Actor;
+import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ import java.util.ArrayList;
  * @author mbp
  */
 public class ActorControl {
-
-    public Actor[] createLocalActorArray(Player playerOne, Actor[] allActorArray) {
+// returns the actors in a location with all their attributes
+    public Actor[] createLocalActorArray(Player player, Actor[] allActorArray) {
 //set the current location to wherever the player is.
-        Room currentLocation = playerOne.getLocation();
+        Room currentLocation = player.getLocation();
 //create an ArrayList to hold all of the actors in the above location.
         ArrayList<Actor> localActorList = new ArrayList<Actor>();
         for (Actor i : allActorArray) {
@@ -31,13 +32,15 @@ public class ActorControl {
         return localActorArray;
     }
 
+    // returns a string of the actors without their non-name attributes
     public String[] createActorNameList(Actor[] actorArray) {
         ArrayList<String> actorList = new ArrayList<String>();
         for (Actor i : actorArray) {
             actorList.add(i.getName().toUpperCase());
         }
-        String[] actorNameArray = actorList.toArray(new String[actorList.size()]);
-        return actorNameArray;
+        String[] actorNameList = actorList.toArray(new String[actorList.size()]);
+        return actorNameList;
     }
+    
     
 }

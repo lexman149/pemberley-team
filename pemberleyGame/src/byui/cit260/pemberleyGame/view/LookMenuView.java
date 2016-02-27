@@ -37,7 +37,7 @@ public class LookMenuView {
             String input = this.getInput(); // get the user's selection
             selection = input.charAt(0); // get first character of string
             
-            this.doAction(selection, player, localItemArray); // do action based on selection
+            this.doAction(selection, player, localItemArray, localActorArray); // do action based on selection
             
         } while (selection != 'X' ); // a selection is not "Exit"
         
@@ -69,17 +69,17 @@ public class LookMenuView {
         return playersInput; // return the name
     }
         
-    public void doAction(char choice, Player player, Item[] localItemArray) {
+    public void doAction(char choice, Player player, Item[] localItemArray, Actor[] localActorArray) {
         
         switch(choice){
             case 'R':
                 this.displayRoom(player);
                 break;
             case 'C':
-                this.displayCharacter();
+                this.displayCharacter(player, localActorArray);
                 break;
             case 'I':
-                this.displayInventory();
+                this.displayInventory(player);
                 break;
             case 'H':
                 this.displayItem(player, localItemArray);
@@ -98,12 +98,18 @@ public class LookMenuView {
         System.out.println(roomDescription);
     }
 
-    private void displayCharacter() {
-        System.out.println("*** displayCharacter function called ***");
+    private void displayCharacter(Player player, Actor[] localActorArray) {
+        ActorControl actorControl = new ActorControl();
+        String[] actorList = actorControl.createActorNameList(localActorArray); // creates String [] of actors
+        String actorString = " "; // creates just a String of actors, not an array
+        for (String i : actorList) {
+            actorString += ' ' + i;
+        }
+        System.out.println(actorString + " IS IN THIS ROOM.");
     }
 
-    private void displayInventory() {
-        System.out.println("*** displayInventory function called *** ");
+    private void displayInventory(Player player) {
+        System.out.println("*** call the displayInventory function ***");
     }
 
     private void displayItem(Player player, Item[] localItemArray) {
