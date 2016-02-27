@@ -120,38 +120,51 @@ public class ExploreMenuView {
     }
 
     private void takeItem(Player player, Item[] localItemArray) {
+       //declare variables
         String gameMessage; 
         int indexOfItem;
         int quantityOfItem;
         String playerSelection = " ";
         InventoryControl inventoryControl = new InventoryControl();
+        //designate the inventory
         Inventory inventory = player.getInventory();
+        //while player's selection is not X loop
         do {
+            //if there is nothing in the localItemArray say there is nothing to take.
             if (localItemArray.length == 0) {
                 gameMessage = "Nothing to Take";
             } else {
                 String prompt = "What do you want to take (type X to exit?";
+                //get input from the player
                 playerSelection = this.getStringInput(prompt);
+                //see if the player's selected item is in the room. return it's index in the array.
                 indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
-                if (indexOfItem != -1) {
+                
+                if (indexOfItem != -1) {//run this code if there was an index match
+                    //set the item to whatever item matched the players selection
                     Item selectedItem = localItemArray[indexOfItem];
+                    //if the item's multiple attribute is true run this code
                     if (selectedItem.isMultiple() == true) {
                        prompt = "How Many do you want to take? (1 - 9)";
+                       //get the players selection and make sure it is an integer
                         playerSelection = this.getIntegerInput(prompt);
+                        //make the player's selection an integer
                         quantityOfItem = Integer.parseInt(playerSelection);
+                        //call the takeMultipleItem function.
                         gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
-                    } else {
+                    } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
+                        //call the takeSingleItem function
                         gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
                     }
                     
                 } else {
-
+                    //if the player's selection is not in the array send this message
                     gameMessage = "Not sure what you are trying to take.";
                 }
             }
             System.out.println(gameMessage);
-        } while (!playerSelection.equalsIgnoreCase("X"));
+        } while (!playerSelection.equalsIgnoreCase("X"));//loop
 
     }
 
