@@ -49,7 +49,11 @@ public class InventoryControl {
         }
         return true;
     }
-
+    
+    
+    
+    
+//by Melissa Marriott
     public int getItemIndex(String playerSelection, Player player, Item[] localItemArray) {
         Inventory inventory = player.getInventory();
 //set default message.
@@ -60,13 +64,6 @@ it searchable by name*/
         String[] localItemList = itemControl.createItemNameList(localItemArray);
 //call the function that checks user selection against each item name;
         itemIndex = this.findIndexOfValue(playerSelection, localItemList);
-//if the item's takable attribute is true, say the item is taken.
-//still needs to transfer item to inventory and incorporate other inventory controls
-//        if (localItemArray[indexOfSelection].isTakable()) {
-//            if (localItemArray[indexOfSelection].isMultiple()==true){      
-//            } 
-//            takeMessage = "You take the " + localItemArray[indexOfSelection].getName();
-//        }
         return itemIndex;
     }
 
@@ -94,6 +91,8 @@ Dog Treats, it will still find it.*/
         return indexOfValue;
     }
 
+    
+    //by Melissa Marriott
     public String takeSingleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
 //check to make sure that the potetial weight does not exceed the 20 lb limit
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
@@ -117,6 +116,10 @@ Dog Treats, it will still find it.*/
         }
     }
 
+
+
+
+//by Melissa Marriott
     public String takeMultipleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
         //make the item to take whatever is in the container.
     itemToTake = itemToTake.getContains();
