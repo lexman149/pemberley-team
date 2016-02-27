@@ -50,9 +50,6 @@ public class InventoryControl {
         return true;
     }
     
-    
-    
-    
 //by Melissa Marriott
     public int getItemIndex(String playerSelection, Player player, Item[] localItemArray) {
         Inventory inventory = player.getInventory();
@@ -115,21 +112,6 @@ Dog Treats, it will still find it.*/
 
         }
     }
-    // SHEILA This will be for the help menu - displayInventory when completed. 
-//    public Inventory[] createLocalInventoryArray(Player player) {
-////the player is the location of inventory
-//        
-////create an ArrayList to hold all of the actors in the above location.
-//        ArrayList<Inventory> localInventoryList = new ArrayList<Inventory>();
-//        for (Inventory i : allInventoryArray) {
-//            if (currentInventoryLocation == player) {
-//                localInvetoryList.add(i);
-//            }
-//        }
-//        Actor[] localActorArray = localActorList.toArray(new Actor[localActorList.size()]);
-//        return localActorArray;
-//    }
-
 
 
 
@@ -161,5 +143,20 @@ Dog Treats, it will still find it.*/
         }
          }
     
+    // SHEILA This will be for the help menu - displayInventory when completed. 
+//    public Inventory[] createLocalInventoryArray(Player player) {
+////the player is the location of inventory
+//        
+////create an ArrayList to hold all of the actors in the above location.
+//        ArrayList<Inventory> localInventoryList = new ArrayList<Inventory>();
+//        for (Inventory i : allInventoryArray) {
+//            if (currentInventoryLocation == player) {
+//                localInvetoryList.add(i);
+//            }
+//        }
+//        Actor[] localActorArray = localActorList.toArray(new Actor[localActorList.size()]);
+//        return localActorArray;
+//    }
+
 
 }
