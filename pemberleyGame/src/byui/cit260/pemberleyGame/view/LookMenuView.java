@@ -98,6 +98,7 @@ public class LookMenuView {
         System.out.println(roomDescription);
     }
 
+    //by Sheila
     private void displayCharacter(Player player, Actor[] localActorArray) {
         ActorControl actorControl = new ActorControl();
         String[] actorList = actorControl.createActorNameList(localActorArray); // creates String [] of actors
@@ -112,6 +113,7 @@ public class LookMenuView {
         System.out.println("*** call the displayInventory function ***");
     }
 
+    //by Sheila
     private void displayItem(Player player, Item[] localItemArray) {
         String prompt = "Which item do you want to look at? Type X to cancel.";
         String playerSelection;
