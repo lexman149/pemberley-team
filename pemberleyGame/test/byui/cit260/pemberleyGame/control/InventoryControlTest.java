@@ -114,7 +114,7 @@ public class InventoryControlTest {
         newWeight = 8.0;
         newItemQuantity = 2;        
         
-        expResult = -1; // expected output returned value
+        expResult = -2; // expected output returned value
         
         // call function to run test
         result = instance.calcAddInventoryWeight(currentWeight, newWeight, newItemQuantity);
