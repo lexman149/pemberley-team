@@ -12,8 +12,7 @@ import java.util.ArrayList;
  *
  * @author mbp
  */
-public class InventoryControl {
-
+public class InventoryControl {    
     public double calcAddInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) {
         if (newItemQuantity < 0 || newItemQuantity > 9) {
             return -1;
@@ -28,7 +27,7 @@ public class InventoryControl {
 
     public double calcRemoveInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) {
         if (newItemQuantity < 0 || newItemQuantity > 9) {
-            return -2;
+            return -1;
         }
 //currentWeight = inventory.getCurrentWeight(); /*needs to be created */
         newWeight = currentWeight - (newWeight * newItemQuantity);
