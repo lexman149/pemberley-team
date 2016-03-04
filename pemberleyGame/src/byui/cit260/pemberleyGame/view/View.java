@@ -26,20 +26,13 @@ public abstract class View implements ViewInterface {
 
 @Override
     public void display(Player player, Item[] allItemArray, Actor[] allActorArray){
-        
-        boolean done = false;
-        System.out.println(this.displayMessage);//We needed to print the menu here.
-        do{
-            //prompt
-            String value = this.getInput();
-            if (value.toUpperCase().equals("X"))//user wants to quit
-                return;//exit the view
-            
-            //do the requested action and display the next view
-            done = this.doAction(value, player, allItemArray, allActorArray);
-            
-            
-        }while (!done);
+   String value;
+   boolean done = false;
+   do { 
+      System.out.println(this.displayMessage); // display the prompt message
+      value = this.getInput(); // get the user's selection
+      done = this.doAction(value, player, allItemArray, allActorArray); // do action based on selection 
+   } while (!done);
     }
 
     

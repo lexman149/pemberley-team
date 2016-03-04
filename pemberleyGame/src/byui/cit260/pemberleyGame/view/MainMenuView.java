@@ -53,7 +53,7 @@ public class MainMenuView extends View {
                 return true;
             default:
                 System.out.println("\n***Invalid Selection *** Try Again");
-                break;
+                return false;
         }
 return false;
     }
