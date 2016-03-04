@@ -16,9 +16,11 @@ import pemberley_game.PemberleyGame;
  *
  * @author Melissa
  */
-public class ExploreMenuView {
+public class ExploreMenuView extends View{
 
-    private final String MENU = "\n"
+    
+    public ExploreMenuView(){
+         super( "\n"
             + "\n----------------------------------------"
             + "\n | What do you want to do?"
             + "\n----------------------------------------"
@@ -29,81 +31,41 @@ public class ExploreMenuView {
             + "\nU - Use"
             + "\nL - Look"
             + "\nX - Exit"
-            + "\n----------------------------------------";
-
-    public void displayMenu(Player player, Item[] allItemArray, Actor[] allActorArray) {
-
-        char selection = ' ';
-        do {
-
-            System.out.println(MENU); // display the manin menu
-
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first character of string
-
-            this.doAction(selection, player, allItemArray, allActorArray); // do action based on selection
-
-        } while (selection != 'X'); // a selection is not "Quit"
-
+            + "\n----------------------------------------");
     }
 
-    public String getInput() {
-        boolean valid = false; // indicates if the selection has be retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
-
-        while (!valid) { // while a valid menu selection has not been retrieved
-
-// prompt for the player's name
-            System.out.println("Enter your selection below:");
-
-// get the selecton from the keyboard and trim off the blanks CAPs ok
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();
-            playersInput = playersInput.toUpperCase();
-
-// if the menu selection is invlaid (less than one character in length)
-            if (playersInput.length() < 1) {
-                System.out.println("Invalid selection - the selection must not be blank");
-                continue; // and repeat again 
-            }
-            break; // out of the (exit) the repetition
-        }
-
-        return playersInput; // return the name
-    }
-
-    public void doAction(char choice, Player player, Item[] allItemArray, Actor[] allActorArray) {
+@Override
+    public boolean doAction(String value, Player player, Item[] allItemArray, Actor[] allActorArray) {
         ActorControl actorControl = new ActorControl();
         ItemControl itemControl = new ItemControl();
         Item[] localItemArray = itemControl.createLocalItemArray(player, allItemArray);
         Actor[] localActorArray = actorControl.createLocalActorArray(player, allActorArray);
-        switch (choice) {
-            case 'M':
+        switch (value) {
+            case "M":
                 this.movePlayer(player);
                 break;
-            case 'T':
+            case "T":
                 this.takeItem(player, localItemArray);
                 break;
-            case 'G':
+            case "G":
                 this.giveItem();
                 break;
-            case 'S':
+            case "S":
                 this.speakToActor();
                 break;
-            case 'U':
+            case "U":
                 this.useItem();
                 break;
-            case 'L':
+            case "L":
                 this.lookAt(player, localItemArray, localActorArray);
                 break;
-            case 'X': // quit help 
-                return;
+            case "X": // quit help 
+                return true;
             default:
                 System.out.println("\n***Invalid Selection *** Try Again");
                 break;
         }
-
+return false;
     }
 // author Alexis
     private void movePlayer(Player player) {
