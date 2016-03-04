@@ -125,6 +125,7 @@ public class ExploreMenuView {
         int indexOfItem;
         int quantityOfItem;
         String playerSelection = " ";
+        ItemControl itemControl = new ItemControl();
         InventoryControl inventoryControl = new InventoryControl();
         //designate the inventory
         Inventory inventory = player.getInventory();
@@ -138,7 +139,7 @@ public class ExploreMenuView {
                 //get input from the player
                 playerSelection = this.getStringInput(prompt);
                 //see if the player's selected item is in the room. return it's index in the array.
-                indexOfItem = inventoryControl.getItemIndex(playerSelection, player, localItemArray);
+                indexOfItem = itemControl.getItemIndex(playerSelection, player, localItemArray);
                 
                 if (indexOfItem != -1) {//run this code if there was an index match
                     //set the item to whatever item matched the players selection

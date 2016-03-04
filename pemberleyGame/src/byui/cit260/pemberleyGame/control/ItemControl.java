@@ -5,6 +5,7 @@
  */
 package byui.cit260.pemberleyGame.control;
 
+import byui.cit260.pemberleyGame.model.Inventory;
 import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
@@ -15,6 +16,41 @@ import java.util.ArrayList;
  * @author Mel
  */
 public class ItemControl {
+//by Melissa Marriott
+    public int getItemIndex(String playerSelection, Player player, Item[] localItemArray) {
+        Inventory inventory = player.getInventory();
+//set default message.
+        int itemIndex = -1;
+        ItemControl itemControl = new ItemControl();
+        /*take the array and make a new array containing the names of the items to make
+it searchable by name*/
+        String[] localItemList = itemControl.createItemNameList(localItemArray);
+//call the function that checks user selection against each item name;
+        itemIndex = this.findIndexOfValue(playerSelection, localItemList);
+        return itemIndex;
+    }
+    public int findIndexOfValue(String playerSelection, String[] stringToCheck) {
+//set the default to -1
+        int indexOfValue = -1;
+        /*loop through each string in the array to see if selection is anywhere 
+in the string. I am using this instead of a normal array contains both 
+to make it case insenstive and so that if any part of the players selection is 
+in the string it will return an index of its location.  For example, using this
+if the player says they want to get treats or dog treats instead of The 
+Dog Treats, it will still find it.*/
+        for (int i = 0; i < stringToCheck.length; i++) {
+//change players selection to upper case to make the search case insensitive
+            playerSelection = playerSelection.toUpperCase();
+//change each string in the array to upper case to make the search case insensitive
+            String stringToCheckUpper = stringToCheck[i].toUpperCase();
+//if the string contains any part of the player's selection, return the index.
+            if (stringToCheckUpper.contains(playerSelection) == true) {
+                indexOfValue = i;
+            }
+        }
+
+        return indexOfValue;
+    }
 
     public String[] createItemNameList(Item[] itemArray) {
         ArrayList<String> itemList = new ArrayList<String>();
@@ -44,7 +80,7 @@ public class ItemControl {
     public String lookAtItem(String playerSelection, Player player, Item[] localItemArray) {
         String[] localItemList = this.createItemNameList(localItemArray); // making a list of all the items in the localItemArray
         InventoryControl inventoryControl = new InventoryControl();
-        int indexOfItem = inventoryControl.findIndexOfValue(playerSelection, localItemList); // compares player's selection to the String[] and pulls the location in the list 
+        int indexOfItem = this.findIndexOfValue(playerSelection, localItemList); // compares player's selection to the String[] and pulls the location in the list 
         if (indexOfItem != -1) {
             
             return localItemArray[indexOfItem].getDescription(); // returns description of item
