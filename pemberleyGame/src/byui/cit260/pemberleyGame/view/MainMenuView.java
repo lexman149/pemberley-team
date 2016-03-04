@@ -44,7 +44,7 @@ public class MainMenuView extends View {
                 this.startExistingGame();
                 break;
             case "H":
-                this.displayHelpMe();
+                this.displayHelpMe(player, allItemArray, allActorArray);
                 break;
             case "S":
                 this.saveGame();
@@ -63,19 +63,19 @@ return false;
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu(player, allItemArray, allActorArray);
+        gameMenu.display(player, allItemArray, allActorArray);
     }
 
     private void startExistingGame() {
         System.out.println("*** startExistingGame function called ***");
     }
 
-    private void displayHelpMe() {
+    private void displayHelpMe(Player player, Item[] allItemArray, Actor[] allActorArray) {
         // System.out.println("*** displayHelpMenu function called ");
         
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
+        helpMenu.display(player, allItemArray, allActorArray);
     }
 
     private void saveGame() {

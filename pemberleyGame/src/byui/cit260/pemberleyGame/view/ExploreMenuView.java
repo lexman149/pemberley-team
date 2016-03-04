@@ -146,7 +146,7 @@ return false;
     //author Melissa and Sheila
     private void lookAt(Player player, Item[] localItemArray, Actor[] localActorArray) {
         LookMenuView lookMenu = new LookMenuView();
-        lookMenu.displayMenu(player, localItemArray, localActorArray);
+        lookMenu.display(player, localItemArray, localActorArray);
 
     }
 

@@ -14,9 +14,10 @@ import byui.cit260.pemberleyGame.model.*;
  *
  * @author Sheila
  */
-public class LookMenuView {
+public class LookMenuView extends View {
 
-    private final String MENU = "\n"
+    public LookMenuView(){
+         super("\n"
             + "\n----------------------------------------"
             + "\n | Look Menu"
             + "\n----------------------------------------"
@@ -25,71 +26,32 @@ public class LookMenuView {
             + "\nI - Look at an inventory item"
             + "\nH - Look at an items here"
             + "\nX - Exit"
-            + "\n----------------------------------------";
-    
-    public void displayMenu(Player player, Item[] localItemArray, Actor[] localActorArray) {
-        
-        char selection =' ';
-        do{
-            
-            System.out.println(MENU); // display the manin menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first character of string
-            
-            this.doAction(selection, player, localItemArray, localActorArray); // do action based on selection
-            
-        } while (selection != 'X' ); // a selection is not "Exit"
-        
+            + "\n----------------------------------------");
     }
-
-    public String getInput() {
-        boolean valid = false; // indicates if the selection has be retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+   
+   @Override     
+    public boolean doAction(String value, Player player, Item[] localItemArray, Actor[] localActorArray) {
         
-        while(!valid) { // while a valid menu selection has not been retrieved
-            
-            // prompt for the player's name
-            System.out.println("Enter your selection below:");
-            
-            // get the selecton from the keyboard and trim off the blanks
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();
-            playersInput = playersInput.toUpperCase();
-            
-            // if the menu selection is invlaid (less than one character in length)
-            if (playersInput.length() < 1) {
-                System.out.println("Invalid selection - the selection must not be blank");
-                continue; // and repeat again 
-            }
-            break; // out of the (exit) the repetition
-        }
-        
-        return playersInput; // return the name
-    }
-        
-    public void doAction(char choice, Player player, Item[] localItemArray, Actor[] localActorArray) {
-        
-        switch(choice){
-            case 'R':
+        switch(value){
+            case "R":
                 this.displayRoom(player);
                 break;
-            case 'C':
+            case "C":
                 this.displayCharacter(player, localActorArray);
                 break;
-            case 'I':
+            case "I":
                 this.displayInventory(player);
                 break;
-            case 'H':
+            case "H":
                 this.displayItem(player, localItemArray);
                 break;
-            case 'X':
-                return;
+            case "X":
+                return true;
             default:
                 System.out.println("\n***Invalid Selection *** Try Again");
                 break;
         }
+        return false;
     }
 
     private void displayRoom(Player player) {
