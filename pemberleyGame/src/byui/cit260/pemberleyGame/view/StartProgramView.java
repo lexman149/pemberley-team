@@ -32,7 +32,7 @@ public class StartProgramView {
         this.displayWelcomeMessage(user);
 // Display the Main menu.
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu(player, allItemArray, allActorArray);
+        mainMenu.display(player, allItemArray, allActorArray);
     }
 
     private void displayBanner() {
