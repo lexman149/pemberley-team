@@ -1,6 +1,6 @@
 
 /*
- * Test files - instances of the classes
+* Test files - instances of the classes
  */
 package pemberley_game;
 
@@ -8,8 +8,6 @@ import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.pemberleyGame.view.StartProgramView;
 import java.util.Scanner;
-
-
 
 /**
  *
@@ -20,13 +18,11 @@ public class PemberleyGame {
     /**
      * @param args the command line arguments
      */
-    
     private static Game currentGame = null;
     private static User user = null;
 
-    
     public static void main(String[] args) {
-      //initialize everything
+//initialize everything
 //        MapControl mapControl = new MapControl();
         Player playerOne = new Player();
         Room rmLivingRoom = new Room();
@@ -37,6 +33,32 @@ public class PemberleyGame {
         Item itDogTreats = new Item();
         Item itNote = new Item();
         Item itTimeMachine = new Item();
+        Item itClothing = new Item();
+        Item itFan = new Item();
+        Item itTeaCup = new Item();
+        Item itUmbrella = new Item();
+        Item itCarriage = new Item();
+        Item itRock = new Item();
+        Item itWorms = new Item();
+        Item itCane = new Item();
+        Item itTrout = new Item();
+        Item itMusic = new Item();
+        Item itPianoForte = new Item();
+        Item itFishingPole = new Item();
+        Item itHeartCard = new Item();
+        Item itCarrotBag = new Item();
+        Item itCarrots = new Item();
+        Item itOven = new Item();
+        Item itContainerOfSweets = new Item();
+        Item itEmptyContainer = new Item();
+        Item itPocKetWatch = new Item();
+        Item itLetter = new Item();
+        Item itPaintng = new Item();
+        Item itMoney = new Item();
+        Item itRibbons = new Item();
+        Item itChestnuts = new Item();
+        Item itChestnutTree = new Item();
+        Item itContainerOfWorms = new Item();
         Game gameOne = new Game();
         Actor atHamster = new Actor();
         Inventory inventoryOne = new Inventory();
@@ -76,6 +98,7 @@ public class PemberleyGame {
         Room rmStable = new Room();
         Room rmUpstairsHallWest = new Room();
         Room rmUpstairsHallEast = new Room();
+        Quest qtNote = new Quest();
 
         rmMilliner.setDescription("You are in a small Milliner's shop.  The hats are very beautiful but some of them are sort of strange too.");
         rmMilliner.setName("Milliner");
@@ -308,11 +331,7 @@ public class PemberleyGame {
 //end rmUpstairsHallWest object instance
 
 //player initialization
- 
-        
-
         playerOne.setLocation(rmLivingRoom);
- 
 
         rmLivingRoom.setName("Living Room");
         rmLivingRoom.setDescription("The Living room of your Uncle Finneas' house is stacked high with books.  In one corner sits his "
@@ -335,7 +354,7 @@ public class PemberleyGame {
         rmSecretLab.setAlternateBlocked(false);
 
         itBoxDogTreats.setDescription("It is a box of dog treats sitting on the table");
-        itBoxDogTreats.setLocation(rmLivingRoom);
+        itBoxDogTreats.setLocation(rmFinnKithen);
         itBoxDogTreats.setName("Package of Dog Treats");
         itBoxDogTreats.setTakable(false);
         itBoxDogTreats.setMultiple(true);
@@ -345,8 +364,7 @@ public class PemberleyGame {
         itDogTreats.setName("Dog Treats");
         itDogTreats.setDescription("These dog treats are shaped like bones and smell like... dog treats.  They are rather small.");
         itDogTreats.setTakable(true);
-        
-        
+
         itNote.setDescription("The note is being guarded by the hamster.  He won'tl let you get at the note");
         itNote.setLocation(rmLivingRoom);
         itNote.setName("A Note");
@@ -355,14 +373,14 @@ public class PemberleyGame {
         itNote.setTakeMessage("The Hamster is guarding it.  He snarls and snaps at you when you try to take it");
         itNote.setAlternateDescription("It is a note from Uncle Finneas.  It tells you that he needs you to come get him in the past.");
         itNote.setWeight(0.25);
-        
+
         itTimeMachine.setDescription("A Time Machine");
-        itTimeMachine.setLocation(rmLivingRoom);
+        itTimeMachine.setLocation(rmSecretLab);
         itTimeMachine.setName("The Time Machine");
         itTimeMachine.setTakable(true);
         itTimeMachine.setUsable(true);
         itTimeMachine.setQuest(qtTimeMachine);
-        itTimeMachine.setWeight(20);
+        itTimeMachine.setWeight(2);
         qtTimeMachine.setPlayer(playerOne);
         qtTimeMachine.setPlayerDestination(rmPath);
 
@@ -372,25 +390,216 @@ public class PemberleyGame {
         atHamster.setCharacterScript("GRRR.  Snarl.");
         atHamster.setAlternateCharacterScript("Woof Woof");
         atHamster.setQuest(qtHamster);
-        qtHamster.setNeeds(itBoxDogTreats);
+        qtHamster.setNeeds(itDogTreats);
         qtHamster.setItemToChange(itNote);
         qtHamster.setCompletionScript("Bruiser jumps on the dog treats and eats them with relish.  Then he licks your hand.");
 
+        itCane.setName("Cane");
+        itCane.setDescription("It looks like a cane fit for a great and snobbish lady.");
+        itCane.setLocation(rmGrandStaircase);
+        itCane.setQuantity(0);
+        itCane.setTakable(true);
+        itCane.setWeight(2);
+        itCarriage.setAlternateLocation(rmFrontDrive);
+        itCarriage.setAlternateUsable(true);
+        itCarriage.setDescription("It is a very stately carriage");
+        itCarriage.setLocation(rmStable);
+        itCarriage.setName("Carriage");
+        itCarriage.setQuantity(0);
+        itCarriage.setTakeMessage("You think a whole carriage will fit in your backpack?");
+        itCarriage.setWeight(200);
+        itCarrotBag.setContains(itCarrots);
+        itCarrotBag.setDescription("It is a burlap sack of carrots");
+        itCarrotBag.setLocation(rmCellar);
+        itCarrotBag.setMultiple(true);
+        itCarrotBag.setName("Bag of Carrots");
+        itCarrotBag.setQuantity(0);
+        itCarrotBag.setWeight(21);
+        itCarrots.setDescription("The carrots are orange and large.");
+        itCarrots.setLocation(null);
+        itCarrots.setName("Carrots");
+        itCarrots.setQuantity(0);
+        itCarrots.setTakable(true);
+        itCarrots.setWeight(0.25);
+        itChestnuts.setDescription("These are very large chestnuts");
+        itChestnuts.setLocation(null);
+        itChestnuts.setName("Chestnuts");
+        itChestnuts.setQuantity(0);
+        itChestnuts.setTakable(true);
+        itChestnuts.setWeight(0.1);
+        itChestnutTree.setContains(itChestnuts);
+        itChestnutTree.setDescription("It is a large tree with chetnuts all over the ground underneath it.");
+        itChestnutTree.setLocation(rmGreen);
+        itChestnutTree.setMultiple(true);
+        itChestnutTree.setName("Tree with Chestnuts");
+        itChestnutTree.setQuantity(0);
+        itChestnutTree.setWeight(400);
+        itClothing.setAlternateDescription("You are wearing clothing you are sure was fashionable sometime in history");
+        itClothing.setDescription("It is some historic clothing");
+        itClothing.setLocation(rmCloset);
+        itClothing.setName("Clothing");
+        itClothing.setQuantity(0);
+        itClothing.setTakable(true);
+        itClothing.setUsable(true);
+        itClothing.setWeight(0);
+        itContainerOfSweets.setDescription("It is a container of sweets");
+        itContainerOfSweets.setLocation(rmLarder);
+        itContainerOfSweets.setName("Sweets");
+        itContainerOfSweets.setQuantity(0);
+        itContainerOfSweets.setTakable(true);
+        itContainerOfSweets.setWeight(0.5);
+        itContainerOfWorms.setAlternateLocation(inventoryOne);
+        itContainerOfWorms.setDescription("It is a container of squirming earthworms.");
+        itContainerOfWorms.setLocation(null);
+        itContainerOfWorms.setName("Container of Worms");
+        itContainerOfWorms.setQuantity(0);
+        itContainerOfWorms.setTakable(true);
+        itContainerOfWorms.setUsable(true);
+        itContainerOfWorms.setWeight(0.5);
+        itEmptyContainer.setAlternateLocation(inventoryOne);
+        itEmptyContainer.setDescription("It is an empty tin that used to hold sweets");
+        itEmptyContainer.setLocation(null);
+        itEmptyContainer.setName("Empty Tin");
+        itEmptyContainer.setQuantity(0);
+        itEmptyContainer.setTakable(true);
+        itEmptyContainer.setWeight(0.25);
+        itFan.setDescription("It is a lacy lady's fan.");
+        itFan.setLocation(rmBallroom);
+        itFan.setName("Fan");
+        itFan.setQuantity(0);
+        itFan.setTakable(true);
+        itFan.setWeight(0.3);
+        itFishingPole.setAlternateLocation(rmMusicRoom);
+        itFishingPole.setDescription("It is a fishing pole fit for a gentleman.");
+        itFishingPole.setLocation(null);
+        itFishingPole.setName("Fishing Pole");
+        itFishingPole.setQuantity(0);
+        itFishingPole.setTakable(true);
+        itFishingPole.setUsable(true);
+        itFishingPole.setWeight(1);
+        itHeartCard.setAlternateLocation(rmStable);
+        itHeartCard.setDescription("It is a card that says \"Dear Sally.  I love you...\"");
+        itHeartCard.setLocation(null);
+        itHeartCard.setName("Heart-shaped card");
+        itHeartCard.setQuantity(0);
+        itHeartCard.setTakable(true);
+        itHeartCard.setWeight(0.25);
+        itLetter.setAlternateTakable(true);
+        itLetter.setDescription("It is a letter from Nathaniel Willoughby for his father.  It says that Mr Willoughby is happy to report Jane Darcy will be rich.");
+        itLetter.setLocation(rmNathanielBedroom);
+        itLetter.setName("Letter");
+        itLetter.setQuantity(0);
+        itLetter.setWeight(0.25);
+        itMoney.setAlternateLocation(inventoryOne);
+        itMoney.setDescription("It is a little pile of coins");
+        itMoney.setLocation(null);
+        itMoney.setName("Money");
+        itMoney.setQuantity(0);
+        itMoney.setTakable(true);
+        itMoney.setWeight(0.5);
+        itMusic.setDescription("It appears to be some sheet music ");
+        itMusic.setLocation(rmLibrary);
+        itMusic.setName("Sheet Music");
+        itMusic.setQuantity(0);
+        itMusic.setTakable(true);
+        itMusic.setWeight(0.25);
+        itNote.setAlternateDescription("The note says that Uncle Finneas is stranded in the past.  Will you please find the time machine and come get him?");
+        itNote.setAlternateTakable(true);
+        itNote.setDescription("It is difficult to examine the note while it is in the Hamster's cage");
+        itNote.setLocation(rmLivingRoom);
+        itNote.setName("Note");
+        itNote.setQuantity(0);
+        itNote.setQuest(qtNote);
+        itNote.setTakeMessage("When you try to take it, the Hamster snarls and tries to bite you.");
+        itNote.setWeight(0.25);
+        itOven.setAlternateDescription("It is very hot.  Someone is baking something");
+        itOven.setDescription("The oven is currently cold");
+        itOven.setLocation(rmKitchen);
+        itOven.setName("Oven");
+        itOven.setQuantity(0);
+        itOven.setTakeMessage("Only you would try to take a whole oven.");
+        itOven.setUsable(true);
+        itOven.setWeight(100);
+        itPaintng.setDescription("It is a painting of a young lady sighed E Woodhouse");
+        itPaintng.setLocation(rmGallery);
+        itPaintng.setName("Painting");
+        itPaintng.setQuantity(0);
+        itPaintng.setTakeMessage("I'm not sure the Darcys would appreciate you making off with their valuable painting");
+        itPaintng.setWeight(21);
+        itPianoForte.setDescription("It is a lovely piano forte.  It appears to be well used.");
+        itPianoForte.setLocation(rmMusicRoom);
+        itPianoForte.setName("Piano Forte");
+        itPianoForte.setQuantity(0);
+        itPianoForte.setTakeMessage("It won't fit in your backpack... and how rude is it to take a piano forte.");
+        itPianoForte.setUsable(true);
+        itPianoForte.setWeight(300);
+        itPocKetWatch.setDescription("It is a gentleman's pocket watch");
+        itPocKetWatch.setLocation(rmServantsQuarters);
+        itPocKetWatch.setName("Pocket Watch");
+        itPocKetWatch.setQuantity(0);
+        itPocKetWatch.setTakable(true);
+        itPocKetWatch.setUsable(true);
+        itPocKetWatch.setWeight(0.5);
+        itRibbons.setAlternateTakable(true);
+        itRibbons.setDescription("It is a bunch of ribbons");
+        itRibbons.setLocation(rmMilliner);
+        itRibbons.setName("Ribbons");
+        itRibbons.setQuantity(0);
+        itRibbons.setTakeMessage("You think twice and decide not to steal the ribbons.");
+        itRibbons.setWeight(0.5);
+        itRock.setContains(itWorms);
+        itRock.setDescription("It is a rock with some worms underneath");
+        itRock.setLocation(rmGarden);
+        itRock.setMultiple(true);
+        itRock.setName("Rock");
+        itRock.setQuantity(0);
+        itRock.setWeight(10);
+        itTeaCup.setDescription("It is a small porcelain tea cup ");
+        itTeaCup.setLocation(rmDrawingRoom);
+        itTeaCup.setName("Tea Cup");
+        itTeaCup.setQuantity(0);
+        itTeaCup.setTakable(true);
+        itTeaCup.setWeight(0.5);
+        itTimeMachine.setAlternateDescription("The main screen shows an error.");
+        itTimeMachine.setAlternateUsable(true);
+        itTimeMachine.setAlternateUsable(true);
+        itTimeMachine.setName("Time Machine");
+        itTimeMachine.setQuantity(0);
+        itTimeMachine.setQuest(qtTimeMachine);
+        itTimeMachine.setTakable(true);
+        itTimeMachine.setWeight(2);
+        itTimeMachine.setDescription("It is a time machine.  You have seen Uncle Finneas working on it before.  It looks like a tablet.");
+        itTimeMachine.setLocation(rmSecretLab);
+        itTrout.setAlternateTakable(true);
+        itTrout.setDescription("It is a very big trout fit for a feast");
+        itTrout.setLocation(rmLake);
+        itTrout.setName("Trout");
+        itTrout.setQuantity(0);
+        itTrout.setWeight(2);
+        itUmbrella.setDescription("It may be a parasol");
+        itUmbrella.setLocation(rmEntry);
+        itUmbrella.setName("Umbrella");
+        itUmbrella.setQuantity(0);
+        itUmbrella.setTakable(true);
+        itUmbrella.setWeight(1);
+        itWorms.setDescription("It is a bunch of earth worms.");
+        itWorms.setLocation(null);
+        itWorms.setName("Worms");
+        itWorms.setQuantity(0);
+        itWorms.setTakable(true);
+        itWorms.setWeight(0.25);
+
         inventoryOne.setWeight(0);
         playerOne.setInventory(inventoryOne);
-        
+
         Item allItems[] = {itBoxDogTreats, itNote, itTimeMachine};
         Actor allActors[] = {atHamster};
-        
 
-        
-        
-        
-      // create StartProgramViw and start the program
+// create StartProgramViw and start the program
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram(playerOne, allItems, allActors);
 
-    } 
+    }
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -408,6 +617,4 @@ public class PemberleyGame {
         PemberleyGame.user = user;
     }
 
-
- 
 }
