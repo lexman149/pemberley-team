@@ -67,6 +67,55 @@ public class MapControl {
         if (currentRoom.getEast() != null){
             roomDescription = roomDescription + "EAST ";
         }
+        
+        roomDescription = roomDescription + this.drawRoom(currentRoom);
             return roomDescription;
     }
+    
+    
+    public String drawRoom(Room currentRoom){
+        //make room name uniform length to plug into drawing
+        String roomDrawing = "\n";
+        String roomName = currentRoom.getName();
+        int neededSpaces = 20 - roomName.length();
+        String spaces = "";
+        for (int i = 0; i<neededSpaces; i++ ){
+        spaces = spaces + " ";
+        }
+        roomName = roomName + spaces;
+        
+        //if there is a room to the north, indicate that.
+        if (currentRoom.getNorth() != null){
+            roomDrawing = roomDrawing + "             |          ";
+        }else {
+            roomDrawing = roomDrawing +  "                       ";
+        }
+        roomDrawing = roomDrawing + "\n  _____________________ ";
+        roomDrawing = roomDrawing + "\n |                     | \n";
+        
+        if (currentRoom.getWest() != null){
+            roomDrawing = roomDrawing + "_";
+        }else {
+            roomDrawing = roomDrawing +  " ";
+        }
+        
+        roomDrawing = roomDrawing + "| " + roomName;
+        
+        if (currentRoom.getEast() != null){
+            roomDrawing = roomDrawing + "|_";
+        }else {
+            roomDrawing = roomDrawing +  "| ";
+        }
+  
+        roomDrawing = roomDrawing + "\n |                     | ";
+        roomDrawing = roomDrawing + "\n  _____________________\n ";        
+        if (currentRoom.getSouth() != null){
+            roomDrawing = roomDrawing + "            |          ";
+        }else {
+            roomDrawing = roomDrawing +  "                       ";
+        }
+        
+        return roomDrawing;
+    }
+    
 }
