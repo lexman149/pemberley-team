@@ -665,9 +665,19 @@ public class PemberleyGame {
         inventoryOne.setWeight(0);
         playerOne.setInventory(inventoryOne);
 
-        Item allItems[] = {itBoxDogTreats, itNote, itTimeMachine};
-        Actor allActors[] = {atHamster};
+        Item allItems[] = {itPaintng, itPianoForte, itOven,itRock,itNote,itCarriage,
+            itRibbons,itTimeMachine,itLetter,itTrout,itClothing,itCane,itCarrotBag ,
+            itCarrots,itChestnuts,itChestnutTree, itContainerOfSweets,itContainerOfWorms,
+            itEmptyContainer,itFan,itFishingPole,itHeartCard,itMoney,itMusic,
+            itPocKetWatch,itTeaCup,itUmbrella,itWorms};
+        
+        
+        Actor allActors[] = {atHamster,atMrDarcy,atCarter,atLordRandolph,atMarshall,
+            atUncleFinneas,atLadyRoslyn,atMrsDarcy,atGeorgie,atRoberDarcy,atJaneDarcy,
+            atJonathan,atRabbit,atWilliam, atDaisy,atOliveNelson,atSally,atRoseBrandon,
+            atLadyCatherine,atMrHarmon,atMissNorwood,atMrBarns,atWilloughby};
 
+        
 // create StartProgramViw and start the program
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram(playerOne, allItems, allActors);
