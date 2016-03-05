@@ -7,6 +7,7 @@ package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.GameControl;
 import byui.cit260.pemberleyGame.model.Actor;
+import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
@@ -35,7 +36,7 @@ public GameMenuView(){
 }
 
  @Override
-    public boolean doAction(String value, Player player, Item[] allItemArray, Actor[] allActorArray) {
+    public boolean doAction(String value, Game game) {
         
         switch(value){
             case "I":
@@ -51,7 +52,7 @@ public GameMenuView(){
                 this.displayCurrentTasks();
                 break;
             case "E":
-                this.displayExploreMenu(player, allItemArray, allActorArray);
+                this.displayExploreMenu(game);
                 break;
             case "X":
                 return true;
@@ -62,9 +63,9 @@ public GameMenuView(){
 return false;
     }
 
-    private void displayExploreMenu(Player player, Item[] allItemArray, Actor[] allActorArray) {
+    private void displayExploreMenu(Game game) {
         ExploreMenuView exploreMenu = new ExploreMenuView();
-        exploreMenu.display(player, allItemArray, allActorArray);
+        exploreMenu.display(game);
         
     }
 

@@ -7,6 +7,7 @@ package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.GameControl;
 import byui.cit260.pemberleyGame.model.Actor;
+import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.view.GameMenuView;
@@ -34,18 +35,18 @@ public class MainMenuView extends View {
     }
   
 @Override
-    public boolean doAction(String value, Player player, Item[] allItemArray, Actor[] allActorArray) {
+    public boolean doAction(String value, Game game) {
 
         
         switch(value){
             case "N":
-                this.startNewGame(player, allItemArray, allActorArray);
+                this.startNewGame(game);
                 break;
             case "G":
                 this.startExistingGame();
                 break;
             case "H":
-                this.displayHelpMe(player, allItemArray, allActorArray);
+                this.displayHelpMe(game);
                 break;
             case "S":
                 this.saveGame();
@@ -59,24 +60,24 @@ public class MainMenuView extends View {
 return false;
     }
 
-    private void startNewGame(Player player, Item[] allItemArray, Actor[] allActorArray) {
+    private void startNewGame(Game game) {
         GameControl.createNewGame(PemberleyGame.getUser());
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display(player, allItemArray, allActorArray);
+        gameMenu.display(game);
     }
 
     private void startExistingGame() {
         System.out.println("*** startExistingGame function called ***");
     }
 
-    private void displayHelpMe(Player player, Item[] allItemArray, Actor[] allActorArray) {
+    private void displayHelpMe(Game game) {
         // System.out.println("*** displayHelpMenu function called ");
         
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.display(player, allItemArray, allActorArray);
+        helpMenu.display(game);
     }
 
     private void saveGame() {

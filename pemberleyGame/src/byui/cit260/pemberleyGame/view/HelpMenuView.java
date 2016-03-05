@@ -7,6 +7,7 @@ package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.GameControl;
 import byui.cit260.pemberleyGame.model.Actor;
+import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
@@ -34,9 +35,9 @@ public class HelpMenuView extends View{
             + "\n----------------------------------------"
             + "\nEnter your selection below:");
    }
-   
+    
    @Override
-     public boolean doAction(String value, Player player, Item[] allItemArray, Actor[] allActorArray) {
+     public boolean doAction(String value, Game game) {
         
         switch(value){
             case "G":

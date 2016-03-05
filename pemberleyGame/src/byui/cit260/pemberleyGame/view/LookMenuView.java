@@ -31,20 +31,20 @@ public class LookMenuView extends View {
     }
    
    @Override     
-    public boolean doAction(String value, Player player, Item[] localItemArray, Actor[] localActorArray) {
+    public boolean doAction(String value, Game game) {
         
         switch(value){
             case "R":
-                this.displayRoom(player);
+                this.displayRoom(game);
                 break;
             case "C":
-                this.displayCharacter(player, localActorArray);
+                this.displayCharacter(game);
                 break;
             case "I":
-                this.displayInventory(player);
+                this.displayInventory(game);
                 break;
             case "H":
-                this.displayItem(player, localItemArray);
+                this.displayItem(game);
                 break;
             case "X":
                 return true;
@@ -55,15 +55,19 @@ public class LookMenuView extends View {
         return false;
     }
 
-    private void displayRoom(Player player) {
+    private void displayRoom(Game game) {
+        Player player = game.getPlayerOne();
         MapControl mapControl = new MapControl();
         String roomDescription = mapControl.lookAtRoom(player);
         System.out.println(roomDescription);
     }
 
     //by Sheila
-    private void displayCharacter(Player player, Actor[] localActorArray) {
-        ActorControl actorControl = new ActorControl();
+    private void displayCharacter(Game game) {
+        Player player = game.getPlayerOne();
+       Actor [] allActorArray = game.getAllActorArray();
+       ActorControl actorControl = new ActorControl();
+       Actor[] localActorArray = actorControl.createLocalActorArray(player, allActorArray);
         String[] actorList = actorControl.createActorNameList(localActorArray); // creates String [] of actors
         String actorString = " "; // creates just a String of actors, not an array
         for (String i : actorList) {
@@ -72,21 +76,29 @@ public class LookMenuView extends View {
         System.out.println(actorString + " IS IN THIS ROOM.");
     }
 
-    private void displayInventory(Player player) {
+    private void displayInventory(Game game) {
         System.out.println("*** call the displayInventory function ***");
     }
 
     //by Sheila
-    private void displayItem(Player player, Item[] localItemArray) {
+    private void displayItem(Game game) {
+        Player player = game.getPlayerOne();
+        Item [] allItemArray = game.getAllItemArray();
+        ItemControl itemControl = new ItemControl();
+        Item[] localItemArray = itemControl.createLocalItemArray(player, allItemArray);
         String prompt = "Which item do you want to look at? Type X to cancel.";
         String playerSelection;
         do {
         playerSelection = this.getStringInput(prompt);
-        ItemControl itemControl = new ItemControl();
         String roomDescription = itemControl.lookAtItem(playerSelection, player, localItemArray);
         System.out.println(roomDescription);
         } while(!playerSelection.equalsIgnoreCase("x"));
     }
+    
+    
+    
+    
+    
     private String getStringInput(String prompt) {
         boolean valid = false; // indicates if the name has be retrieved
         String playersInput = null;

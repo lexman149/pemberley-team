@@ -36,17 +36,14 @@ public class ExploreMenuView extends View{
     }
 
 @Override
-    public boolean doAction(String value, Player player, Item[] allItemArray, Actor[] allActorArray) {
-        ActorControl actorControl = new ActorControl();
-        ItemControl itemControl = new ItemControl();
-        Item[] localItemArray = itemControl.createLocalItemArray(player, allItemArray);
-        Actor[] localActorArray = actorControl.createLocalActorArray(player, allActorArray);
+    public boolean doAction(String value, Game game) {
+ 
         switch (value) {
             case "M":
-                this.movePlayer(player);
+                this.movePlayer(game);
                 break;
             case "T":
-                this.takeItem(player, localItemArray);
+                this.takeItem(game);
                 break;
             case "G":
                 this.giveItem();
@@ -58,7 +55,7 @@ public class ExploreMenuView extends View{
                 this.useItem();
                 break;
             case "L":
-                this.lookAt(player, localItemArray, localActorArray);
+                this.lookAt(game);
                 break;
             case "X": // quit help 
                 return true;
@@ -69,7 +66,8 @@ public class ExploreMenuView extends View{
 return false;
     }
 // author Alexis
-    private void movePlayer(Player player) {
+    private void movePlayer(Game game) {
+        Player player = game.getPlayerOne();
         String prompt = "Which direction do you want to go? Type X to cancel.";
         String playerSelection;
         do {
@@ -82,13 +80,18 @@ return false;
 
     }
 
-    private void takeItem(Player player, Item[] localItemArray) {
+    private void takeItem(Game game) {
        //declare variables
+       Player player = game.getPlayerOne();
+       Item [] allItemArray = game.getAllItemArray();
+       Actor [] allActorArray = game.getAllActorArray();
+       ActorControl actorControl = new ActorControl();
+       ItemControl itemControl = new ItemControl();
+       Item[] localItemArray = itemControl.createLocalItemArray(player, allItemArray);
         String gameMessage; 
         int indexOfItem;
         int quantityOfItem;
         String playerSelection = " ";
-        ItemControl itemControl = new ItemControl();
         InventoryControl inventoryControl = new InventoryControl();
         //designate the inventory
         Inventory inventory = player.getInventory();
@@ -96,8 +99,8 @@ return false;
         do {
             //if there is nothing in the localItemArray say there is nothing to take.
             if (localItemArray.length == 0) {
-                 System.out.println("Nothing to Take");
-                 break;
+                System.out.println("Nothing to Take");
+                break;
             } else {
                 String prompt = "What do you want to take (type X to exit?";
                 //get input from the player
@@ -146,9 +149,9 @@ return false;
     }
 
     //author Melissa and Sheila
-    private void lookAt(Player player, Item[] localItemArray, Actor[] localActorArray) {
+    private void lookAt(Game game) {
         LookMenuView lookMenu = new LookMenuView();
-        lookMenu.display(player, localItemArray, localActorArray);
+        lookMenu.display(game);
 
     }
 
