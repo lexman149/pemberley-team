@@ -31,7 +31,8 @@ public class HelpMenuView extends View{
             + "\nC - How do I talk to game characters?"
             + "\nP - What do I type at the prompt?"
             + "\nX - Exit"
-            + "\n----------------------------------------");
+            + "\n----------------------------------------"
+            + "\nEnter your selection below:");
    }
    
    @Override

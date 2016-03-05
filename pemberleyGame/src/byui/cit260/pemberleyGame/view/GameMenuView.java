@@ -30,7 +30,8 @@ public GameMenuView(){
             + "\nT - Current Tasks"
             + "\nE - Explore"
             + "\nX - Exit"
-            + "\n----------------------------------------");
+            + "\n----------------------------------------"
+            + "\nEnter your selection below:");
 }
 
  @Override

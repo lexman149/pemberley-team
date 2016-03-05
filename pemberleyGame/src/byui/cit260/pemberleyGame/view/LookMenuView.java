@@ -26,7 +26,8 @@ public class LookMenuView extends View {
             + "\nI - Look at an inventory item"
             + "\nH - Look at an items here"
             + "\nX - Exit"
-            + "\n----------------------------------------");
+            + "\n----------------------------------------"
+            + "\nEnter your selection below:");
     }
    
    @Override     

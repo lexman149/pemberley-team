@@ -44,15 +44,12 @@ public abstract class View implements ViewInterface {
 
         while (!valid) { // while a valid menu selection has not been retrieved
 
-// prompt for the player's name
-            System.out.println("Enter your selection below:");
-
-// get the selecton from the keyboard and trim off the blanks CAPs ok
+            // get the selecton from the keyboard and trim off the blanks CAPs ok
             value = keyboard.nextLine();
             value = value.trim();
             value = value.toUpperCase();
 
-// if the menu selection is invlaid (less than one character in length)
+            // if the menu selection is invlaid (less than one character in length)
             if (value.length() < 1) {
                 System.out.println("Invalid selection - the selection must not be blank");
                 continue; // and repeat again 

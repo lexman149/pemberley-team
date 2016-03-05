@@ -29,7 +29,8 @@ public class MainMenuView extends View {
             + "\nH - Get help on how to play the game"
             + "\nS - Save game"
             + "\nX - Exit"
-            + "\n----------------------------------------");
+            + "\n----------------------------------------"
+            + "\nEnter your selection below:");
     }
   
 @Override

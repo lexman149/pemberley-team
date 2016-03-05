@@ -31,7 +31,8 @@ public class ExploreMenuView extends View{
             + "\nU - Use"
             + "\nL - Look"
             + "\nX - Exit"
-            + "\n----------------------------------------");
+            + "\n----------------------------------------"
+            + "\nEnter your selection below:");
     }
 
 @Override
