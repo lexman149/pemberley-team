@@ -44,7 +44,8 @@ public class MapControl {
         else {
             player.setLocation(nextRoom);
             String playerMessage = "You move to the " + nextRoom.getName() + "\n";
-            return playerMessage.concat(nextRoom.getDescription());
+//            return playerMessage.concat(nextRoom.getDescription());--- previous code.  Can delete if function has been graded.
+            return this.lookAtRoom(player);//changed this to call the lookAtRoom function to display detailed descript of room.
         }
     }
     
