@@ -613,7 +613,7 @@ public class PemberleyGame {
         rmMusicRoom.setSouth(rmBallroom);
         rmNathanielBedroom.setDescription("You are in Mr Willoughby's room.");
         rmNathanielBedroom.setName("Mr Ws Room");
-        rmNathanielBedroom.setNorth(rmUpstairsHallEast);
+        rmNathanielBedroom.setWest(rmUpstairsHallEast);
         rmPath.setDescription("You are on a Path outside the main house");
         rmPath.setEast(rmLake);
         rmPath.setName("Path");
@@ -654,7 +654,7 @@ public class PemberleyGame {
         rmUpstairsHallEast.setDescription("You are in an upstairs hall.");
         rmUpstairsHallEast.setName("Up Hall East");
         rmUpstairsHallEast.setNorth(rmRoseBedroom);
-        rmUpstairsHallEast.setSouth(rmNathanielBedroom);
+        rmUpstairsHallEast.setEast(rmNathanielBedroom);
         rmUpstairsHallEast.setWest(rmUpstairsHallWest);
         rmUpstairsHallWest.setDescription("You are in an upstairs hall.");
         rmUpstairsHallWest.setEast(rmUpstairsHallEast);
