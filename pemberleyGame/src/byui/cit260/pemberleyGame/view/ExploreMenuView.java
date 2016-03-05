@@ -96,7 +96,8 @@ return false;
         do {
             //if there is nothing in the localItemArray say there is nothing to take.
             if (localItemArray.length == 0) {
-                gameMessage = "Nothing to Take";
+                 System.out.println("Nothing to Take");
+                 break;
             } else {
                 String prompt = "What do you want to take (type X to exit?";
                 //get input from the player
