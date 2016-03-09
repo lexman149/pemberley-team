@@ -9,8 +9,7 @@ import java.util.Scanner;
 import java.lang.Character;
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
-import byui.cit260.pemberleyGame.view.*;
-import pemberley_game.PemberleyGame;
+
 
 /**
  *

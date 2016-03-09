@@ -6,7 +6,6 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.User;
-import java.util.ArrayList;
 import pemberley_game.PemberleyGame;
 
 /**

@@ -6,10 +6,7 @@
 package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.ProgramControl;
-import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
-import byui.cit260.pemberleyGame.model.Item;
-import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.User;
 import java.util.*;
 

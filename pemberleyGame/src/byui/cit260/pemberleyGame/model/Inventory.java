@@ -1,7 +1,5 @@
 package byui.cit260.pemberleyGame.model;
 
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
