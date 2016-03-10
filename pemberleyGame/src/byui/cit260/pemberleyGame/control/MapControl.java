@@ -169,5 +169,32 @@ public class MapControl {
     }
 
 
+    private String renderMap(Room nextRoom) {
+        Room currentRoom;
+        Map currentMap = nextRoom.getMap();
+        String[] roomDrawing;
+        Room[] roomsArray = currentMap.getRooms();
+        String mapDrawing = "\n";
 
+        for (int[] row : currentMap.getMapCoordinates()) {
+//            mapDrawing = mapDrawing + "\n";
+            for (int x = 0; x < 7; x++) {
+                mapDrawing = mapDrawing + "\n";
+                for (int mapCoordinates : row) {
+                    if (mapCoordinates == -1) {
+                        mapDrawing = mapDrawing + Wall.empty.getWall();
+                    } else {
+                        currentRoom = roomsArray[mapCoordinates];
+                        if (currentRoom.getRoomDrawing() == null) {
+                            mapDrawing = mapDrawing + Wall.empty.getWall();
+                        } else {
+                            mapDrawing = mapDrawing + currentRoom.getRoomDrawing()[x];
+                        }
+                    }
+
+                }
+            }
+        }
+        return mapDrawing;
+    }
 }
