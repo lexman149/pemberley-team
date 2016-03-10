@@ -1,6 +1,5 @@
 package byui.cit260.pemberleyGame.model;
 
-
 /**
  *
  * @author jpmanning

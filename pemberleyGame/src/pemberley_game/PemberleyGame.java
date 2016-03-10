@@ -117,7 +117,7 @@ public class PemberleyGame {
         Room rmDownstairsHall = new Room();
         Room rmDrawingRoom = new Room();
         Room rmEntry = new Room();
-        Room rmFinnKithen = new Room();
+        Room rmFinnKitchen = new Room();
         Room rmFrontDrive = new Room();
         Room rmGallery = new Room();
         Room rmGarden = new Room();
@@ -310,7 +310,7 @@ public class PemberleyGame {
         atWilloughby.setName("Mr Nathaniel Willoughby");
         itBoxDogTreats.setContains(itDogTreats);
         itBoxDogTreats.setDescription("It is a box of dog treats sitting on the table");
-        itBoxDogTreats.setLocation(rmFinnKithen);
+        itBoxDogTreats.setLocation(rmFinnKitchen);
         itBoxDogTreats.setMultiple(true);
         itBoxDogTreats.setName("Package of Dog Treats");
         itBoxDogTreats.setTakable(false);
@@ -542,7 +542,7 @@ public class PemberleyGame {
         qtCarrots.setItemToChange(itCarriage);
         qtCarter.setNeeds(itTeaCup);
         qtCook.setNeeds(itTrout);
-        
+
         rmBackStaircase.setDescription("You are on the Back Staircase.  This leads to the lower floors where the kitchen and servant's quarters are.");
         rmBackStaircase.setEast(rmKitchen);
         rmBackStaircase.setName("Back Staircase");
@@ -576,10 +576,9 @@ public class PemberleyGame {
         rmEntry.setNorth(rmGreatHall);
         rmEntry.setSouth(rmFrontDrive);
         rmEntry.setWest(rmGrandStaircase);
-        rmFinnKithen.setDescription("The Kitchen is one of the cleanest rooms in Uncle Finneas' house.  Probably because He mostly likes to eat out.");
-        rmFinnKithen.setName("Kitchen");
-        rmFinnKithen.setSouth(rmLivingRoom);
-        rmFinnKithen.setVisited(true);
+        rmFinnKitchen.setDescription("The Kitchen is one of the cleanest rooms in Uncle Finneas' house.  Probably because He mostly likes to eat out.");
+        rmFinnKitchen.setName("Kitchen");
+        rmFinnKitchen.setSouth(rmLivingRoom);
         rmFrontDrive.setDescription("You are on the Front Drive of Pemberley looking up at its impressive height and width.");
         rmFrontDrive.setEast(rmPath);
         rmFrontDrive.setName("Front Drive");
@@ -593,7 +592,7 @@ public class PemberleyGame {
         rmGarden.setSouth(rmPath);
         rmGrandStaircase.setDescription("You are on the Grand Staircase.  It is impressive as befits a staircase of Pemberley");
         rmGrandStaircase.setEast(rmEntry);
-        rmGrandStaircase.setName("GrandStaircase");
+        rmGrandStaircase.setName("Grand Staircase");
         rmGrandStaircase.setNorth(rmUpstairsHallWest);
         rmGreatHall.setDescription("You are in the Great Hall.  It is very tall.");
         rmGreatHall.setEast(rmDrawingRoom);
@@ -629,10 +628,9 @@ public class PemberleyGame {
         rmLivingRoom.setEast(rmCloset);
         rmLivingRoom.setName("Living Rom");
         rmLivingRoom.setName("Living Room");
-        rmLivingRoom.setNorth(rmFinnKithen);
+        rmLivingRoom.setNorth(rmFinnKitchen);
         rmLivingRoom.setSouth(rmSecretLab);
         rmLivingRoom.setSouth(rmSecretLab);
-        rmLivingRoom.setVisited(true);
         rmMilliner.setDescription("You are in a small Milliner's shop.  The hats are very beautiful but some of them are sort of strange too.");
         rmMilliner.setName("Milliner");
         rmMilliner.setSouth(rmRoadWest);
@@ -660,15 +658,12 @@ public class PemberleyGame {
         rmRoseBedroom.setDescription("You are in Miss Rose Brandon's room");
         rmRoseBedroom.setName("Rose's Room");
         rmRoseBedroom.setSouth(rmUpstairsHallEast);
-        rmSecretLab.setAlternateBlocked(false);
-        rmSecretLab.setBlocked(true);
         rmSecretLab.setDescription("Like your uncle Finneas, the Secret Laboratory is a bit shabby and disorganized");
         rmSecretLab.setDescription("You are in your Uncle Finneas' secret lab.  Like your uncle it is a bit shabby and disorganized.");
         rmSecretLab.setName("Secret Lab");
         rmSecretLab.setName("Secret Laboratory");
         rmSecretLab.setNorth(rmLivingRoom);
         rmSecretLab.setNorth(rmLivingRoom);
-        rmSecretLab.setVisited(true);
         rmServantsQuarters.setDescription("You are in one of the Servant's rooms");
         rmServantsQuarters.setName("Servants ");
         rmServantsQuarters.setNorth(rmDownstairsHall);
@@ -691,34 +686,36 @@ public class PemberleyGame {
         rmUpstairsHallWest.setNorth(rmGallery);
         rmUpstairsHallWest.setSouth(rmGrandStaircase);
 
+
         inventoryOne.setWeight(0);
         playerOne.setInventory(inventoryOne);
 
-        Item allItems[] = {itPaintng, itPianoForte, itOven,itRock,itNote,itCarriage,
-            itRibbons,itTimeMachine,itLetter,itTrout,itClothing,itCane,itCarrotBag ,
-            itCarrots,itChestnuts,itChestnutTree, itContainerOfSweets,itContainerOfWorms,
-            itEmptyContainer,itFan,itFishingPole,itHeartCard,itMoney,itMusic,
-            itPocKetWatch,itTeaCup,itUmbrella,itWorms};
-        
-        
-        Actor allActors[] = {atHamster,atMrDarcy,atCarter,atLordRandolph,atMarshall,
-            atUncleFinneas,atLadyRoslyn,atMrsDarcy,atGeorgie,atRoberDarcy,atJaneDarcy,
-            atJonathan,atRabbit,atWilliam, atDaisy,atOliveNelson,atSally,atRoseBrandon,
-            atLadyCatherine,atMrHarmon,atMissNorwood,atMrBarns,atWilloughby};
+        Item allItems[] = {itBoxDogTreats, itPaintng, itPianoForte, itOven, itRock, itNote, itCarriage,
+            itRibbons, itTimeMachine, itLetter, itTrout, itClothing, itCane, itCarrotBag,
+            itCarrots, itChestnuts, itChestnutTree, itContainerOfSweets, itContainerOfWorms,
+            itEmptyContainer, itFan, itFishingPole, itHeartCard, itMoney, itMusic,
+            itPocKetWatch, itTeaCup, itUmbrella, itWorms};
+
+        Actor allActors[] = {atHamster, atMrDarcy, atCarter, atLordRandolph, atMarshall,
+            atUncleFinneas, atLadyRoslyn, atMrsDarcy, atGeorgie, atRoberDarcy, atJaneDarcy,
+            atJonathan, atRabbit, atWilliam, atDaisy, atOliveNelson, atSally, atRoseBrandon,
+            atLadyCatherine, atMrHarmon, atMissNorwood, atMrBarns, atWilloughby};
 
         Quest allQuests[] = {qtCane, qtCarrots, qtCarter, qtCoach, qtCook, qtDaisy,
             qtGrocer, qtHamster, qtJaneDarcy, qtLadyRoslyn, qtLake, qtMiliner, qtMrDarcy,
             qtMrsDarcy, qtNote, qtRabbit, qtRandolph, qtSally, qtRose, qtSweets, qtTimeMachine};
-        
+
         Map allMaps[] = {mpFinneasHouse, mpLambton, mpPemberleyLower, mpPemberleyMain,
             mpPemberleyUpper};
-        
+
         Game game = new Game();
         game.setAllActorArray(allActors);
         game.setAllItemArray(allItems);
         game.setAllQuestArray(allQuests);
         game.setPlayerOne(playerOne);
-                
+        game.setMaps(allMaps);
+        
+        
 // create StartProgramViw and start the program
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram(game);

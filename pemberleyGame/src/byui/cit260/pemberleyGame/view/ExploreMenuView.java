@@ -6,7 +6,7 @@
 package byui.cit260.pemberleyGame.view;
 
 import java.util.Scanner;
-import java.lang.Character;
+import java.lang.Character;//do not remove.  needed to check for integer
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
 
@@ -72,7 +72,7 @@ return false;
         do {
         playerSelection = this.getStringInput(prompt);
         MapControl mapControl = new MapControl();
-        String roomDescription = mapControl.playerNavigate(playerSelection, player);
+        String roomDescription = mapControl.playerNavigate(playerSelection, player, game);
         System.out.println(roomDescription);
         } while(!playerSelection.equalsIgnoreCase("x"));
         
@@ -82,15 +82,12 @@ return false;
     private void takeItem(Game game) {
        //declare variables
        Player player = game.getPlayerOne();
-       Item [] allItemArray = game.getAllItemArray();
-       Actor [] allActorArray = game.getAllActorArray();
-       ActorControl actorControl = new ActorControl();
        ItemControl itemControl = new ItemControl();
-       Item[] localItemArray = itemControl.createLocalItemArray(player, allItemArray);
+       Item[] localItemArray = game.getLocalItemArray();
         String gameMessage; 
         int indexOfItem;
         int quantityOfItem;
-        String playerSelection = " ";
+        String playerSelection;
         InventoryControl inventoryControl = new InventoryControl();
         //designate the inventory
         Inventory inventory = player.getInventory();

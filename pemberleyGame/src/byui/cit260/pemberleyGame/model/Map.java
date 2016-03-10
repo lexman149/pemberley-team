@@ -1,5 +1,6 @@
 package byui.cit260.pemberleyGame.model;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -9,15 +10,22 @@ import java.util.Objects;
 public class Map implements Serializable{
     
      //class instance variables //
+    private Room[] rooms;
     private String name;
-    private String room;
-    
-    
-    // constructor function //
+    private String mapDrawing;
+    private int[][] mapCoordinates;
+
     public Map() {
     }
 
-    // getters & setters // 
+    public Room[] getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Room[] rooms) {
+        this.rooms = rooms;
+    }
+
     public String getName() {
         return name;
     }
@@ -26,31 +34,37 @@ public class Map implements Serializable{
         this.name = name;
     }
 
-    public String getRooms() {
-        return room;
+    public String getMapDrawing() {
+        return mapDrawing;
     }
 
-    public void setRooms(String room) {
-        this.room = room;
+    public void setMapDrawing(String mapDrawing) {
+        this.mapDrawing = mapDrawing;
     }
-    
-    // string, equals & hash //
 
-    @Override
-    public String toString() {
-        return "Map{" + "Map Name = " + name + ", Room = " + room + '}';
+    public int[][] getMapCoordinates() {
+        return mapCoordinates;
+    }
+
+    public void setMapCoordinates(int[][] mapCoordinates) {
+        this.mapCoordinates = mapCoordinates;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + Objects.hashCode(this.room);
+        int hash = 5;
+        hash = 59 * hash + Arrays.deepHashCode(this.rooms);
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.mapDrawing);
+        hash = 59 * hash + Arrays.deepHashCode(this.mapCoordinates);
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -61,10 +75,23 @@ public class Map implements Serializable{
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.room, other.room)) {
+        if (!Objects.equals(this.mapDrawing, other.mapDrawing)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.rooms, other.rooms)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.mapCoordinates, other.mapCoordinates)) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Map{" + "rooms=" + rooms + ", name=" + name + ", mapDrawing=" + mapDrawing + ", mapCoordinates=" + mapCoordinates + '}';
+    }
+
+    
     
 }

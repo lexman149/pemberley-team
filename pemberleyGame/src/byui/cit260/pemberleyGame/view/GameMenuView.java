@@ -7,6 +7,9 @@ package byui.cit260.pemberleyGame.view;
 
 
 import byui.cit260.pemberleyGame.model.Game;
+import byui.cit260.pemberleyGame.model.Map;
+import byui.cit260.pemberleyGame.model.Player;
+import byui.cit260.pemberleyGame.model.Room;
 
 
 /**
@@ -38,7 +41,7 @@ public GameMenuView(){
                 this.displayInventory();
                 break;
             case "M":
-                this.displayMap();
+                this.displayMap(game);
                 break;
             case "P":
                 this.displayPeople();
@@ -68,7 +71,12 @@ return false;
         System.out.println("*** displayInventory function called ***");
     }
 
-    private void displayMap() {
+    private void displayMap(Game game) {
+        Player player = game.getPlayerOne();
+        Room currentRoom = player.getLocation();
+        Map currentMap = currentRoom.getMap();
+        System.out.println(currentMap.getMapDrawing());
+          
         System.out.println("*** displayMap function called ***");
     }
 

@@ -1,5 +1,6 @@
 package byui.cit260.pemberleyGame.model;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -19,10 +20,9 @@ public class Room extends Location{
       private Room east;
       private Room south;
       private Room west;
-      private boolean visited; 
-      private boolean blocked; 
-      private boolean alternateBlocked; 
-
+      private Map map;
+      private String[] roomDrawing;
+      
     public Room() {
     }
 
@@ -58,40 +58,31 @@ public class Room extends Location{
         this.west = west;
     }
 
-    public boolean isVisited() {
-        return visited;
+    public Map getMap() {
+        return map;
     }
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public void setMap(Map map) {
+        this.map = map;
     }
 
-    public boolean isBlocked() {
-        return blocked;
+    public String[] getRoomDrawing() {
+        return roomDrawing;
     }
 
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
-    }
-
-    public boolean isAlternateBlocked() {
-        return alternateBlocked;
-    }
-
-    public void setAlternateBlocked(boolean alternateBlocked) {
-        this.alternateBlocked = alternateBlocked;
+    public void setRoomDrawing(String[] roomDrawing) {
+        this.roomDrawing = roomDrawing;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 43 * hash + Objects.hashCode(this.north);
-        hash = 43 * hash + Objects.hashCode(this.east);
-        hash = 43 * hash + Objects.hashCode(this.south);
-        hash = 43 * hash + Objects.hashCode(this.west);
-        hash = 43 * hash + (this.visited ? 1 : 0);
-        hash = 43 * hash + (this.blocked ? 1 : 0);
-        hash = 43 * hash + (this.alternateBlocked ? 1 : 0);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.north);
+        hash = 83 * hash + Objects.hashCode(this.east);
+        hash = 83 * hash + Objects.hashCode(this.south);
+        hash = 83 * hash + Objects.hashCode(this.west);
+        hash = 83 * hash + Objects.hashCode(this.map);
+        hash = 83 * hash + Arrays.deepHashCode(this.roomDrawing);
         return hash;
     }
 
@@ -107,15 +98,6 @@ public class Room extends Location{
             return false;
         }
         final Room other = (Room) obj;
-        if (this.visited != other.visited) {
-            return false;
-        }
-        if (this.blocked != other.blocked) {
-            return false;
-        }
-        if (this.alternateBlocked != other.alternateBlocked) {
-            return false;
-        }
         if (!Objects.equals(this.north, other.north)) {
             return false;
         }
@@ -128,9 +110,16 @@ public class Room extends Location{
         if (!Objects.equals(this.west, other.west)) {
             return false;
         }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.roomDrawing, other.roomDrawing)) {
+            return false;
+        }
         return true;
     }
 
+    
     
     
 }

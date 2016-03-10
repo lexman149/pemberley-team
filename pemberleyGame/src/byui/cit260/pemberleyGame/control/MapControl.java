@@ -1,121 +1,173 @@
 /*
- * Pemberley Game
- * BYUi CIT260
- * Manning, Marriott & Wilkerson
+* Pemberley Game
+* BYUi CIT260
+* Manning, Marriott & Wilkerson
  */
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
+import java.util.ArrayList;
 
 /**
  *
  * @author Alexis
  */
 public class MapControl {
-    
-    public String playerNavigate(String direction, Player player) {
+
+    public String playerNavigate(String direction, Player player, Game game) {
         Room currentRoom = player.getLocation();
         Room nextRoom;
-        switch (direction) { 
-        case"E":
-        case"EAST":    
-            nextRoom = currentRoom.getEast(); 
-            break;
-        case"S":
-        case"South":
-            nextRoom = currentRoom.getSouth(); 
-            break;
-        case"N":
-        case"North":
-            nextRoom = currentRoom.getNorth(); 
-            break;
-        case"W":
-        case"West":
-            nextRoom = currentRoom.getWest(); 
-            break;
-            
-        default: 
-            return "Not sure where you are going.";
-            
-        } 
+        switch (direction) {
+            case "E":
+            case "EAST":
+                nextRoom = currentRoom.getEast();
+                break;
+            case "S":
+            case "SOUTH":
+                nextRoom = currentRoom.getSouth();
+                break;
+            case "N":
+            case "NORTH":
+                nextRoom = currentRoom.getNorth();
+                break;
+            case "W":
+            case "WEST":
+                nextRoom = currentRoom.getWest();
+                break;
+
+            default:
+                return "Not sure where you are going.";
+
+        }
         if (nextRoom == null) {
             return "You cannot go that direction. Please choose again.";
-        }
-        else {
+        } else {
+            System.out.println(nextRoom.getName());
             player.setLocation(nextRoom);
-            String playerMessage = "You move to the " + nextRoom.getName() + "\n";
-//            return playerMessage.concat(nextRoom.getDescription());--- previous code.  Can delete if function has been graded.
-            return this.lookAtRoom(player);//changed this to call the lookAtRoom function to display detailed descript of room.
+            currentRoom = player.getLocation();
+            String[] roomArray = currentRoom.getRoomDrawing();
+            if (roomArray == null) {
+                String[] roomDrawing = this.renderRoom(nextRoom);
+                nextRoom.setRoomDrawing(roomDrawing);
+
+
+            }
+
+            GameControl gameControl = new GameControl();
+            gameControl.updateGame(game);
+            String playerMessage = this.lookAtRoom(game);
+            return playerMessage;
         }
+
     }
-    
-    // author Sheila
-    public String lookAtRoom(Player player) {
-        Room currentRoom = player.getLocation(); 
+
+// author Sheila
+    public String lookAtRoom(Game game) {
+        Room currentRoom = game.getCurrentRoom();
         String roomDescription = currentRoom.getDescription();
         roomDescription = roomDescription + "\nThese are the directions you can move from here: ";
-        
-        if (currentRoom.getNorth() != null){
+        int i;
+
+        if (currentRoom.getNorth() != null) {
             roomDescription = roomDescription + "NORTH ";
         }
-        if (currentRoom.getWest() != null){
+        if (currentRoom.getWest() != null) {
             roomDescription = roomDescription + "WEST ";
         }
-        if (currentRoom.getSouth() != null){
+        if (currentRoom.getSouth() != null) {
             roomDescription = roomDescription + "SOUTH ";
         }
-        if (currentRoom.getEast() != null){
+        if (currentRoom.getEast() != null) {
             roomDescription = roomDescription + "EAST ";
         }
-        
-        roomDescription = roomDescription + this.drawRoom(currentRoom);
-            return roomDescription;
+
+        if (game.getLocalItemNames().length != 0) {
+            roomDescription = roomDescription + "\nThese Items are here: ";
+            for (String s : game.getLocalItemNames()) {
+                roomDescription = roomDescription + s;
+            }
+        }
+
+        if (game.getLocalActorNames().length != 0) {
+            roomDescription = roomDescription + "\nThese People are here: ";
+            for (String s : game.getLocalActorNames()) {
+                roomDescription = roomDescription + s;
+            }
+        }
+
+        String[] roomDrawing = currentRoom.getRoomDrawing();
+
+        for (String v : roomDrawing) {
+            roomDescription = roomDescription + "\n";
+            roomDescription = roomDescription + v;
+        }
+
+        return roomDescription;
     }
-    
-    
-    public String drawRoom(Room currentRoom){
-        //make room name uniform length to plug into drawing
-        String roomDrawing = "\n";
-        String roomName = currentRoom.getName();
-        int neededSpaces = 20 - roomName.length();
-        String spaces = "";
-        for (int i = 0; i<neededSpaces; i++ ){
-        spaces = spaces + " ";
+
+    public String[] renderRoom(Room room) {
+        String roomName = room.getName();
+        int i = 0;
+//break the room down into pieces by space so each row of the room drawing can have part of a name.  Makes for a narrow room.
+        String[] splitRoomName = roomName.split(" ");
+//add spaces to each name in the array to make them uniformly long
+        for (int n = 0; n < splitRoomName.length; n++) {
+            int spacesNeeded = 11 - splitRoomName[n].length();
+                for (int x = 0; x < spacesNeeded; x++) {
+                splitRoomName[n] = splitRoomName[n] + " ";
+            }
         }
-        roomName = roomName + spaces;
-        
-        //if there is a room to the north, indicate that.
-        if (currentRoom.getNorth() != null){
-            roomDrawing = roomDrawing + "             |          ";
-        }else {
-            roomDrawing = roomDrawing +  "                       ";
+        String[] roomDraw;
+        String buildLine = "";
+
+        ArrayList<String> roomDrawList = new ArrayList<>();
+
+        if (room.getNorth() != null) {
+            roomDrawList.add(Wall.vertPassage.getWall());
+        } else {
+            roomDrawList.add(Wall.empty.getWall());
         }
-        roomDrawing = roomDrawing + "\n  _____________________ ";
-        roomDrawing = roomDrawing + "\n |                     | \n";
-        
-        if (currentRoom.getWest() != null){
-            roomDrawing = roomDrawing + "_";
-        }else {
-            roomDrawing = roomDrawing +  " ";
+
+        roomDrawList.add(Wall.xWall.getWall());
+
+        if (splitRoomName.length == 3) {
+            roomDrawList.add(Wall.leftWall.getWall() + splitRoomName[i] + Wall.rightWall.getWall());
+            i++;
+        } else {
+            roomDrawList.add(Wall.emptyWall.getWall());
         }
-        
-        roomDrawing = roomDrawing + "| " + roomName;
-        
-        if (currentRoom.getEast() != null){
-            roomDrawing = roomDrawing + "|_";
-        }else {
-            roomDrawing = roomDrawing +  "| ";
+
+        if (room.getWest() != null) {
+            buildLine = Wall.west.getWall() + splitRoomName[i];
+        } else {
+            buildLine = Wall.leftWall.getWall() + splitRoomName[i];
         }
-  
-        roomDrawing = roomDrawing + "\n |                     | ";
-        roomDrawing = roomDrawing + "\n  _____________________\n ";        
-        if (currentRoom.getSouth() != null){
-            roomDrawing = roomDrawing + "            |          ";
-        }else {
-            roomDrawing = roomDrawing +  "                       ";
+        i++;
+
+        if (room.getEast() != null) {
+            buildLine = buildLine + Wall.east.getWall();
+        } else {
+            buildLine = buildLine + Wall.rightWall.getWall();
         }
-        
-        return roomDrawing;
+
+        roomDrawList.add(buildLine);
+        if (splitRoomName.length == 2) {
+            roomDrawList.add(Wall.leftWall.getWall() + splitRoomName[i] + Wall.rightWall.getWall());
+        } else {
+            roomDrawList.add(Wall.emptyWall.getWall());
+        }
+        roomDrawList.add(Wall.xWall.getWall());
+        if (room.getSouth() != null) {
+            roomDrawList.add(Wall.vertPassage.getWall());
+        } else {
+            roomDrawList.add(Wall.empty.getWall());
+        }
+        String[] roomDrawListArray = roomDrawList.toArray(new String[roomDrawList.size()]);
+
+        return roomDrawListArray;
+
     }
-    
+
+
+
 }

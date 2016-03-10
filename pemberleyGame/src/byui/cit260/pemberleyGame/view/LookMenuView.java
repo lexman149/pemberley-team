@@ -56,19 +56,14 @@ public class LookMenuView extends View {
     }
 
     private void displayRoom(Game game) {
-        Player player = game.getPlayerOne();
         MapControl mapControl = new MapControl();
-        String roomDescription = mapControl.lookAtRoom(player);
+        String roomDescription = mapControl.lookAtRoom(game);
         System.out.println(roomDescription);
     }
 
     //by Sheila
     private void displayCharacter(Game game) {
-        Player player = game.getPlayerOne();
-       Actor [] allActorArray = game.getAllActorArray();
-       ActorControl actorControl = new ActorControl();
-       Actor[] localActorArray = actorControl.createLocalActorArray(player, allActorArray);
-        String[] actorList = actorControl.createActorNameList(localActorArray); // creates String [] of actors
+        String [] actorList = game.getLocalActorNames();
         String actorString = " "; // creates just a String of actors, not an array
         for (String i : actorList) {
             actorString += ' ' + i;
@@ -82,15 +77,12 @@ public class LookMenuView extends View {
 
     //by Sheila
     private void displayItem(Game game) {
-        Player player = game.getPlayerOne();
-        Item [] allItemArray = game.getAllItemArray();
         ItemControl itemControl = new ItemControl();
-        Item[] localItemArray = itemControl.createLocalItemArray(player, allItemArray);
         String prompt = "Which item do you want to look at? Type X to cancel.";
         String playerSelection;
         do {
         playerSelection = this.getStringInput(prompt);
-        String roomDescription = itemControl.lookAtItem(playerSelection, player, localItemArray);
+        String roomDescription = itemControl.lookAtItem(playerSelection, game);
         System.out.println(roomDescription);
         } while(!playerSelection.equalsIgnoreCase("x"));
     }

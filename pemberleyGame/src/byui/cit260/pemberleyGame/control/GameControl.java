@@ -5,6 +5,7 @@
  */
 package byui.cit260.pemberleyGame.control;
 
+import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.pemberleyGame.model.User;
 
 /**
@@ -13,8 +14,23 @@ import byui.cit260.pemberleyGame.model.User;
  */
 public class GameControl {
 
-    public static void createNewGame(User player) {
-        System.out.println("\n*** createNew Game stub function called ***");
+    public static void createNewGame(User player, Game game) {
+        
+    }
+    
+    
+    
+    public void updateGame (Game game){
+        Player player = game.getPlayerOne();
+        game.setCurrentRoom(player.getLocation());
+        game.setCurrentMap(game.getCurrentRoom().getMap());
+        ActorControl actorControl = new ActorControl();
+        ItemControl itemControl = new ItemControl();
+        game.setLocalItemArray(itemControl.createLocalItemArray(game));
+        game.setLocalActorArray(actorControl.createLocalActorArray(game));
+        game.setLocalActorNames(actorControl.createActorNameList(game.getLocalActorArray()));
+        game.setLocalItemNames(itemControl.createItemNameList(game.getLocalItemArray()));
+        
     }
 
 }
