@@ -84,14 +84,14 @@ public class MapControl {
         if (game.getLocalItemNames().length != 0) {
             roomDescription = roomDescription + "\nThese Items are here: ";
             for (String s : game.getLocalItemNames()) {
-                roomDescription = roomDescription + s;
+                roomDescription = roomDescription + s + "-";
             }
         }
 
         if (game.getLocalActorNames().length != 0) {
             roomDescription = roomDescription + "\nThese People are here: ";
             for (String s : game.getLocalActorNames()) {
-                roomDescription = roomDescription + s;
+                roomDescription = roomDescription + s + "-";
             }
         }
 
