@@ -56,7 +56,7 @@ return false;
     }
 
     private void startNewGame(Game game) {
-        GameControl.createNewGame(PemberleyGame.getUser(), game);
+        GameControl.createNewGame(PemberleyGame.getUser());
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();

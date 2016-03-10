@@ -24,12 +24,31 @@ public class Game implements Serializable{
    private String [] inventoryItemNames;
    private Room currentRoom;
    private Map currentMap;
+   private User user;
+   private Room[] rooms;
    
     
     // constructor function //
     public Game() {
         
         
+    }
+
+    public Room[] getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Room[] rooms) {
+        this.rooms = rooms;
+    }
+    
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Player getPlayerOne() {
@@ -138,20 +157,22 @@ public class Game implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 61 * hash + Objects.hashCode(this.playerOne);
-        hash = 61 * hash + Arrays.deepHashCode(this.maps);
-        hash = 61 * hash + Arrays.deepHashCode(this.allItemArray);
-        hash = 61 * hash + Arrays.deepHashCode(this.allActorArray);
-        hash = 61 * hash + Arrays.deepHashCode(this.localItemArray);
-        hash = 61 * hash + Arrays.deepHashCode(this.localActorArray);
-        hash = 61 * hash + Arrays.deepHashCode(this.allQuestArray);
-        hash = 61 * hash + Arrays.deepHashCode(this.inventoryItemArray);
-        hash = 61 * hash + Arrays.deepHashCode(this.localItemNames);
-        hash = 61 * hash + Arrays.deepHashCode(this.localActorNames);
-        hash = 61 * hash + Arrays.deepHashCode(this.inventoryItemNames);
-        hash = 61 * hash + Objects.hashCode(this.currentRoom);
-        hash = 61 * hash + Objects.hashCode(this.currentMap);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.playerOne);
+        hash = 83 * hash + Arrays.deepHashCode(this.maps);
+        hash = 83 * hash + Arrays.deepHashCode(this.allItemArray);
+        hash = 83 * hash + Arrays.deepHashCode(this.allActorArray);
+        hash = 83 * hash + Arrays.deepHashCode(this.localItemArray);
+        hash = 83 * hash + Arrays.deepHashCode(this.localActorArray);
+        hash = 83 * hash + Arrays.deepHashCode(this.allQuestArray);
+        hash = 83 * hash + Arrays.deepHashCode(this.inventoryItemArray);
+        hash = 83 * hash + Arrays.deepHashCode(this.localItemNames);
+        hash = 83 * hash + Arrays.deepHashCode(this.localActorNames);
+        hash = 83 * hash + Arrays.deepHashCode(this.inventoryItemNames);
+        hash = 83 * hash + Objects.hashCode(this.currentRoom);
+        hash = 83 * hash + Objects.hashCode(this.currentMap);
+        hash = 83 * hash + Objects.hashCode(this.user);
+        hash = 83 * hash + Arrays.deepHashCode(this.rooms);
         return hash;
     }
 
@@ -206,8 +227,23 @@ public class Game implements Serializable{
         if (!Objects.equals(this.currentMap, other.currentMap)) {
             return false;
         }
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.rooms, other.rooms)) {
+            return false;
+        }
         return true;
+       
     }
+
+    @Override
+    public String toString() {
+        return "Game{" + "playerOne=" + playerOne + ", maps=" + maps + ", allItemArray=" + allItemArray + ", allActorArray=" + allActorArray + ", localItemArray=" + localItemArray + ", localActorArray=" + localActorArray + ", allQuestArray=" + allQuestArray + ", inventoryItemArray=" + inventoryItemArray + ", localItemNames=" + localItemNames + ", localActorNames=" + localActorNames + ", inventoryItemNames=" + inventoryItemNames + ", currentRoom=" + currentRoom + ", currentMap=" + currentMap + ", user=" + user + ", rooms=" + rooms + '}';
+    }
+
+    
+    
 
     
     
