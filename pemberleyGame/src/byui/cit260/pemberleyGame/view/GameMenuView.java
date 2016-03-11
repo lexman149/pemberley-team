@@ -75,6 +75,7 @@ return false;
         Room currentRoom = game.getCurrentRoom();
         Map currentMap = game.getCurrentMap();
         System.out.println(currentMap.getMapDrawing());
+        System.out.println("This map only contains places you have been\n\n");
     }
 
     private void displayPeople() {
