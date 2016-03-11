@@ -50,9 +50,7 @@ public class MapControl {
                 String[] roomDrawing = this.renderRoom(nextRoom);
                 nextRoom.setRoomDrawing(roomDrawing);
 
-                String mapDrawing = this.renderMap(nextRoom);
-                Map currentMap = nextRoom.getMap();
-                currentMap.setMapDrawing(mapDrawing);
+
             }
 
             GameControl gameControl = new GameControl();
@@ -417,12 +415,13 @@ public class MapControl {
 	rmUpstairsHallWest.setNorth(rmGallery);
 	rmUpstairsHallWest.setSouth(rmGrandStaircase);
         
-    Room[] rooms = {rmBackStaircase, rmBallroom, rmBlocked, rmCellar, rmCloset,
-    rmDiningRoom, rmDownstairsHall, rmDrawingRoom, rmEntry, rmFinnKithen, rmFrontDrive, rmGallery, rmGarden, rmGrandStaircase, rmGreatHall,
-    rmGreen, rmGrocer, rmKitchen, rmLake, rmLarder, rmLibrary, rmLivingRoom,
-    rmMilliner, rmMusicRoom, rmNathanielBedroom, rmPath, rmRoadEast, rmRoadWest, rmRoseBedroom, rmSecretLab, rmServantsQuarters, rmSmithy, rmStable, rmUpstairsHallEast, rmUpstairsHallWest,};
+Room[] rooms = {rmBackStaircase, rmBallroom, rmBlocked, rmCellar, rmCloset,
+rmDiningRoom, rmDownstairsHall, rmDrawingRoom, rmEntry, rmFinnKithen, rmFrontDrive, rmGallery, rmGarden, rmGrandStaircase, rmGreatHall,
+rmGreen, rmGrocer, rmKitchen, rmLake, rmLarder, rmLibrary, rmLivingRoom,
+rmMilliner, rmMusicRoom, rmNathanielBedroom, rmPath, rmRoadEast, rmRoadWest, rmRoseBedroom, rmSecretLab, rmServantsQuarters, rmSmithy, rmStable, rmUpstairsHallEast, rmUpstairsHallWest,};
 
     return rooms;
     }
+    
 }
     
