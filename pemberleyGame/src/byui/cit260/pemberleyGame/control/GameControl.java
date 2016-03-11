@@ -22,15 +22,8 @@ public class GameControl {
         PemberleyGame.setCurrentGame(game); //save
         
         game.setUser(player);
-        Player playerOne = new Player();
-        game.setPlayerOne(playerOne);
-         
-        Inventory inventory = new Inventory();
-        playerOne.setInventory(inventory);
-        GameControl.createGameObjects(game);
-        
-        
-        
+         GameControl.createGameObjects(game);
+               
     }
     public static void createGameObjects(Game game) {
     Actor atCarter = new Actor();
@@ -723,7 +716,9 @@ public class GameControl {
         game.setAllQuestArray(allQuests);
         game.setPlayerOne(playerOne);
         game.setMaps(allMaps);
-        
+        game.setCurrentRoom(playerOne.getLocation());
+        game.setCurrentMap(game.getCurrentRoom().getMap());
+                
     }
     
     

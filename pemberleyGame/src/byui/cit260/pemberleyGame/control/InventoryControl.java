@@ -6,6 +6,7 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
+import pemberley_game.PemberleyGame;
 
 
 /**
@@ -75,7 +76,10 @@ public class InventoryControl {
         } else {
             itemToTake.setLocation(inventory);
             inventory.setWeight(inventory.getWeight() + potentialWeight);
+            GameControl gameControl = new GameControl();
+            gameControl.updateGame(PemberleyGame.getCurrentGame());
             return ("You take " + itemToTake.getName());
+
 
         }
     }

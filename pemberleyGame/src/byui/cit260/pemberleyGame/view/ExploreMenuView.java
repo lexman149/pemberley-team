@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.lang.Character;//do not remove.  needed to check for integer
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
+import pemberley_game.PemberleyGame;
 
 
 /**
