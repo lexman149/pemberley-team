@@ -57,9 +57,14 @@ return false;
 
     private void startNewGame(Game game) {
         GameControl.createNewGame(PemberleyGame.getUser());
-        
+        game = PemberleyGame.getCurrentGame();
+        //update game 
+        GameControl gameControl = new GameControl();
+        gameControl.updateGame(game);
         // display the game menu
+        
         GameMenuView gameMenu = new GameMenuView();
+        
         gameMenu.display(game);
     }
 

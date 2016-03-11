@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.lang.Character;//do not remove.  needed to check for integer
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
+import pemberley_game.PemberleyGame;
 
 
 /**
@@ -48,7 +49,7 @@ public class ExploreMenuView extends View{
                 this.giveItem();
                 break;
             case "S":
-                this.speakToActor();
+                this.speakToActor(game);
                 break;
             case "U":
                 this.useItem();
@@ -136,10 +137,9 @@ return false;
         System.out.println("***giveItem function called ***");
     }
 
-    private void speakToActor() {
-        System.out.println("***speakToActor function called ***");
+    private void speakToActor(Game game) {
+        System.out.println("***speak function called ***");
     }
-
     private void useItem() {
         System.out.println("***UseItem function called ***");
     }

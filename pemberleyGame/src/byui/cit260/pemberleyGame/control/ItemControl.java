@@ -39,6 +39,7 @@ to make it case insenstive and so that if any part of the players selection is
 in the string it will return an index of its location.  For example, using this
 if the player says they want to get treats or dog treats instead of The 
 Dog Treats, it will still find it.*/
+
         for (int i = 0; i < stringToCheck.length; i++) {
 //change players selection to upper case to make the search case insensitive
             playerSelection = playerSelection.toUpperCase();

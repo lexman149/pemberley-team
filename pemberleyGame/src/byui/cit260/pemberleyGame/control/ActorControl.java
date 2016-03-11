@@ -7,6 +7,7 @@ package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
+import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
 import java.util.ArrayList;
 
@@ -43,5 +44,39 @@ public class ActorControl {
         return actorNameList;
     }
     
-    
+    //by Melissa Marriott
+    public int getActorIndex(String playerSelection, Player player, Actor[] localActorArray) {
+//set default message.
+        int actorIndex = -1;
+        ActorControl actorControl = new ActorControl();
+        /*take the array and make a new array containing the names of the actors to make
+it searchable by name*/
+        String[] localActorList = actorControl.createActorNameList(localActorArray);
+//call the function that checks user selection against each actor name;
+        actorIndex = this.findIndexOfValue(playerSelection, localActorList);
+        return actorIndex;
+    }
+    public int findIndexOfValue(String playerSelection, String[] stringToCheck) {
+//set the default to -1
+        int indexOfValue = -1;
+        /*loop through each string in the array to see if selection is anywhere 
+in the string. I am using this instead of a normal array contains both 
+to make it case insenstive and so that if any part of the players selection is 
+in the string it will return an index of its location.  For example, using this
+if the player says they want to get treats or dog treats instead of The 
+Dog Treats, it will still find it.*/
+
+        for (int i = 0; i < stringToCheck.length; i++) {
+//change players selection to upper case to make the search case insensitive
+            playerSelection = playerSelection.toUpperCase();
+//change each string in the array to upper case to make the search case insensitive
+            String stringToCheckUpper = stringToCheck[i].toUpperCase();
+//if the string contains any part of the player's selection, return the index.
+            if (stringToCheckUpper.contains(playerSelection) == true) {
+                indexOfValue = i;
+            }
+        }
+
+        return indexOfValue;
+    }
 }

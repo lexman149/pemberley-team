@@ -1,14 +1,14 @@
 /*
- * Pemberley Game
- * BYUi CIT260
- * Manning, Marriott & Wilkerson
+* Pemberley Game
+* BYUi CIT260
+* Manning, Marriott & Wilkerson
  */
 package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.*;
 import java.util.Scanner;
 import byui.cit260.pemberleyGame.model.*;
-
+import pemberley_game.PemberleyGame;
 
 /**
  *
@@ -16,24 +16,24 @@ import byui.cit260.pemberleyGame.model.*;
  */
 public class LookMenuView extends View {
 
-    public LookMenuView(){
-         super("\n"
-            + "\n----------------------------------------"
-            + "\n | Look Menu"
-            + "\n----------------------------------------"
-            + "\nR - Look at the room"
-            + "\nC - Look at a character" 
-            + "\nI - Look at an inventory item"
-            + "\nH - Look at an items here"
-            + "\nX - Exit"
-            + "\n----------------------------------------"
-            + "\nEnter your selection below:");
+    public LookMenuView() {
+        super("\n"
+                + "\n----------------------------------------"
+                + "\n | Look Menu"
+                + "\n----------------------------------------"
+                + "\nR - Look at the room"
+                + "\nC - Look at a character"
+                + "\nI - Look at an inventory item"
+                + "\nH - Look at an items here"
+                + "\nX - Exit"
+                + "\n----------------------------------------"
+                + "\nEnter your selection below:");
     }
-   
-   @Override     
+
+    @Override
     public boolean doAction(String value, Game game) {
-        
-        switch(value){
+
+        switch (value) {
             case "R":
                 this.displayRoom(game);
                 break;
@@ -61,9 +61,9 @@ public class LookMenuView extends View {
         System.out.println(roomDescription);
     }
 
-    //by Sheila
+//by Sheila
     private void displayCharacter(Game game) {
-        String [] actorList = game.getLocalActorNames();
+        String[] actorList = game.getLocalActorNames();
         String actorString = " "; // creates just a String of actors, not an array
         for (String i : actorList) {
             actorString += ' ' + i;
@@ -75,22 +75,24 @@ public class LookMenuView extends View {
         System.out.println("*** call the displayInventory function ***");
     }
 
-    //by Sheila
+//by Sheila
     private void displayItem(Game game) {
         ItemControl itemControl = new ItemControl();
         String prompt = "Which item do you want to look at? Type X to cancel.";
+        System.out.println("These things are here:");
+        String[] itemsHere = game.getLocalItemNames();
+            for (String i : itemsHere) {
+                System.out.print(i + "\n");
+            }
         String playerSelection;
         do {
-        playerSelection = this.getStringInput(prompt);
-        String roomDescription = itemControl.lookAtItem(playerSelection, game);
-        System.out.println(roomDescription);
-        } while(!playerSelection.equalsIgnoreCase("x"));
+            playerSelection = this.getStringInput(prompt);
+            
+            String roomDescription = itemControl.lookAtItem(playerSelection, game);
+            System.out.println(roomDescription);
+        } while (!playerSelection.equalsIgnoreCase("x"));
     }
-    
-    
-    
-    
-    
+
     private String getStringInput(String prompt) {
         boolean valid = false; // indicates if the name has be retrieved
         String playersInput = null;
@@ -118,6 +120,3 @@ public class LookMenuView extends View {
     }
 
 }
-    
-
-   
