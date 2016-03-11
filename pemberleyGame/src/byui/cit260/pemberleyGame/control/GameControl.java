@@ -151,7 +151,7 @@ public class GameControl {
         atCarter.setAlternateDescription("Carter is relieved that you have found the tea cup.");
         atCarter.setCharacterScript("I seem to have misplaced a tea cup.");
         atCarter.setAlternateCharacterScript("Thank you for finding the tea cup");
-        atCarter.setDescription("Carter, is a footman.  He appears very distressed.");
+        atCarter.setDescription("Carter, is a footman. He appears very distressed.");
         atCarter.setLocation(rmDiningRoom);
         atCarter.setName("Carter the Footman");
         atCarter.setQuest(qtCarter);
@@ -159,7 +159,7 @@ public class GameControl {
         atDaisy.setAlternateLocation(rmKitchen);
         atDaisy.setCharacterScript("I seem to have misplaced cook's best cake recipe”");
         atDaisy.setAlternateCharacterScript("Thank you for your help.");
-        atDaisy.setDescription("Daisy is looking all over he cellar for something");
+        atDaisy.setDescription("Daisy is looking all over the cellar for something");
         atDaisy.setLocation(rmCellar);
         atDaisy.setName("Daisy an undercook");
         atDaisy.setQuest(qtDaisy);
@@ -172,14 +172,14 @@ public class GameControl {
         qtLake.setNeeds(itFishingPole);
         atHamster.setAlternateCharacterScript("Woof Woof");
         atHamster.setCharacterScript("GRRR.  Snarl.");
-        atHamster.setDescription("It is Uncle Finneas' Pet Hamster.  Uncle Finneas put dog brain matter in his head.");
+        atHamster.setDescription("It is Uncle Finneas' Pet Hamster. Uncle Finneas put dog brain matter in his head.");
         atHamster.setLocation(rmLivingRoom);
         atHamster.setName("Bruiser the Hamster");
         atHamster.setQuest(qtHamster);
         atJaneDarcy.setAlternateDescription("Jane Darcy is playing the Piano Forte beautifully.");
         atJaneDarcy.setAlternateCharacterScript("She appears too busy to speak.");
         atJaneDarcy.setCharacterScript("Where is it... where is it...”");
-        atJaneDarcy.setDescription("Jane Darcy is the eldest child of Mr and Mrs Darcy.  Right now she seems very concerned as she searches the music room for something.");
+        atJaneDarcy.setDescription("Jane Darcy is the eldest child of Mr and Mrs Darcy. Right now she seems very concerned as she searches the music room for something.");
         atJaneDarcy.setLocation(rmMusicRoom);
         atJaneDarcy.setName("Jane Darcy");
         atJaneDarcy.setQuest(qtJaneDarcy);

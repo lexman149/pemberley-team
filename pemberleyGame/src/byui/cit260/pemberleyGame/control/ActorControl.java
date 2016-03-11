@@ -80,4 +80,15 @@ Dog Treats, it will still find it.*/
 
         return indexOfValue;
     }
+
+// author Sheila    
+    public String speakToActor(String playerSelection, Game game) {
+        Actor[] localActorArray = game.getLocalActorArray();//set the variable for localActorArray to the game's localActorArray
+        int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalActorNames()); // compares player's selection with String[] of actors in the same location as the player
+        if (indexOfItem != -1) {
+            return localActorArray[indexOfItem].getCharacterScript(); // returns description of actors in the room
+        } else {
+            return "That character is not here.";
+        }
+    }
 }
