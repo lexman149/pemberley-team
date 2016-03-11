@@ -757,8 +757,14 @@ public class GameControl {
         game.setPlayerOne(playerOne);
         game.setMaps(allMaps);
         game.setCurrentRoom(playerOne.getLocation());
+        //render initial room and map
         game.setCurrentMap(game.getCurrentRoom().getMap());
-                
+                MapControl mapControl = new MapControl();
+                rmLivingRoom.setRoomDrawing(mapControl.renderRoom(rmLivingRoom));
+
+                String mapDrawing = mapControl.renderMap(rmLivingRoom);
+                Map currentMap = rmLivingRoom.getMap();
+                currentMap.setMapDrawing(mapDrawing); 
     }
     
     

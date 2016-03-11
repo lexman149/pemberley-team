@@ -171,7 +171,7 @@ public class MapControl {
     }
 
 
-    private String renderMap(Room nextRoom) {
+    public String renderMap(Room nextRoom) {
         Room currentRoom;
         Map currentMap = nextRoom.getMap();
         String[] roomDrawing;
