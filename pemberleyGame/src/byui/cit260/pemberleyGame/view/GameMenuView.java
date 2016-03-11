@@ -72,9 +72,9 @@ return false;
     }
 
     private void displayMap(Game game) {
-
-          
-        System.out.println("*** displayMap function called ***");
+        Room currentRoom = game.getCurrentRoom();
+        Map currentMap = game.getCurrentMap();
+        System.out.println(currentMap.getMapDrawing());
     }
 
     private void displayPeople() {

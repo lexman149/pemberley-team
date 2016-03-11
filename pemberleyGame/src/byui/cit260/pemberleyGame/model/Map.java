@@ -52,11 +52,11 @@ public class Map implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Arrays.deepHashCode(this.rooms);
-        hash = 59 * hash + Objects.hashCode(this.name);
-        hash = 59 * hash + Objects.hashCode(this.mapDrawing);
-        hash = 59 * hash + Arrays.deepHashCode(this.mapCoordinates);
+        int hash = 7;
+        hash = 97 * hash + Arrays.deepHashCode(this.rooms);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.mapDrawing);
+        hash = 97 * hash + Arrays.deepHashCode(this.mapCoordinates);
         return hash;
     }
 
@@ -92,6 +92,5 @@ public class Map implements Serializable{
         return "Map{" + "rooms=" + rooms + ", name=" + name + ", mapDrawing=" + mapDrawing + ", mapCoordinates=" + mapCoordinates + '}';
     }
 
-    
     
 }

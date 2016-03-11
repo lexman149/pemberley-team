@@ -687,8 +687,48 @@ public class GameControl {
         rmUpstairsHallWest.setName("Up Hall West");
         rmUpstairsHallWest.setNorth(rmGallery);
         rmUpstairsHallWest.setSouth(rmGrandStaircase);
+        
+        //make a room array
+        Room roomsArray1[] = {rmFinnKitchen, rmLivingRoom, rmCloset, rmSecretLab};
+        Room roomsArray2[] = {rmMilliner, rmRoadWest, rmRoadEast, rmGrocer, rmSmithy, rmGreen};
+        Room roomsArray3[] = {rmMusicRoom, rmDiningRoom, rmLibrary, rmBallroom, rmGreatHall, rmDrawingRoom, rmEntry, rmGarden, rmStable, rmFrontDrive, rmPath, rmLake};
+        Room roomsArray4[] = {rmCellar, rmBackStaircase, rmKitchen, rmDownstairsHall, rmLarder, rmServantsQuarters};
+        Room roomsArray5[] = {rmUpstairsHallEast, rmNathanielBedroom, rmGrandStaircase, rmGallery, rmRoseBedroom, rmUpstairsHallWest,};
 
+        //then assign it to the map
+        mpFinneasHouse.setRooms(roomsArray1);
+        mpLambton.setRooms(roomsArray2);
+        mpPemberleyMain.setRooms(roomsArray3);
+        mpPemberleyLower.setRooms(roomsArray4);
+        mpPemberleyUpper.setRooms(roomsArray5);
 
+        mpFinneasHouse.setMapCoordinates(MapCoordinates.mpFinnHouse.getRoomPositions());
+        mpLambton.setMapCoordinates(MapCoordinates.mpLambton.getRoomPositions());
+        mpPemberleyMain.setMapCoordinates(MapCoordinates.mpPemberleyMain.getRoomPositions());
+        mpPemberleyLower.setMapCoordinates(MapCoordinates.mpPemberleyLower.getRoomPositions());
+        mpPemberleyUpper.setMapCoordinates(MapCoordinates.mpPemberleyUpper.getRoomPositions());
+        
+         //set which map a room belongs to
+        for (Room i : mpPemberleyMain.getRooms()) {
+            i.setMap(mpPemberleyMain);
+        }
+
+        for (Room i : mpFinneasHouse.getRooms()) {
+            i.setMap(mpFinneasHouse);
+        }
+
+        for (Room i : mpLambton.getRooms()) {
+            i.setMap(mpLambton);
+        }
+
+        for (Room i : mpPemberleyLower.getRooms()) {
+            i.setMap(mpPemberleyLower);
+        }
+
+        for (Room i : mpPemberleyUpper.getRooms()) {
+            i.setMap(mpPemberleyUpper);
+        }
+                
         inventoryOne.setWeight(0);
         playerOne.setInventory(inventoryOne);
 

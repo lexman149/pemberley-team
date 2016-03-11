@@ -3,16 +3,16 @@ package byui.cit260.pemberleyGame.model;
 import java.io.Serializable;
 
 public enum MapCoordinates implements Serializable{
-        mpLampton(new int [][]{
-            {0, -1, -1}, // miliner
-            {1, 2, -1},	// road west, road East
-            {3, 4, 5}}), // grocer, smithy, green
+    mpLambton(new int [][]{
+        {0, -1, -1}, // miliner
+        {1, 2, -1},	// road west, road East
+        {3, 4, 5}}), // grocer, smithy, green
        
 
-	mpPemberleyDownstairs(new int [][]{
-            {-1, 0, -1}, // null, Cellar, null
-            {1, 2, 3}, // back stairs, kitchen, downstairs hall
-            {-1, 4, 5}}),  // null, Larder, Servants
+    mpPemberleyLower(new int [][]{
+        {-1, 0, -1}, // null, Cellar, null
+        {1, 2, 3}, // back stairs, kitchen, downstairs hall
+        {-1, 4, 5}}),  // null, Larder, Servants
         
     
     mpPemberleyMain(new int [][]{
@@ -21,7 +21,7 @@ public enum MapCoordinates implements Serializable{
         {-1, 9, 10, 11}}), // null, front drive, path, lake
 
     
-    mpPemberleyUpstairs(new int [][]{
+    mpPemberleyUpper(new int [][]{
         {0, 1, -1}, // gallery, Rose's Room, null
         {2, 3, 4}, // up hall, up hall, Mr Ws
         {5, -1, -1}}), // grand staircase, null, null
@@ -39,11 +39,11 @@ public enum MapCoordinates implements Serializable{
     }
 
     public static MapCoordinates getMpLampton() {
-        return mpLampton;
+        return mpLambton;
     }
 
     public static MapCoordinates getMpPemberleyDownstairs() {
-        return mpPemberleyDownstairs;
+        return mpPemberleyLower;
     }
 
     public static MapCoordinates getMpPemberleyMain() {
@@ -51,7 +51,7 @@ public enum MapCoordinates implements Serializable{
     }
 
     public static MapCoordinates getMpPemberleyUpstairs() {
-        return mpPemberleyUpstairs;
+        return mpPemberleyUpper;
     }
 
     public static MapCoordinates getMpFinnHouse() {
