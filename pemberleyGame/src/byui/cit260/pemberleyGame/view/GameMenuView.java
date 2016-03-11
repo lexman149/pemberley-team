@@ -1,16 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package byui.cit260.pemberleyGame.view;
-
 
 import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Map;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
-
 
 /**
  *
@@ -18,25 +16,25 @@ import byui.cit260.pemberleyGame.model.Room;
  */
 public class GameMenuView extends View {
 
-public GameMenuView(){
-         super( "\n"
-            + "\n----------------------------------------"
-            + "\n | Game Menu"
-            + "\n----------------------------------------"
-            + "\nI - Inventory"
-            + "\nM - Map"
-            + "\nP - People"
-            + "\nT - Current Tasks"
-            + "\nE - Explore"
-            + "\nX - Exit"
-            + "\n----------------------------------------"
-            + "\nEnter your selection below:");
-}
+    public GameMenuView() {
+        super("\n"
+                + "\n----------------------------------------"
+                + "\n | Game Menu"
+                + "\n----------------------------------------"
+                + "\nI - Inventory"
+                + "\nM - Map"
+                + "\nP - People"
+                + "\nT - Current Tasks"
+                + "\nE - Explore"
+                + "\nX - Exit"
+                + "\n----------------------------------------"
+                + "\nEnter your selection below:");
+    }
 
- @Override
+    @Override
     public boolean doAction(String value, Game game) {
-        
-        switch(value){
+
+        switch (value) {
             case "I":
                 this.displayInventory();
                 break;
@@ -58,13 +56,13 @@ public GameMenuView(){
                 System.out.println("\n***Invalid Selection *** Try Again");
                 return false;
         }
-return false;
+        return false;
     }
 
     private void displayExploreMenu(Game game) {
         ExploreMenuView exploreMenu = new ExploreMenuView();
         exploreMenu.display(game);
-        
+
     }
 
     private void displayInventory() {
@@ -86,14 +84,4 @@ return false;
         System.out.println("*** displayCurrentTasks function called ***");
     }
 
-    
-    }
-
-
-
-
-    
-
-   
-
- 
+}

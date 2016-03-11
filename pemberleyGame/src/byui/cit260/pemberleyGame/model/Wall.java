@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package byui.cit260.pemberleyGame.model;
 
@@ -11,20 +11,19 @@ import java.io.Serializable;
  *
  * @author Mel
  */
-public enum Wall implements Serializable{
+public enum Wall implements Serializable {
 
-   xWall(" -------------- "),
-   leftWall(" | "),
-   rightWall("| "),
-   empty ("                "),
-   west ("=| "),
-   east ("|="), 
-   vertPassage("      | |       "),
-   emptyWall (" |            | ");
-   
-   private final String wall;
+    xWall(" -------------- "),
+    leftWall(" | "),
+    rightWall("| "),
+    empty("                "),
+    west("=| "),
+    east("|="),
+    vertPassage("      | |       "),
+    emptyWall(" |            | ");
 
-    
+    private final String wall;
+
     private Wall(String wallString) {
         this.wall = wallString;
     }
@@ -61,16 +60,9 @@ public enum Wall implements Serializable{
         return wall;
     }
 
-    
-    
     @Override
     public String toString() {
         return "Wall{" + "wall=" + wall + '}';
     }
-    
-    
 
-    
-    
-    
 }

@@ -1,4 +1,5 @@
 package byui.cit260.pemberleyGame.model;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -7,9 +8,9 @@ import java.util.Objects;
  *
  * @author wilkerson-sheila
  */
-public class Map implements Serializable{
-    
-     //class instance variables //
+public class Map implements Serializable {
+
+//class instance variables //
     private Room[] rooms;
     private String name;
     private String mapDrawing;
@@ -92,5 +93,4 @@ public class Map implements Serializable{
         return "Map{" + "rooms=" + rooms + ", name=" + name + ", mapDrawing=" + mapDrawing + ", mapCoordinates=" + mapCoordinates + '}';
     }
 
-    
 }

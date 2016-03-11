@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package byui.cit260.pemberleyGame.model;
 
@@ -12,13 +12,12 @@ import java.util.Objects;
  *
  * @author MMarriott
  */
-public class Location implements Serializable{
+public class Location implements Serializable {
 
-    //class instance variables
+//class instance variables
     protected String name;
     protected String description;
-    
-    
+
     public Location() {
     }
 
@@ -65,7 +64,5 @@ public class Location implements Serializable{
     public String toString() {
         return "Location{" + "name=" + name + ", description=" + description + '}';
     }
-    
-    
-    
+
 }

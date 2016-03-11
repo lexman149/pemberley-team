@@ -1,7 +1,7 @@
 /*
- * Pemberley Game
- * BYUi CIT260
- * Manning, Marriott & Wilkerson
+* Pemberley Game
+* BYUi CIT260
+* Manning, Marriott & Wilkerson
  */
 package byui.cit260.pemberleyGame.view;
 
@@ -15,25 +15,24 @@ import pemberley_game.PemberleyGame;
  */
 public class MainMenuView extends View {
 
-    public MainMenuView(){
-         super("\n"
-            +"\n----------------------------------------"
-            + "\n | Main Menu"
-            + "\n----------------------------------------"
-            + "\nN - Start new game"
-            + "\nG - Start game"
-            + "\nH - Get help on how to play the game"
-            + "\nS - Save game"
-            + "\nX - Exit"
-            + "\n----------------------------------------"
-            + "\nEnter your selection below:");
+    public MainMenuView() {
+        super("\n"
+                + "\n----------------------------------------"
+                + "\n | Main Menu"
+                + "\n----------------------------------------"
+                + "\nN - Start new game"
+                + "\nG - Start game"
+                + "\nH - Get help on how to play the game"
+                + "\nS - Save game"
+                + "\nX - Exit"
+                + "\n----------------------------------------"
+                + "\nEnter your selection below:");
     }
-  
-@Override
+
+    @Override
     public boolean doAction(String value, Game game) {
 
-        
-        switch(value){
+        switch (value) {
             case "N":
                 this.startNewGame(game);
                 break;
@@ -52,17 +51,17 @@ public class MainMenuView extends View {
                 System.out.println("\n***Invalid Selection *** Try Again");
                 return false;
         }
-return false;
+        return false;
     }
 
     private void startNewGame(Game game) {
         GameControl.createNewGame(PemberleyGame.getUser());
         game = PemberleyGame.getCurrentGame();
-        //update game 
+//update game 
         GameControl gameControl = new GameControl();
         gameControl.updateGame(game);
-        
-        // display the game menu
+
+// display the game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display(game);
     }
@@ -72,9 +71,9 @@ return false;
     }
 
     private void displayHelpMe(Game game) {
-        // System.out.println("*** displayHelpMenu function called ");
-        
-        // display the help menu
+// System.out.println("*** displayHelpMenu function called ");
+
+// display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display(game);
     }
@@ -84,8 +83,3 @@ return false;
     }
 
 }
-    
-
-   
-
- 

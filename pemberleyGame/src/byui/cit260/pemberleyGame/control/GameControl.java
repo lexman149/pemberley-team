@@ -17,16 +17,17 @@ import pemberley_game.PemberleyGame;
 public class GameControl {
 
     public static void createNewGame(User player) {
-        
+
         Game game = new Game(); // create new game
         PemberleyGame.setCurrentGame(game); //save
-        
+
         game.setUser(player);
-         GameControl.createGameObjects(game);
-               
+        GameControl.createGameObjects(game);
+
     }
+
     public static void createGameObjects(Game game) {
-    Actor atCarter = new Actor();
+        Actor atCarter = new Actor();
         Actor atDaisy = new Actor();
         Actor atGeorgie = new Actor();
         Actor atJaneDarcy = new Actor();
@@ -687,15 +688,15 @@ public class GameControl {
         rmUpstairsHallWest.setName("Up Hall West");
         rmUpstairsHallWest.setNorth(rmGallery);
         rmUpstairsHallWest.setSouth(rmGrandStaircase);
-        
-        //make a room array
+
+//make a room array
         Room roomsArray1[] = {rmFinnKitchen, rmLivingRoom, rmCloset, rmSecretLab};
         Room roomsArray2[] = {rmMilliner, rmRoadWest, rmRoadEast, rmGrocer, rmSmithy, rmGreen};
         Room roomsArray3[] = {rmMusicRoom, rmDiningRoom, rmLibrary, rmBallroom, rmGreatHall, rmDrawingRoom, rmEntry, rmGarden, rmStable, rmFrontDrive, rmPath, rmLake};
         Room roomsArray4[] = {rmCellar, rmBackStaircase, rmKitchen, rmDownstairsHall, rmLarder, rmServantsQuarters};
         Room roomsArray5[] = {rmUpstairsHallEast, rmNathanielBedroom, rmGrandStaircase, rmGallery, rmRoseBedroom, rmUpstairsHallWest,};
 
-        //then assign it to the map
+//then assign it to the map
         mpFinneasHouse.setRooms(roomsArray1);
         mpLambton.setRooms(roomsArray2);
         mpPemberleyMain.setRooms(roomsArray3);
@@ -707,8 +708,8 @@ public class GameControl {
         mpPemberleyMain.setMapCoordinates(MapCoordinates.mpPemberleyMain.getRoomPositions());
         mpPemberleyLower.setMapCoordinates(MapCoordinates.mpPemberleyLower.getRoomPositions());
         mpPemberleyUpper.setMapCoordinates(MapCoordinates.mpPemberleyUpper.getRoomPositions());
-        
-         //set which map a room belongs to
+
+//set which map a room belongs to
         for (Room i : mpPemberleyMain.getRooms()) {
             i.setMap(mpPemberleyMain);
         }
@@ -728,7 +729,7 @@ public class GameControl {
         for (Room i : mpPemberleyUpper.getRooms()) {
             i.setMap(mpPemberleyUpper);
         }
-                
+
         inventoryOne.setWeight(0);
         playerOne.setInventory(inventoryOne);
 
@@ -750,25 +751,23 @@ public class GameControl {
         Map allMaps[] = {mpFinneasHouse, mpLambton, mpPemberleyLower, mpPemberleyMain,
             mpPemberleyUpper};
 
-       
         game.setAllActorArray(allActors);
         game.setAllItemArray(allItems);
         game.setAllQuestArray(allQuests);
         game.setPlayerOne(playerOne);
         game.setMaps(allMaps);
         game.setCurrentRoom(playerOne.getLocation());
-        //render initial room and map
+//render initial room and map
         game.setCurrentMap(game.getCurrentRoom().getMap());
-                MapControl mapControl = new MapControl();
-                rmLivingRoom.setRoomDrawing(mapControl.renderRoom(rmLivingRoom));
+        MapControl mapControl = new MapControl();
+        rmLivingRoom.setRoomDrawing(mapControl.renderRoom(rmLivingRoom));
 
-                String mapDrawing = mapControl.renderMap(rmLivingRoom);
-                Map currentMap = rmLivingRoom.getMap();
-                currentMap.setMapDrawing(mapDrawing); 
+        String mapDrawing = mapControl.renderMap(rmLivingRoom);
+        Map currentMap = rmLivingRoom.getMap();
+        currentMap.setMapDrawing(mapDrawing);
     }
-    
-    
-    public void updateGame (Game game){
+
+    public void updateGame(Game game) {
         Player player = game.getPlayerOne();
         game.setCurrentRoom(player.getLocation());
         game.setCurrentMap(game.getCurrentRoom().getMap());
@@ -778,9 +777,7 @@ public class GameControl {
         game.setLocalActorArray(actorControl.createLocalActorArray(game));
         game.setLocalActorNames(actorControl.createActorNameList(game.getLocalActorArray()));
         game.setLocalItemNames(itemControl.createItemNameList(game.getLocalItemArray()));
-        
-    }
 
-    
+    }
 
 }

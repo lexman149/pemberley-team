@@ -81,13 +81,13 @@ public class LookMenuView extends View {
         String prompt = "Which item do you want to look at? Type X to cancel.";
         System.out.println("These things are here:");
         String[] itemsHere = game.getLocalItemNames();
-            for (String i : itemsHere) {
-                System.out.print(i + "\n");
-            }
+        for (String i : itemsHere) {
+            System.out.print(i + "\n");
+        }
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
-            
+
             String roomDescription = itemControl.lookAtItem(playerSelection, game);
             System.out.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));

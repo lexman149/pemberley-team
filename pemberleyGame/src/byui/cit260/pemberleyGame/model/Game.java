@@ -8,30 +8,28 @@ import java.util.Objects;
  *
  * @author wilkerson-sheila
  */
-public class Game implements Serializable{
-    
-   // class instance variables //
-   private Player playerOne;
-   private Map [] maps;
-   private Item [] allItemArray;
-   private Actor [] allActorArray;
-   private Item [] localItemArray;
-   private Actor [] localActorArray;
-   private Quest [] allQuestArray;
-   private Item[] inventoryItemArray;
-   private String [] localItemNames;
-   private String [] localActorNames;
-   private String [] inventoryItemNames;
-   private Room currentRoom;
-   private Map currentMap;
-   private User user;
-   private Room[] rooms;
-   
-    
-    // constructor function //
+public class Game implements Serializable {
+
+// class instance variables //
+    private Player playerOne;
+    private Map[] maps;
+    private Item[] allItemArray;
+    private Actor[] allActorArray;
+    private Item[] localItemArray;
+    private Actor[] localActorArray;
+    private Quest[] allQuestArray;
+    private Item[] inventoryItemArray;
+    private String[] localItemNames;
+    private String[] localActorNames;
+    private String[] inventoryItemNames;
+    private Room currentRoom;
+    private Map currentMap;
+    private User user;
+    private Room[] rooms;
+
+// constructor function //
     public Game() {
-        
-        
+
     }
 
     public Room[] getRooms() {
@@ -41,7 +39,6 @@ public class Game implements Serializable{
     public void setRooms(Room[] rooms) {
         this.rooms = rooms;
     }
-    
 
     public User getUser() {
         return user;
@@ -234,7 +231,7 @@ public class Game implements Serializable{
             return false;
         }
         return true;
-       
+
     }
 
     @Override
@@ -242,12 +239,4 @@ public class Game implements Serializable{
         return "Game{" + "playerOne=" + playerOne + ", maps=" + maps + ", allItemArray=" + allItemArray + ", allActorArray=" + allActorArray + ", localItemArray=" + localItemArray + ", localActorArray=" + localActorArray + ", allQuestArray=" + allQuestArray + ", inventoryItemArray=" + inventoryItemArray + ", localItemNames=" + localItemNames + ", localActorNames=" + localActorNames + ", inventoryItemNames=" + inventoryItemNames + ", currentRoom=" + currentRoom + ", currentMap=" + currentMap + ", user=" + user + ", rooms=" + rooms + '}';
     }
 
-    
-    
-
-    
-    
-    
-    
-    
 }

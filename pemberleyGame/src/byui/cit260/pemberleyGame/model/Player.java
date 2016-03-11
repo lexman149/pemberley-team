@@ -3,14 +3,13 @@ package byui.cit260.pemberleyGame.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-
 /**
  *
  * @author lexmanning
  */
-public class Player implements Serializable{
-       
-    // class instance variables
+public class Player implements Serializable {
+
+// class instance variables
     private String name;
     private Room location;
     private Inventory inventory;
@@ -76,10 +75,4 @@ public class Player implements Serializable{
         return "Player{" + "name=" + name + ", location=" + location + ", inventory=" + inventory + '}';
     }
 
-    
-    
-    }
-
- 
-
-  
+}

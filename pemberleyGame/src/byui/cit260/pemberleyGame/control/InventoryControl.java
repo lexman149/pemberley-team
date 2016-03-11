@@ -8,16 +8,12 @@ package byui.cit260.pemberleyGame.control;
 import byui.cit260.pemberleyGame.model.*;
 import pemberley_game.PemberleyGame;
 
-
 /**
  *
  * @author mbp
  */
-public class InventoryControl {    
-    
- 
-    
-    
+public class InventoryControl {
+
     public double calcAddInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) {
         if (newItemQuantity < 0 || newItemQuantity > 9) {
             return -1;
@@ -52,12 +48,9 @@ public class InventoryControl {
         }
         return true;
     }
-    
 
 //function that takes any string and finds it in an array of strings. Move to a different control?
-
-    
-    //by Melissa Marriott
+//by Melissa Marriott
     public String takeSingleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
 //check to make sure that the potetial weight does not exceed the 20 lb limit
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
@@ -80,41 +73,38 @@ public class InventoryControl {
             gameControl.updateGame(PemberleyGame.getCurrentGame());
             return ("You take " + itemToTake.getName());
 
-
         }
     }
 
-
-
 //by Melissa Marriott
     public String takeMultipleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
-        //make the item to take whatever is in the container.
-    itemToTake = itemToTake.getContains();
-    //check to make sure that the potetial weight does not exceed the 20 lb limit
+//make the item to take whatever is in the container.
+        itemToTake = itemToTake.getContains();
+//check to make sure that the potetial weight does not exceed the 20 lb limit
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
-        //set the current quantity to whatever is currently in the inventory
-        int currentQuantity = itemToTake.getQuantity(); 
-        //check to make sure that the quantity does not exceed the limit
-        boolean canTake = this.checkCanGet(9, currentQuantity, quantityToTake);   
-        //if the quantity exceeds the limit let the player know how many they alredy have
+//set the current quantity to whatever is currently in the inventory
+        int currentQuantity = itemToTake.getQuantity();
+//check to make sure that the quantity does not exceed the limit
+        boolean canTake = this.checkCanGet(9, currentQuantity, quantityToTake);
+//if the quantity exceeds the limit let the player know how many they alredy have
         if (!canTake) {
             return "You already have " + currentQuantity + " " + itemToTake.getName() + "You can only have 9";
-        //else let the player know that the quantity is not valid
+//else let the player know that the quantity is not valid
         } else if (potentialWeight == -1) {
             return "That is not a valid quantity";
-        //else if the potential weight is too much return an appropriate message  
+//else if the potential weight is too much return an appropriate message  
         } else if (potentialWeight == -2) {
             return "That exceeds your weight limit";
-        } else  {
-            //else everything is okay to move the item to the inventory.  set the inventory's new weight.
-                itemToTake.setLocation(inventory);
-                itemToTake.setQuantity(itemToTake.getQuantity() + quantityToTake);
-                inventory.setWeight(inventory.getWeight() + potentialWeight);
-		return ("You get " + quantityToTake + " " + itemToTake.getName());
+        } else {
+//else everything is okay to move the item to the inventory.  set the inventory's new weight.
+            itemToTake.setLocation(inventory);
+            itemToTake.setQuantity(itemToTake.getQuantity() + quantityToTake);
+            inventory.setWeight(inventory.getWeight() + potentialWeight);
+            return ("You get " + quantityToTake + " " + itemToTake.getName());
         }
-         }
-    
-    // SHEILA This will be for the help menu - displayInventory when completed. 
+    }
+
+// SHEILA This will be for the help menu - displayInventory when completed. 
 //    public Inventory[] createLocalInventoryArray(Player player) {
 ////the player is the location of inventory
 //        
@@ -128,6 +118,4 @@ public class InventoryControl {
 //        Actor[] localActorArray = localActorList.toArray(new Actor[localActorList.size()]);
 //        return localActorArray;
 //    }
-
-
 }
