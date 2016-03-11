@@ -73,8 +73,6 @@ return false;
     }
 
     private void displayHelpMe(Game game) {
-        // System.out.println("*** displayHelpMenu function called ");
-        
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display(game);

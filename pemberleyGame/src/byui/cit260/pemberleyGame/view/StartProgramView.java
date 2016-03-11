@@ -45,8 +45,9 @@ public class StartProgramView {
                 + "\n* puzzles.  In the end it is up to you to bring *"
                 + "\n* together two sweethearts destined for a truly *"
                 + "\n* Austenesque ending.  Here is to happily ever  *"
-                + "\n* after!  Good Luck!                            *");
-        System.out.println("*************************************************");
+                + "\n* after!  Good Luck!                            *"
+                + "\n*************************************************"
+                + "\n Enter your name below:");
     }
 
     private String getPlayersName() {
@@ -55,9 +56,6 @@ public class StartProgramView {
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
 
         while (!valid) { // while a valid name has not been retrieved
-
-// prompt for the player's name
-            System.out.println("Enter your name below:");
 
 // get the name from the keyboard and trim off the blanks
             playersName = keyboard.nextLine();
