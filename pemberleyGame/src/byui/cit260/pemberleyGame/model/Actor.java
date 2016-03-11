@@ -7,9 +7,9 @@ import java.util.*;
  *
  * @author jpmanning
  */
-public class Actor implements Serializable{
-    
-    //class instance variables
+public class Actor implements Serializable {
+
+//class instance variables
     private String name;
     private Room location;
     private Room alternateLocation;
@@ -19,7 +19,7 @@ public class Actor implements Serializable{
     private String AlternateCharacterScript;
     private Quest quest;
     private Quest alternateQuest;
-   
+
     public Actor() {
     }
 
@@ -157,8 +157,4 @@ public class Actor implements Serializable{
         return "Actor{" + "name=" + name + ", location=" + location + ", alternateLocation=" + alternateLocation + ", description=" + description + ", alternateDescription=" + alternateDescription + ", characterScript=" + characterScript + ", AlternateCharacterScript=" + AlternateCharacterScript + ", quest=" + quest + ", alternateQuest=" + alternateQuest + '}';
     }
 
-  
-    
-    
-    
 }

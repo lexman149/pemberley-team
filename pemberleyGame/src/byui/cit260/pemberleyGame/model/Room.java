@@ -10,19 +10,17 @@ import java.util.Objects;
 
 /*since room is a subclass of Location, it doesn't need to implement Serializable.  
 Location already does that
-*/
+ */
+public class Room extends Location {
 
-public class Room extends Location{
-    
-       
-    //class instance variables
-      private Room north;
-      private Room east;
-      private Room south;
-      private Room west;
-      private Map map;
-      private String[] roomDrawing;
-      
+//class instance variables
+    private Room north;
+    private Room east;
+    private Room south;
+    private Room west;
+    private Map map;
+    private String[] roomDrawing;
+
     public Room() {
     }
 
@@ -119,7 +117,4 @@ public class Room extends Location{
         return true;
     }
 
-    
-    
-    
 }

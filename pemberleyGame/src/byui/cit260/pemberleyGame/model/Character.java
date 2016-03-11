@@ -7,14 +7,14 @@ import java.util.Objects;
  *
  * @author jpmanning
  */
-public class Character implements Serializable{
-    
-    //class instance variables
+public class Character implements Serializable {
+
+//class instance variables
     private String name;
     private String location;
     private String description;
     private String characterScript;
-    
+
     public Character() {
     }
 
@@ -88,11 +88,5 @@ public class Character implements Serializable{
     public String toString() {
         return "Character{" + "name=" + name + ", location=" + location + ", description=" + description + ", characterScript=" + characterScript + '}';
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

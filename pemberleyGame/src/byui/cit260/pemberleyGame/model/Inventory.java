@@ -5,8 +5,8 @@ package byui.cit260.pemberleyGame.model;
  * @author jpmanning
  */
 public class Inventory extends Location {
-    
-    //class instance variables
+
+//class instance variables
     private double weight;
 
     public Inventory() {
@@ -49,7 +49,5 @@ public class Inventory extends Location {
     public String toString() {
         return "Inventory{" + "weight=" + weight + '}';
     }
-    
-    
-    
+
 }

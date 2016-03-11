@@ -7,9 +7,9 @@ import java.util.Objects;
  *
  * @author jpmanning
  */
-public class Quest implements Serializable{
+public class Quest implements Serializable {
 
-    //class instance variables
+//class instance variables
     private Item needs;
     private boolean completed;
     private String completionScript;
@@ -18,7 +18,7 @@ public class Quest implements Serializable{
     private Player player;
     private Room roomToChange;
     private Room playerDestination;
-    
+
     public Quest() {
     }
 
@@ -138,5 +138,5 @@ public class Quest implements Serializable{
         }
         return true;
     }
-   
+
 }

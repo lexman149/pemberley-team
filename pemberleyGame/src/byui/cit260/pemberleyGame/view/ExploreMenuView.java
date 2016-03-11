@@ -11,33 +11,31 @@ import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
 import pemberley_game.PemberleyGame;
 
-
 /**
  *
  * @author Melissa
  */
-public class ExploreMenuView extends View{
+public class ExploreMenuView extends View {
 
-    
-    public ExploreMenuView(){
-         super( "\n"
-            + "\n----------------------------------------"
-            + "\n | What do you want to do?"
-            + "\n----------------------------------------"
-            + "\nM - Move"
-            + "\nT - Take"
-            + "\nG - Give"
-            + "\nS - Speak"
-            + "\nU - Use"
-            + "\nL - Look"
-            + "\nX - Exit"
-            + "\n----------------------------------------"
-            + "\nEnter your selection below:");
+    public ExploreMenuView() {
+        super("\n"
+                + "\n----------------------------------------"
+                + "\n | What do you want to do?"
+                + "\n----------------------------------------"
+                + "\nM - Move"
+                + "\nT - Take"
+                + "\nG - Give"
+                + "\nS - Speak"
+                + "\nU - Use"
+                + "\nL - Look"
+                + "\nX - Exit"
+                + "\n----------------------------------------"
+                + "\nEnter your selection below:");
     }
 
-@Override
+    @Override
     public boolean doAction(String value, Game game) {
- 
+
         switch (value) {
             case "M":
                 this.movePlayer(game);
@@ -63,68 +61,68 @@ public class ExploreMenuView extends View{
                 System.out.println("\n***Invalid Selection *** Try Again");
                 return false;
         }
-return false;
+        return false;
     }
 // author Alexis
+
     private void movePlayer(Game game) {
         Player player = game.getPlayerOne();
         String prompt = "Which direction do you want to go? Type X to cancel.";
         String playerSelection;
         do {
-        playerSelection = this.getStringInput(prompt);
-        MapControl mapControl = new MapControl();
-        String roomDescription = mapControl.playerNavigate(playerSelection, player, game);
-        System.out.println(roomDescription);
-        } while(!playerSelection.equalsIgnoreCase("x"));
-        
+            playerSelection = this.getStringInput(prompt);
+            MapControl mapControl = new MapControl();
+            String roomDescription = mapControl.playerNavigate(playerSelection, player, game);
+            System.out.println(roomDescription);
+        } while (!playerSelection.equalsIgnoreCase("x"));
 
     }
 
     private void takeItem(Game game) {
-       //declare variables
-       Player player = game.getPlayerOne();
-       ItemControl itemControl = new ItemControl();
-       Item[] localItemArray = game.getLocalItemArray();
-        String gameMessage; 
+//declare variables
+        Player player = game.getPlayerOne();
+        ItemControl itemControl = new ItemControl();
+        Item[] localItemArray = game.getLocalItemArray();
+        String gameMessage;
         int indexOfItem;
         int quantityOfItem;
         String playerSelection;
         InventoryControl inventoryControl = new InventoryControl();
-        //designate the inventory
+//designate the inventory
         Inventory inventory = player.getInventory();
-        //while player's selection is not X loop
+//while player's selection is not X loop
         do {
-            //if there is nothing in the localItemArray say there is nothing to take.
+//if there is nothing in the localItemArray say there is nothing to take.
             if (localItemArray.length == 0) {
                 System.out.println("Nothing to Take");
                 break;
             } else {
                 String prompt = "What do you want to take (type X to exit?";
-                //get input from the player
+//get input from the player
                 playerSelection = this.getStringInput(prompt);
-                //see if the player's selected item is in the room. return it's index in the array.
+//see if the player's selected item is in the room. return it's index in the array.
                 indexOfItem = itemControl.getItemIndex(playerSelection, player, localItemArray);
-                
+
                 if (indexOfItem != -1) {//run this code if there was an index match
-                    //set the item to whatever item matched the players selection
+//set the item to whatever item matched the players selection
                     Item selectedItem = localItemArray[indexOfItem];
-                    //if the item's multiple attribute is true run this code
+//if the item's multiple attribute is true run this code
                     if (selectedItem.isMultiple() == true) {
-                       prompt = "How Many do you want to take? (1 - 9)";
-                       //get the players selection and make sure it is an integer
+                        prompt = "How Many do you want to take? (1 - 9)";
+//get the players selection and make sure it is an integer
                         playerSelection = this.getIntegerInput(prompt);
-                        //make the player's selection an integer
+//make the player's selection an integer
                         quantityOfItem = Integer.parseInt(playerSelection);
-                        //call the takeMultipleItem function.
+//call the takeMultipleItem function.
                         gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
                     } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
-                        //call the takeSingleItem function
+//call the takeSingleItem function
                         gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
                     }
-                    
+
                 } else {
-                    //if the player's selection is not in the array send this message
+//if the player's selection is not in the array send this message
                     gameMessage = "Not sure what you are trying to take.";
                 }
             }
@@ -140,11 +138,12 @@ return false;
     private void speakToActor(Game game) {
         System.out.println("***speak function called ***");
     }
+
     private void useItem() {
         System.out.println("***UseItem function called ***");
     }
 
-    //author Melissa and Sheila
+//author Melissa and Sheila
     private void lookAt(Game game) {
         LookMenuView lookMenu = new LookMenuView();
         lookMenu.display(game);
@@ -164,7 +163,7 @@ return false;
 // get the selection from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
-            playersInput = playersInput.toUpperCase(); 
+            playersInput = playersInput.toUpperCase();
 
 // if the selection is invlaid (less than one characters in length)
             if (playersInput.length() < 1) {
@@ -191,7 +190,7 @@ return false;
             playersInput = keyboard.nextLine();
             playersInput = playersInput.trim();
             char ch = playersInput.charAt(0);
-            
+
 // if the selection is invlaid (less than one characters in length)
             if (!Character.isDigit(ch)) {
                 System.out.println("Please enter a positive integer.");
@@ -202,5 +201,5 @@ return false;
 
         return playersInput; // return the name
     }
-    
+
 }

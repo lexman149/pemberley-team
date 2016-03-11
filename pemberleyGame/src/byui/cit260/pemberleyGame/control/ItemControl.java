@@ -18,6 +18,7 @@ import java.util.ArrayList;
  */
 public class ItemControl {
 //by Melissa Marriott
+
     public int getItemIndex(String playerSelection, Player player, Item[] localItemArray) {
         Inventory inventory = player.getInventory();
 //set default message.
@@ -30,6 +31,7 @@ it searchable by name*/
         itemIndex = this.findIndexOfValue(playerSelection, localItemList);
         return itemIndex;
     }
+
     public int findIndexOfValue(String playerSelection, String[] stringToCheck) {
 //set the default to -1
         int indexOfValue = -1;
@@ -64,7 +66,6 @@ Dog Treats, it will still find it.*/
         return itemNameArray;
     }
 
- 
     public Item[] createLocalItemArray(Game game) {
 //set the current location to wherever the player is.
 
@@ -76,7 +77,7 @@ Dog Treats, it will still find it.*/
             Location currentItemLocation = i.getLocation();
 
             if (currentItemLocation == currentLocation) {
-               
+
                 localItemList.add(i);
             }
         }
@@ -84,19 +85,15 @@ Dog Treats, it will still find it.*/
         return localItemArray;
     }
 
-
-    
 // author Melissa and Sheila
     public String lookAtItem(String playerSelection, Game game) {
         Item[] localItemArray = game.getLocalItemArray();//set the variable for localItemArray to the game's local item ar
         int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalItemNames()); // compares player's selection to the String[] and pulls the location in the list 
         if (indexOfItem != -1) {
             return localItemArray[indexOfItem].getDescription(); // returns description of item
-        }
-        else {
+        } else {
             return "That item is not available here.";
         }
     }
 
-    
 }

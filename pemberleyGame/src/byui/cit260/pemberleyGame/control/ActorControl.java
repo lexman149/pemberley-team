@@ -17,10 +17,11 @@ import java.util.ArrayList;
  */
 public class ActorControl {
 // returns the actors in a location with all their attributes
-       public Actor[] createLocalActorArray(Game game) {
+
+    public Actor[] createLocalActorArray(Game game) {
 //set the current location to wherever the player is.
         Room currentLocation = game.getCurrentRoom();
-        Actor [] allActorArray = game.getAllActorArray();
+        Actor[] allActorArray = game.getAllActorArray();
 //create an ArrayList to hold all of the actors in the above location.
         ArrayList<Actor> localActorList = new ArrayList<Actor>();
         for (Actor i : allActorArray) {
@@ -32,9 +33,8 @@ public class ActorControl {
         Actor[] localActorArray = localActorList.toArray(new Actor[localActorList.size()]);
         return localActorArray;
     }
-    
-    
-    // returns a string of the actors without their non-name attributes
+
+// returns a string of the actors without their non-name attributes
     public String[] createActorNameList(Actor[] actorArray) {
         ArrayList<String> actorList = new ArrayList<String>();
         for (Actor i : actorArray) {
@@ -43,8 +43,8 @@ public class ActorControl {
         String[] actorNameList = actorList.toArray(new String[actorList.size()]);
         return actorNameList;
     }
-    
-    //by Melissa Marriott
+
+//by Melissa Marriott
     public int getActorIndex(String playerSelection, Player player, Actor[] localActorArray) {
 //set default message.
         int actorIndex = -1;
@@ -56,6 +56,7 @@ it searchable by name*/
         actorIndex = this.findIndexOfValue(playerSelection, localActorList);
         return actorIndex;
     }
+
     public int findIndexOfValue(String playerSelection, String[] stringToCheck) {
 //set the default to -1
         int indexOfValue = -1;

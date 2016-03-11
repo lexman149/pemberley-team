@@ -60,7 +60,6 @@ public class StartProgramView {
 // get the name from the keyboard and trim off the blanks
             playersName = keyboard.nextLine();
             playersName = playersName.trim();
-            
 
 // if the name is invlaid (less than two characters in length)
             if (playersName.length() < 2) {

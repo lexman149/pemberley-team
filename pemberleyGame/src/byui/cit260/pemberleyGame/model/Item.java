@@ -7,9 +7,9 @@ import java.util.Objects;
  *
  * @author wilkerson-sheila
  */
-public class Item implements Serializable{
+public class Item implements Serializable {
 
-    //class instance variables //
+//class instance variables //
     private String name;
     private String description;
     private Location location;
@@ -168,8 +168,6 @@ public class Item implements Serializable{
         this.quest = quest;
     }
 
-   
-
     @Override
     public int hashCode() {
         int hash = 5;
@@ -269,8 +267,4 @@ public class Item implements Serializable{
         this.contains = contains;
     }
 
-   
-
-    
-    
 }
