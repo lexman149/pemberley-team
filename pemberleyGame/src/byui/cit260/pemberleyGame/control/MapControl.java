@@ -50,11 +50,6 @@ public class MapControl {
                 String[] roomDrawing = this.renderRoom(nextRoom);
                 nextRoom.setRoomDrawing(roomDrawing);
                 
-                //uncomment below when 
-//                String mapDrawing = this.renderMap(nextRoom);
-//                Map currentMap = nextRoom.getMap();
-//                currentMap.setMapDrawing(mapDrawing);
-
             }
 
             GameControl gameControl = new GameControl();
