@@ -61,10 +61,9 @@ return false;
         //update game 
         GameControl gameControl = new GameControl();
         gameControl.updateGame(game);
+        
         // display the game menu
-        
         GameMenuView gameMenu = new GameMenuView();
-        
         gameMenu.display(game);
     }
 
