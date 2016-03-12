@@ -6,7 +6,9 @@
 package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.control.GameControl;
+import byui.cit260.pemberleyGame.control.InventoryControl;
 import byui.cit260.pemberleyGame.model.Game;
+import byui.cit260.pemberleyGame.model.Inventory;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -61,7 +63,9 @@ public class MainMenuView extends View {
 //update game 
         GameControl gameControl = new GameControl();
         gameControl.updateGame();
-
+//update inventory  
+        InventoryControl inventoryControl = new InventoryControl();
+        inventoryControl.updateInventory();
 // display the game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();

@@ -10,6 +10,7 @@ import byui.cit260.pemberleyGame.model.Inventory;
 import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
+import byui.cit260.pemberleyGame.model.Quest;
 import pemberley_game.PemberleyGame;
 import java.util.ArrayList;
 
@@ -97,5 +98,56 @@ Dog Treats, it will still find it.*/
             return "That item is not available here.";
         }
     }
+
+    
+    
+        public String useItem(String playerSelection) {
+           Game game = PemberleyGame.getCurrentGame();
+        int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalItemNames()); // compares player's selection to the String[] and pulls the location in the list 
+        if (indexOfItem != -1) {
+            Item itemToUse = game.getLocalItemArray()[indexOfItem];
+            return this.checkUseItem(itemToUse, game);
+            
+        } else {
+//if there are no local items to use, check inventory items to use.
+            indexOfItem = this.findIndexOfValue(playerSelection, game.getInventoryItemNames());
+            if (indexOfItem != -1) {
+            Item itemToUse = game.getInventoryItemArray()[indexOfItem];
+            return this.checkUseItem(itemToUse, game);
+                
+                
+            } else {
+                return "That item is not available here.";
+            }
+        }
+    }
+
+    public String checkUseItem (Item itemToUse, Game game){
+        String gameMessage;
+    if (itemToUse.isUsable()==false){
+        gameMessage = "You can't use that item like that.";
+    }else{
+        QuestControl questControl = new QuestControl();
+        Quest currentQuest = itemToUse.getQuest();
+        gameMessage = questControl.executeQuestActions(game, currentQuest);
+    }
+    
+    return gameMessage;
+    
+    }
+    
+ public void changeItemAttributes(Item currentItem){
+if (currentItem.getAlternateDescription()!=null)
+    currentItem.setDescription(currentItem.getAlternateDescription());
+if (currentItem.getAlternateLocation()!=null)
+    currentItem.setLocation(currentItem.getAlternateLocation());
+if (currentItem.isAlternateTakable()==true)
+    currentItem.setTakable(true);
+if (currentItem.getAlternateTakeMessage()!=null)
+    currentItem.setTakeMessage(currentItem.getAlternateTakeMessage());
+if (currentItem.getAlternateUseMessage()!=null)
+    currentItem.setUseMessage(currentItem.getAlternateUseMessage());
+}
+
 
 }

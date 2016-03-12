@@ -7,6 +7,9 @@ package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
+import byui.cit260.pemberleyGame.model.Inventory;
+import byui.cit260.pemberleyGame.model.Item;
+import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
 import pemberley_game.PemberleyGame;
@@ -94,4 +97,21 @@ Dog Treats, it will still find it.*/
             return "That character is not here.";
         }
     }
+    
+    
+    //this function cycles through alternate attributes and resets primary attributes
+    
+    public void changeActorAttributes (Actor currentActor){
+ if (currentActor.getAlternateCharacterScript()!=null)
+    currentActor.setCharacterScript(currentActor.getAlternateCharacterScript());
+ if (currentActor.getAlternateDescription()!=null)
+     currentActor.setDescription(currentActor.getAlternateDescription());
+ if (currentActor.getAlternateLocation()!=null)
+     currentActor.setLocation(currentActor.getAlternateLocation());
+ if (currentActor.getAlternateQuest()!=null)
+     currentActor.setQuest(currentActor.getAlternateQuest());
+    }
+    
+    
+   
 }

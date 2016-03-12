@@ -59,6 +59,7 @@ public class MapControl {
 
             GameControl gameControl = new GameControl();
             gameControl.updateGame();
+            
             String playerMessage = this.lookAtRoom();
             return playerMessage;
         }

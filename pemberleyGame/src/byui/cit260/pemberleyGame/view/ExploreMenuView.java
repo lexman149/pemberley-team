@@ -163,9 +163,34 @@ public class ExploreMenuView extends View {
     }
 
     private void useItem() {
-        System.out.println("***UseItem function called ***");
-    }
+        
+        Game game = PemberleyGame.getCurrentGame();
+        ItemControl itemControl = new ItemControl();
+        String prompt = "Which item do you want to use.";
+        System.out.println("You can use these things:");
 
+        
+        String[] itemsHere = game.getLocalItemNames();
+        
+        if (itemsHere.length!= 0){
+        for (String i : itemsHere) {
+            System.out.print(i + "\n");
+        }
+        }
+        itemsHere = game.getInventoryItemNames();        
+        if (itemsHere.length!= 0){
+        for (String i : itemsHere) {
+        System.out.print(i + "\n");
+        }        
+        }
+        String playerSelection;
+        do {
+            playerSelection = this.getStringInput(prompt);
+
+            String useItemMessage = itemControl.useItem(playerSelection);
+        } while (!playerSelection.equalsIgnoreCase("x"));
+
+    }
 //author Melissa and Sheila
     private void lookAt() {
         

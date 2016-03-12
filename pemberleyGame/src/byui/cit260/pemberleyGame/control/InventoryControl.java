@@ -6,6 +6,7 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
+import java.util.ArrayList;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -100,6 +101,7 @@ public class InventoryControl {
             itemToTake.setLocation(inventory);
             itemToTake.setQuantity(itemToTake.getQuantity() + quantityToTake);
             inventory.setWeight(inventory.getWeight() + potentialWeight);
+            this.updateInventory();
             return ("You get " + quantityToTake + " " + itemToTake.getName());
         }
     }
@@ -118,4 +120,32 @@ public class InventoryControl {
 //        Actor[] localActorArray = localActorList.toArray(new Actor[localActorList.size()]);
 //        return localActorArray;
 //    }
+    
+    
+     //this function updates the inventory
+        public void updateInventory() {
+            Game game = PemberleyGame.getCurrentGame();
+        Player player = game.getPlayerOne();
+        Inventory inventory = player.getInventory();
+        ItemControl itemControl = new ItemControl();
+        
+        Item[] allItemArray = game.getAllItemArray();
+        ArrayList<Item> inventoryItemList = new ArrayList<>();
+
+        for (Item i : allItemArray) {
+            Location currentItemLocation = i.getLocation();
+            if (currentItemLocation == inventory) {
+                inventoryItemList.add(i);
+            }
+        }
+
+        Item[] inventoryItemArray = inventoryItemList.toArray(new Item[inventoryItemList.size()]);
+        game.setInventoryItemArray(inventoryItemArray);
+        
+        String[] inventoryNameString = itemControl.createItemNameList(inventoryItemArray);
+        game.setInventoryItemNames(inventoryNameString);
+        
+        GameControl gameControl = new GameControl();
+        gameControl.updateGame();
+    }
 }

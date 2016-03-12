@@ -766,6 +766,8 @@ public class GameControl {
         String mapDrawing = mapControl.renderMap(rmLivingRoom);
         Map currentMap = rmLivingRoom.getMap();
         currentMap.setMapDrawing(mapDrawing);
+        
+        
     }
 
     public void updateGame() {
@@ -779,7 +781,6 @@ public class GameControl {
         game.setLocalActorArray(actorControl.createLocalActorArray());
         game.setLocalActorNames(actorControl.createActorNameList(game.getLocalActorArray()));
         game.setLocalItemNames(itemControl.createItemNameList(game.getLocalItemArray()));
-
     }
 
 }
