@@ -70,7 +70,7 @@ public class InventoryControl {
             itemToTake.setLocation(inventory);
             inventory.setWeight(inventory.getWeight() + potentialWeight);
             GameControl gameControl = new GameControl();
-            gameControl.updateGame(PemberleyGame.getCurrentGame());
+            gameControl.updateGame();
             return ("You take " + itemToTake.getName());
 
         }

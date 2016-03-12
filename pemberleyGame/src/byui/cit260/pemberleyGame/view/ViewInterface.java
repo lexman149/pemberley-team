@@ -13,10 +13,10 @@ import byui.cit260.pemberleyGame.model.Game;
  */
 public interface ViewInterface {
 
-    public void display(Game game);
+    public void display();
 
     public String getInput();
 
-    public boolean doAction(String value, Game game);
+    public boolean doAction(String value);
 
 }

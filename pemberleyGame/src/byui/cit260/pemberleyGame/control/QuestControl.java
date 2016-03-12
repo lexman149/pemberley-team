@@ -4,6 +4,7 @@
 * and open the template in the editor.
  */
 package byui.cit260.pemberleyGame.control;
+import pemberley_game.PemberleyGame;
 
 /**
  *

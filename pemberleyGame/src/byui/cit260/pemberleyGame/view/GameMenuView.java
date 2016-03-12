@@ -9,6 +9,7 @@ import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Map;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
+import pemberley_game.PemberleyGame;
 
 /**
  *
@@ -32,14 +33,14 @@ public class GameMenuView extends View {
     }
 
     @Override
-    public boolean doAction(String value, Game game) {
+    public boolean doAction(String value) {
 
         switch (value) {
             case "I":
                 this.displayInventory();
                 break;
             case "M":
-                this.displayMap(game);
+                this.displayMap();
                 break;
             case "P":
                 this.displayPeople();
@@ -48,7 +49,7 @@ public class GameMenuView extends View {
                 this.displayCurrentTasks();
                 break;
             case "E":
-                this.displayExploreMenu(game);
+                this.displayExploreMenu();
                 break;
             case "X":
                 return true;
@@ -59,9 +60,9 @@ public class GameMenuView extends View {
         return false;
     }
 
-    private void displayExploreMenu(Game game) {
+    private void displayExploreMenu() {
         ExploreMenuView exploreMenu = new ExploreMenuView();
-        exploreMenu.display(game);
+        exploreMenu.display();
 
     }
 
@@ -69,7 +70,8 @@ public class GameMenuView extends View {
         System.out.println("*** displayInventory function called ***");
     }
 
-    private void displayMap(Game game) {
+    private void displayMap() {
+        Game game = PemberleyGame.getCurrentGame();
         Room currentRoom = game.getCurrentRoom();
         Map currentMap = game.getCurrentMap();
         System.out.println(currentMap.getMapDrawing());

@@ -24,13 +24,13 @@ public abstract class View implements ViewInterface {
     }
 
     @Override
-    public void display(Game game) {
+    public void display() {
         String value;
         boolean done = false;
         do {
             System.out.println(this.displayMessage); // display the prompt message
             value = this.getInput(); // get the user's selection
-            done = this.doAction(value, game); // do action based on selection 
+            done = this.doAction(value); // do action based on selection 
         } while (!done);
     }
 

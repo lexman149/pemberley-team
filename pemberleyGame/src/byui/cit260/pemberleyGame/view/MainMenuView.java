@@ -30,17 +30,17 @@ public class MainMenuView extends View {
     }
 
     @Override
-    public boolean doAction(String value, Game game) {
+    public boolean doAction(String value) {
 
         switch (value) {
             case "N":
-                this.startNewGame(game);
+                this.startNewGame();
                 break;
             case "G":
                 this.startExistingGame();
                 break;
             case "H":
-                this.displayHelpMe(game);
+                this.displayHelpMe();
                 break;
             case "S":
                 this.saveGame();
@@ -54,26 +54,27 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame(Game game) {
+    private void startNewGame() {
+         Game game = PemberleyGame.getCurrentGame();
         GameControl.createNewGame(PemberleyGame.getUser());
         game = PemberleyGame.getCurrentGame();
 //update game 
         GameControl gameControl = new GameControl();
-        gameControl.updateGame(game);
+        gameControl.updateGame();
 
 // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display(game);
+        gameMenu.display();
     }
 
     private void startExistingGame() {
         System.out.println("*** startExistingGame function called ***");
     }
 
-    private void displayHelpMe(Game game) {
+    private void displayHelpMe() {
 // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.display(game);
+        helpMenu.display();
     }
 
     private void saveGame() {

@@ -7,6 +7,7 @@ package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
 import java.util.ArrayList;
+import pemberley_game.PemberleyGame;
 
 /**
  *
@@ -14,7 +15,8 @@ import java.util.ArrayList;
  */
 public class MapControl {
 
-    public String playerNavigate(String direction, Player player, Game game) {
+    public String playerNavigate(String direction, Player player) {
+        Game game = PemberleyGame.getCurrentGame();
         Room currentRoom = player.getLocation();
         Room nextRoom;
         switch (direction) {
@@ -56,15 +58,16 @@ public class MapControl {
             }
 
             GameControl gameControl = new GameControl();
-            gameControl.updateGame(game);
-            String playerMessage = this.lookAtRoom(game);
+            gameControl.updateGame();
+            String playerMessage = this.lookAtRoom();
             return playerMessage;
         }
 
     }
 
 // author Sheila
-    public String lookAtRoom(Game game) {
+    public String lookAtRoom() {
+         Game game = PemberleyGame.getCurrentGame();
         Room currentRoom = game.getCurrentRoom();
         String roomDescription = currentRoom.getDescription();
         roomDescription = roomDescription + "\nThese are the directions you can move from here: ";

@@ -10,6 +10,7 @@ import byui.cit260.pemberleyGame.model.Inventory;
 import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
+import pemberley_game.PemberleyGame;
 import java.util.ArrayList;
 
 /**
@@ -66,9 +67,9 @@ Dog Treats, it will still find it.*/
         return itemNameArray;
     }
 
-    public Item[] createLocalItemArray(Game game) {
+    public Item[] createLocalItemArray() {
 //set the current location to wherever the player is.
-
+     Game game = PemberleyGame.getCurrentGame();
         Location currentLocation = game.getCurrentRoom();
         Item[] allItemArray = game.getAllItemArray();
 //create an ArrayList to hold all of the items in the above location.
@@ -86,7 +87,8 @@ Dog Treats, it will still find it.*/
     }
 
 // author Melissa and Sheila
-    public String lookAtItem(String playerSelection, Game game) {
+    public String lookAtItem(String playerSelection) {
+         Game game = PemberleyGame.getCurrentGame();
         Item[] localItemArray = game.getLocalItemArray();//set the variable for localItemArray to the game's local item ar
         int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalItemNames()); // compares player's selection to the String[] and pulls the location in the list 
         if (indexOfItem != -1) {

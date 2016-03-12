@@ -22,11 +22,12 @@ public class GameControl {
         PemberleyGame.setCurrentGame(game); //save
 
         game.setUser(player);
-        GameControl.createGameObjects(game);
+        GameControl.createGameObjects();
 
     }
 
-    public static void createGameObjects(Game game) {
+    public static void createGameObjects() {
+        Game game = PemberleyGame.getCurrentGame();
         Actor atCarter = new Actor();
         Actor atDaisy = new Actor();
         Actor atGeorgie = new Actor();
@@ -767,14 +768,15 @@ public class GameControl {
         currentMap.setMapDrawing(mapDrawing);
     }
 
-    public void updateGame(Game game) {
+    public void updateGame() {
+         Game game = PemberleyGame.getCurrentGame();
         Player player = game.getPlayerOne();
         game.setCurrentRoom(player.getLocation());
         game.setCurrentMap(game.getCurrentRoom().getMap());
         ActorControl actorControl = new ActorControl();
         ItemControl itemControl = new ItemControl();
-        game.setLocalItemArray(itemControl.createLocalItemArray(game));
-        game.setLocalActorArray(actorControl.createLocalActorArray(game));
+        game.setLocalItemArray(itemControl.createLocalItemArray());
+        game.setLocalActorArray(actorControl.createLocalActorArray());
         game.setLocalActorNames(actorControl.createActorNameList(game.getLocalActorArray()));
         game.setLocalItemNames(itemControl.createItemNameList(game.getLocalItemArray()));
 

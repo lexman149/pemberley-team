@@ -23,11 +23,9 @@ public class PemberleyGame {
 
     public static void main(String[] args) {
 
-        Game game = new Game();
-
 // create StartProgramViw and start the program
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.startProgram(game);
+        startProgramView.startProgram();
 
     }
 

@@ -34,26 +34,26 @@ public class ExploreMenuView extends View {
     }
 
     @Override
-    public boolean doAction(String value, Game game) {
+    public boolean doAction(String value) {
 
         switch (value) {
             case "M":
-                this.movePlayer(game);
+                this.movePlayer();
                 break;
             case "T":
-                this.takeItem(game);
+                this.takeItem();
                 break;
             case "G":
                 this.giveItem();
                 break;
             case "S":
-                this.speakToActor(game);
+                this.speakToActor();
                 break;
             case "U":
                 this.useItem();
                 break;
             case "L":
-                this.lookAt(game);
+                this.lookAt();
                 break;
             case "X": // quit help 
                 return true;
@@ -65,21 +65,23 @@ public class ExploreMenuView extends View {
     }
 // author Alexis
 
-    private void movePlayer(Game game) {
+    private void movePlayer() {
+         Game game = PemberleyGame.getCurrentGame();
         Player player = game.getPlayerOne();
         String prompt = "Which direction do you want to go? Type X to cancel.";
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
             MapControl mapControl = new MapControl();
-            String roomDescription = mapControl.playerNavigate(playerSelection, player, game);
+            String roomDescription = mapControl.playerNavigate(playerSelection, player);
             System.out.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
 
     }
 
-    private void takeItem(Game game) {
+    private void takeItem() {
 //declare variables
+ Game game = PemberleyGame.getCurrentGame();
         Player player = game.getPlayerOne();
         ItemControl itemControl = new ItemControl();
         Item[] localItemArray = game.getLocalItemArray();
@@ -136,7 +138,8 @@ public class ExploreMenuView extends View {
     }
 
 // author Sheila 
-    private void speakToActor(Game game) {
+    private void speakToActor() {
+         Game game = PemberleyGame.getCurrentGame();
         ActorControl actorControl = new ActorControl();
         String[] actorsHere = game.getLocalActorNames(); //get list of actors in the current location
 //no actors in the player's location, print message and return to menu        
@@ -154,7 +157,7 @@ public class ExploreMenuView extends View {
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
-            String characterScript = actorControl.speakToActor(playerSelection, game);
+            String characterScript = actorControl.speakToActor(playerSelection);
             System.out.println(characterScript);
         } while (!playerSelection.equalsIgnoreCase("x"));
     }
@@ -164,9 +167,10 @@ public class ExploreMenuView extends View {
     }
 
 //author Melissa and Sheila
-    private void lookAt(Game game) {
+    private void lookAt() {
+        
         LookMenuView lookMenu = new LookMenuView();
-        lookMenu.display(game);
+        lookMenu.display();
 
     }
 

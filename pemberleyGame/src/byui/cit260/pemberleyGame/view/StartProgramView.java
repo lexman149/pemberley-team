@@ -19,7 +19,7 @@ public class StartProgramView {
     public StartProgramView() {
     }
 
-    public void startProgram(Game game) {
+    public void startProgram() {
 //Display the banner screen
         this.displayBanner();
 // prompt the player to enter their name Retrieve the name of the player
@@ -30,7 +30,7 @@ public class StartProgramView {
         this.displayWelcomeMessage(user);
 // Display the Main menu.
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.display(game);
+        mainMenu.display();
     }
 
     private void displayBanner() {

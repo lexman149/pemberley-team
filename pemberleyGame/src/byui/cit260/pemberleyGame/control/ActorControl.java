@@ -9,6 +9,7 @@ import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
+import pemberley_game.PemberleyGame;
 import java.util.ArrayList;
 
 /**
@@ -18,8 +19,9 @@ import java.util.ArrayList;
 public class ActorControl {
 // returns the actors in a location with all their attributes
 
-    public Actor[] createLocalActorArray(Game game) {
+    public Actor[] createLocalActorArray() {
 //set the current location to wherever the player is.
+        Game game = PemberleyGame.getCurrentGame();
         Room currentLocation = game.getCurrentRoom();
         Actor[] allActorArray = game.getAllActorArray();
 //create an ArrayList to hold all of the actors in the above location.
@@ -82,7 +84,8 @@ Dog Treats, it will still find it.*/
     }
 
 // author Sheila    
-    public String speakToActor(String playerSelection, Game game) {
+    public String speakToActor(String playerSelection) {
+         Game game = PemberleyGame.getCurrentGame();
         Actor[] localActorArray = game.getLocalActorArray();//set the variable for localActorArray to the game's localActorArray
         int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalActorNames()); // compares player's selection with String[] of actors in the same location as the player
         if (indexOfItem != -1) {

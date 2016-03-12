@@ -31,20 +31,20 @@ public class LookMenuView extends View {
     }
 
     @Override
-    public boolean doAction(String value, Game game) {
+    public boolean doAction(String value ) {
 
         switch (value) {
             case "R":
-                this.displayRoom(game);
+                this.displayRoom();
                 break;
             case "C":
-                this.displayCharacter(game);
+                this.displayCharacter();
                 break;
             case "I":
-                this.displayInventory(game);
+                this.displayInventory();
                 break;
             case "H":
-                this.displayItem(game);
+                this.displayItem();
                 break;
             case "X":
                 return true;
@@ -55,14 +55,15 @@ public class LookMenuView extends View {
         return false;
     }
 
-    private void displayRoom(Game game) {
+    private void displayRoom() {
         MapControl mapControl = new MapControl();
-        String roomDescription = mapControl.lookAtRoom(game);
+        String roomDescription = mapControl.lookAtRoom();
         System.out.println(roomDescription);
     }
 
 //by Sheila
-    private void displayCharacter(Game game) {
+    private void displayCharacter() {
+         Game game = PemberleyGame.getCurrentGame();
         String[] actorList = game.getLocalActorNames();
         String actorString = " "; // creates just a String of actors, not an array
         for (String i : actorList) {
@@ -71,12 +72,13 @@ public class LookMenuView extends View {
         System.out.println(actorString + " IS IN THIS ROOM.");
     }
 
-    private void displayInventory(Game game) {
+    private void displayInventory() {
         System.out.println("*** call the displayInventory function ***");
     }
 
 //by Sheila
-    private void displayItem(Game game) {
+    private void displayItem() {
+         Game game = PemberleyGame.getCurrentGame();
         ItemControl itemControl = new ItemControl();
         String prompt = "Which item do you want to look at? Type X to cancel.";
         System.out.println("These things are here:");
@@ -88,7 +90,7 @@ public class LookMenuView extends View {
         do {
             playerSelection = this.getStringInput(prompt);
 
-            String roomDescription = itemControl.lookAtItem(playerSelection, game);
+            String roomDescription = itemControl.lookAtItem(playerSelection);
             System.out.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
     }

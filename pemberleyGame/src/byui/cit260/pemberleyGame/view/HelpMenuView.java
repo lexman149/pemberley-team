@@ -29,7 +29,7 @@ public class HelpMenuView extends View {
     }
 
     @Override
-    public boolean doAction(String value, Game game) {
+    public boolean doAction(String value) {
 
         switch (value) {
             case "G":
