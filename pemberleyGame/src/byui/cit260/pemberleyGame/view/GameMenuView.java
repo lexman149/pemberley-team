@@ -10,6 +10,7 @@ import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Map;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
+import byui.cit260.pemberleyGame.control.*;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -83,7 +84,9 @@ public class GameMenuView extends View {
     
     private void displayPeople() {
         Game game = PemberleyGame.getCurrentGame();
-        Actor[] allActorArray = game.getAllActorArray();       
+        Actor[] allActorArray = game.getAllActorArray(); 
+//        String[] peopleNames = ActorControl.;
+        
 //create an ArrayList to hold all of the actors in the above location.
             for(Actor actors : allActorArray){
                 System.out.println(actors.getName());

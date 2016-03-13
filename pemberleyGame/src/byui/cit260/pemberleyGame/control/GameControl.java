@@ -51,6 +51,8 @@ public class GameControl {
         Actor atWilliam = new Actor();
         Actor atWilloughby = new Actor();
         Actor atHamster = new Actor();
+        Actor atGoldfish = new Actor(); // added to test sorting of allActorArray
+        Actor atHousekeeper = new Actor(); // added to test sorting of allActorArray
         ActorControl actorControl = new ActorControl();
         Game gameOne = new Game();
         Inventory inventoryOne = new Inventory();
@@ -177,6 +179,12 @@ public class GameControl {
         atHamster.setLocation(rmLivingRoom);
         atHamster.setName("Bruiser the Hamster");
         atHamster.setQuest(qtHamster);
+        atHousekeeper.setCharacterScript("Oh my...Look at the time!");
+        atHousekeeper.setLocation(rmLivingRoom);
+        atHousekeeper.setName("Gertie the housekeeper");// added to test sorting of allActorArray
+        atGoldfish.setCharacterScript("You must know that goldfish don't talk.");
+        atGoldfish.setLocation(rmLivingRoom);
+        atGoldfish.setName("Zeus the goldfish");// added to test sorting of allActorArray
         atJaneDarcy.setAlternateDescription("Jane Darcy is playing the Piano Forte beautifully.");
         atJaneDarcy.setAlternateCharacterScript("She appears too busy to speak.");
         atJaneDarcy.setCharacterScript("Where is it... where is it...”");
@@ -741,9 +749,10 @@ public class GameControl {
             itPocKetWatch, itTeaCup, itUmbrella, itWorms};
 
         Actor allActors[] = {atHamster, atMrDarcy, atCarter, atLordRandolph, atMarshall,
-            atUncleFinneas, atLadyRoslyn, atMrsDarcy, atGeorgie, atRoberDarcy, atJaneDarcy,
+            atUncleFinneas, atLadyRoslyn, atMrsDarcy, atGeorgie, atRoberDarcy, atGoldfish, atJaneDarcy,
             atJonathan, atRabbit, atWilliam, atDaisy, atOliveNelson, atSally, atRoseBrandon,
-            atLadyCatherine, atMrHarmon, atMissNorwood, atMrBarns, atWilloughby};
+            atLadyCatherine, atMrHarmon, atMissNorwood, atMrBarns, atWilloughby,  
+            atHousekeeper};
 
         Quest allQuests[] = {qtCane, qtCarrots, qtCarter, qtCoach, qtCook, qtDaisy,
             qtGrocer, qtHamster, qtJaneDarcy, qtLadyRoslyn, qtLake, qtMiliner, qtMrDarcy,

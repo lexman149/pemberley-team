@@ -68,7 +68,7 @@ public class ExploreMenuView extends View {
     private void movePlayer() {
          Game game = PemberleyGame.getCurrentGame();
         Player player = game.getPlayerOne();
-        String prompt = "Which direction do you want to go? Type X to cancel.";
+        String prompt = "Which direction do you want to go? Type X to exit.";
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
@@ -99,7 +99,7 @@ public class ExploreMenuView extends View {
                 System.out.println("Nothing to Take");
                 break;
             } else {
-                String prompt = "What do you want to take (type X to exit?";
+                String prompt = "What do you want to take? Type X to exit.";
 //get input from the player
                 playerSelection = this.getStringInput(prompt);
 //see if the player's selected item is in the room. return it's index in the array.
@@ -141,27 +141,45 @@ public class ExploreMenuView extends View {
     private void speakToActor() {
         Game game = PemberleyGame.getCurrentGame();
         ActorControl actorControl = new ActorControl();
-        String[] actorsHere = game.getLocalActorNames(); //get list of actors in the current location
+        String[] actorsName = game.getLocalActorNames(); //get list of actors in the current location
+        sortStringExchange(actorsName);
 //no actors in the player's location, print message and return to menu        
-        if(actorsHere.length<1){
+        if(actorsName.length<1){
             System.out.print("NO ONE IS HERE");
             return; //no selection possible, return to menu
         }
 //actors available to speak - print list
         else {
             System.out.println("These characters are here:");
-            for (String i : actorsHere) {
-            System.out.print(i + "\n");
-//player selects from list of actors or exits       
-            String prompt = "To whom do you wish to speak? Type X to cancel.";
-            String playerSelection;
-                do {
-                    playerSelection = this.getStringInput(prompt);
-                    String characterScript = actorControl.speakToActor(playerSelection);
-                    System.out.println(characterScript);
-                } while (!playerSelection.equalsIgnoreCase("x"));
+            for (String i : actorsName) {
+                System.out.print(i + "\n");
             }
+//player selects from list of actors or exits       
+            String prompt = "To whom do you wish to speak? Type X to exit.";
+            String playerSelection;
+            do {
+                playerSelection = this.getStringInput(prompt);
+                String characterScript = actorControl.speakToActor(playerSelection);
+                System.out.println(characterScript);
+            } while (!playerSelection.equalsIgnoreCase("x"));
+            
         }
+    }
+//    sort list of actors alphabetically using exhange sort    
+        public static void sortStringExchange(String stringsToSort[]) {
+            int i, j;
+            String temp;
+            
+            for(i = 0; i < stringsToSort.length - 1; i++) {
+                for(j = i + 1; j < stringsToSort.length; j++) {  
+                    if(stringsToSort[i].compareToIgnoreCase(stringsToSort[j]) > 0){ // ascending sort
+                        temp = stringsToSort[i];
+                        stringsToSort[i] = stringsToSort[j]; // swapping
+                        stringsToSort[j] = temp; 
+                                      
+                    } 
+                } 
+            } 
     }
 
     private void useItem() {
