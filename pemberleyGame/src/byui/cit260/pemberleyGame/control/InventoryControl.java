@@ -104,22 +104,6 @@ public class InventoryControl {
             return ("You get " + quantityToTake + " " + itemToTake.getName());
         }
     }
-
-// SHEILA This will be for the help menu - displayInventory when completed. 
-//    public Inventory[] createLocalInventoryArray(Player player) {
-////the player is the location of inventory
-//        
-////create an ArrayList to hold all of the actors in the above location.
-//        ArrayList<Inventory> localInventoryList = new ArrayList<Inventory>();
-//        for (Inventory i : allInventoryArray) {
-//            if (currentInventoryLocation == player) {
-//                localInvetoryList.add(i);
-//            }
-//        }
-//        Actor[] localActorArray = localActorList.toArray(new Actor[localActorList.size()]);
-//        return localActorArray;
-//    }
-    
     
      //this function updates the inventory
         public void updateInventory() {

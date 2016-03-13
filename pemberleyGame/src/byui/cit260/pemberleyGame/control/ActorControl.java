@@ -88,7 +88,7 @@ Dog Treats, it will still find it.*/
 
 // author Sheila    
     public String speakToActor(String playerSelection) {
-         Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         Actor[] localActorArray = game.getLocalActorArray();//set the variable for localActorArray to the game's localActorArray
         int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalActorNames()); // compares player's selection with String[] of actors in the same location as the player
         if (indexOfItem != -1) {

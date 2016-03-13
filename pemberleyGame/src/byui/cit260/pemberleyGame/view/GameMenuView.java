@@ -5,6 +5,7 @@
  */
 package byui.cit260.pemberleyGame.view;
 
+import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Map;
 import byui.cit260.pemberleyGame.model.Player;
@@ -78,8 +79,15 @@ public class GameMenuView extends View {
         System.out.println("This map only contains places you have been\n\n");
     }
 
+//display a list of all actors by Sheila 3/12/16
+    
     private void displayPeople() {
-        System.out.println("*** displayPeople function called ***");
+        Game game = PemberleyGame.getCurrentGame();
+        Actor[] allActorArray = game.getAllActorArray();       
+//create an ArrayList to hold all of the actors in the above location.
+            for(Actor actors : allActorArray){
+                System.out.println(actors.getName());
+            }
     }
 
     private void displayCurrentTasks() {

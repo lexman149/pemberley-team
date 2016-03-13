@@ -139,7 +139,7 @@ public class ExploreMenuView extends View {
 
 // author Sheila 
     private void speakToActor() {
-         Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         ActorControl actorControl = new ActorControl();
         String[] actorsHere = game.getLocalActorNames(); //get list of actors in the current location
 //no actors in the player's location, print message and return to menu        
@@ -148,18 +148,20 @@ public class ExploreMenuView extends View {
             return; //no selection possible, return to menu
         }
 //actors available to speak - print list
-        System.out.println("These characters are here:");
-        for (String i : actorsHere) {
+        else {
+            System.out.println("These characters are here:");
+            for (String i : actorsHere) {
             System.out.print(i + "\n");
-        }
 //player selects from list of actors or exits       
-        String prompt = "To whom do you wish to speak? Type X to cancel.";
-        String playerSelection;
-        do {
-            playerSelection = this.getStringInput(prompt);
-            String characterScript = actorControl.speakToActor(playerSelection);
-            System.out.println(characterScript);
-        } while (!playerSelection.equalsIgnoreCase("x"));
+            String prompt = "To whom do you wish to speak? Type X to cancel.";
+            String playerSelection;
+                do {
+                    playerSelection = this.getStringInput(prompt);
+                    String characterScript = actorControl.speakToActor(playerSelection);
+                    System.out.println(characterScript);
+                } while (!playerSelection.equalsIgnoreCase("x"));
+            }
+        }
     }
 
     private void useItem() {
