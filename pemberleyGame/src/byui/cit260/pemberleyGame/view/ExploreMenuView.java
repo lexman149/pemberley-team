@@ -142,7 +142,6 @@ public class ExploreMenuView extends View {
         Game game = PemberleyGame.getCurrentGame();
         ActorControl actorControl = new ActorControl();
         String[] actorsName = game.getLocalActorNames(); //get list of actors in the current location
-        sortStringExchange(actorsName);
 //no actors in the player's location, print message and return to menu        
         if(actorsName.length<1){
             System.out.print("NO ONE IS HERE");
@@ -165,23 +164,7 @@ public class ExploreMenuView extends View {
             
         }
     }
-//    sort list of actors alphabetically using exhange sort    
-        public static void sortStringExchange(String stringsToSort[]) {
-            int i, j;
-            String temp;
-            
-            for(i = 0; i < stringsToSort.length - 1; i++) {
-                for(j = i + 1; j < stringsToSort.length; j++) {  
-                    if(stringsToSort[i].compareToIgnoreCase(stringsToSort[j]) > 0){ // ascending sort
-                        temp = stringsToSort[i];
-                        stringsToSort[i] = stringsToSort[j]; // swapping
-                        stringsToSort[j] = temp; 
-                                      
-                    } 
-                } 
-            } 
-    }
-
+    
     private void useItem() {
         
         Game game = PemberleyGame.getCurrentGame();
