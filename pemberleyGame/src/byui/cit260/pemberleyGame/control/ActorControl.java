@@ -98,6 +98,17 @@ Dog Treats, it will still find it.*/
         }
     }
     
+//by Alexis Actor Control
+    public String lookAtActor(String playerSelection, Game game) {
+        Actor[] localActorArray = game.getLocalActorArray();//set the variable for localActorArray to the game's local item ar
+        int indexOfActor = this.findIndexOfValue(playerSelection, game.getLocalActorNames()); // compares player's selection to the String[] and pulls the location in the list 
+        if (indexOfActor != -1) {
+            return localActorArray[indexOfActor].getDescription(); // returns description of actor
+        } else {
+            return "That actor is not available here.";
+        }
+    }
+    
     
     //this function cycles through alternate attributes and resets primary attributes
     

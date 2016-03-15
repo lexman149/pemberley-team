@@ -63,17 +63,24 @@ public class LookMenuView extends View {
 
 //by Sheila
     private void displayCharacter() {
-         Game game = PemberleyGame.getCurrentGame();
-        String[] actorList = game.getLocalActorNames();
-        String actorString = " "; // creates just a String of actors, not an array
-        for (String i : actorList) {
-            actorString += ' ' + i;
+        Game game = PemberleyGame.getCurrentGame();
+        ActorControl actorControl = new ActorControl();
+        String prompt = "Which actor do you want to look at? Type X to cancel.";
+        System.out.println("These actors are here:");
+        String[] actorsHere = game.getLocalActorNames();
+        for (String i : actorsHere) {
+            System.out.print(i + "\n");
         }
-        System.out.println(actorString + " IS IN THIS ROOM.");
-    }
+        String playerSelection;
+        do {
+            playerSelection = this.getStringInput(prompt);
 
-    private void displayInventory() {
-        System.out.println("*** call the displayInventory function ***");
+            String roomDescription = actorControl.lookAtActor(playerSelection, game);
+            
+
+            System.out.println(roomDescription);
+        } while (!playerSelection.equalsIgnoreCase("x"));
+       
     }
 
 //by Sheila
@@ -119,6 +126,10 @@ public class LookMenuView extends View {
         }
 
         return playersInput; // return the name
+    }
+
+    private void displayInventory() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
