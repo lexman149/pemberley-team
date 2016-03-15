@@ -169,23 +169,25 @@ public class ExploreMenuView extends View {
         
         Game game = PemberleyGame.getCurrentGame();
         ItemControl itemControl = new ItemControl();
-        String prompt = "Which item do you want to use.";
-        System.out.println("You can use these things:");
-
+        String prompt = "What do you want to try and use?";
         
-        String[] itemsHere = game.getLocalItemNames();
+        //check to see if there is anything to use.
+        if (game.getLocalItemNames().length == 0 || game.getInventoryItemNames().length == 0){
+        System.out.println("There is nothing to use here.");
+        return;
+        }
         
-        if (itemsHere.length!= 0){
-        for (String i : itemsHere) {
+        System.out.println("These things are accessible:\n");
+        
+        for (String i : game.getLocalItemNames()) {
             System.out.print(i + "\n");
         }
-        }
-        itemsHere = game.getInventoryItemNames();        
-        if (itemsHere.length!= 0){
-        for (String i : itemsHere) {
+        
+        for (String i : game.getInventoryItemNames()) {
         System.out.print(i + "\n");
         }        
-        }
+        
+        
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
