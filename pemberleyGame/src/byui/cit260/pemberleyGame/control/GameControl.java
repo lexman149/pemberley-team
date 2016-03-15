@@ -513,6 +513,15 @@ public class GameControl {
         itTimeMachine.setQuest(qtTimeMachine);
         qtTimeMachine.setPlayer(playerOne);
         qtTimeMachine.setPlayerDestination(rmPath);
+        qtTimeMachine.setCompletionScript(
+                "\nThe lights start to dim. Your world"
+              + "\ndances with colors and movement."
+              + "\nEverything goes dark.  When you "
+              + "\nat last reach conciousness again"
+              + "\nYou find that you are standing"
+              + "\nnext to a great and stately mansion."
+              + "\nWhere are you?  Or better yet, when "
+              + "\nare you?");
         itTimeMachine.setTakable(true);
         itTimeMachine.setTakable(true);
         itTimeMachine.setUsable(true);
