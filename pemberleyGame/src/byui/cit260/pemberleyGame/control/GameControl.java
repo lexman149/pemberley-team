@@ -473,6 +473,7 @@ public class GameControl {
         itPianoForte.setTakeMessage("It won't fit in your backpack... and how rude is it to take a piano forte.");
         itPianoForte.setUsable(true);
         itPianoForte.setWeight(300);
+        itPianoForte.setUseMessage("You play that piece beautifully");
         itPocKetWatch.setDescription("It is a gentleman's pocket watch");
         itPocKetWatch.setLocation(rmServantsQuarters);
         itPocKetWatch.setName("Pocket Watch");
@@ -539,6 +540,8 @@ public class GameControl {
         itUmbrella.setQuantity(0);
         itUmbrella.setTakable(true);
         itUmbrella.setWeight(1);
+        itUmbrella.setUseMessage("Didn't anyone ever tell you that it isn't polite"
+                + "\n to use other people's umbrellas?");
         itWorms.setDescription("It is a bunch of earth worms.");
         itWorms.setLocation(null);
         itWorms.setName("Worms");
