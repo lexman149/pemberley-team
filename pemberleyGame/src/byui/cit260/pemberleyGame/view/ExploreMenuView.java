@@ -193,6 +193,7 @@ public class ExploreMenuView extends View {
             playerSelection = this.getStringInput(prompt);
 
             String useItemMessage = itemControl.useItem(playerSelection);
+            System.out.println(useItemMessage);
         } while (!playerSelection.equalsIgnoreCase("x"));
 
     }
