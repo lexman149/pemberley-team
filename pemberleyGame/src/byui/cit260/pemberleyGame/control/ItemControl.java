@@ -70,7 +70,7 @@ Dog Treats, it will still find it.*/
 
     public Item[] createLocalItemArray() {
 //set the current location to wherever the player is.
-     Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         Location currentLocation = game.getCurrentRoom();
         Item[] allItemArray = game.getAllItemArray();
 //create an ArrayList to hold all of the items in the above location.
@@ -89,7 +89,7 @@ Dog Treats, it will still find it.*/
 
 // author Melissa and Sheila
     public String lookAtItem(String playerSelection) {
-         Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         Item[] localItemArray = game.getLocalItemArray();//set the variable for localItemArray to the game's local item ar
         int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalItemNames()); // compares player's selection to the String[] and pulls the location in the list 
         if (indexOfItem != -1) {
@@ -99,55 +99,58 @@ Dog Treats, it will still find it.*/
         }
     }
 
-    
-    
-        public String useItem(String playerSelection) {
-           Game game = PemberleyGame.getCurrentGame();
-        int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalItemNames()); // compares player's selection to the String[] and pulls the location in the list 
+    public String useItem(String playerSelection) {
+        Game game = PemberleyGame.getCurrentGame();
+        int indexOfItem;
+        boolean itemIsPresent = false;
+        Item itemToUse;
+
+        indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalItemNames()); // compares player's selection to the String[] and pulls the location in the list 
         if (indexOfItem != -1) {
-            Item itemToUse = game.getLocalItemArray()[indexOfItem];
-            return this.checkUseItem(itemToUse, game);
-            
+            itemIsPresent = true;
+            itemToUse = game.getLocalItemArray()[indexOfItem];
         } else {
 //if there are no local items to use, check inventory items to use.
             indexOfItem = this.findIndexOfValue(playerSelection, game.getInventoryItemNames());
             if (indexOfItem != -1) {
-            Item itemToUse = game.getInventoryItemArray()[indexOfItem];
-            return this.checkUseItem(itemToUse, game);
-                
-                
+                itemToUse = game.getInventoryItemArray()[indexOfItem];
             } else {
-                return "That item is not available here.";
+                return "That item is not here.";
             }
         }
+
+        if (itemToUse.isUsable() != true && itemToUse.getUseMessage() == null) {
+            return "You can't use the " + itemToUse.getName();
+        } else if (itemToUse.isUsable() != true){
+            return itemToUse.getUseMessage();
+        } else if (itemToUse.isUsable()== true && itemToUse.getQuest() != null){
+            QuestControl questControl = new QuestControl();
+            this.changeItemAttributes(itemToUse);
+            return questControl.executeQuestActions(game, itemToUse.getQuest());
+        } else if (itemToUse.isUsable()== true && itemToUse.getUseMessage() != null){      
+            return itemToUse.getUseMessage(); 
+        } else{
+            return "You use the " + itemToUse.getName();
+        }
+
     }
 
-    public String checkUseItem (Item itemToUse, Game game){
-        String gameMessage;
-    if (itemToUse.isUsable()==false){
-        gameMessage = "You can't use that item like that.";
-    }else{
-        QuestControl questControl = new QuestControl();
-        Quest currentQuest = itemToUse.getQuest();
-        gameMessage = questControl.executeQuestActions(game, currentQuest);
+    public void changeItemAttributes(Item currentItem) {
+        if (currentItem.getAlternateDescription() != null) {
+            currentItem.setDescription(currentItem.getAlternateDescription());
+        }
+        if (currentItem.getAlternateLocation() != null) {
+            currentItem.setLocation(currentItem.getAlternateLocation());
+        }
+        if (currentItem.isAlternateTakable() == true) {
+            currentItem.setTakable(true);
+        }
+        if (currentItem.getAlternateTakeMessage() != null) {
+            currentItem.setTakeMessage(currentItem.getAlternateTakeMessage());
+        }
+        if (currentItem.getAlternateUseMessage() != null) {
+            currentItem.setUseMessage(currentItem.getAlternateUseMessage());
+        }
     }
-    
-    return gameMessage;
-    
-    }
-    
- public void changeItemAttributes(Item currentItem){
-if (currentItem.getAlternateDescription()!=null)
-    currentItem.setDescription(currentItem.getAlternateDescription());
-if (currentItem.getAlternateLocation()!=null)
-    currentItem.setLocation(currentItem.getAlternateLocation());
-if (currentItem.isAlternateTakable()==true)
-    currentItem.setTakable(true);
-if (currentItem.getAlternateTakeMessage()!=null)
-    currentItem.setTakeMessage(currentItem.getAlternateTakeMessage());
-if (currentItem.getAlternateUseMessage()!=null)
-    currentItem.setUseMessage(currentItem.getAlternateUseMessage());
-}
-
 
 }
