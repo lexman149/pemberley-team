@@ -172,7 +172,7 @@ public class ExploreMenuView extends View {
         String prompt = "What do you want to try and use?";
         
         //check to see if there is anything to use.
-        if (game.getLocalItemNames().length == 0 || game.getInventoryItemNames().length == 0){
+        if (game.getLocalItemNames().length == 0 && game.getInventoryItemNames().length == 0){
         System.out.println("There is nothing to use here.");
         return;
         }
