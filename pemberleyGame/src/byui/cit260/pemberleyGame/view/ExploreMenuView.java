@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.lang.Character;//do not remove.  needed to check for integer
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
+import byui.cit260.permberleyGame.exceptions.InventoryControlException;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -85,9 +86,9 @@ public class ExploreMenuView extends View {
         Player player = game.getPlayerOne();
         ItemControl itemControl = new ItemControl();
         Item[] localItemArray = game.getLocalItemArray();
-        String gameMessage;
+        String gameMessage = " ";
         int indexOfItem;
-        int quantityOfItem;
+        int quantityOfItem = 1;
         String playerSelection;
         InventoryControl inventoryControl = new InventoryControl();
 //designate the inventory
@@ -112,18 +113,33 @@ public class ExploreMenuView extends View {
                     if (selectedItem.isMultiple() == true) {
                         prompt = "How Many do you want to take? (1 - 9)";
 //get the players selection and make sure it is an integer
-                        playerSelection = this.getIntegerInput(prompt);
+                        playerSelection = this.getStringInput(prompt); // gets a string
 //make the player's selection an integer
-                        quantityOfItem = Integer.parseInt(playerSelection);
+                    try {
+                        quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
+                        
+                    } catch (NumberFormatException nf) {
+                        System.out.println("\nYou must enter a valid number."
+                                            +" Try again or type X to exit.");
+                    
+                    }
 //call the takeMultipleItem function.
+                    try {
                         gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
+                    } catch (InventoryControlException ie) {
+                        System.out.println(ie.getMessage());
+                    }
                     } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
+                    }       
 //call the takeSingleItem function
+                    try {
                         gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
+                    } catch (InventoryControlException ie) {
+                        System.out.println(ie.getMessage());
                     }
-
-                } else {
+                }    
+                else {
 //if the player's selection is not in the array send this message
                     gameMessage = "Not sure what you are trying to take.";
                 }

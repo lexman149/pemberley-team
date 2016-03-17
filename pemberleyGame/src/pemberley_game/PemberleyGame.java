@@ -25,8 +25,13 @@ public class PemberleyGame {
 
 // create StartProgramViw and start the program
         StartProgramView startProgramView = new StartProgramView();
+        try {
         startProgramView.startProgram();
-
+        } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            startProgramView.startProgram();
+        }
     }
 
     public static Game getCurrentGame() {

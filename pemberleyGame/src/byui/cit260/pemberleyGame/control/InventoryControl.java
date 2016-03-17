@@ -6,6 +6,7 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
+import byui.cit260.permberleyGame.exceptions.InventoryControlException;
 import java.util.ArrayList;
 import pemberley_game.PemberleyGame;
 
@@ -15,26 +16,28 @@ import pemberley_game.PemberleyGame;
  */
 public class InventoryControl {
 
-    public double calcAddInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) {
+    public double calcAddInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) 
+                        throws InventoryControlException {
         if (newItemQuantity < 0 || newItemQuantity > 9) {
-            return -1;
+            throw new InventoryControlException("Please enter a number between 1 - 9");
         }
 //currentWeight = inventory.getCurrentWeight(); /*needs to be created */
         newWeight = currentWeight + (newWeight * newItemQuantity);
         if (newWeight > 20) {
-            return -2;
+            throw new InventoryControlException("You have exceeded your inventory weight of 20 lbs.");
         }
         return newWeight;
     }
 
-    public double calcRemoveInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) {
+    public double calcRemoveInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) 
+                        throws InventoryControlException{
         if (newItemQuantity < 0 || newItemQuantity > 9) {
-            return -1;
+            throw new InventoryControlException("Please enter a number between 0 - 9");
         }
 //currentWeight = inventory.getCurrentWeight(); /*needs to be created */
         newWeight = currentWeight - (newWeight * newItemQuantity);
         if (newWeight < 0) {
-            return -1;
+            throw new InventoryControlException("Your cannot take away more weight than you have.");
         }
         return newWeight;
     }
@@ -52,7 +55,8 @@ public class InventoryControl {
 
 //function that takes any string and finds it in an array of strings. Move to a different control?
 //by Melissa Marriott
-    public String takeSingleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
+    public String takeSingleItem(Item itemToTake, int quantityToTake, Inventory inventory) 
+                        throws InventoryControlException {
 //check to make sure that the potetial weight does not exceed the 20 lb limit
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
 //if the item's takable attribute is not true, return an appropriate message.
@@ -77,7 +81,8 @@ public class InventoryControl {
     }
 
 //by Melissa Marriott
-    public String takeMultipleItem(Item itemToTake, int quantityToTake, Inventory inventory) {
+    public String takeMultipleItem(Item itemToTake, int quantityToTake, Inventory inventory) 
+                        throws InventoryControlException{
 //make the item to take whatever is in the container.
         itemToTake = itemToTake.getContains();
 //check to make sure that the potetial weight does not exceed the 20 lb limit
@@ -90,8 +95,8 @@ public class InventoryControl {
         if (!canTake) {
             return "You already have " + currentQuantity + " " + itemToTake.getName() + "You can only have 9";
 //else let the player know that the quantity is not valid
-        } else if (potentialWeight == -1) {
-            return "That is not a valid quantity";
+//        } else if (potentialWeight == -1) {
+//            return "That is not a valid quantity";
 //else if the potential weight is too much return an appropriate message  
         } else if (potentialWeight == -2) {
             return "That exceeds your weight limit";
