@@ -67,7 +67,7 @@ public class ExploreMenuView extends View {
 // author Alexis
 
     private void movePlayer() {
-         Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         Player player = game.getPlayerOne();
         String prompt = "Which direction do you want to go? Type X to exit.";
         String playerSelection;
@@ -82,7 +82,7 @@ public class ExploreMenuView extends View {
 
     private void takeItem() {
 //declare variables
- Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         Player player = game.getPlayerOne();
         ItemControl itemControl = new ItemControl();
         Item[] localItemArray = game.getLocalItemArray();
@@ -115,31 +115,34 @@ public class ExploreMenuView extends View {
 //get the players selection and make sure it is an integer
                         playerSelection = this.getStringInput(prompt); // gets a string
 //make the player's selection an integer
-                    try {
-                        quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
-                        
-                    } catch (NumberFormatException nf) {
-                        System.out.println("\nYou must enter a valid number."
-                                            +" Try again or type X to exit.");
-                    
-                    }
+                        try {
+                            quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
+
+                        } catch (NumberFormatException nf) {
+                            System.out.println("\nYou must enter a valid number."
+                                    + " Try again or type X to exit.");
+
+                        }
 //call the takeMultipleItem function.
-                    try {
-                        gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
-                    } catch (InventoryControlException ie) {
-                        System.out.println(ie.getMessage());
-                    }
+                        try {
+                            gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
+                        } catch (InventoryControlException ie) {
+                            System.out.println(ie.getMessage());
+                        }
                     } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
-                    }       
+                    
 //call the takeSingleItem function
-                    try {
-                        gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
-                    } catch (InventoryControlException ie) {
-                        System.out.println(ie.getMessage());
+                        try {
+                            gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
+                        } catch (InventoryControlException ie) {
+                            System.out.println(ie.getMessage());
+                        }
+                
                     }
-                }    
-                else {
+                    
+                    
+                    } else {
 //if the player's selection is not in the array send this message
                     gameMessage = "Not sure what you are trying to take.";
                 }
@@ -159,11 +162,10 @@ public class ExploreMenuView extends View {
         ActorControl actorControl = new ActorControl();
         String[] actorsName = game.getLocalActorNames(); //get list of actors in the current location
 //no actors in the player's location, print message and return to menu        
-        if(actorsName.length<1){
+        if (actorsName.length < 1) {
             System.out.print("NO ONE IS HERE");
             return; //no selection possible, return to menu
-        }
-//actors available to speak - print list
+        } //actors available to speak - print list
         else {
             System.out.println("These characters are here:");
             for (String i : actorsName) {
@@ -177,33 +179,32 @@ public class ExploreMenuView extends View {
                 String characterScript = actorControl.speakToActor(playerSelection);
                 System.out.println(characterScript);
             } while (!playerSelection.equalsIgnoreCase("x"));
-            
+
         }
     }
-    
+
     private void useItem() {
-        
+
         Game game = PemberleyGame.getCurrentGame();
         ItemControl itemControl = new ItemControl();
         String prompt = "What do you want to try and use?";
-        
-        //check to see if there is anything to use.
-        if (game.getLocalItemNames().length == 0 && game.getInventoryItemNames().length == 0){
-        System.out.println("There is nothing to use here.");
-        return;
+
+//check to see if there is anything to use.
+        if (game.getLocalItemNames().length == 0 && game.getInventoryItemNames().length == 0) {
+            System.out.println("There is nothing to use here.");
+            return;
         }
-        
+
         System.out.println("These things are accessible:\n");
-        
+
         for (String i : game.getLocalItemNames()) {
             System.out.print(i + "\n");
         }
-        
+
         for (String i : game.getInventoryItemNames()) {
-        System.out.print(i + "\n");
-        }        
-        
-        
+            System.out.print(i + "\n");
+        }
+
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
@@ -214,8 +215,9 @@ public class ExploreMenuView extends View {
 
     }
 //author Melissa and Sheila
+
     private void lookAt() {
-        
+
         LookMenuView lookMenu = new LookMenuView();
         lookMenu.display();
 

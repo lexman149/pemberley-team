@@ -368,7 +368,7 @@ public class GameControl {
         itClothing.setQuantity(0);
         itClothing.setTakable(true);
         itClothing.setUsable(true);
-        itClothing.setWeight(0);
+        itClothing.setWeight(20);
         itContainerOfSweets.setDescription("It is a container of sweets");
         itContainerOfSweets.setLocation(rmLarder);
         itContainerOfSweets.setName("Sweets");
@@ -526,7 +526,6 @@ public class GameControl {
         itTimeMachine.setTakable(true);
         itTimeMachine.setTakable(true);
         itTimeMachine.setUsable(true);
-        itTimeMachine.setWeight(2);
         itTimeMachine.setWeight(2);
         itTrout.setAlternateTakable(true);
         itTrout.setDescription("It is a very big trout fit for a feast");
