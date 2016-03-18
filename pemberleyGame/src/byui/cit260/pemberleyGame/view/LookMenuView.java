@@ -8,6 +8,7 @@ package byui.cit260.pemberleyGame.view;
 import byui.cit260.pemberleyGame.control.*;
 import java.util.Scanner;
 import byui.cit260.pemberleyGame.model.*;
+import byui.cit260.permberleyGame.exceptions.ActorControlException;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -22,7 +23,7 @@ public class LookMenuView extends View {
                 + "\n | Look Menu"
                 + "\n----------------------------------------"
                 + "\nR - Look at the room"
-                + "\nC - Look at a character"
+                + "\nA - Look at a actor"
                 + "\nI - Look at an inventory item"
                 + "\nH - Look at an items here"
                 + "\nX - Exit"
@@ -37,8 +38,8 @@ public class LookMenuView extends View {
             case "R":
                 this.displayRoom();
                 break;
-            case "C":
-                this.displayCharacter();
+            case "A":
+                this.displayActor();
                 break;
             case "I":
                 this.displayInventory();
@@ -62,7 +63,7 @@ public class LookMenuView extends View {
     }
 
 //by Sheila
-    private void displayCharacter() {
+    private void displayActor() {
         Game game = PemberleyGame.getCurrentGame();
         ActorControl actorControl = new ActorControl();
         String prompt = "Which actor do you want to look at? Type X to cancel.";
@@ -71,13 +72,15 @@ public class LookMenuView extends View {
         for (String i : actorsHere) {
             System.out.print(i + "\n");
         }
-        String playerSelection;
+        String playerSelection = "";//scope variable
         do {
-            playerSelection = this.getStringInput(prompt);
-
-            String roomDescription = actorControl.lookAtActor(playerSelection, game);
-            
-
+            String roomDescription = ""; // scope variable instantiate
+                try {
+                    playerSelection = this.getStringInput(prompt);
+                    roomDescription = actorControl.lookAtActor(playerSelection, game);
+                } catch (ActorControlException ae) {
+                    System.out.println(ae.getMessage()); // thrown from ActorControl Line 109
+                }
             System.out.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
        
@@ -119,7 +122,7 @@ public class LookMenuView extends View {
 
 // if the name is invlaid (less than two characters in length)
             if (playersInput.length() < 1) {
-                System.out.println("Invalid selection - selection can not be blank");
+                System.out.println("Invalid Selection - selection cannot be blank");
                 continue; // and repeat again 
             }
             break; // out of the (exit) the repetition

@@ -12,6 +12,7 @@ import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
+import byui.cit260.permberleyGame.exceptions.ActorControlException;
 import pemberley_game.PemberleyGame;
 import java.util.ArrayList;
 
@@ -86,26 +87,28 @@ Dog Treats, it will still find it.*/
         return indexOfValue;
     }
 
-// author Sheila    
-    public String speakToActor(String playerSelection) {
+// author Sheila, throw by SW 3/17/16   
+    public String speakToActor(String playerSelection) 
+                    throws ActorControlException {
         Game game = PemberleyGame.getCurrentGame();
         Actor[] localActorArray = game.getLocalActorArray();//set the variable for localActorArray to the game's localActorArray
         int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalActorNames()); // compares player's selection with String[] of actors in the same location as the player
-        if (indexOfItem != -1) {
-            return localActorArray[indexOfItem].getCharacterScript(); // returns description of actors in the room
+        if (indexOfItem == -1) {
+            throw new ActorControlException("That actor is not here.");
         } else {
-            return "That character is not here.";
+            return localActorArray[indexOfItem].getCharacterScript(); // returns description of actors in the room
         }
     }
     
-//by Alexis Actor Control
-    public String lookAtActor(String playerSelection, Game game) {
+//by Alexis Actor Control, throw by SW 3/17/16
+    public String lookAtActor(String playerSelection, Game game) 
+                    throws ActorControlException {
         Actor[] localActorArray = game.getLocalActorArray();//set the variable for localActorArray to the game's local item ar
         int indexOfActor = this.findIndexOfValue(playerSelection, game.getLocalActorNames()); // compares player's selection to the String[] and pulls the location in the list 
-        if (indexOfActor != -1) {
-            return localActorArray[indexOfActor].getDescription(); // returns description of actor
+        if (indexOfActor == -1) {
+            throw new ActorControlException ("That actor is not available here.");
         } else {
-            return "That actor is not available here.";
+           return localActorArray[indexOfActor].getDescription(); // returns description of actor 
         }
     }
     

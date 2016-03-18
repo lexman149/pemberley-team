@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.lang.Character;//do not remove.  needed to check for integer
 import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
-import byui.cit260.permberleyGame.exceptions.InventoryControlException;
+import byui.cit260.permberleyGame.exceptions.*;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -161,22 +161,28 @@ public class ExploreMenuView extends View {
         Game game = PemberleyGame.getCurrentGame();
         ActorControl actorControl = new ActorControl();
         String[] actorsName = game.getLocalActorNames(); //get list of actors in the current location
+//        String playerSelection;
 //no actors in the player's location, print message and return to menu        
         if (actorsName.length < 1) {
             System.out.print("NO ONE IS HERE");
             return; //no selection possible, return to menu
         } //actors available to speak - print list
         else {
-            System.out.println("These characters are here:");
+            System.out.println("These actors are here:");
             for (String i : actorsName) {
                 System.out.print(i + "\n");
             }
 //player selects from list of actors or exits       
             String prompt = "To whom do you wish to speak? Type X to exit.";
-            String playerSelection;
+            String playerSelection = ""; // scope variables
             do {
+                String characterScript = ""; // scope variable instantiate
+                try {
                 playerSelection = this.getStringInput(prompt);
-                String characterScript = actorControl.speakToActor(playerSelection);
+                characterScript = actorControl.speakToActor(playerSelection);
+                } catch (ActorControlException ae) {
+                    System.out.println(ae.getMessage()); // thrown from ActorControl Line 97
+                }
                 System.out.println(characterScript);
             } while (!playerSelection.equalsIgnoreCase("x"));
 
