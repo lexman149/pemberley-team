@@ -68,13 +68,20 @@ public class ExploreMenuView extends View {
 
     private void movePlayer() {
         Game game = PemberleyGame.getCurrentGame();
+        String roomDescription = "";
         Player player = game.getPlayerOne();
         String prompt = "Which direction do you want to go? Type X to exit.";
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
             MapControl mapControl = new MapControl();
-            String roomDescription = mapControl.playerNavigate(playerSelection, player);
+            try{
+            roomDescription = mapControl.playerNavigate(playerSelection, player);
+            } catch (MapControlException me) {
+                            System.out.println(me.getMessage());
+                        }
+            
+            
             System.out.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
 

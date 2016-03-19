@@ -6,6 +6,7 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.Inventory;
+import byui.cit260.permberleyGame.exceptions.InventoryControlException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class InventoryControlTest {
      * Test of calcInventoryWeight method, of class InventoryControl.
      */
     @Test
-    public void testCalcAddInventoryWeight() {
+    public void testCalcAddInventoryWeight() throws InventoryControlException {
         System.out.println("calcAddInventoryWeight");
         
         /****************
@@ -273,7 +274,7 @@ public class InventoryControlTest {
      * Test of calcRemoveInventoryWeight method, of class RemoveInventoryControl.
      */
     @Test
-    public void testCalcRemoveInventoryWeight() {
+    public void testCalcRemoveInventoryWeight() throws InventoryControlException {
         System.out.println("calcRemoveInventoryWeight");
         
         /****************

@@ -6,6 +6,7 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
+import byui.cit260.permberleyGame.exceptions.MapControlException;
 import java.util.ArrayList;
 import pemberley_game.PemberleyGame;
 
@@ -15,7 +16,8 @@ import pemberley_game.PemberleyGame;
  */
 public class MapControl {
 
-    public String playerNavigate(String direction, Player player) {
+    public String playerNavigate(String direction, Player player) 
+                            throws MapControlException{
         Game game = PemberleyGame.getCurrentGame();
         Room currentRoom = player.getLocation();
         Room nextRoom;
@@ -42,7 +44,7 @@ public class MapControl {
 
         }
         if (nextRoom == null) {
-            return "You cannot go that direction. Please choose again.";
+            throw new MapControlException("You can't go that direction");
         } else {
             System.out.println(nextRoom.getName());
             player.setLocation(nextRoom);

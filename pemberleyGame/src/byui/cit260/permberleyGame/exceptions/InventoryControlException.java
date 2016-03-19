@@ -9,6 +9,7 @@ public class InventoryControlException extends Exception{
     public InventoryControlException() {
     }
 
+    
     public InventoryControlException(String message) {
         super(message);
     }
