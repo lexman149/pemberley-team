@@ -127,4 +127,50 @@ public class InventoryControl {
         GameControl gameControl = new GameControl();
         gameControl.updateGame();
     }
+
+//    public String giveMultipleItem(Item selectedItem, int quantityOfItem, Inventory inventory) 
+//                               throws InventoryControlException{
+////make the item to take whatever is in the container.
+//
+//
+//  }
+
+    public String giveItem(Item selectedItem, int quantityOfItem, Actor actorToReceive) {
+        String gameMessage = " ";
+        Game game = PemberleyGame.getCurrentGame();
+        Player player = game.getPlayerOne();
+        Inventory inventory = player.getInventory();
+        
+        Quest currentQuest = actorToReceive.getQuest();
+        
+        if (selectedItem == currentQuest.getNeeds()){
+            if(quantityOfItem == 1){
+                selectedItem.setLocation(null);
+                inventory.setWeight(inventory.getWeight() - selectedItem.getWeight());
+            } else {
+                int potentialQuantity = selectedItem.getQuantity() - quantityOfItem;
+                if (potentialQuantity < 1){
+                    return "You don't have that many " + selectedItem.getName();
+                }
+                selectedItem.setQuantity(selectedItem.getQuantity()-quantityOfItem);
+                inventory.setWeight(inventory.getWeight() - selectedItem.getWeight() * quantityOfItem);
+            }
+            
+            QuestControl questControl = new QuestControl();
+            return questControl.executeQuestActions(game, currentQuest);
+        
+        } else{
+    
+            return actorToReceive.getName() + " doesn't appear to want that.";
+        }
+            
+        
+        
+        
+        
+        
+        
+        
+        
+}
 }

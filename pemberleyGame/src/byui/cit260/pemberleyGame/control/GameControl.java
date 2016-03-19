@@ -749,7 +749,7 @@ public class GameControl {
             itRibbons, itTimeMachine, itLetter, itTrout, itClothing, itCane, itCarrotBag,
             itCarrots, itChestnuts, itChestnutTree, itContainerOfSweets, itContainerOfWorms,
             itEmptyContainer, itFan, itFishingPole, itHeartCard, itMoney, itMusic,
-            itPocKetWatch, itTeaCup, itUmbrella, itWorms};
+            itPocKetWatch, itTeaCup, itUmbrella, itWorms, itDogTreats};
 
         Actor allActors[] = {atHamster, atMrDarcy, atCarter, atLordRandolph, atMarshall,
             atUncleFinneas, atLadyRoslyn, atMrsDarcy, atGeorgie, atRoberDarcy, atJaneDarcy,

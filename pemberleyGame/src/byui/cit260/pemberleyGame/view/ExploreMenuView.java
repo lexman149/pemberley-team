@@ -131,18 +131,17 @@ public class ExploreMenuView extends View {
                         }
                     } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
-                    
+
 //call the takeSingleItem function
                         try {
                             gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
                         } catch (InventoryControlException ie) {
                             System.out.println(ie.getMessage());
                         }
-                
+
                     }
-                    
-                    
-                    } else {
+
+                } else {
 //if the player's selection is not in the array send this message
                     gameMessage = "Not sure what you are trying to take.";
                 }
@@ -153,7 +152,78 @@ public class ExploreMenuView extends View {
     }
 
     private void giveItem() {
-        System.out.println("***giveItem function called ***");
+        Game game = PemberleyGame.getCurrentGame();
+
+        if (game.getInventoryItemNames().length == 0 || game.getLocalActorNames().length == 0) {
+            System.out.println("You have nothing to give or there is no one to give something to."); 
+            return;
+        }
+
+        ItemControl itemControl = new ItemControl();
+        ActorControl actorControl = new ActorControl();
+        InventoryControl inventoryControl = new InventoryControl();
+        String prompt = "What do you want to give?";
+        Player player = game.getPlayerOne();
+        Item[] inventoryItems = game.getInventoryItemArray();
+        Actor[] actorArray = game.getLocalActorArray();
+        String gameMeassge = " ";
+        int quantityOfItem = 1;
+        Item itemToGive;
+        Actor actorToGive;
+//check to see if there is anything to use.
+
+        System.out.println("These things are in your inventory\n");
+
+        for (String i : game.getInventoryItemNames()) {
+            System.out.print(i + "\n");
+        }
+
+        String playerSelection;
+        do {
+            playerSelection = this.getStringInput(prompt);
+
+            int indexOfItem = itemControl.getItemIndex(playerSelection, player, inventoryItems);
+
+            try{
+                itemToGive = inventoryItems[indexOfItem];
+            } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+                    System.out.println("\nNot Sure what you are trying to give.");
+                    return;
+            }
+            
+            if (itemToGive.getQuantity() > 1) {
+                prompt = "How many " + itemToGive.getName() + " do you want to give?";
+                playerSelection = this.getStringInput(prompt);
+
+                try {
+                    quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
+
+                } catch (NumberFormatException nf) {
+                    System.out.println("\nYou must enter a valid number."
+                            + " Try again or type X to exit.");
+                }
+
+            } else {
+                quantityOfItem = 1;
+            }
+
+            prompt = "Who do you want to give the " + itemToGive.getName() + " to?";
+            playerSelection = this.getStringInput(prompt);
+
+            int indexOfActor = actorControl.getActorIndex(playerSelection, player, actorArray);
+           
+            try{
+                actorToGive = actorArray[indexOfActor];
+            } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+                    System.out.println("\nNot Sure who you are trying to give the "+itemToGive.getName()
+                            +" to.");
+                    return;
+            }
+            
+            System.out.println(inventoryControl.giveItem(itemToGive, quantityOfItem, actorToGive));
+            
+        } while (!playerSelection.equalsIgnoreCase("x"));
+
     }
 
 // author Sheila 
@@ -178,8 +248,8 @@ public class ExploreMenuView extends View {
             do {
                 String characterScript = ""; // scope variable instantiate
                 try {
-                playerSelection = this.getStringInput(prompt);
-                characterScript = actorControl.speakToActor(playerSelection);
+                    playerSelection = this.getStringInput(prompt);
+                    characterScript = actorControl.speakToActor(playerSelection);
                 } catch (ActorControlException ae) {
                     System.out.println(ae.getMessage()); // thrown from ActorControl Line 97
                 }
