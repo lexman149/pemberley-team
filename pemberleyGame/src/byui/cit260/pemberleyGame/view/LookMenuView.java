@@ -9,6 +9,7 @@ import byui.cit260.pemberleyGame.control.*;
 import java.util.Scanner;
 import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.permberleyGame.exceptions.ActorControlException;
+import byui.cit260.permberleyGame.exceptions.ItemControlException;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -89,6 +90,7 @@ public class LookMenuView extends View {
 //by Sheila
     private void displayItem() {
          Game game = PemberleyGame.getCurrentGame();
+         String roomDescription = " ";
         ItemControl itemControl = new ItemControl();
         String prompt = "Which item do you want to look at? Type X to cancel.";
         System.out.println("These things are here:");
@@ -99,8 +101,15 @@ public class LookMenuView extends View {
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
-
-            String roomDescription = itemControl.lookAtItem(playerSelection);
+                try {
+            roomDescription = itemControl.lookAtItem(playerSelection, game);
+                
+                    playerSelection = this.getStringInput(prompt);
+                    roomDescription = itemControl.lookAtItem(playerSelection, game);
+                } catch (ItemControlException ie) {
+                    System.out.println(ie.getMessage());
+                return;
+                }
             System.out.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
     }

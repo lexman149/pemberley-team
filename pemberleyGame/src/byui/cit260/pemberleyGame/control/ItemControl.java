@@ -11,6 +11,7 @@ import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Quest;
+import byui.cit260.permberleyGame.exceptions.ItemControlException;
 import pemberley_game.PemberleyGame;
 import java.util.ArrayList;
 
@@ -88,19 +89,21 @@ Dog Treats, it will still find it.*/
     }
 
 // author Melissa and Sheila
-    public String lookAtItem(String playerSelection) {
-        Game game = PemberleyGame.getCurrentGame();
+    public String lookAtItem(String playerSelection, Game game) 
+        throws ItemControlException {
+                    
         Item[] localItemArray = game.getLocalItemArray();//set the variable for localItemArray to the game's local item ar
         int indexOfItem = this.findIndexOfValue(playerSelection, game.getLocalItemNames()); // compares player's selection to the String[] and pulls the location in the list 
         if (indexOfItem != -1) {
-            return localItemArray[indexOfItem].getDescription(); // returns description of item
+            return localItemArray[indexOfItem].getDescription();
+//return localItemArray[indexOfItem].getDescription(); // returns description of item
         } else {
-            return "That item is not available here.";
+            throw new ItemControlException ("That item is not available here.");
         }
     }
 
-    public String useItem(String playerSelection) {
-        Game game = PemberleyGame.getCurrentGame();
+    public String useItem(String playerSelection, Game game) {
+        //Game game = PemberleyGame.getCurrentGame();
         int indexOfItem;
         boolean itemIsPresent = false;
         Item itemToUse;
