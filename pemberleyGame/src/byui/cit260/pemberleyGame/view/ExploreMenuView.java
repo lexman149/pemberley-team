@@ -208,6 +208,7 @@ public class ExploreMenuView extends View {
                 } catch (NumberFormatException nf) {
                     System.out.println("\nYou must enter a valid number."
                             + " Try again or type X to exit.");
+                    break;
                 }
 
             } else {
@@ -228,6 +229,8 @@ public class ExploreMenuView extends View {
             }
             
             System.out.println(inventoryControl.giveItem(itemToGive, quantityOfItem, actorToGive));
+            
+            break;
             
         } while (!playerSelection.equalsIgnoreCase("x"));
 
