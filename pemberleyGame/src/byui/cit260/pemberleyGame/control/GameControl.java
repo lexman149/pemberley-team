@@ -8,8 +8,12 @@ package byui.cit260.pemberleyGame.control;
 import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.pemberleyGame.model.User;
 import byui.cit260.permberleyGame.exceptions.GameControlException;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 import pemberley_game.PemberleyGame;
 
@@ -789,39 +793,36 @@ public class GameControl {
         
     }
 // L11 Team Assignment
-//    public static void saveGame(Game game, String filePath) 
-//            throws GameControlException {
-////write serialized Java Bean object directly to an object to an output byte stream.        
-//        try( FileOutputStream fops = new FileOutputStream(filepath)) { 
-//            ObjectOutputStream output = new ObjectOutputStream(fops);
-//            
-//            output.writeObject(game); // write the game object out to file
-//        }
-//        catch(IOException e) {
-//            throw new GameControlException(e.getMessage());
-//        }
-//    }
-//
-//    public static void getSavedGame(String filePath) 
-//                        throws GameControlException {
-//        Game game = null;
-//        
-//        try( FileInputStream fips = new FileInputStream(filepath)) {
-//            ObjectInputStream output = new ObjectInputStream(fips);
-//            
-//            game = (Game) output.readObject(); //read the game object from file
-//        }
-//        catch(FileNotFoundException fnfe) {
-//            throw new GameControlException(fnfe.getMessage());
-//        }
-//        catch(Exception e) {
-//            throw new GameControlException(e.getMessage());
-//        }
-//        
-//        // close the output file
-//        PemberleyGame.setCurrentGame(game); // save in PemberleyGame
-//    }
-//    
+    public static void saveGame(Game game, String filePath) 
+            throws GameControlException {
+//write serialized Java Bean object directly to an object to an output byte stream.        
+        try( FileOutputStream fops = new FileOutputStream(filePath)) { 
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game); // write the game object out to file
+        }
+        catch(IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) 
+                        throws GameControlException{
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject(); //read the game object from file
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        // close the output file
+        PemberleyGame.setCurrentGame(game); // save in PemberleyGame
+    }
+    
 
     public void updateGame() {
          Game game = PemberleyGame.getCurrentGame();

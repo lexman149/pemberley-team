@@ -9,6 +9,7 @@ import byui.cit260.pemberleyGame.control.GameControl;
 import byui.cit260.pemberleyGame.control.InventoryControl;
 import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.Inventory;
+import byui.cit260.permberleyGame.exceptions.GameControlException;
 import pemberley_game.PemberleyGame;
 
 /**
@@ -39,13 +40,13 @@ public class MainMenuView extends View {
                 this.startNewGame();
                 break;
             case "G":
-//                this.startSavedGame();
+                this.startSavedGame();
                 break;
             case "H":
                 this.displayHelpMe();
                 break;
             case "S":
-//                this.saveGame();
+                this.saveGame();
                 break;
             case "X":
                 return true;
@@ -71,21 +72,21 @@ public class MainMenuView extends View {
         gameMenu.display();
     }
 // L11 Team Assignment
-//    private void startSavedGame() {
-//        System.out.println("\n\nEnter the file path where the game "
-//                            + "is saved.");
-//        
-//        String filePath = this.getInput(); 
-//        
-//        try {
-//            // start a saved game
-//            GameControl.getSavedGame(filePath);
-//        } catch (Exception ex) {
-//            ErrorView.display("MainMenuView", ex.getMessage());
-//        }
-//        GameMenuView gameMenu = new GameMenuView();
-//        gameMenu.display();
-//    }
+private void startSavedGame() {
+        this.console.println("\n\nEnter the file path where the game "
+                            + "is saved.");
+        
+        String filePath = this.getInput(); 
+        
+        try {
+            // start a saved game
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+    }
 
     private void displayHelpMe() {
 // display the help menu
@@ -94,18 +95,18 @@ public class MainMenuView extends View {
     }
 
     
-//    private void saveGame() {
-//        System.out.println("\n\nEnter the file path for the file where the game "
-//                            + "is to be saved.");
-//        String filePath = this.getInput(); // getInput function in View.java
-//        
-//        try {
-//            // save the game to the specified file
-//            GameControl.saveGame(PemberleyGame.getCurrentGame(), filePath);
-//        } catch (Exception ex) {
-//            ErrorView.display("MainMenuView", ex.getMessage());
-//        }
-//        // needs display message indicating that the game is saved successfully to the file.
-//    }
+    private void saveGame() {
+        System.out.println("\n\nEnter the file path for the file where the game "
+                            + "is to be saved.");
+        String filePath = this.getInput(); // getInput function in View.java
+        
+        try {
+            // save the game to the specified file
+            GameControl.saveGame(PemberleyGame.getCurrentGame(), filePath);
+        } catch (GameControlException ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        // needs display message indicating that the game is saved successfully to the file.
+    }
 
 }
