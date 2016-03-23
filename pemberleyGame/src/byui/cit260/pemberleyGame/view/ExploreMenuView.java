@@ -78,7 +78,7 @@ public class ExploreMenuView extends View {
             try{
             roomDescription = mapControl.playerNavigate(playerSelection, player);
             } catch (MapControlException me) {
-                            this.console.println(me.getMessage());
+                            ErrorView.display(this.getClass().getName(),me.getMessage());
                         }
             
             
@@ -126,7 +126,7 @@ public class ExploreMenuView extends View {
                             quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
 
                         } catch (NumberFormatException nf) {
-                            this.console.println("\nYou must enter a valid number."
+                            ErrorView.display(this.getClass().getName(), "\nYou must enter a valid number."
                                     + " Try again or type X to exit.");
 
                         }
@@ -134,7 +134,7 @@ public class ExploreMenuView extends View {
                         try {
                             gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
                         } catch (InventoryControlException ie) {
-                            this.console.println(ie.getMessage());
+                            ErrorView.display(this.getClass().getName(),ie.getMessage());
                         }
                     } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
@@ -143,7 +143,7 @@ public class ExploreMenuView extends View {
                         try {
                             gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
                         } catch (InventoryControlException ie) {
-                            this.console.println(ie.getMessage());
+                            ErrorView.display(this.getClass().getName(),ie.getMessage());
                         }
 
                     }
@@ -194,7 +194,7 @@ public class ExploreMenuView extends View {
             try{
                 itemToGive = inventoryItems[indexOfItem];
             } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-                    this.console.println("\nNot Sure what you are trying to give.");
+                    ErrorView.display(this.getClass().getName(),"\nNot Sure what you are trying to give.");
                     return;
             }
             
@@ -206,7 +206,7 @@ public class ExploreMenuView extends View {
                     quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
 
                 } catch (NumberFormatException nf) {
-                    this.console.println("\nYou must enter a valid number."
+                    ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number."
                             + " Try again or type X to exit.");
                     break;
                 }
@@ -223,7 +223,7 @@ public class ExploreMenuView extends View {
             try{
                 actorToGive = actorArray[indexOfActor];
             } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-                    this.console.println("\nNot Sure who you are trying to give the "+itemToGive.getName()
+                    ErrorView.display(this.getClass().getName(),"\nNot Sure who you are trying to give the "+itemToGive.getName()
                             +" to.");
                     return;
             }
@@ -261,7 +261,7 @@ public class ExploreMenuView extends View {
                     playerSelection = this.getStringInput(prompt);
                     characterScript = actorControl.speakToActor(playerSelection);
                 } catch (ActorControlException ae) {
-                    this.console.println(ae.getMessage()); // thrown from ActorControl Line 97
+                    ErrorView.display(this.getClass().getName(),ae.getMessage()); // thrown from ActorControl Line 97
                 }
                 this.console.println(characterScript);
             } while (!playerSelection.equalsIgnoreCase("x"));

@@ -90,7 +90,7 @@ public class GameMenuView extends View {
                     itemSelection = Integer.parseInt(playerSelection); // converts string to int
                     this.console.println(inventoryNames[itemSelection].getDescription());
                 } catch (NumberFormatException nf) {
-                    this.console.println("\nYou must enter a valid number."
+                    ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number."
                             + " Try again or type X to exit.");
                     break;
                 }

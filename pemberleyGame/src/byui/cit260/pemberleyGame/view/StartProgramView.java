@@ -8,14 +8,19 @@ package byui.cit260.pemberleyGame.view;
 import byui.cit260.pemberleyGame.control.ProgramControl;
 import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.User;
-import java.util.*;
+import java.io.Console;
+import java.util.Scanner;
+
+
+
 
 /**
  *
  * @author mbp
  */
-public class StartProgramView {
-
+public class StartProgramView{
+Console console = System.console();
+    
     public StartProgramView() {
     }
 
@@ -34,20 +39,21 @@ public class StartProgramView {
     }
 
     private void displayBanner() {
-        System.out.println("\n\n*************************************************"
-                + "\n* Welcome to the beauty, the romance and the    *"
-                + "\n* grandeur that is Pemberley.  You are about to *"
-                + "\n* embark on an adventure back in time where you *"
-                + "\n* will help the residents at Pemberley a        *"
-                + "\n* generation after the events of Jane Austen's  *"
-                + "\n* Pride and Prejudice.  You will face intrigue  *"
-                + "\n* and adventure  as you solve problems and      *"
-                + "\n* puzzles.  In the end it is up to you to bring *"
-                + "\n* together two sweethearts destined for a truly *"
-                + "\n* Austenesque ending.  Here is to happily ever  *"
-                + "\n* after!  Good Luck!                            *"
-                + "\n*************************************************"
-                + "\n Enter your name below:");
+        
+    System.out.println("\n\n*************************************************"
+            + "\n* Welcome to the beauty, the romance and the    *"
+            + "\n* grandeur that is Pemberley.  You are about to *"
+            + "\n* embark on an adventure back in time where you *"
+            + "\n* will help the residents at Pemberley a        *"
+            + "\n* generation after the events of Jane Austen's  *"
+            + "\n* Pride and Prejudice.  You will face intrigue  *"
+            + "\n* and adventure  as you solve problems and      *"
+            + "\n* puzzles.  In the end it is up to you to bring *"
+            + "\n* together two sweethearts destined for a truly *"
+            + "\n* Austenesque ending.  Here is to happily ever  *"
+            + "\n* after!  Good Luck!                            *"
+            + "\n*************************************************"
+            + "\n Enter your name below:");
     }
 
     private String getPlayersName() {

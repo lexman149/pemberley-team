@@ -80,7 +80,7 @@ public class LookMenuView extends View {
                     playerSelection = this.getStringInput(prompt);
                     roomDescription = actorControl.lookAtActor(playerSelection, game);
                 } catch (ActorControlException ae) {
-                    this.console.println(ae.getMessage()); // thrown from ActorControl Line 109
+                    ErrorView.display(this.getClass().getName(),ae.getMessage()); // thrown from ActorControl Line 109
                 }
             this.console.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
@@ -107,7 +107,7 @@ public class LookMenuView extends View {
                     playerSelection = this.getStringInput(prompt);
                     roomDescription = itemControl.lookAtItem(playerSelection, game);
                 } catch (ItemControlException ie) {
-                    this.console.println(ie.getMessage());
+                    ErrorView.display(this.getClass().getName(),ie.getMessage());
                 return;
                 }
             this.console.println(roomDescription);
