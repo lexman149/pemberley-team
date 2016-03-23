@@ -23,7 +23,7 @@ public class MainMenuView extends View {
                 + "\n | Main Menu"
                 + "\n----------------------------------------"
                 + "\nN - Start new game"
-                + "\nG - Start game"
+                + "\nG - Start saved game"
                 + "\nH - Get help on how to play the game"
                 + "\nS - Save game"
                 + "\nX - Exit"
@@ -39,13 +39,13 @@ public class MainMenuView extends View {
                 this.startNewGame();
                 break;
             case "G":
-                this.startExistingGame();
+//                this.startSavedGame();
                 break;
             case "H":
                 this.displayHelpMe();
                 break;
             case "S":
-                this.saveGame();
+//                this.saveGame();
                 break;
             case "X":
                 return true;
@@ -57,7 +57,7 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-         Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         GameControl.createNewGame(PemberleyGame.getUser());
         game = PemberleyGame.getCurrentGame();
 //update game 
@@ -70,10 +70,22 @@ public class MainMenuView extends View {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }
-
-    private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
-    }
+// L11 Team Assignment
+//    private void startSavedGame() {
+//        System.out.println("\n\nEnter the file path where the game "
+//                            + "is saved.");
+//        
+//        String filePath = this.getInput(); 
+//        
+//        try {
+//            // start a saved game
+//            GameControl.getSavedGame(filePath);
+//        } catch (Exception ex) {
+//            ErrorView.display("MainMenuView", ex.getMessage());
+//        }
+//        GameMenuView gameMenu = new GameMenuView();
+//        gameMenu.display();
+//    }
 
     private void displayHelpMe() {
 // display the help menu
@@ -81,8 +93,19 @@ public class MainMenuView extends View {
         helpMenu.display();
     }
 
-    private void saveGame() {
-        System.out.println("*** saveGame function called ***");
-    }
+    
+//    private void saveGame() {
+//        System.out.println("\n\nEnter the file path for the file where the game "
+//                            + "is to be saved.");
+//        String filePath = this.getInput(); // getInput function in View.java
+//        
+//        try {
+//            // save the game to the specified file
+//            GameControl.saveGame(PemberleyGame.getCurrentGame(), filePath);
+//        } catch (Exception ex) {
+//            ErrorView.display("MainMenuView", ex.getMessage());
+//        }
+//        // needs display message indicating that the game is saved successfully to the file.
+//    }
 
 }

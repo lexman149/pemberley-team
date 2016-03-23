@@ -173,7 +173,7 @@ public class ExploreMenuView extends View {
         Player player = game.getPlayerOne();
         Item[] inventoryItems = game.getInventoryItemArray();
         Actor[] actorArray = game.getLocalActorArray();
-        String gameMeassge = " ";
+        String gameMessage = " ";
         int quantityOfItem = 1;
         Item itemToGive;
         Actor actorToGive;
@@ -188,7 +188,7 @@ public class ExploreMenuView extends View {
         String playerSelection;
         do {
             playerSelection = this.getStringInput(prompt);
-
+            
             int indexOfItem = itemControl.getItemIndex(playerSelection, player, inventoryItems);
 
             try{

@@ -7,6 +7,9 @@ package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.pemberleyGame.model.User;
+import byui.cit260.permberleyGame.exceptions.GameControlException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Scanner;
 import pemberley_game.PemberleyGame;
 
@@ -66,6 +69,7 @@ public class GameControl {
         Item itContainerOfSweets = new Item();
         Item itContainerOfWorms = new Item();
         Item itDogTreats = new Item();
+        Item itBall = new Item ();
         Item itEmptyContainer = new Item();
         Item itFan = new Item();
         Item itFishingPole = new Item();
@@ -317,6 +321,10 @@ public class GameControl {
         itBoxDogTreats.setLocation(rmFinnKitchen);
         itBoxDogTreats.setMultiple(true);
         itBoxDogTreats.setName("Package of Dog Treats");
+        itBall.setDescription("A plastic ball for hamsters to roll around on the floor");
+        itBall.setLocation(rmFinnKitchen);
+        itBall.setMultiple(false);
+        itBall.setName("Hamster exercise ball");
         itBoxDogTreats.setTakable(false);
         itCane.setDescription("It looks like a cane fit for a great and snobbish lady.");
         itCane.setLocation(rmGrandStaircase);
@@ -749,7 +757,7 @@ public class GameControl {
             itRibbons, itTimeMachine, itLetter, itTrout, itClothing, itCane, itCarrotBag,
             itCarrots, itChestnuts, itChestnutTree, itContainerOfSweets, itContainerOfWorms,
             itEmptyContainer, itFan, itFishingPole, itHeartCard, itMoney, itMusic,
-            itPocKetWatch, itTeaCup, itUmbrella, itWorms, itDogTreats};
+            itPocKetWatch, itTeaCup, itBall, itUmbrella, itWorms, itDogTreats};
 
         Actor allActors[] = {atHamster, atMrDarcy, atCarter, atLordRandolph, atMarshall,
             atUncleFinneas, atLadyRoslyn, atMrsDarcy, atGeorgie, atRoberDarcy, atJaneDarcy,
@@ -780,6 +788,40 @@ public class GameControl {
         
         
     }
+// L11 Team Assignment
+//    public static void saveGame(Game game, String filePath) 
+//            throws GameControlException {
+////write serialized Java Bean object directly to an object to an output byte stream.        
+//        try( FileOutputStream fops = new FileOutputStream(filepath)) { 
+//            ObjectOutputStream output = new ObjectOutputStream(fops);
+//            
+//            output.writeObject(game); // write the game object out to file
+//        }
+//        catch(IOException e) {
+//            throw new GameControlException(e.getMessage());
+//        }
+//    }
+//
+//    public static void getSavedGame(String filePath) 
+//                        throws GameControlException {
+//        Game game = null;
+//        
+//        try( FileInputStream fips = new FileInputStream(filepath)) {
+//            ObjectInputStream output = new ObjectInputStream(fips);
+//            
+//            game = (Game) output.readObject(); //read the game object from file
+//        }
+//        catch(FileNotFoundException fnfe) {
+//            throw new GameControlException(fnfe.getMessage());
+//        }
+//        catch(Exception e) {
+//            throw new GameControlException(e.getMessage());
+//        }
+//        
+//        // close the output file
+//        PemberleyGame.setCurrentGame(game); // save in PemberleyGame
+//    }
+//    
 
     public void updateGame() {
          Game game = PemberleyGame.getCurrentGame();

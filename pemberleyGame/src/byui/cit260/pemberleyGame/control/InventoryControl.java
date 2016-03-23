@@ -152,7 +152,7 @@ public class InventoryControl {
                 if (potentialQuantity < 1){
                     return "You don't have that many " + selectedItem.getName();
                 }
-                selectedItem.setQuantity(selectedItem.getQuantity()-quantityOfItem);
+                selectedItem.setQuantity(selectedItem.getQuantity() - quantityOfItem);
                 inventory.setWeight(inventory.getWeight() - selectedItem.getWeight() * quantityOfItem);
             }
             
