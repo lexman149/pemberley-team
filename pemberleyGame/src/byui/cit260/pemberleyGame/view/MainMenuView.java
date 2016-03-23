@@ -77,7 +77,7 @@ private void startSavedGame() {
                             + "is saved.");
         
         String filePath = this.getInput(); 
-        
+                this.console.println("Your game has been loaded.");
         try {
             // start a saved game
             GameControl.getSavedGame(filePath);
@@ -99,7 +99,7 @@ private void startSavedGame() {
         System.out.println("\n\nEnter the file path for the file where the game "
                             + "is to be saved.");
         String filePath = this.getInput(); // getInput function in View.java
-        
+        this.console.println("Your game has been saved.");
         try {
             // save the game to the specified file
             GameControl.saveGame(PemberleyGame.getCurrentGame(), filePath);
