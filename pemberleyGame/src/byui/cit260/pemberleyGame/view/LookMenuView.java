@@ -51,7 +51,7 @@ public class LookMenuView extends View {
             case "X":
                 return true;
             default:
-                System.out.println("\n***Invalid Selection *** Try Again");
+                this.console.println("\n***Invalid Selection *** Try Again");
                 return false;
         }
         return false;
@@ -60,7 +60,7 @@ public class LookMenuView extends View {
     private void displayRoom() {
         MapControl mapControl = new MapControl();
         String roomDescription = mapControl.lookAtRoom();
-        System.out.println(roomDescription);
+        this.console.println(roomDescription);
     }
 
 //by Sheila
@@ -68,10 +68,10 @@ public class LookMenuView extends View {
         Game game = PemberleyGame.getCurrentGame();
         ActorControl actorControl = new ActorControl();
         String prompt = "Which actor do you want to look at? Type X to cancel.";
-        System.out.println("These actors are here:");
+        this.console.println("These actors are here:");
         String[] actorsHere = game.getLocalActorNames();
         for (String i : actorsHere) {
-            System.out.print(i + "\n");
+            this.console.print(i + "\n");
         }
         String playerSelection = "";//scope variable
         do {
@@ -80,9 +80,9 @@ public class LookMenuView extends View {
                     playerSelection = this.getStringInput(prompt);
                     roomDescription = actorControl.lookAtActor(playerSelection, game);
                 } catch (ActorControlException ae) {
-                    System.out.println(ae.getMessage()); // thrown from ActorControl Line 109
+                    this.console.println(ae.getMessage()); // thrown from ActorControl Line 109
                 }
-            System.out.println(roomDescription);
+            this.console.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
        
     }
@@ -93,10 +93,10 @@ public class LookMenuView extends View {
          String roomDescription = " ";
         ItemControl itemControl = new ItemControl();
         String prompt = "Which item do you want to look at? Type X to cancel.";
-        System.out.println("These things are here:");
+        this.console.println("These things are here:");
         String[] itemsHere = game.getLocalItemNames();
         for (String i : itemsHere) {
-            System.out.print(i + "\n");
+            this.console.print(i + "\n");
         }
         String playerSelection;
         do {
@@ -107,10 +107,10 @@ public class LookMenuView extends View {
                     playerSelection = this.getStringInput(prompt);
                     roomDescription = itemControl.lookAtItem(playerSelection, game);
                 } catch (ItemControlException ie) {
-                    System.out.println(ie.getMessage());
+                    this.console.println(ie.getMessage());
                 return;
                 }
-            System.out.println(roomDescription);
+            this.console.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
     }
 
@@ -122,7 +122,7 @@ public class LookMenuView extends View {
         while (!valid) { // while a valid name has not been retrieved
 
 // prompt for the player's choice
-            System.out.println(prompt);
+            this.console.println(prompt);
 
 // get the name from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
@@ -131,7 +131,7 @@ public class LookMenuView extends View {
 
 // if the name is invlaid (less than two characters in length)
             if (playersInput.length() < 1) {
-                System.out.println("Invalid Selection - selection cannot be blank");
+                this.console.println("Invalid Selection - selection cannot be blank");
                 continue; // and repeat again 
             }
             break; // out of the (exit) the repetition

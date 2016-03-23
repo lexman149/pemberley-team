@@ -59,7 +59,7 @@ public class GameMenuView extends View {
             case "X":
                 return true;
             default:
-                System.out.println("\n***Invalid Selection *** Try Again");
+                this.console.println("\n***Invalid Selection *** Try Again");
                 return false;
         }
         return false;
@@ -79,7 +79,7 @@ public class GameMenuView extends View {
     
       Item[] inventoryNames = game.getInventoryItemArray();
       for (int i = 0; i < inventoryNames.length; i++) {
-      System.out.println(i + " " + inventoryNames[i].getName()); 
+      this.console.println(i + " " + inventoryNames[i].getName()); 
   }
 
       String prompt = "what do you want to look at or X to exit"; 
@@ -88,9 +88,9 @@ public class GameMenuView extends View {
 
          try {
                     itemSelection = Integer.parseInt(playerSelection); // converts string to int
-                    System.out.println(inventoryNames[itemSelection].getDescription());
+                    this.console.println(inventoryNames[itemSelection].getDescription());
                 } catch (NumberFormatException nf) {
-                    System.out.println("\nYou must enter a valid number."
+                    this.console.println("\nYou must enter a valid number."
                             + " Try again or type X to exit.");
                     break;
                 }
@@ -102,8 +102,8 @@ public class GameMenuView extends View {
         Game game = PemberleyGame.getCurrentGame();
         Room currentRoom = game.getCurrentRoom();
         Map currentMap = game.getCurrentMap();
-        System.out.println(currentMap.getMapDrawing());
-        System.out.println("This map only contains places you have been\n\n");
+        this.console.println(currentMap.getMapDrawing());
+        this.console.println("This map only contains places you have been\n\n");
     }
 
 //display a list of all actors by Sheila 3/12/16
@@ -115,12 +115,12 @@ public class GameMenuView extends View {
         
 //create an ArrayList to hold all of the actors in the above location.
             for(Actor actors : allActorArray){
-                System.out.println(actors.getName());
+                this.console.println(actors.getName());
             }
     }
 
     private void displayCurrentTasks() {
-        System.out.println("*** displayCurrentTasks function called ***");
+        this.console.println("*** displayCurrentTasks function called ***");
     }
     
     private String getStringInput(String prompt) {
@@ -131,7 +131,7 @@ public class GameMenuView extends View {
         while (!valid) { // while a valid name has not been retrieved
 
 // prompt for the player's choice
-            System.out.println(prompt);
+            this.console.println(prompt);
 
 // get the selection from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
@@ -140,7 +140,7 @@ public class GameMenuView extends View {
 
 // if the selection is invlaid (less than one characters in length)
             if (playersInput.length() < 1) {
-                System.out.println("Invalid selection - selection can not be blank");
+                this.console.println("Invalid selection - selection can not be blank");
                 continue; // and repeat again 
             }
             break; // out of the (exit) the repetition

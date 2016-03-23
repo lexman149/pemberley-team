@@ -50,14 +50,14 @@ public class HelpMenuView extends View {
             case "X": // quit help 
                 return true;
             default:
-                System.out.println("\n***Invalid Selection *** Try Again");
+                this.console.println("\n***Invalid Selection *** Try Again");
                 return false;
         }
         return false;
     }
 
   private void displayHelpGoal() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nThe goal of Pemberley Game is to find the time  "
                 + "\nmachine and return to the present day. Before  "
                 + "\nyou can do that, you will need to navigate  "
@@ -66,7 +66,7 @@ public class HelpMenuView extends View {
     }
 
     private void displayHelpMove() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nTo move go to the Explore Menu and select M. "
                 + "\nAt the prompt, type in: "
                 + "\n   * N or North"
@@ -77,7 +77,7 @@ public class HelpMenuView extends View {
     }
 
     private void displayHelpAction() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nFrom the Explore Menu: "
                 + "\n - T or Take allows you to add an item to your inventory."
                 + "\n - G or Give allows you to give an item from your inventory"
@@ -91,7 +91,7 @@ public class HelpMenuView extends View {
     }
 
     private void displayHelpTalk() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nTo talk with characters go to the Explore Menu "
                 + "\nand select S. A list of characters in the room will "
                 + "\ndisplay. Type the name of the character, and "
@@ -99,7 +99,7 @@ public class HelpMenuView extends View {
     }
 
     private void displayHelpType() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nAt the prompt type in your selection from the "
                 + "\nvarious menus or from the list provided.");
     }

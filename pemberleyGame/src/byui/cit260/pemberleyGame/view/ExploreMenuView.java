@@ -59,7 +59,7 @@ public class ExploreMenuView extends View {
             case "X": // quit help 
                 return true;
             default:
-                System.out.println("\n***Invalid Selection *** Try Again");
+                this.console.println("\n***Invalid Selection *** Try Again");
                 return false;
         }
         return false;
@@ -78,11 +78,11 @@ public class ExploreMenuView extends View {
             try{
             roomDescription = mapControl.playerNavigate(playerSelection, player);
             } catch (MapControlException me) {
-                            System.out.println(me.getMessage());
+                            this.console.println(me.getMessage());
                         }
             
             
-            System.out.println(roomDescription);
+            this.console.println(roomDescription);
         } while (!playerSelection.equalsIgnoreCase("x"));
 
     }
@@ -104,7 +104,7 @@ public class ExploreMenuView extends View {
         do {
 //if there is nothing in the localItemArray say there is nothing to take.
             if (localItemArray.length == 0) {
-                System.out.println("Nothing to Take");
+                this.console.println("Nothing to Take");
                 break;
             } else {
                 String prompt = "What do you want to take? Type X to exit.";
@@ -126,7 +126,7 @@ public class ExploreMenuView extends View {
                             quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
 
                         } catch (NumberFormatException nf) {
-                            System.out.println("\nYou must enter a valid number."
+                            this.console.println("\nYou must enter a valid number."
                                     + " Try again or type X to exit.");
 
                         }
@@ -134,7 +134,7 @@ public class ExploreMenuView extends View {
                         try {
                             gameMessage = inventoryControl.takeMultipleItem(selectedItem, quantityOfItem, inventory);
                         } catch (InventoryControlException ie) {
-                            System.out.println(ie.getMessage());
+                            this.console.println(ie.getMessage());
                         }
                     } else {//run this code if the item's multiple attribue is not true
                         quantityOfItem = 1;
@@ -143,7 +143,7 @@ public class ExploreMenuView extends View {
                         try {
                             gameMessage = inventoryControl.takeSingleItem(selectedItem, quantityOfItem, inventory);
                         } catch (InventoryControlException ie) {
-                            System.out.println(ie.getMessage());
+                            this.console.println(ie.getMessage());
                         }
 
                     }
@@ -153,7 +153,7 @@ public class ExploreMenuView extends View {
                     gameMessage = "Not sure what you are trying to take.";
                 }
             }
-            System.out.println(gameMessage);
+            this.console.println(gameMessage);
         } while (!playerSelection.equalsIgnoreCase("X"));//loop
 
     }
@@ -162,7 +162,7 @@ public class ExploreMenuView extends View {
         Game game = PemberleyGame.getCurrentGame();
 
         if (game.getInventoryItemNames().length == 0 || game.getLocalActorNames().length == 0) {
-            System.out.println("You have nothing to give or there is no one to give something to."); 
+            this.console.println("You have nothing to give or there is no one to give something to."); 
             return;
         }
 
@@ -179,10 +179,10 @@ public class ExploreMenuView extends View {
         Actor actorToGive;
 //check to see if there is anything to use.
 
-        System.out.println("These things are in your inventory\n");
+        this.console.println("These things are in your inventory\n");
 
         for (String i : game.getInventoryItemNames()) {
-            System.out.print(i + "\n");
+            this.console.print(i + "\n");
         }
 
         String playerSelection;
@@ -194,7 +194,7 @@ public class ExploreMenuView extends View {
             try{
                 itemToGive = inventoryItems[indexOfItem];
             } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-                    System.out.println("\nNot Sure what you are trying to give.");
+                    this.console.println("\nNot Sure what you are trying to give.");
                     return;
             }
             
@@ -206,7 +206,7 @@ public class ExploreMenuView extends View {
                     quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
 
                 } catch (NumberFormatException nf) {
-                    System.out.println("\nYou must enter a valid number."
+                    this.console.println("\nYou must enter a valid number."
                             + " Try again or type X to exit.");
                     break;
                 }
@@ -223,12 +223,12 @@ public class ExploreMenuView extends View {
             try{
                 actorToGive = actorArray[indexOfActor];
             } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-                    System.out.println("\nNot Sure who you are trying to give the "+itemToGive.getName()
+                    this.console.println("\nNot Sure who you are trying to give the "+itemToGive.getName()
                             +" to.");
                     return;
             }
             
-            System.out.println(inventoryControl.giveItem(itemToGive, quantityOfItem, actorToGive));
+            this.console.println(inventoryControl.giveItem(itemToGive, quantityOfItem, actorToGive));
             
             break;
             
@@ -244,13 +244,13 @@ public class ExploreMenuView extends View {
 //        String playerSelection;
 //no actors in the player's location, print message and return to menu        
         if (actorsName.length < 1) {
-            System.out.print("NO ONE IS HERE");
+            this.console.print("NO ONE IS HERE");
             return; //no selection possible, return to menu
         } //actors available to speak - print list
         else {
-            System.out.println("These actors are here:");
+            this.console.println("These actors are here:");
             for (String i : actorsName) {
-                System.out.print(i + "\n");
+                this.console.print(i + "\n");
             }
 //player selects from list of actors or exits       
             String prompt = "To whom do you wish to speak? Type X to exit.";
@@ -261,9 +261,9 @@ public class ExploreMenuView extends View {
                     playerSelection = this.getStringInput(prompt);
                     characterScript = actorControl.speakToActor(playerSelection);
                 } catch (ActorControlException ae) {
-                    System.out.println(ae.getMessage()); // thrown from ActorControl Line 97
+                    this.console.println(ae.getMessage()); // thrown from ActorControl Line 97
                 }
-                System.out.println(characterScript);
+                this.console.println(characterScript);
             } while (!playerSelection.equalsIgnoreCase("x"));
 
         }
@@ -277,18 +277,18 @@ public class ExploreMenuView extends View {
 
 //check to see if there is anything to use.
         if (game.getLocalItemNames().length == 0 && game.getInventoryItemNames().length == 0) {
-            System.out.println("There is nothing to use here.");
+            this.console.println("There is nothing to use here.");
             return;
         }
 
-        System.out.println("These things are accessible:\n");
+        this.console.println("These things are accessible:\n");
 
         for (String i : game.getLocalItemNames()) {
-            System.out.print(i + "\n");
+            this.console.print(i + "\n");
         }
 
         for (String i : game.getInventoryItemNames()) {
-            System.out.print(i + "\n");
+            this.console.print(i + "\n");
         }
 
         String playerSelection;
@@ -296,7 +296,7 @@ public class ExploreMenuView extends View {
             playerSelection = this.getStringInput(prompt);
 
             String useItemMessage = itemControl.useItem(playerSelection, game);
-            System.out.println(useItemMessage);
+            this.console.println(useItemMessage);
         } while (!playerSelection.equalsIgnoreCase("x"));
 
     }
@@ -317,7 +317,7 @@ public class ExploreMenuView extends View {
         while (!valid) { // while a valid name has not been retrieved
 
 // prompt for the player's choice
-            System.out.println(prompt);
+            this.console.println(prompt);
 
 // get the selection from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
@@ -326,7 +326,7 @@ public class ExploreMenuView extends View {
 
 // if the selection is invlaid (less than one characters in length)
             if (playersInput.length() < 1) {
-                System.out.println("Invalid selection - selection can not be blank");
+                this.console.println("Invalid selection - selection can not be blank");
                 continue; // and repeat again 
             }
             break; // out of the (exit) the repetition
@@ -343,7 +343,7 @@ public class ExploreMenuView extends View {
         while (!valid) { // while a valid name has not been retrieved
 
 // prompt for the player's choice
-            System.out.println(prompt);
+            this.console.println(prompt);
 
 // get the selection from the keyboard and trim off the blanks CAPs ok
             playersInput = keyboard.nextLine();
@@ -352,7 +352,7 @@ public class ExploreMenuView extends View {
 
 // if the selection is invlaid (less than one characters in length)
             if (!Character.isDigit(ch)) {
-                System.out.println("Please enter a positive integer.");
+                this.console.println("Please enter a positive integer.");
                 continue; // and repeat again 
             }
             break; // out of the (exit) the repetition

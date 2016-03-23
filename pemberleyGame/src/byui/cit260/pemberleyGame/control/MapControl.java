@@ -46,7 +46,6 @@ public class MapControl {
         if (nextRoom == null) {
             throw new MapControlException("You can't go that direction");
         } else {
-            System.out.println(nextRoom.getName());
             player.setLocation(nextRoom);
             currentRoom = player.getLocation();
             String[] roomArray = currentRoom.getRoomDrawing();
@@ -62,7 +61,7 @@ public class MapControl {
             GameControl gameControl = new GameControl();
             gameControl.updateGame();
             
-            String playerMessage = this.lookAtRoom();
+            String playerMessage = nextRoom.getName() + "\n" + this.lookAtRoom();
             return playerMessage;
         }
 
