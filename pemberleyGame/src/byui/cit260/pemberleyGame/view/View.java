@@ -6,7 +6,10 @@
 package byui.cit260.pemberleyGame.view;
 
 import byui.cit260.pemberleyGame.model.Game;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import pemberley_game.PemberleyGame;
 
 /**
  *
@@ -16,6 +19,9 @@ public abstract class View implements ViewInterface {
 
     protected String displayMessage;
 
+    protected final BufferedReader keyboard = PemberleyGame.getInFile();
+    protected final PrintWriter console = PemberleyGame.getOutFile();
+    
     public View() {
     }
 
@@ -37,24 +43,25 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput() {
         boolean valid = false; // indicates if the selection has be retrieved
-        String value = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+        String selection = null;
+        
 
         while (!valid) { // while a valid menu selection has not been retrieved
+            
 
 // get the selecton from the keyboard and trim off the blanks CAPs ok
-            value = keyboard.nextLine();
-            value = value.trim();
-            value = value.toUpperCase();
+   //         selection = this.keyboard.readLine();
+            selection = selection.trim();
+            selection = selection.toUpperCase();
 
 // if the menu selection is invlaid (less than one character in length)
-            if (value.length() < 1) {
+            if (selection.length() < 1) {
                 System.out.println("Invalid selection - the selection must not be blank");
                 continue; // and repeat again 
             }
             break; // out of the (exit) the repetition
         }
 
-        return value; // return the name
+        return selection; // return the name
     }
 }
