@@ -40,28 +40,29 @@ public abstract class View implements ViewInterface {
         } while (!done);
     }
 
-    @Override
+     @Override
     public String getInput() {
         boolean valid = false; // indicates if the selection has be retrieved
         String selection = null;
-        
+        try {
 
-        while (!valid) { // while a valid menu selection has not been retrieved
-            
+            while (!valid) { // while a valid menu selection has not been retrieved
 
 // get the selecton from the keyboard and trim off the blanks CAPs ok
-   //         selection = this.keyboard.readLine();
-            selection = selection.trim();
-            selection = selection.toUpperCase();
+                selection = this.keyboard.readLine();
+                selection = selection.trim();
+                selection = selection.toUpperCase();
 
 // if the menu selection is invlaid (less than one character in length)
-            if (selection.length() < 1) {
-                System.out.println("Invalid selection - the selection must not be blank");
-                continue; // and repeat again 
+                if (selection.length() < 1) {
+                    this.console.println("Invalid selection - the selection must not be blank");
+                    continue; // and repeat again 
+                }
+                break; // out of the (exit) the repetition
             }
-            break; // out of the (exit) the repetition
+        } catch (Exception e) {
+            this.console.println("Error reading input: " + e.getMessage());
         }
-
-        return selection; // return the name
+        return selection;
     }
 }
