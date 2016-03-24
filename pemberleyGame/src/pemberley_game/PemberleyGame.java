@@ -4,17 +4,12 @@
  */
 package pemberley_game;
 
-import byui.cit260.pemberleyGame.control.*;
 import byui.cit260.pemberleyGame.model.*;
 import byui.cit260.pemberleyGame.view.StartProgramView;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +25,7 @@ public class PemberleyGame {
 
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
-    
+    protected final PrintWriter console = PemberleyGame.getOutFile();
     private static PrintWriter logFile = null;
         
     public static void main(String[] args) {

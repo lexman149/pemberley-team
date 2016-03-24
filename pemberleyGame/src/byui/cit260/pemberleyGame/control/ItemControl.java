@@ -10,7 +10,6 @@ import byui.cit260.pemberleyGame.model.Inventory;
 import byui.cit260.pemberleyGame.model.Item;
 import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
-import byui.cit260.pemberleyGame.model.Quest;
 import byui.cit260.permberleyGame.exceptions.ItemControlException;
 import pemberley_game.PemberleyGame;
 import java.util.ArrayList;

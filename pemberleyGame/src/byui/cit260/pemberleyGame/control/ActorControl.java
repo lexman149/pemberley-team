@@ -7,9 +7,6 @@ package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
-import byui.cit260.pemberleyGame.model.Inventory;
-import byui.cit260.pemberleyGame.model.Item;
-import byui.cit260.pemberleyGame.model.Location;
 import byui.cit260.pemberleyGame.model.Player;
 import byui.cit260.pemberleyGame.model.Room;
 import byui.cit260.permberleyGame.exceptions.ActorControlException;

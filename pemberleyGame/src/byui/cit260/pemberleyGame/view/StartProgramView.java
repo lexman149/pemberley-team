@@ -9,7 +9,9 @@ import byui.cit260.pemberleyGame.control.ProgramControl;
 import byui.cit260.pemberleyGame.model.Game;
 import byui.cit260.pemberleyGame.model.User;
 import java.io.Console;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import pemberley_game.PemberleyGame;
 
 
 
@@ -19,8 +21,10 @@ import java.util.Scanner;
  * @author mbp
  */
 public class StartProgramView{
-Console console = System.console();
+
     
+        protected final PrintWriter console = PemberleyGame.getOutFile();
+        
     public StartProgramView() {
     }
 
@@ -39,7 +43,7 @@ Console console = System.console();
     }
 
     private void displayBanner() {
-        
+
     System.out.println("\n\n*************************************************"
             + "\n* Welcome to the beauty, the romance and the    *"
             + "\n* grandeur that is Pemberley.  You are about to *"

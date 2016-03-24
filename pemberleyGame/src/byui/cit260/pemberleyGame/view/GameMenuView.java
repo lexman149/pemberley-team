@@ -32,6 +32,7 @@ public class GameMenuView extends View {
                 + "\nP - People"
                 + "\nT - Current Tasks"
                 + "\nE - Explore"
+                + "\nR - Reports"
                 + "\nX - Exit"
                 + "\n----------------------------------------"
                 + "\nEnter your selection below:");
@@ -55,6 +56,9 @@ public class GameMenuView extends View {
                 break;
             case "E":
                 this.displayExploreMenu();
+                break;
+            case "R":
+                this.displayReportMenu();
                 break;
             case "X":
                 return true;
@@ -147,6 +151,11 @@ public class GameMenuView extends View {
         }
 
         return playersInput; // return the name
+    }
+
+    private void displayReportMenu() {   
+        ReportMenuView reportMenu = new ReportMenuView();
+        reportMenu.display();
     }
 
 }
