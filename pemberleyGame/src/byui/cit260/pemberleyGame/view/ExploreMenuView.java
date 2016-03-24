@@ -239,35 +239,42 @@ public class ExploreMenuView extends View {
 // author Sheila 
     private void speakToActor() {
         Game game = PemberleyGame.getCurrentGame();
-        ActorControl actorControl = new ActorControl();
-        String[] actorsName = game.getLocalActorNames(); //get list of actors in the current location
-//        String playerSelection;
-//no actors in the player's location, print message and return to menu        
-        if (actorsName.length < 1) {
+
+        int itemSelection = 1; // start at one so first item in list isn't zero
+        String playerSelection = " ";
+
+        Actor[] actorNames = game.getLocalActorArray(); // get list of actors in the current location
+        
+        
+        for (int i = 0; i < actorNames.length; i++) {
+            if (actorNames.length == 0) {
             this.console.print("NO ONE IS HERE");
             return; //no selection possible, return to menu
-        } //actors available to speak - print list
-        else {
-            this.console.println("These actors are here:");
-            for (String i : actorsName) {
-                this.console.print(i + "\n");
-            }
-//player selects from list of actors or exits       
-            String prompt = "To whom do you wish to speak? Type X to exit.";
-            String playerSelection = ""; // scope variables
-            do {
-                String characterScript = ""; // scope variable instantiate
-                try {
+        } 
+//actors available to speak - return list
+            else {
+                this.console.println("These actors are here: \n" 
+                                    + itemSelection + " " + actorNames[i].getName());
+                                    itemSelection++; // increments number   
+                String prompt = "\nType the number of the actor you want to speak to? Type X to exit";
+                do {
                     playerSelection = this.getStringInput(prompt);
-                    characterScript = actorControl.speakToActor(playerSelection);
-                } catch (ActorControlException ae) {
-                    ErrorView.display(this.getClass().getName(),ae.getMessage()); // thrown from ActorControl Line 97
+                    if (playerSelection.equalsIgnoreCase("x")){ // without this here, the 'x' is seen as an error.
+                        break;
+                    }
+                    
+                try {
+                    itemSelection = Integer.parseInt(playerSelection); // converts string input to int
+                    this.console.println(actorNames[itemSelection-1].getCharacterScript()); //-1 returns selection to zero
+                } catch(NumberFormatException nf) {
+                   ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number."
+                                                             + " Try again or type X to exit."); 
                 }
-                this.console.println(characterScript);
-            } while (!playerSelection.equalsIgnoreCase("x"));
-
+                }while (!playerSelection.equalsIgnoreCase("x"));
+            }
         }
     }
+    
 
     private void useItem() {
 
