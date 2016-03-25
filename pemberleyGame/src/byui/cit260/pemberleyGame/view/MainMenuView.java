@@ -99,14 +99,14 @@ private void startSavedGame() {
         this.console.println("\n\nEnter the file path for the file where the game "
                             + "is to be saved.");
         String filePath = this.getInput(); // getInput function in View.java
-        this.console.println("Your game has been saved.");
+        
         try {
             // save the game to the specified file
             GameControl.saveGame(PemberleyGame.getCurrentGame(), filePath);
         } catch (GameControlException ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
-        // needs display message indicating that the game is saved successfully to the file.
+        this.console.println("Your game has been saved.");
     }
 
 }
