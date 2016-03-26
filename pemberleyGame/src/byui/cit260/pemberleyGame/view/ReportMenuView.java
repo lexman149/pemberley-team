@@ -5,6 +5,7 @@
  */
 package byui.cit260.pemberleyGame.view;
 
+import byui.cit260.pemberleyGame.control.InventoryControl;
 import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
 import java.io.FileWriter;
@@ -221,7 +222,27 @@ public class ReportMenuView extends View{
          
     
 
-    private void inventoryReport() {
-             this.console.println("*** inventoryReport function called ***");
+       private void inventoryReport() {
+
+        this.console.println("\n\nEnter a file name where this report will "
+                            + "be saved. Type X to exit");
+
+        String fileName = this.getInput();
+
+
+            if (fileName.equalsIgnoreCase("x")){ 
+            return;
+        }
+
+        try {
+            InventoryControl inventoryControl = new InventoryControl();
+            inventoryControl.saveInventoryReport(fileName);
+        } catch (Exception ex) {
+            ErrorView.display("ERROR", ex.getMessage());
+            return;
+        }
+        this.console.println("\nThe Inventory Report was saved to\n "
+                            + fileName + "\n");     
+//exmaple C:\Users\Cody\Documents\NetBeansProjects\ir
     }
 }
