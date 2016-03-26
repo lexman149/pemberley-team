@@ -61,14 +61,18 @@ public abstract class View implements ViewInterface {
 
 // if the menu selection is invlaid (less than one character in length)
                 if (selection.length() < 1) {
-                    this.console.println("Invalid selection - the selection must not be blank");
+                    ErrorView.display(this.getClass().getName(),
+                                      "Invalid selection - the selection must not be blank");
                     continue; // and repeat again 
                 }
                 break; // out of the (exit) the repetition
             }
         } catch (Exception e) {
-            this.console.println("Error reading input: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(),
+                              "Error reading input: " + e.getMessage());
+            return null;
         }
         return selection;
+           
     }
 }

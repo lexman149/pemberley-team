@@ -83,8 +83,7 @@ public class ReportMenuView extends View{
             saveActorLocationReport(fileName);
 
     }
-   
-     
+
      
     private void saveActorLocationReport(String fileName) {  
         
@@ -119,7 +118,7 @@ public class ReportMenuView extends View{
  // 3d     
         if (success){
             this.console.println("The Actor Location Report was saved to\n"
-                            + fileName);    
+                            + "'" + fileName + ".txt'");    
         }
     }
     
@@ -218,7 +217,7 @@ public class ReportMenuView extends View{
             InventoryControl inventoryControl = new InventoryControl();
             inventoryControl.saveInventoryReport(fileName);
         } catch (Exception ex) {
-            ErrorView.display("ERROR", ex.getMessage());
+            ErrorView.display("ReportMenuView", ex.getMessage());
             return;
         }
         this.console.println("\nThe Inventory Report was saved to\n "
