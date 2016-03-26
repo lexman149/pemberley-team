@@ -5,6 +5,7 @@
  */
 package byui.cit260.pemberleyGame.view;
 
+import byui.cit260.pemberleyGame.control.InventoryControl;
 import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
 import java.io.FileWriter;
@@ -82,6 +83,7 @@ public class ReportMenuView extends View{
             saveActorLocationReport(fileName);
 
     }
+   
      
      
     private void saveActorLocationReport(String fileName) {  
@@ -121,12 +123,106 @@ public class ReportMenuView extends View{
         }
     }
     
+    
+    /*private void writeItemLocationReport() {
+// 3a
+        this.console.println("\n\nEnter a file name where this report will "
+                            + "be saved. Type X to exit");
+ // 3b  
+        String fileName = this.getInput();
+        do{
+         // getInput function in View.java
+           if (item.getLocation()!= null) { //otherwise print locationName
+             outFile.write(item.getName() + "\t" + item.getLocation().getName() + "\n");
+        }
+        else { 
+          outFile.write(item.getName() + "\t" + location + "\n");
+        }
+        }
+ // 3c
+        try {
+            // save the game to the specified file
+            saveItemLocationReport(fileName);
+        } catch (Exception ex) {
+            ErrorView.display("ERROR", ex.getMessage());
+        }
+ // 3d
+        this.console.println("The Item Location Report was saved to\n "
+                            + fileName);     
+        }while (!fileName.equalsIgnoreCase("x"));
+    }
+     
+     
+    private void saveItemLocationReport(String fileName) {  
+        
+        Game game = PemberleyGame.getCurrentGame(); // access to data
+        Item[] allItemArray = game.getAllItemArray(); // form with the item's info
+        try (FileWriter outFile = new FileWriter(fileName)) { // try-with-resources 
+            
+// make headers for the report.
+            outFile.write("\n\n          ITEM LOCATION REPORT          ");        
+            outFile.write("\nItem Name                     Location");
+            outFile.write("\n----------                     --------");
+
+// print item name and location
+            for(Item item : allItemArray){ // goes through all the items
+                // null check - won't call a locationName if = null
+                String location = "not applicable"; // if location is null, print this
+                if (item.getLocation() != null){ // otherwise print locationName
+                    location = item.getLocation().getName();
+                }
+                else {
+                outFile.write(item.getName() + "\t" + item.getLocation().getName() + "\n");
+                } 
+            }
+            
+                 try (PrintWriter out = new PrintWriter(fileName)) { // try-with-resources 
+//            
+//// make headers for the report.
+//            out.println("\n\n          ITEM LOCATION REPORT          ");        
+//            out.printf("%n%-30s%14s", "Item Name", "Location");
+//            out.printf("%n%-30s%14s", "----------", "--------");
+//
+//// print item name and location
+//            for(Item item : allItemArray){ // goes through all the items
+//                // null check - won't call a locationName if = null
+//                String location = "not applicable"; // if location is null, print this
+//                if (item.getLocation() != null){ // otherwise print locationName
+//                    location = item.getLocation().getName();
+//                }
+//                else {
+//                out.printf("%n%-30s%14s", item.getName()
+//                                        , item.getLocation().getName());
+//                } 
+//            }
+*/
+    
    
    
          
     
 
-    private void inventoryReport() {
-             this.console.println("*** inventoryReport function called ***");
+       private void inventoryReport() {
+
+        this.console.println("\n\nEnter a file name where this report will "
+                            + "be saved. Type X to exit");
+
+        String fileName = this.getInput();
+
+
+            if (fileName.equalsIgnoreCase("x")){ 
+            return;
+        }
+
+        try {
+            InventoryControl inventoryControl = new InventoryControl();
+            inventoryControl.saveInventoryReport(fileName);
+        } catch (Exception ex) {
+            ErrorView.display("ERROR", ex.getMessage());
+            return;
+        }
+        this.console.println("\nThe Inventory Report was saved to\n "
+                            + fileName + "\n");     
+//exmaple C:\Users\Cody\Documents\NetBeansProjects\ir
     }
 }

@@ -6,7 +6,10 @@
 package byui.cit260.pemberleyGame.control;
 
 import byui.cit260.pemberleyGame.model.*;
+import byui.cit260.pemberleyGame.view.ErrorView;
 import byui.cit260.permberleyGame.exceptions.InventoryControlException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import pemberley_game.PemberleyGame;
 
@@ -173,4 +176,44 @@ public class InventoryControl {
         
         
 }
+    
+    
+    
+    
+        public void saveInventoryReport(String fileName) {
+         Game game = PemberleyGame.getCurrentGame(); 
+        Item[] inventoryItemArray = game.getInventoryItemArray();
+        try (FileWriter outFile = new FileWriter(fileName)) { // try-with-resources 
+        String separator = System.getProperty("line.separator");    
+        String itemName;
+        int spacesNeeded;
+        
+            outFile.write("          INVENTORY REPORT          ");     
+            System.out.printf("%-30s %7s %n","Item","Weight");
+            System.out.printf("%-30s %7s %n","________","________");
+            
+            outFile.write(separator);
+            outFile.write(String.format ("%-30s %7s %n","Item","Weight"));
+            outFile.write(String.format ("%-30s %7s %n","________","________"));
+
+            for(Item i : inventoryItemArray){ 
+                //add spaces
+                
+                for (int x = 0; x>i.getName().length();x++){
+                    
+                }
+ 
+                System.out.printf("%n%-40s%-2.2f",i.getName() , i.getWeight());
+                outFile.write (String.format ("%n%-30s%-2.2f",i.getName() , i.getWeight()));
+   
+                
+            }
+        
+            outFile.flush();
+            
+        } catch (IOException ex) {
+            ErrorView.display("ReportMenuView", ex.getMessage());
+        
+        }
+    }
 }
