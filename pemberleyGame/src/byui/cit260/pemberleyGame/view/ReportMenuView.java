@@ -71,23 +71,16 @@ public class ReportMenuView extends View{
         this.console.println("\n\nEnter a file name where this report will "
                             + "be saved. Type X to exit");
  // 3b  
-        String fileName = this.getInput();
-        do{
-         // getInput function in View.java
+        String fileName = this.getInput(false); // calls the special case of getInput() from View.java
+
+//         // getInput function in View.java
             if (fileName.equalsIgnoreCase("x")){ // without this here, the 'x' is seen as a filename.
-            break;
+            return;
         }
  // 3c
-        try {
             // save the game to the specified file
             saveActorLocationReport(fileName);
-        } catch (Exception ex) {
-            ErrorView.display("ERROR", ex.getMessage());
-        }
- // 3d
-        this.console.println("The Actor Location Report was saved to\n "
-                            + fileName);     
-        }while (!fileName.equalsIgnoreCase("x"));
+
     }
      
      
@@ -95,49 +88,36 @@ public class ReportMenuView extends View{
         
         Game game = PemberleyGame.getCurrentGame(); // access to data
         Actor[] allActorArray = game.getAllActorArray(); // form with the actor's info
-        try (FileWriter outFile = new FileWriter(fileName)) { // try-with-resources 
+        boolean success = true;
+        
+
+        try (PrintWriter outFile = new PrintWriter(fileName)) { // try-with-resources 
             
 // make headers for the report.
-            outFile.write("\n\n          ACTOR LOCATION REPORT          ");        
-            outFile.write("\nActor Name                     Location");
-            outFile.write("\n----------                     --------");
+            outFile.println("\n\n          ACTOR LOCATION REPORT          ");        
+            outFile.printf("%n%-30s%-14s", "Actor Name", "Location");
+            outFile.printf("%n%-30s%-14s", "----------", "--------");
 
 // print actor name and location
-            for(Actor actor : allActorArray){ // goes through all the actors
+            for (Actor actor : allActorArray) { // goes through all the actors
                 // null check - won't call a locationName if = null
-                String location = "not applicable"; // if location is null, print this
-                if (actor.getLocation() != null){ // otherwise print locationName
+                String location = "N/A"; // if location is null, print this
+               
+                if (actor.getLocation() !=null) { // otherwise print locationName
                     location = actor.getLocation().getName();
                 }
-                else {
-                outFile.write(actor.getName() + "\t" + actor.getLocation().getName() + "\n");
-                } 
+                outFile.printf("%n%-30s%-14s", actor.getName()
+                                             , location);
             }
-        
-//        try (PrintWriter out = new PrintWriter(fileName)) { // try-with-resources 
-//            
-//// make headers for the report.
-//            out.println("\n\n          ACTOR LOCATION REPORT          ");        
-//            out.printf("%n%-30s%14s", "Actor Name", "Location");
-//            out.printf("%n%-30s%14s", "----------", "--------");
-//
-//// print actor name and location
-//            for(Actor actor : allActorArray){ // goes through all the actors
-//                // null check - won't call a locationName if = null
-//                String location = "not applicable"; // if location is null, print this
-//                if (actor.getLocation() != null){ // otherwise print locationName
-//                    location = actor.getLocation().getName();
-//                }
-//                else {
-//                out.printf("%n%-30s%14s", actor.getName()
-//                                        , actor.getLocation().getName());
-//                } 
-//            }
-            outFile.flush();
             
         } catch (IOException ex) {
             ErrorView.display("ReportMenuView", ex.getMessage());
-        
+            success = false;
+        }
+ // 3d     
+        if (success){
+            this.console.println("The Actor Location Report was saved to\n"
+                            + fileName);    
         }
     }
     

@@ -41,7 +41,11 @@ public abstract class View implements ViewInterface {
     }
 
      @Override
-    public String getInput() {
+     public String getInput() {
+         return getInput(true); // overload function and rename getInput with a true to change uppercase
+     }
+     
+    public String getInput(boolean upper) { // if upper=true make uppercase, otherwise don't run line 58
         boolean valid = false; // indicates if the selection has be retrieved
         String selection = null;
         try {
@@ -51,7 +55,9 @@ public abstract class View implements ViewInterface {
 // get the selecton from the keyboard and trim off the blanks CAPs ok
                 selection = this.keyboard.readLine();
                 selection = selection.trim();
-                selection = selection.toUpperCase();
+                if (upper == true){
+                    selection = selection.toUpperCase();
+                }
 
 // if the menu selection is invlaid (less than one character in length)
                 if (selection.length() < 1) {
