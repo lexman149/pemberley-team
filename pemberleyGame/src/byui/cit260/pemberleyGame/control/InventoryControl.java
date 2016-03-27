@@ -185,13 +185,10 @@ public class InventoryControl {
         Item[] inventoryItemArray = game.getInventoryItemArray();
         try (FileWriter outFile = new FileWriter(fileName)) { // try-with-resources 
         String separator = System.getProperty("line.separator");    
-        String itemName;
-        int spacesNeeded;
+
         
             outFile.write("          INVENTORY REPORT          ");     
-            System.out.printf("%-30s %7s %n","Item","Weight");
-            System.out.printf("%-30s %7s %n","________","________");
-            
+
             outFile.write(separator);
             outFile.write(String.format ("%-30s %7s %n","Item","Weight"));
             outFile.write(String.format ("%-30s %7s %n","________","________"));
@@ -199,11 +196,7 @@ public class InventoryControl {
             for(Item i : inventoryItemArray){ 
                 //add spaces
                 
-                for (int x = 0; x>i.getName().length();x++){
-                    
-                }
- 
-                System.out.printf("%n%-40s%-2.2f",i.getName() , i.getWeight());
+
                 outFile.write (String.format ("%n%-30s%-2.2f",i.getName() , i.getWeight()));
    
                 

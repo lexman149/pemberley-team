@@ -191,7 +191,7 @@ public class ReportMenuView extends View{
     
 
        private void inventoryReport() {
-
+        boolean success = true;
         this.console.println("\n\nEnter a file name where this report will "
                             + "be saved. Type X to exit");
 
@@ -202,15 +202,19 @@ public class ReportMenuView extends View{
             return;
         }
 
-        try {
+        try (PrintWriter outFile = new PrintWriter(fileName)) {
             InventoryControl inventoryControl = new InventoryControl();
             inventoryControl.saveInventoryReport(fileName);
-        } catch (Exception ex) {
+            
+        } catch (IOException ex) {
             ErrorView.display("ReportMenuView", ex.getMessage());
-            return;
+            success = false;
         }
-        this.console.println("\nThe Inventory Report was saved to\n "
-                            + fileName + "\n");     
+
+               if (success) {
+                   this.console.println("The Item Location Report was saved to\n "
+                            + "'" + fileName + ".txt'");     
+               }
 //exmaple C:\Users\Cody\Documents\NetBeansProjects\ir
     }
 }
