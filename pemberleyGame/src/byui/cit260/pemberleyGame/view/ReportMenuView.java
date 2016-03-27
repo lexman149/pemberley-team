@@ -73,15 +73,18 @@ public class ReportMenuView extends View{
                             + "be saved. Type X to exit");
  // 3b  
         String fileName = this.getInput(false); // calls the special case of getInput() from View.java
-
-//         // getInput function in View.java
+        
+// getInput function in View.java
             if (fileName.equalsIgnoreCase("x")){ // without this here, the 'x' is seen as a filename.
             return;
         }
  // 3c
+        try {
             // save the game to the specified file
             saveActorLocationReport(fileName);
-
+        } catch (Exception ex) {
+            ErrorView.display("ReportMenuView", ex.getMessage());
+        }
     }
 
      
