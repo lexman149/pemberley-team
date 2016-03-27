@@ -8,6 +8,7 @@ package byui.cit260.pemberleyGame.view;
 import byui.cit260.pemberleyGame.control.InventoryControl;
 import byui.cit260.pemberleyGame.model.Actor;
 import byui.cit260.pemberleyGame.model.Game;
+import byui.cit260.pemberleyGame.model.Item;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,7 +42,7 @@ public class ReportMenuView extends View{
                 this.mapReport();
                 break;
             case "I":
-                this.itemReport();
+                this.writeItemLocationReport();
                 break;
             case "A":
                 this.writeActorLocationReport();
@@ -126,82 +127,67 @@ public class ReportMenuView extends View{
     }
     
     
-    /*private void writeItemLocationReport() {
+    private void writeItemLocationReport() {
 // 3a
         this.console.println("\n\nEnter a file name where this report will "
                             + "be saved. Type X to exit");
- // 3b  
+ // 3b  // getInput function in View.java
+           
         String fileName = this.getInput();
-        do{
-         // getInput function in View.java
-           if (item.getLocation()!= null) { //otherwise print locationName
-             outFile.write(item.getName() + "\t" + item.getLocation().getName() + "\n");
-        }
-        else { 
-          outFile.write(item.getName() + "\t" + location + "\n");
-        }
-        }
- // 3c
+        
+            if (fileName.equalsIgnoreCase("x")) { //without this here, the "x" is seen as a filename.
+            return;
+            }
+           
+// 3c
         try {
             // save the game to the specified file
             saveItemLocationReport(fileName);
         } catch (Exception ex) {
-            ErrorView.display("ERROR", ex.getMessage());
+            ErrorView.display("ReportMenuView", ex.getMessage());
         }
- // 3d
-        this.console.println("The Item Location Report was saved to\n "
-                            + fileName);     
-        }while (!fileName.equalsIgnoreCase("x"));
+
+        
     }
+    
      
      
     private void saveItemLocationReport(String fileName) {  
         
         Game game = PemberleyGame.getCurrentGame(); // access to data
         Item[] allItemArray = game.getAllItemArray(); // form with the item's info
-        try (FileWriter outFile = new FileWriter(fileName)) { // try-with-resources 
+        boolean success = true;
+        
+        try (PrintWriter outFile = new PrintWriter(fileName)) { // try-with-resources 
             
 // make headers for the report.
-            outFile.write("\n\n          ITEM LOCATION REPORT          ");        
-            outFile.write("\nItem Name                     Location");
-            outFile.write("\n----------                     --------");
+            outFile.println("\n\n          ITEM LOCATION REPORT          ");        
+            outFile.printf("%n%-30s%-14s", "Item Name", "Location");
+            outFile.printf("%n%-30s%-14s", "---------", "--------");
 
 // print item name and location
             for(Item item : allItemArray){ // goes through all the items
                 // null check - won't call a locationName if = null
                 String location = "not applicable"; // if location is null, print this
+                
                 if (item.getLocation() != null){ // otherwise print locationName
                     location = item.getLocation().getName();
                 }
-                else {
-                outFile.write(item.getName() + "\t" + item.getLocation().getName() + "\n");
-                } 
+                outFile.printf("%n%-30s%-14s", item.getName()
+                                             , location);
             }
             
-                 try (PrintWriter out = new PrintWriter(fileName)) { // try-with-resources 
-//            
-//// make headers for the report.
-//            out.println("\n\n          ITEM LOCATION REPORT          ");        
-//            out.printf("%n%-30s%14s", "Item Name", "Location");
-//            out.printf("%n%-30s%14s", "----------", "--------");
-//
-//// print item name and location
-//            for(Item item : allItemArray){ // goes through all the items
-//                // null check - won't call a locationName if = null
-//                String location = "not applicable"; // if location is null, print this
-//                if (item.getLocation() != null){ // otherwise print locationName
-//                    location = item.getLocation().getName();
-//                }
-//                else {
-//                out.printf("%n%-30s%14s", item.getName()
-//                                        , item.getLocation().getName());
-//                } 
-//            }
-*/
-    
-   
-   
-         
+        } catch (IOException ex) {
+            ErrorView.display("ReportMenuView", ex.getMessage());
+            success = false;
+        }
+//3d
+               if (success) {
+                   this.console.println("The Item Location Report was saved to\n "
+                            + "'" + fileName + ".txt'");     
+               }
+    }
+                
     
 
        private void inventoryReport() {

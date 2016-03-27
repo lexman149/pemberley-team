@@ -267,4 +267,11 @@ public class Item implements Serializable {
         this.contains = contains;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" + "name=" + name + ", description=" + description + ", location=" + location + ", alternateLocation=" + alternateLocation + ", alternateDescription=" + alternateDescription + ", takable=" + takable + ", alternateTakable=" + alternateTakable + ", usable=" + usable + ", alternateUsable=" + alternateUsable + ", multiple=" + multiple + ", quantity=" + quantity + ", weight=" + weight + ", takeMessage=" + takeMessage + ", alternateTakeMessage=" + alternateTakeMessage + ", useMessage=" + useMessage + ", alternateUseMessage=" + alternateUseMessage + ", quest=" + quest + ", contains=" + contains + '}';
+    }
+    
+    
+
 }
