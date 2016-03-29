@@ -24,8 +24,9 @@ public class ExploreMenuView extends View {
                 + "\n | What do you want to do?"
                 + "\n----------------------------------------"
                 + "\nM - Move"
-                + "\nT - Take"
-                + "\nG - Give"
+                + "\nT - Take Item"
+                + "\nG - Give Item"
+                + "\nD - Drop Item"
                 + "\nS - Speak"
                 + "\nU - Use"
                 + "\nL - Look"
@@ -43,6 +44,9 @@ public class ExploreMenuView extends View {
                 break;
             case "T":
                 this.takeItem();
+                break;
+            case "D":
+                this.dropItem();
                 break;
             case "G":
                 this.giveItem();
@@ -366,6 +370,77 @@ public class ExploreMenuView extends View {
         }
 
         return playersInput; // return the name
+    }
+
+    private void dropItem() {
+        Game game = PemberleyGame.getCurrentGame();
+        Player player = game.getPlayerOne();
+        ItemControl itemControl = new ItemControl();
+        Item[] inventoryItemArray = game.getInventoryItemArray();
+        String gameMessage = " ";
+        int indexOfItem;
+        int quantityOfItem = 1;
+        String playerSelection;
+        InventoryControl inventoryControl = new InventoryControl();
+//designate the inventory
+        Inventory inventory = player.getInventory();
+//while player's selection is not X loop
+        do {
+//if there is nothing in the localItemArray say there is nothing to take.
+            if (inventoryItemArray.length == 0) {
+                this.console.println("Nothing to drop");
+                break;
+            } else {
+                String prompt = "What do you want to drop? Type X to exit.";
+//get input from the player
+                playerSelection = this.getStringInput(prompt);
+//see if the player's selected item is in the room. return it's index in the array.
+                indexOfItem = itemControl.getItemIndex(playerSelection, player, inventoryItemArray);
+
+                if (indexOfItem != -1) {//run this code if there was an index match
+//set the item to whatever item matched the players selection
+                    Item selectedItem = inventoryItemArray[indexOfItem];
+//if the item's multiple attribute is true run this code
+                    if (selectedItem.getQuantity()> 1) {
+                        prompt = "How Many do you want to drop? (1 - " + selectedItem.getQuantity() + ")";
+//get the players selection and make sure it is an integer
+                        playerSelection = this.getStringInput(prompt); // gets a string
+//make the player's selection an integer
+                        try {
+                            quantityOfItem = Integer.parseInt(playerSelection); // converts string to int
+
+                        } catch (NumberFormatException nf) {
+                            ErrorView.display(this.getClass().getName(), "\nYou must enter a valid number."
+                                    + " Try again or type X to exit.");
+
+                        }
+//call the takeMultipleItem function.
+                        try {
+                            gameMessage = inventoryControl.dropMultipleItem(selectedItem, quantityOfItem, inventory);
+                        } catch (InventoryControlException ie) {
+                            ErrorView.display(this.getClass().getName(),ie.getMessage());
+                        }
+                    } else {//run this code if the item's multiple attribue is not true
+                        quantityOfItem = 1;
+
+//call the takeSingleItem function
+                        try {
+                            gameMessage = inventoryControl.dropSingleItem(selectedItem, quantityOfItem, inventory);
+                        } catch (InventoryControlException ie) {
+                            ErrorView.display(this.getClass().getName(),ie.getMessage());
+                        }
+
+                    }
+
+                } else {
+//if the player's selection is not in the array send this message
+                    gameMessage = "Not sure what you are trying to drop.";
+                }
+            }
+            this.console.println(gameMessage);
+        } while (!playerSelection.equalsIgnoreCase("X"));//loop
+
+     
     }
 
 }

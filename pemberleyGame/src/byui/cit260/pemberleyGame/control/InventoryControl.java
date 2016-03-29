@@ -32,7 +32,22 @@ public class InventoryControl {
         return newWeight;
     }
 
-    public double calcRemoveInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) 
+    
+    
+    public double calcRemoveInventoryWeight(double currentWeight, double itemWeight, int dropItemQuantity, int currentItemQuantity) 
+                        throws InventoryControlException{
+        double newWeight;
+        
+        if (dropItemQuantity < 1 || dropItemQuantity > currentItemQuantity) {
+            throw new InventoryControlException("Please enter a number between 1 - " + currentItemQuantity);
+        }
+//currentWeight = inventory.getCurrentWeight(); /*needs to be created */
+        newWeight = currentWeight - (itemWeight * dropItemQuantity);
+        
+        return newWeight;
+    }
+
+        public double calcRemoveInventoryWeight(double currentWeight, double newWeight, int newItemQuantity) 
                         throws InventoryControlException{
         if (newItemQuantity < 0 || newItemQuantity > 9) {
             throw new InventoryControlException("Please enter a number between 0 - 9");
@@ -44,7 +59,7 @@ public class InventoryControl {
         }
         return newWeight;
     }
-
+    
     public boolean checkCanGet(int quantityLimit, int currentQuantity, int newQuantity) {
         if (newQuantity < 0 || newQuantity > 9) {
             return false;
@@ -209,4 +224,43 @@ public class InventoryControl {
         
         }
     }
+
+    public String dropSingleItem(Item selectedItem, int quantityOfItem, Inventory inventory) 
+                            throws InventoryControlException {
+        Game game = PemberleyGame.getCurrentGame();
+        Player player = game.getPlayerOne();
+        double currentWeight = inventory.getWeight();
+        double itemWeight = selectedItem.getWeight();
+        
+        int currentItemQuantity = selectedItem.getQuantity();
+        Location currentLocation = player.getLocation();
+        selectedItem.setLocation(currentLocation);
+        double newInventoryWeight = this.calcRemoveInventoryWeight(currentWeight, itemWeight , 1, 1);
+        this.updateInventory();                    
+        return "you have dropped the " + selectedItem.getName();
+        
+    }
+
+    public String dropMultipleItem(Item selectedItem, int quantityOfItem, Inventory inventory) 
+                        throws InventoryControlException{
+        Game game = PemberleyGame.getCurrentGame();
+        Player player = game.getPlayerOne();
+        double currentWeight = inventory.getWeight();
+        double itemWeight = selectedItem.getWeight();
+        int currentItemQuantity = selectedItem.getQuantity();
+        
+        double newWeight = this.calcRemoveInventoryWeight(currentWeight, itemWeight, quantityOfItem, currentItemQuantity);
+        if (currentItemQuantity - quantityOfItem == 0){
+        selectedItem.setLocation(null);
+        } else if (currentItemQuantity - quantityOfItem <0){
+        throw new InventoryControlException("You can't drop more than you are carrying.");
+        } else {
+        selectedItem.setQuantity(currentItemQuantity-quantityOfItem);
+        }
+        
+   
+        this.updateInventory();
+        return "As you drop some " + selectedItem.getName() + " The housekeeper bustles in and cleans them up.  She scolds you for being so careless";
+    }
+
 }
