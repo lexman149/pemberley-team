@@ -459,7 +459,6 @@ public class GameControl {
         itNote.setQuantity(0);
         itNote.setQuest(qtNote);
         itNote.setTakable(false);
-        itNote.setTakeMessage("The Hamster is guarding it.  He snarls and snaps at you when you try to take it");
         itNote.setTakeMessage("When you try to take it, the Hamster snarls and tries to bite you.");
         itNote.setWeight(0.25);
         itNote.setWeight(0.25);
@@ -503,7 +502,7 @@ public class GameControl {
         itRock.setDescription("It is a rock with some worms underneath");
         itRock.setLocation(rmGarden);
         itRock.setMultiple(true);
-        itRock.setName("Rock");
+        itRock.setName("Rock with worms");
         itRock.setQuantity(0);
         itRock.setWeight(10);
         itTeaCup.setDescription("It is a small porcelain tea cup ");
@@ -562,6 +561,7 @@ public class GameControl {
         qtHamster.setCompletionScript("Bruiser jumps on the dog treats and eats them with relish.  Then he licks your hand.");
         qtHamster.setItemToChange(itNote);
         qtHamster.setNeeds(itDogTreats);
+        qtHamster.setActorToChange(atHamster);
         qtTimeMachine.setPlayer(playerOne);
         qtTimeMachine.setPlayerDestination(rmPath);
         qtCarrots.setNeeds(itCarrots);
@@ -676,6 +676,7 @@ public class GameControl {
         rmRoadEast.setName("Road East");
         rmRoadEast.setSouth(rmSmithy);
         rmRoadEast.setWest(rmRoadWest);
+        rmRoadEast.setEast(rmFrontDrive);
         rmRoadWest.setDescription("You are on a road in the town of Lambton");
         rmRoadWest.setEast(rmRoadEast);
         rmRoadWest.setName("Road West");
