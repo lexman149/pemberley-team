@@ -296,7 +296,10 @@ public class GameControl {
         atUncleFinneas.setDescription("Uncle Finneas looks comfortable in his historic clothing.");
         atUncleFinneas.setLocation(rmGreatHall);
         atUncleFinneas.setName("Uncle Finneas");
-        atWilliam.setAlternateLocation(null);
+        atWilliam.setAlternateLocation(rmMilliner);
+        atWilliam.setAlternateDescription("William the Stablehand appears to be looking"
+                                        + "\nat a pretty little hat.  Is it for a girl"
+                                        + "\nhe likes.");
         atWilliam.setCharacterScript("William says \"I don't have time to get the coach ready.  These horses are being difficult.\"");
         atWilliam.setDescription("William the Stable hand appears to be having some trouble with the horses  He seems a little distracted himself.");
         atWilliam.setLocation(rmStable);

@@ -156,6 +156,10 @@ public class InventoryControl {
     public String giveItem(Item selectedItem, int quantityOfItem, Actor actorToReceive) {
         String gameMessage = " ";
         Game game = PemberleyGame.getCurrentGame();
+        QuestControl questControl = new QuestControl();
+        ActorControl actorControl = new ActorControl();
+        GameControl gameControl = new GameControl();
+        
         Player player = game.getPlayerOne();
         Inventory inventory = player.getInventory();
         
@@ -176,9 +180,9 @@ public class InventoryControl {
                 inventory.setWeight(inventory.getWeight() - selectedItem.getWeight() * quantityOfItem);
             }
             
-            QuestControl questControl = new QuestControl();
-            ActorControl actorControl = new ActorControl();
+
             actorControl.changeActorAttributes(actorToReceive);
+            gameControl.updateGame();
             return questControl.executeQuestActions(game, currentQuest);
         
         } else{

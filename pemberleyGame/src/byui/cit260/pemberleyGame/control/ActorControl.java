@@ -115,12 +115,16 @@ Dog Treats, it will still find it.*/
     public void changeActorAttributes (Actor currentActor){
  if (currentActor.getAlternateCharacterScript()!=null)
     currentActor.setCharacterScript(currentActor.getAlternateCharacterScript());
+ 
  if (currentActor.getAlternateDescription()!=null)
      currentActor.setDescription(currentActor.getAlternateDescription());
+ 
  if (currentActor.getAlternateLocation()!=null)
      currentActor.setLocation(currentActor.getAlternateLocation());
+ 
  if (currentActor.getAlternateQuest()!=null)
      currentActor.setQuest(currentActor.getAlternateQuest());
+ 
     }
     
     
