@@ -344,9 +344,9 @@ public class GameControl {
         itCarrotBag.setQuantity(0);
         itCarrotBag.setWeight(21);
         itCarrots.setDescription("The carrots are orange and large.");
-        itCarrots.setLocation(inventoryOne);
+        itCarrots.setLocation(null);
         itCarrots.setName("Carrots");
-        itCarrots.setQuantity(5);
+        itCarrots.setQuantity(0);
         itCarrots.setTakable(true);
         itCarrots.setWeight(0.25);
         itChestnuts.setDescription("These are very large chestnuts");
@@ -538,7 +538,7 @@ public class GameControl {
         itWorms.setTakable(false);
         itWorms.setAlternateTakable(true);
         itWorms.setWeight(0.25);
-        playerOne.setLocation(rmStable);
+        playerOne.setLocation(rmLivingRoom);
         qtCane.setNeeds(itCane);
         qtCane.setCompletionScript("Lady Catherine thanks you for the return of her cane.");
         qtCarrots.setItemToChange(itCarriage);
