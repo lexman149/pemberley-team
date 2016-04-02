@@ -72,7 +72,7 @@ public class GameControl {
         Item itContainerOfSweets = new Item();
         Item itContainerOfWorms = new Item();
         Item itDogTreats = new Item();
-        Item itBall = new Item ();
+        Item itBall = new Item();
         Item itEmptyContainer = new Item();
         Item itFan = new Item();
         Item itFishingPole = new Item();
@@ -156,10 +156,6 @@ public class GameControl {
         Room rmUpstairsHallWest = new Room();
         Scanner in = new Scanner(System.in);
 
-
-
-
-          
         atCarter.setAlternateCharacterScript("Carter says \"Thank you for finding the tea cup\"");
         atCarter.setAlternateDescription("Carter is relieved that you have found the tea cup.");
         atCarter.setCharacterScript("Cater says \"I seem to have misplaced a tea cup.\"");
@@ -181,6 +177,7 @@ public class GameControl {
         atGeorgie.setLocation(rmLake);
         atGeorgie.setName("Georgie");
         atGeorgie.setQuest(qtLake);
+
         atHamster.setAlternateCharacterScript("Bruiser says \"Woof Woof\"");
         atHamster.setCharacterScript("Bruiser says\" GRRR.  Snarl.\"");
         atHamster.setDescription("It is Uncle Finneas' Pet Hamster. Uncle Finneas put dog brain matter in his head.");
@@ -297,9 +294,9 @@ public class GameControl {
         atUncleFinneas.setLocation(rmGreatHall);
         atUncleFinneas.setName("Uncle Finneas");
         atWilliam.setAlternateLocation(rmMilliner);
-        atWilliam.setAlternateDescription("William the Stablehand appears to be looking"
-                                        + "\nat a pretty little hat.  Is it for a girl"
-                                        + "\nhe likes?");
+        atWilliam.setAlternateDescription("\n"
+                + "\nWilliam the Stablehand appears to be looking at a pretty "
+                + "\nlittle hat.  Is it for a girl he likes?");
         atWilliam.setCharacterScript("William says \"I don't have time to get the coach ready.  These horses are being difficult.\"");
         atWilliam.setDescription("William the Stable hand appears to be having some trouble with the horses  He seems a little distracted himself.");
         atWilliam.setLocation(rmStable);
@@ -538,26 +535,29 @@ public class GameControl {
         itWorms.setTakable(false);
         itWorms.setAlternateTakable(true);
         itWorms.setWeight(0.25);
-        playerOne.setLocation(rmLivingRoom);
+        playerOne.setLocation(rmEntry);
         qtCane.setNeeds(itCane);
         qtCane.setCompletionScript("Lady Catherine thanks you for the return of her cane.");
         qtCarrots.setItemToChange(itCarriage);
+        qtCarrots.setItemToChangeToo(itHeartCard);
         qtCarrots.setNeeds(itCarrots);
         qtCarrots.setCompletionScript("William seems very grateful for the carrots.  "
-                                    + "\nHe feeds them to the horses and then gets "
-                                    + "\nthe carriage ready");
+                + "\nHe feeds them to the horses and then gets "
+                + "\nthe carriage ready");
         qtCarter.setNeeds(itTeaCup);
         qtCarter.setCompletionScript("Carter smiles and accepts the tea cup.");
         qtCoach.setPlayer(playerOne);
         qtCoach.setPlayerDestination(rmRoadWest);
         qtCoach.setCompletionScript("Marshall helps you into the carriage"
-                                  + "\nand it takes you to a quaint"
-                                  + "\nvillage");
+                + "\nand it takes you to a quaint"
+                + "\nvillage");
         qtCook.setNeeds(itTrout);
         qtCook.setCompletionScript("The cook is thrilled to finally get"
-                                + "\nthe trout at last.");
+                + "\nthe trout at last.");
         qtGrocer.setNeeds(itChestnuts);
-        qtGrocer.setCompletionScript("The grocer thanks you for the chestnuts.");
+        qtGrocer.setCompletionScript("The grocer thanks you for the chestnuts."
+                + "\nIn return he gives you some money");
+        qtGrocer.setItemToChange(itMoney);
         qtHamster.setActorToChange(atHamster);
         qtHamster.setCompletionScript("Bruiser jumps on the dog treats and eats them with relish.  Then he licks your hand.");
         qtHamster.setItemToChange(itNote);
@@ -565,37 +565,35 @@ public class GameControl {
         qtJaneDarcy.setNeeds(itMusic);
         qtJaneDarcy.setItemToChange(itFishingPole);
         qtJaneDarcy.setActorToChange(atJonathan);
-        qtJaneDarcy.setCompletionScript("Jane claps in delight and sits at"
-                                      + "\nthe piano forte.  She begins to "
-                                      + "\nplay.  In a moment a young man"
-                                      + "\ncomes in and sits in a nearby"
-                                      + "\ncouch.  He stares at Miss"
-                                      + "\nDarcy in admiration.");
+        qtJaneDarcy.setCompletionScript("\n"
+                + "Jane claps in delight and sits at the piano forte.  She begins to "
+                + "\nplay.  In a moment a young man carrying a fishing pole comes in "
+                + "\nand sits in a nearby couch.  He stares at Miss Darcy in admiration.");
         qtLadyRoslyn.setNeeds(itUmbrella);
         qtLadyRoslyn.setCompletionScript("Lady Roslyn seems thrilled to get the umbrella.  She thanks you.");
         qtLake.setNeeds(itFishingPole);
         qtLake.setItemToChange(itTrout);
         qtLake.setCompletionScript("Georgie baits the fishing pole and catches"
-                                 + "\na large trout for his family.  Then he"
-                                 + "\ncatches one for you.");
+                + "\na large trout for his family.  Then he"
+                + "\ncatches one for you.");
         qtMiliner.setNeeds(itMoney);
         qtMiliner.setItemToChange(itRibbons);
         qtMiliner.setCompletionScript("The Miliner hands you ribbons.");
         qtMrDarcy.setNeeds(itLetter);
         qtMrDarcy.setActorToChange(atMrDarcy);
         qtMrDarcy.setCompletionScript("Mr Darcy reads the letter and anger"
-                                    + "\ninfuses his features.  He stalks"
-                                    + "\nover to Mr Willoughby and whispers"
-                                    + "\nin his ear.  The next moment a servant"
-                                    + "\nhands Mr Willoughby his hat and coat.");
+                + "\ninfuses his features.  He stalks"
+                + "\nover to Mr Willoughby and whispers"
+                + "\nin his ear.  The next moment a servant"
+                + "\nhands Mr Willoughby his hat and coat.");
         qtMrsDarcy.setNeeds(itFan);
         qtMrsDarcy.setCompletionScript("Mrs Darcy seems very happy to get her fan.");
         qtRabbit.setNeeds(itCarrots);
         qtRabbit.setCompletionScript("The rabbit gladly takes the carrot and hops"
-                                   + "\ninto the bushes.  Peering through the leaves"
-                                    + "\nyou see the rabbit drop the carrot in front"
-                                    +"\nof a dozen baby rabbits.  They eat the carrot"
-                                    + "\nravenously.");
+                + "\ninto the bushes.  Peering through the leaves"
+                + "\nyou see the rabbit drop the carrot in front"
+                + "\nof a dozen baby rabbits.  They eat the carrot"
+                + "\nravenously.");
         qtRandolph.setNeeds(itPocKetWatch);
         qtRandolph.setCompletionScript("Lord Randolph smiles as he accepts his watch.");
         qtRose.setNeeds(itRibbons);
@@ -603,19 +601,22 @@ public class GameControl {
         qtSally.setNeeds(itHeartCard);
         qtSally.setActorToChange(atWilloughby);
         qtSally.setCompletionScript("Sally reads the card and smiles."
-                                  + "\nShe says \"Thank you for bringing this"
-                                  + "\nto me.  If there is anything I can do "
-                                  + "\nfor you, just ask.");
+                + "\nShe says \"Thank you for bringing this"
+                + "\nto me.  If there is anything I can do "
+                + "\nfor you, just ask.");
         qtSweets.setNeeds(itContainerOfSweets);
         qtSweets.setItemToChange(itEmptyContainer);
-        qtTimeMachine.setCompletionScript("\nThe lights start to dim. Your world"		
-              + "\ndances with colors and movement."		
-              + "\nEverything goes dark.  When you "		
-              + "\nat last reach conciousness again"		
-              + "\nYou find that you are standing"		
-              + "\nnext to a great and stately mansion."		
-              + "\nWhere are you?  Or better yet, when "		
-              + "\nare you?");		
+        qtSweets.setItemToChangeToo(itWorms);
+        qtSweets.setCompletionScript("Robert is very happy to get the sweets.  He eats"
+                + "\nthem instantly and gives you the empty container.");
+        qtTimeMachine.setCompletionScript("\nThe lights start to dim. Your world"
+                + "\ndances with colors and movement."
+                + "\nEverything goes dark.  When you "
+                + "\nat last reach conciousness again"
+                + "\nYou find that you are standing"
+                + "\nnext to a great and stately mansion."
+                + "\nWhere are you?  Or better yet, when "
+                + "\nare you?");
         qtTimeMachine.setPlayer(playerOne);
         qtTimeMachine.setPlayerDestination(rmPath);
         rmBackStaircase.setDescription("You are on the Back Staircase.  This leads to the lower floors where the kitchen and servant's quarters are.");
@@ -762,16 +763,6 @@ public class GameControl {
         rmUpstairsHallWest.setNorth(rmGallery);
         rmUpstairsHallWest.setSouth(rmGrandStaircase);
 
-
-
-
-
-
-
-
-
-
-
 //make a room array
         Room roomsArray1[] = {rmFinnKitchen, rmLivingRoom, rmCloset, rmSecretLab};
         Room roomsArray2[] = {rmMilliner, rmRoadWest, rmRoadEast, rmGrocer, rmSmithy, rmGreen};
@@ -848,43 +839,40 @@ public class GameControl {
         String mapDrawing = mapControl.renderMap(rmLivingRoom);
         Map currentMap = rmLivingRoom.getMap();
         currentMap.setMapDrawing(mapDrawing);
-        
-        
+
     }
 // L11 Team Assignment
-    public static void saveGame(Game game, String filePath) 
+
+    public static void saveGame(Game game, String filePath)
             throws GameControlException {
 //write serialized Java Bean object directly to an object to an output byte stream.        
-        try( FileOutputStream fops = new FileOutputStream(filePath)) { 
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
-            
+
             output.writeObject(game); // write the game object out to file
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             throw new GameControlException(e.getMessage());
         }
     }
 
-    public static void getSavedGame(String filePath) 
-                        throws GameControlException{
+    public static void getSavedGame(String filePath)
+            throws GameControlException {
         Game game = null;
-        
-        try(FileInputStream fips = new FileInputStream(filePath)) {
+
+        try (FileInputStream fips = new FileInputStream(filePath)) {
             ObjectInputStream input = new ObjectInputStream(fips);
-            
+
             game = (Game) input.readObject(); //read the game object from file
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw new GameControlException(e.getMessage());
         }
-        
-        // close the output file
+
+// close the output file
         PemberleyGame.setCurrentGame(game); // save in PemberleyGame
     }
-    
 
     public void updateGame() {
-         Game game = PemberleyGame.getCurrentGame();
+        Game game = PemberleyGame.getCurrentGame();
         Player player = game.getPlayerOne();
         game.setCurrentRoom(player.getLocation());
         game.setCurrentMap(game.getCurrentRoom().getMap());

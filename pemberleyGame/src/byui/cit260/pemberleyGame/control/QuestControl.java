@@ -23,15 +23,23 @@ public class QuestControl {
     ActorControl actorControl = new ActorControl();
     ItemControl itemControl = new ItemControl();
     MapControl mapControl = new MapControl();
+    GameControl gameControl = new GameControl();
+    
     Player player = game.getPlayerOne();
     
     if (currentQuest.getActorToChange() !=null)
         actorControl.changeActorAttributes(currentQuest.getActorToChange());
     if (currentQuest.getItemToChange() != null)
         itemControl.changeItemAttributes(currentQuest.getItemToChange());
+    if (currentQuest.getItemToChangeToo() != null)
+        itemControl.changeItemAttributes(currentQuest.getItemToChangeToo());
     if (currentQuest.getPlayer() !=null)
         player.setLocation(currentQuest.getPlayerDestination());
+    
+    gameControl.updateGame();
     return gameMessage;
+    
+    
     }
 
     }

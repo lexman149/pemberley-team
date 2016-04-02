@@ -15,6 +15,7 @@ public class Quest implements Serializable {
     private String completionScript;
     private Actor actorToChange;
     private Item itemToChange;
+    private Item itemToChangeToo;
     private Player player;
     private Room roomToChange;
     private Room playerDestination;
@@ -62,6 +63,14 @@ public class Quest implements Serializable {
         this.itemToChange = itemToChange;
     }
 
+    public Item getItemToChangeToo() {
+        return itemToChangeToo;
+    }
+
+    public void setItemToChangeToo(Item itemToChangeToo) {
+        this.itemToChangeToo = itemToChangeToo;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -88,15 +97,16 @@ public class Quest implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.needs);
-        hash = 29 * hash + (this.completed ? 1 : 0);
-        hash = 29 * hash + Objects.hashCode(this.completionScript);
-        hash = 29 * hash + Objects.hashCode(this.actorToChange);
-        hash = 29 * hash + Objects.hashCode(this.itemToChange);
-        hash = 29 * hash + Objects.hashCode(this.player);
-        hash = 29 * hash + Objects.hashCode(this.roomToChange);
-        hash = 29 * hash + Objects.hashCode(this.playerDestination);
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.needs);
+        hash = 79 * hash + (this.completed ? 1 : 0);
+        hash = 79 * hash + Objects.hashCode(this.completionScript);
+        hash = 79 * hash + Objects.hashCode(this.actorToChange);
+        hash = 79 * hash + Objects.hashCode(this.itemToChange);
+        hash = 79 * hash + Objects.hashCode(this.itemToChangeToo);
+        hash = 79 * hash + Objects.hashCode(this.player);
+        hash = 79 * hash + Objects.hashCode(this.roomToChange);
+        hash = 79 * hash + Objects.hashCode(this.playerDestination);
         return hash;
     }
 
@@ -127,6 +137,9 @@ public class Quest implements Serializable {
         if (!Objects.equals(this.itemToChange, other.itemToChange)) {
             return false;
         }
+        if (!Objects.equals(this.itemToChangeToo, other.itemToChangeToo)) {
+            return false;
+        }
         if (!Objects.equals(this.player, other.player)) {
             return false;
         }
@@ -139,4 +152,6 @@ public class Quest implements Serializable {
         return true;
     }
 
+    
+    
 }

@@ -76,7 +76,6 @@ public class InventoryControl {
     public String takeSingleItem(Item itemToTake, int quantityToTake, Inventory inventory) 
                         throws InventoryControlException {
 //check to make sure that the potetial weight does not exceed the 20 lb limit
-            double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
 //if the item's takable attribute is not true, return an appropriate message.
         if (!itemToTake.isTakable()) {
             if (itemToTake.getTakeMessage() == null) {
@@ -86,6 +85,7 @@ public class InventoryControl {
                 return itemToTake.getTakeMessage();
             }
         } else {
+            double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
             itemToTake.setLocation(inventory);
             inventory.setWeight(inventory.getWeight() + potentialWeight);
             this.updateInventory();
@@ -100,6 +100,8 @@ public class InventoryControl {
 //make the item to take whatever is in the container.
 
         itemToTake = itemToTake.getContains();
+        if (itemToTake.isTakable()!= true)
+            return "You can't take the " + itemToTake.getName();
 //check to make sure that the potetial weight does not exceed the 20 lb limit
         double potentialWeight = this.calcAddInventoryWeight(inventory.getWeight(), itemToTake.getWeight(), quantityToTake);
 //set the current quantity to whatever is currently in the inventory
