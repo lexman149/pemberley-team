@@ -138,21 +138,24 @@ Dog Treats, it will still find it.*/
     }
 
     public void changeItemAttributes(Item currentItem) {
-        if (currentItem.getAlternateDescription() != null) {
+        if (currentItem.getAlternateDescription() != null) 
             currentItem.setDescription(currentItem.getAlternateDescription());
-        }
-        if (currentItem.getAlternateLocation() != null) {
+        
+        if (currentItem.isAlternateUsable() == true)
+            currentItem.setUsable(true);
+        
+        if (currentItem.getAlternateLocation() != null)
             currentItem.setLocation(currentItem.getAlternateLocation());
-        }
-        if (currentItem.isAlternateTakable() == true) {
+        
+        if (currentItem.isAlternateTakable() == true) 
             currentItem.setTakable(true);
-        }
-        if (currentItem.getAlternateTakeMessage() != null) {
+        
+        if (currentItem.getAlternateTakeMessage() != null) 
             currentItem.setTakeMessage(currentItem.getAlternateTakeMessage());
-        }
-        if (currentItem.getAlternateUseMessage() != null) {
+        
+        if (currentItem.getAlternateUseMessage() != null) 
             currentItem.setUseMessage(currentItem.getAlternateUseMessage());
-        }
+        
     }
 
 }

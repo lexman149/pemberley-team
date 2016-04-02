@@ -156,178 +156,167 @@ public class GameControl {
         Room rmUpstairsHallWest = new Room();
         Scanner in = new Scanner(System.in);
 
+
+
+
+          
+        atCarter.setAlternateCharacterScript("Carter says \"Thank you for finding the tea cup\"");
         atCarter.setAlternateDescription("Carter is relieved that you have found the tea cup.");
-        atCarter.setCharacterScript("I seem to have misplaced a tea cup.");
-        atCarter.setAlternateCharacterScript("Thank you for finding the tea cup");
+        atCarter.setCharacterScript("Cater says \"I seem to have misplaced a tea cup.\"");
         atCarter.setDescription("Carter, is a footman. He appears very distressed.");
         atCarter.setLocation(rmDiningRoom);
         atCarter.setName("Carter the Footman");
         atCarter.setQuest(qtCarter);
+        atDaisy.setAlternateCharacterScript("Daisy says \"Thank you for your help.\"");
         atDaisy.setAlternateDescription("Daisy is mixing up some cake batter");
         atDaisy.setAlternateLocation(rmKitchen);
-        atDaisy.setCharacterScript("I seem to have misplaced cook's best cake recipe”");
-        atDaisy.setAlternateCharacterScript("Thank you for your help.");
+        atDaisy.setCharacterScript("Daisy says \"I seem to have misplaced cook's best cake recipe\"");
         atDaisy.setDescription("Daisy is looking all over the cellar for something");
         atDaisy.setLocation(rmCellar);
         atDaisy.setName("Daisy an undercook");
         atDaisy.setQuest(qtDaisy);
-        atGeorgie.setCharacterScript("Mrs Darcy said I could catch fish her for my family but I broke my fishing pole”");
-        atGeorgie.setCharacterScript("Thank you for letting me borrow the fishing pole");
+        atGeorgie.setCharacterScript("Georgie says \"Mrs Darcy said I could catch fish her for my family but I broke my fishing pole\"");
+        atGeorgie.setAlternateCharacterScript("Georgie says \"Thank you for letting me borrow the fishing pole.\"");
         atGeorgie.setDescription("A young boy sits and lounges by the side of the lake.");
         atGeorgie.setLocation(rmLake);
         atGeorgie.setName("Georgie");
         atGeorgie.setQuest(qtLake);
-        qtLake.setNeeds(itFishingPole);
-        atHamster.setAlternateCharacterScript("Woof Woof");
-        atHamster.setCharacterScript("GRRR.  Snarl.");
+        atHamster.setAlternateCharacterScript("Bruiser says \"Woof Woof\"");
+        atHamster.setCharacterScript("Bruiser says\" GRRR.  Snarl.\"");
         atHamster.setDescription("It is Uncle Finneas' Pet Hamster. Uncle Finneas put dog brain matter in his head.");
         atHamster.setLocation(rmLivingRoom);
         atHamster.setName("Bruiser the Hamster");
         atHamster.setQuest(qtHamster);
-        atJaneDarcy.setAlternateDescription("Jane Darcy is playing the Piano Forte beautifully.");
         atJaneDarcy.setAlternateCharacterScript("She appears too busy to speak.");
-        atJaneDarcy.setCharacterScript("Where is it... where is it...”");
+        atJaneDarcy.setAlternateDescription("Jane Darcy is playing the Piano Forte beautifully.");
+        atJaneDarcy.setCharacterScript("Jane Darcy says \"Where is it... where is it...\"");
         atJaneDarcy.setDescription("Jane Darcy is the eldest child of Mr and Mrs Darcy. Right now she seems very concerned as she searches the music room for something.");
         atJaneDarcy.setLocation(rmMusicRoom);
         atJaneDarcy.setName("Jane Darcy");
         atJaneDarcy.setQuest(qtJaneDarcy);
-        qtJaneDarcy.setNeeds(itMusic);
         atJonathan.setAlternateLocation(rmMusicRoom);
-        atJonathan.setCharacterScript("You may borrow my fishing pole if you want.”");
+        atJonathan.setCharacterScript("Jonathan Ferrars says\"You may borrow my fishing pole if you want.\"");
         atJonathan.setDescription("Jonathan Ferrars seems enthralled by Jane Darcy's playing.");
         atJonathan.setLocation(null);
         atJonathan.setName("Jonathan Ferrars");
-        atLadyCatherine.setCharacterScript("I have misplaced my cane.”");
-        atLadyCatherine.setAlternateCharacterScript("Thank you for finding my cane.");
+        atLadyCatherine.setAlternateCharacterScript("Lady Catherine says \"Thank you for finding my cane.\"");
+        atLadyCatherine.setCharacterScript("Lady Catherine says \"I have misplaced my cane.\"");
         atLadyCatherine.setDescription("Lady Catherine is looking at a painting on the wall signed E Woodhouse.");
         atLadyCatherine.setLocation(rmGallery);
         atLadyCatherine.setName("Lady Catherine");
         atLadyCatherine.setQuest(qtCane);
-        qtCane.setNeeds(itCane);
+        atLadyRoslyn.setAlternateCharacterScript("Lady Roslyn says \"Thank you for finding my umbrella\"");
         atLadyRoslyn.setAlternateDescription("Lady Roslyn smiles as she strolls under her umbrella");
-        atLadyRoslyn.setCharacterScript("I can't seem to find  my umbrella anywhere.  Have you seen it?”");
-        atLadyRoslyn.setAlternateCharacterScript("Thank you for finding my umbrella");
+        atLadyRoslyn.setCharacterScript("Lady Roslyn says \"I can't seem to find  my umbrella anywhere.  Have you seen it?\"");
         atLadyRoslyn.setDescription("Lady Roslyn seems to be looking around for something.");
         atLadyRoslyn.setLocation(rmGarden);
         atLadyRoslyn.setName("Lady Roslyn");
         atLadyRoslyn.setQuest(qtLadyRoslyn);
-        qtLadyRoslyn.setNeeds(itUmbrella);
+        atLordRandolph.setAlternateCharacterScript("Lord Randolph says \"Thank you for finding my pocket watch\"");
         atLordRandolph.setAlternateDescription("Lord Randolph takes his pocket watch out and smiles down at the time before safely securing it back in his pocket.");
-        atLordRandolph.setCharacterScript("Have you seen a pocket watch laying around somewhere?”");
-        atLordRandolph.setAlternateCharacterScript("Thank you for finding my pocket  watch");
+        atLordRandolph.setCharacterScript("Lord Randolph says \"Have you seen a pocket watch laying around somewhere?\"");
         atLordRandolph.setDescription("Lord Randolph seems a bit frazzled.  He keeps patting his pockets.  You wonder if he is missing something.");
         atLordRandolph.setLocation(rmDrawingRoom);
         atLordRandolph.setName("Lord Randolph");
         atLordRandolph.setQuest(qtRandolph);
-        qtRandolph.setNeeds(itPocKetWatch);
+        atMarshall.setAlternateCharacterScript("Marshall says \"Ready and willing!\"");
         atMarshall.setAlternateDescription("The coachman stands ready to assist you into the coach.");
-        atMarshall.setCharacterScript("I am Marshall, the coachman.  The coach isn't ready at present.  I wonder what is taking the stable hand so long.");
-        atMarshall.setAlternateCharacterScript("Ready and willing!");
+        atMarshall.setCharacterScript("Marshall says \"I am Marshall, the coachman.  The coach isn't ready at present.  I wonder what is taking the stable hand so long.\"");
         atMarshall.setDescription("The coachman seems forlorn here without a coach to tend.  You wonder where the coach is.");
         atMarshall.setLocation(rmFrontDrive);
         atMarshall.setName("Marshall the Coachman");
         atMarshall.setQuest(qtCoach);
-        atMissNorwood.setCharacterScript("My ribbons cost a schilling each.”");
+        atMissNorwood.setCharacterScript("The Milliner says \"My ribbons cost a schilling each.\"");
         atMissNorwood.setDescription("The Milliner smiles at you expectantly.");
         atMissNorwood.setLocation(rmMilliner);
         atMissNorwood.setName("Miss Norwood the Milliner");
         atMissNorwood.setQuest(qtMiliner);
-        qtMiliner.setNeeds(itMoney);
-        atMrBarns.setCharacterScript("I do have a chestnut tree out back.”");
+        atMrBarns.setCharacterScript("Mr Barns says \"I do have a chestnut tree out back.\"");
         atMrBarns.setDescription("The Smithy is busy making metal things");
         atMrBarns.setLocation(rmSmithy);
         atMrBarns.setName("Mr Barns the Smithy");
+        atMrDarcy.setAlternateCharacterScript("Mr Darcy says \"Thank you very much for the information.  I will not stand in the way of my daughter and Mr Ferrars.\"");
         atMrDarcy.setAlternateDescription("Mr Darcy seems very grateful to you for finding the incriminating letter.");
         atMrDarcy.setAlternateLocation(rmBallroom);
-        atMrDarcy.setCharacterScript("I do not have time to speak right now.");
-        atMrDarcy.setAlternateCharacterScript("Thank you very much for the information.  I will not stand in the way of my daughter and Mr Ferrars.");
+        atMrDarcy.setCharacterScript("Mr Darcy says \"I do not have time to speak right now.\"");
         atMrDarcy.setDescription("Mr Darcy is a tall brooding gentleman, a  little on the proud side.");
         atMrDarcy.setLocation(null);
         atMrDarcy.setName("Mr Darcy");
         atMrDarcy.setQuest(qtMrDarcy);
-        qtMrDarcy.setNeeds(itLetter);
+        atMrHarmon.setAlternateCharacterScript("Mr Harmon says \"Thank you for the chestnuts.\"");
         atMrHarmon.setAlternateDescription("The grocer is busy helping other shoppers.");
-        atMrHarmon.setCharacterScript("I seem to be running low on chestnuts.  I will give you some money if you bring me some.”");
-        atMrHarmon.setAlternateCharacterScript("Thank you for the chestnuts");
+        atMrHarmon.setCharacterScript("Mr Harmon says \"I seem to be running low on chestnuts.  I will give you some money if you bring me some.\"");
         atMrHarmon.setDescription("The Grocer frowns down at an empty barrel labeled \"chestnuts\".");
         atMrHarmon.setLocation(rmGrocer);
         atMrHarmon.setName("Mr Harmon the Grocer");
         atMrHarmon.setQuest(qtGrocer);
-        qtGrocer.setNeeds(itChestnuts);
+        atMrsDarcy.setAlternateCharacterScript("Mrs Darcy says \"Thank you for finding my fan.\"");
         atMrsDarcy.setAlternateDescription("Mrs Darcy waves a beautiful fan in front of her.");
-        atMrsDarcy.setCharacterScript("Have you seen a fan?  It was given to me by Mr Darcy when we were in Vienna.”");
-        atMrsDarcy.setAlternateCharacterScript("Thank you for finding my fan.");
+        atMrsDarcy.setCharacterScript("Mrs Darcy says \"Have you seen a fan?  It was given to me by Mr Darcy when we were in Vienna.\"");
         atMrsDarcy.setDescription("Mrs Darcy his a beautiful woman with fine eyes.");
         atMrsDarcy.setLocation(rmGrandStaircase);
         atMrsDarcy.setName("Mrs Darcy");
         atMrsDarcy.setQuest(qtMrsDarcy);
-        qtMrsDarcy.setNeeds(itFan);
+        atOliveNelson.setAlternateCharacterScript("The cook says \"Thank you for bringing the trout\"");
         atOliveNelson.setAlternateDescription("The cook is fixing the trout you caught.");
-        atOliveNelson.setAlternateCharacterScript("Thank you for bringing the trout");
-        atOliveNelson.setCharacterScript("That boy should have been back by now with the trout...”");
+        atOliveNelson.setCharacterScript("The cook says \"That boy should have been back by now with the trout...\"");
         atOliveNelson.setDescription("The cook seems preoccupied as she pours over her cookbooks");
         atOliveNelson.setLocation(rmKitchen);
         atOliveNelson.setName("Olive Nelson the Cook");
         atOliveNelson.setQuest(qtCook);
-        qtCook.setNeeds(itTrout);
         atRabbit.setAlternateDescription("The rabbit eats his carrot gratefully.");
-        atRabbit.setCharacterScript("...”");
+        atRabbit.setCharacterScript("\"...\"");
         atRabbit.setDescription("There is a small white rabbit here but he doesn't appear to be late for any important dates.”");
         atRabbit.setLocation(rmPath);
         atRabbit.setName("A rabbit");
         atRabbit.setQuest(qtRabbit);
-        qtRabbit.setNeeds(itCarrots);
+        atRoberDarcy.setAlternateCharacterScript("Robert Darcy says \"Thank you for the sweets!\"");
         atRoberDarcy.setAlternateDescription("Robert Darcy munches on sweets as he examines a large atlas.");
-        atRoberDarcy.setAlternateCharacterScript("Thank you for the sweets!");
-        atRoberDarcy.setCharacterScript("The cook won't let me go get any sweets.  She says they are too busy preparing for the ball and I should go play.");
+        atRoberDarcy.setCharacterScript("Robert Darcy says \"The cook won't let me go get any sweets.  She says they are too busy preparing for the ball and I should go play.\"");
         atRoberDarcy.setDescription("Robert Darcy is the youngest son of Mr and Mrs Darcy.  He is sitting under a table examining a very large and detailed atlas.");
         atRoberDarcy.setLocation(rmLibrary);
         atRoberDarcy.setName("Robert Darcy");
         atRoberDarcy.setQuest(qtSweets);
-        qtSweets.setNeeds(itContainerOfSweets);
+        atRoseBrandon.setAlternateCharacterScript("Rose Brandon says \"Thank you for buying me some ribbons.  The are very lovely.\"");
         atRoseBrandon.setAlternateDescription("Rose is busy arranging the ribbons in her hair.");
-        atRoseBrandon.setAlternateCharacterScript("Thank you for buying me some ribbons.  The are very lovely");
-        atRoseBrandon.setCharacterScript("Where have I put my ribbons?”");
+        atRoseBrandon.setCharacterScript("Rose Brandon says \"Where have I put my ribbons?\"");
         atRoseBrandon.setDescription("Rose Brandon is looking around her vanity for something");
         atRoseBrandon.setLocation(rmRoseBedroom);
         atRoseBrandon.setName("Rose Brandon");
         atRoseBrandon.setQuest(qtRose);
-        qtRose.setNeeds(itRibbons);
+        atSally.setAlternateCharacterScript("Sally says \"Love is a strange thing, Isn't it. Sigh.\"");
         atSally.setAlternateDescription("Sally is speaking to Nathaniel Willoughby.");
         atSally.setAlternateLocation(rmUpstairsHallWest);
-        atSally.setAlternateCharacterScript("Love is a strange thing, Isn't it. Sigh.”");
         atSally.setCharacterScript("She appears to be too busy talking to Mr Willoughby.");
         atSally.setDescription("Sally  the scullery maid seems a little sad.");
         atSally.setLocation(rmServantsQuarters);
         atSally.setName("Sally a Scullery Maid");
         atSally.setQuest(qtSally);
-        qtSally.setNeeds(itHeartCard);
-        atUncleFinneas.setCharacterScript("So glad you have come.  We must get the paradox fixed before we return to our time.”");
+        atUncleFinneas.setCharacterScript("Uncle Finneas says \"So glad you have come.  We must get the paradox fixed before we return to our time.\"");
         atUncleFinneas.setDescription("Uncle Finneas looks comfortable in his historic clothing.");
         atUncleFinneas.setLocation(rmGreatHall);
         atUncleFinneas.setName("Uncle Finneas");
         atWilliam.setAlternateLocation(null);
-        atWilliam.setCharacterScript("I don't have time to get the coach ready.  These horses are being difficult.”");
+        atWilliam.setCharacterScript("William says \"I don't have time to get the coach ready.  These horses are being difficult.\"");
         atWilliam.setDescription("William the Stable hand appears to be having some trouble with the horses  He seems a little distracted himself.");
         atWilliam.setLocation(rmStable);
         atWilliam.setName("William a Stable Hand");
         atWilliam.setQuest(qtCarrots);
-        qtCarrots.setNeeds(itCarrots);
-        atWilloughby.setAlternateDescription("Mr Willoughby seems quite stricken by the pretty Sally but you suspect his motives.");
         atWilloughby.setAlternateCharacterScript("He appears to be quite busy talking to Sally.");
-        atWilloughby.setCharacterScript("What are you doing in my room?”");
+        atWilloughby.setAlternateDescription("Mr Willoughby seems quite stricken by the pretty Sally but you suspect his motives.");
+        atWilloughby.setCharacterScript("Mr Willoughby says \"What are you doing in my room?\"");
         atWilloughby.setDescription("Mr Willoughby doesn't seem very happy to see you in his room.");
         atWilloughby.setLocation(rmNathanielBedroom);
         atWilloughby.setName("Mr Nathaniel Willoughby");
+        itBall.setDescription("A plastic ball for hamsters to roll around on the floor");
+        itBall.setLocation(rmFinnKitchen);
+        itBall.setMultiple(false);
+        itBall.setName("Hamster exercise ball");
         itBoxDogTreats.setContains(itDogTreats);
         itBoxDogTreats.setDescription("It is a box of dog treats sitting on the table");
         itBoxDogTreats.setLocation(rmFinnKitchen);
         itBoxDogTreats.setMultiple(true);
         itBoxDogTreats.setName("Package of Dog Treats");
-        itBall.setDescription("A plastic ball for hamsters to roll around on the floor");
-        itBall.setLocation(rmFinnKitchen);
-        itBall.setMultiple(false);
-        itBall.setName("Hamster exercise ball");
         itBoxDogTreats.setTakable(false);
         itCane.setDescription("It looks like a cane fit for a great and snobbish lady.");
         itCane.setLocation(rmGrandStaircase);
@@ -341,11 +330,9 @@ public class GameControl {
         itCarriage.setLocation(rmStable);
         itCarriage.setName("Carriage");
         itCarriage.setQuantity(0);
+        itCarriage.setQuest(qtCoach);
         itCarriage.setTakeMessage("You think a whole carriage will fit in your backpack?");
         itCarriage.setWeight(200);
-        itCarriage.setQuest(qtCoach);
-        qtCoach.setPlayer(playerOne);
-        qtCoach.setPlayerDestination(rmRoadWest);
         itCarrotBag.setContains(itCarrots);
         itCarrotBag.setDescription("It is a burlap sack of carrots");
         itCarrotBag.setLocation(rmCellar);
@@ -354,9 +341,9 @@ public class GameControl {
         itCarrotBag.setQuantity(0);
         itCarrotBag.setWeight(21);
         itCarrots.setDescription("The carrots are orange and large.");
-        itCarrots.setLocation(null);
+        itCarrots.setLocation(inventoryOne);
         itCarrots.setName("Carrots");
-        itCarrots.setQuantity(0);
+        itCarrots.setQuantity(5);
         itCarrots.setTakable(true);
         itCarrots.setWeight(0.25);
         itChestnuts.setDescription("These are very large chestnuts");
@@ -482,8 +469,8 @@ public class GameControl {
         itPianoForte.setQuantity(0);
         itPianoForte.setTakeMessage("It won't fit in your backpack... and how rude is it to take a piano forte.");
         itPianoForte.setUsable(true);
-        itPianoForte.setWeight(300);
         itPianoForte.setUseMessage("You play that piece beautifully");
+        itPianoForte.setWeight(300);
         itPocKetWatch.setDescription("It is a gentleman's pocket watch");
         itPocKetWatch.setLocation(rmServantsQuarters);
         itPocKetWatch.setName("Pocket Watch");
@@ -522,17 +509,6 @@ public class GameControl {
         itTimeMachine.setName("Time Machine");
         itTimeMachine.setQuantity(0);
         itTimeMachine.setQuest(qtTimeMachine);
-        qtTimeMachine.setPlayer(playerOne);
-        qtTimeMachine.setPlayerDestination(rmPath);
-        qtTimeMachine.setCompletionScript(
-                "\nThe lights start to dim. Your world"
-              + "\ndances with colors and movement."
-              + "\nEverything goes dark.  When you "
-              + "\nat last reach conciousness again"
-              + "\nYou find that you are standing"
-              + "\nnext to a great and stately mansion."
-              + "\nWhere are you?  Or better yet, when "
-              + "\nare you?");
         itTimeMachine.setTakable(true);
         itTimeMachine.setTakable(true);
         itTimeMachine.setUsable(true);
@@ -548,27 +524,97 @@ public class GameControl {
         itUmbrella.setName("Umbrella");
         itUmbrella.setQuantity(0);
         itUmbrella.setTakable(true);
+        itUmbrella.setUseMessage("Didn't anyone ever tell you that it isn't polite to use other people's umbrellas?");
         itUmbrella.setWeight(1);
-        itUmbrella.setUseMessage("Didn't anyone ever tell you that it isn't polite"
-                + "\n to use other people's umbrellas?");
         itWorms.setDescription("It is a bunch of earth worms.");
         itWorms.setLocation(null);
         itWorms.setName("Worms");
+        itWorms.setTakeMessage("You have nothing to put the worms in");
+        itWorms.setAlternateTakeMessage("Those worms are squirmy");
         itWorms.setQuantity(0);
-        itWorms.setTakable(true);
+        itWorms.setTakable(false);
+        itWorms.setAlternateTakable(true);
         itWorms.setWeight(0.25);
-        playerOne.setLocation(rmLivingRoom);
+        playerOne.setLocation(rmStable);
+        qtCane.setNeeds(itCane);
+        qtCane.setCompletionScript("Lady Catherine thanks you for the return of her cane.");
+        qtCarrots.setItemToChange(itCarriage);
+        qtCarrots.setNeeds(itCarrots);
+        qtCarrots.setCompletionScript("William seems very grateful for the carrots.  "
+                                    + "\nHe feeds them to the horses and then gets "
+                                    + "\nthe carriage ready");
+        qtCarter.setNeeds(itTeaCup);
+        qtCarter.setCompletionScript("Carter smiles and accepts the tea cup.");
+        qtCoach.setPlayer(playerOne);
+        qtCoach.setPlayerDestination(rmRoadWest);
+        qtCoach.setCompletionScript("Marshall helps you into the carriage"
+                                  + "\nand it takes you to a quaint"
+                                  + "\nvillage");
+        qtCook.setNeeds(itTrout);
+        qtCook.setCompletionScript("The cook is thrilled to finally get"
+                                + "\nthe trout at last.");
+        qtGrocer.setNeeds(itChestnuts);
+        qtGrocer.setCompletionScript("The grocer thanks you for the chestnuts.");
+        qtHamster.setActorToChange(atHamster);
         qtHamster.setCompletionScript("Bruiser jumps on the dog treats and eats them with relish.  Then he licks your hand.");
         qtHamster.setItemToChange(itNote);
         qtHamster.setNeeds(itDogTreats);
-        qtHamster.setActorToChange(atHamster);
+        qtJaneDarcy.setNeeds(itMusic);
+        qtJaneDarcy.setItemToChange(itFishingPole);
+        qtJaneDarcy.setActorToChange(atJonathan);
+        qtJaneDarcy.setCompletionScript("Jane claps in delight and sits at"
+                                      + "\nthe piano forte.  She begins to "
+                                      + "\nplay.  In a moment a young man"
+                                      + "\ncomes in and sits in a nearby"
+                                      + "\ncouch.  He stares at Miss"
+                                      + "\nDarcy in admiration.");
+        qtLadyRoslyn.setNeeds(itUmbrella);
+        qtLadyRoslyn.setCompletionScript("Lady Roslyn seems thrilled to get the umbrella.  She thanks you.");
+        qtLake.setNeeds(itFishingPole);
+        qtLake.setItemToChange(itTrout);
+        qtLake.setCompletionScript("Georgie baits the fishing pole and catches"
+                                 + "\na large trout for his family.  Then he"
+                                 + "\ncatches one for you.");
+        qtMiliner.setNeeds(itMoney);
+        qtMiliner.setItemToChange(itRibbons);
+        qtMiliner.setCompletionScript("The Miliner hands you ribbons.");
+        qtMrDarcy.setNeeds(itLetter);
+        qtMrDarcy.setActorToChange(atMrDarcy);
+        qtMrDarcy.setCompletionScript("Mr Darcy reads the letter and anger"
+                                    + "\ninfuses his features.  He stalks"
+                                    + "\nover to Mr Willoughby and whispers"
+                                    + "\nin his ear.  The next moment a servant"
+                                    + "\nhands Mr Willoughby his hat and coat.");
+        qtMrsDarcy.setNeeds(itFan);
+        qtMrsDarcy.setCompletionScript("Mrs Darcy seems very happy to get her fan.");
+        qtRabbit.setNeeds(itCarrots);
+        qtRabbit.setCompletionScript("The rabbit gladly takes the carrot and hops"
+                                   + "\ninto the bushes.  Peering through the leaves"
+                                    + "\nyou see the rabbit drop the carrot in front"
+                                    +"\nof a dozen baby rabbits.  They eat the carrot"
+                                    + "\nravenously.");
+        qtRandolph.setNeeds(itPocKetWatch);
+        qtRandolph.setCompletionScript("Lord Randolph smiles as he accepts his watch.");
+        qtRose.setNeeds(itRibbons);
+        qtRose.setCompletionScript("Rose Brandon is happy to have ribbons.");
+        qtSally.setNeeds(itHeartCard);
+        qtSally.setActorToChange(atWilloughby);
+        qtSally.setCompletionScript("Sally reads the card and smiles."
+                                  + "\nShe says \"Thank you for bringing this"
+                                  + "\nto me.  If there is anything I can do "
+                                  + "\nfor you, just ask.");
+        qtSweets.setNeeds(itContainerOfSweets);
+        qtSweets.setItemToChange(itEmptyContainer);
+        qtTimeMachine.setCompletionScript("\nThe lights start to dim. Your world"		
+              + "\ndances with colors and movement."		
+              + "\nEverything goes dark.  When you "		
+              + "\nat last reach conciousness again"		
+              + "\nYou find that you are standing"		
+              + "\nnext to a great and stately mansion."		
+              + "\nWhere are you?  Or better yet, when "		
+              + "\nare you?");		
         qtTimeMachine.setPlayer(playerOne);
         qtTimeMachine.setPlayerDestination(rmPath);
-        qtCarrots.setNeeds(itCarrots);
-        qtCarrots.setItemToChange(itCarriage);
-        qtCarter.setNeeds(itTeaCup);
-        qtCook.setNeeds(itTrout);
-
         rmBackStaircase.setDescription("You are on the Back Staircase.  This leads to the lower floors where the kitchen and servant's quarters are.");
         rmBackStaircase.setEast(rmKitchen);
         rmBackStaircase.setName("Back Staircase");
@@ -673,10 +719,10 @@ public class GameControl {
         rmPath.setNorth(rmGarden);
         rmPath.setWest(rmFrontDrive);
         rmRoadEast.setDescription("You are on a road in the town of Lambton");
+        rmRoadEast.setEast(rmFrontDrive);
         rmRoadEast.setName("Road East");
         rmRoadEast.setSouth(rmSmithy);
         rmRoadEast.setWest(rmRoadWest);
-        rmRoadEast.setEast(rmFrontDrive);
         rmRoadWest.setDescription("You are on a road in the town of Lambton");
         rmRoadWest.setEast(rmRoadEast);
         rmRoadWest.setName("Road West");
@@ -703,15 +749,25 @@ public class GameControl {
         rmStable.setSouth(rmLake);
         rmStable.setWest(rmGarden);
         rmUpstairsHallEast.setDescription("You are in an upstairs hall.");
+        rmUpstairsHallEast.setEast(rmNathanielBedroom);
         rmUpstairsHallEast.setName("Up Hall East");
         rmUpstairsHallEast.setNorth(rmRoseBedroom);
-        rmUpstairsHallEast.setEast(rmNathanielBedroom);
         rmUpstairsHallEast.setWest(rmUpstairsHallWest);
         rmUpstairsHallWest.setDescription("You are in an upstairs hall.");
         rmUpstairsHallWest.setEast(rmUpstairsHallEast);
         rmUpstairsHallWest.setName("Up Hall West");
         rmUpstairsHallWest.setNorth(rmGallery);
         rmUpstairsHallWest.setSouth(rmGrandStaircase);
+
+
+
+
+
+
+
+
+
+
 
 //make a room array
         Room roomsArray1[] = {rmFinnKitchen, rmLivingRoom, rmCloset, rmSecretLab};

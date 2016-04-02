@@ -219,7 +219,12 @@ public class ExploreMenuView extends View {
                 quantityOfItem = 1;
             }
 
-            prompt = "Who do you want to give the " + itemToGive.getName() + " to?";
+            this.console.print("\nThese people are here:");
+            prompt = "Who do you want to give the " + itemToGive.getName() + " to?\n";
+              for (String i : game.getLocalActorNames()) {
+            this.console.print(i + "\n");
+        }
+            
             playerSelection = this.getStringInput(prompt);
 
             int indexOfActor = actorControl.getActorIndex(playerSelection, player, actorArray);

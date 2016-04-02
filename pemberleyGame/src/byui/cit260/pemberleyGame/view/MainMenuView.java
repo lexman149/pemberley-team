@@ -67,6 +67,15 @@ public class MainMenuView extends View {
 //update inventory  
         InventoryControl inventoryControl = new InventoryControl();
         inventoryControl.updateInventory();
+//display start of the game
+        this.console.println("\n\nConcerned for your uncle Finneas"
+                             + "\nyou have come to his house only"
+                             + "\nto find him missing.  There is"
+                             + "\na pile of mail under the mail "
+                             + "\nslot. This is very strange.  "
+                             + "\nYou should look around for clues "
+                             + "\nclues and see what has happened .");
+        
 // display the game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();

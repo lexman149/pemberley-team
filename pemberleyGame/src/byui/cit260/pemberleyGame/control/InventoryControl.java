@@ -164,7 +164,9 @@ public class InventoryControl {
         if (selectedItem == currentQuest.getNeeds()){
             if(quantityOfItem == 1){
                 selectedItem.setLocation(null);
+
                 inventory.setWeight(inventory.getWeight() - selectedItem.getWeight());
+                this.updateInventory();
             } else {
                 int potentialQuantity = selectedItem.getQuantity() - quantityOfItem;
                 if (potentialQuantity < 1){
@@ -175,6 +177,8 @@ public class InventoryControl {
             }
             
             QuestControl questControl = new QuestControl();
+            ActorControl actorControl = new ActorControl();
+            actorControl.changeActorAttributes(actorToReceive);
             return questControl.executeQuestActions(game, currentQuest);
         
         } else{
