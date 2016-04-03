@@ -535,7 +535,7 @@ public class GameControl {
         itWorms.setTakable(false);
         itWorms.setAlternateTakable(true);
         itWorms.setWeight(0.25);
-        playerOne.setLocation(rmEntry);
+        playerOne.setLocation(rmLivingRoom);
         qtCane.setNeeds(itCane);
         qtCane.setCompletionScript("Lady Catherine thanks you for the return of her cane.");
         qtCarrots.setItemToChange(itCarriage);
