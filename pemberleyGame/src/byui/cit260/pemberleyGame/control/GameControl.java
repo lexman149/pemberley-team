@@ -339,7 +339,7 @@ public class GameControl {
         itCarrotBag.setMultiple(true);
         itCarrotBag.setName("Bag of Carrots");
         itCarrotBag.setQuantity(0);
-        itCarrotBag.setWeight(21);
+        itCarrotBag.setWeight(0);
         itCarrots.setDescription("The carrots are orange and large.");
         itCarrots.setLocation(null);
         itCarrots.setName("Carrots");
@@ -417,6 +417,8 @@ public class GameControl {
         itLetter.setAlternateTakable(true);
         itLetter.setDescription("It is a letter from Nathaniel Willoughby for his father.  It says that Mr Willoughby is happy to report Jane Darcy will be rich.");
         itLetter.setLocation(rmNathanielBedroom);
+        itLetter.setTakeMessage("You think twice before taking the letter while"
+                + "\nMr Willoughby is watching. ");
         itLetter.setName("Letter");
         itLetter.setQuantity(0);
         itLetter.setWeight(0.25);

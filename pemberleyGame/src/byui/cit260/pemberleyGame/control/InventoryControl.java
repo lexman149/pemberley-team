@@ -140,9 +140,10 @@ public class InventoryControl {
 
         Item[] inventoryItemArray = inventoryItemList.toArray(new Item[inventoryItemList.size()]);
         game.setInventoryItemArray(inventoryItemArray);
-        
+
         String[] inventoryNameString = itemControl.createItemNameList(inventoryItemArray);
         game.setInventoryItemNames(inventoryNameString);
+        
         
         GameControl gameControl = new GameControl();
         gameControl.updateGame();
@@ -169,9 +170,9 @@ public class InventoryControl {
         
         if (selectedItem == currentQuest.getNeeds()){
             if(quantityOfItem == 1){
-                selectedItem.setLocation(null);
-
-                inventory.setWeight(inventory.getWeight() - selectedItem.getWeight());
+                selectedItem.setLocation(null); 
+                double weightToRemove =inventory.getWeight() - selectedItem.getWeight();
+                inventory.setWeight(weightToRemove);
                 this.updateInventory();
             } else {
                 int potentialQuantity = selectedItem.getQuantity() - quantityOfItem;
@@ -179,8 +180,10 @@ public class InventoryControl {
                     return "You don't have that many " + selectedItem.getName();
                 }
                 selectedItem.setQuantity(selectedItem.getQuantity() - quantityOfItem);
-                inventory.setWeight(inventory.getWeight() - selectedItem.getWeight() * quantityOfItem);
+                inventory.setWeight(inventory.getWeight() - (selectedItem.getWeight() * quantityOfItem));
+                this.updateInventory();
             }
+            
             
 
             actorControl.changeActorAttributes(actorToReceive);

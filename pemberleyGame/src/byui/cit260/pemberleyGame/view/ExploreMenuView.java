@@ -105,6 +105,7 @@ public class ExploreMenuView extends View {
 //designate the inventory
         Inventory inventory = player.getInventory();
 //while player's selection is not X loop
+
         do {
 //if there is nothing in the localItemArray say there is nothing to take.
             if (localItemArray.length == 0) {
@@ -158,6 +159,7 @@ public class ExploreMenuView extends View {
                 }
             }
             this.console.println(gameMessage);
+            this.console.print("\ncurrent inventory weight: " + inventory.getWeight());
         } while (!playerSelection.equalsIgnoreCase("X"));//loop
 
     }

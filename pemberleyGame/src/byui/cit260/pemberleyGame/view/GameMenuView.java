@@ -77,7 +77,8 @@ public class GameMenuView extends View {
 
     private void displayInventory() {
       Game game = PemberleyGame.getCurrentGame();
-      
+      Player player = game.getPlayerOne();
+      Inventory inventory = player.getInventory();
       int itemSelection = 0;
       String playerSelection = " ";
     
@@ -93,6 +94,7 @@ public class GameMenuView extends View {
          try {
                     itemSelection = Integer.parseInt(playerSelection); // converts string to int
                     this.console.println(inventoryNames[itemSelection].getDescription());
+                    this.console.println(inventory.getWeight());
                 } catch (NumberFormatException nf) {
                     ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number."
                             + " Try again or type X to exit.");
