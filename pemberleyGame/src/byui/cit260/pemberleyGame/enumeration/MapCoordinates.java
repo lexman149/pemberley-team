@@ -16,6 +16,7 @@ public enum MapCoordinates implements Serializable {
     mpPemberleyMain(new int[][]{
         {0, 1, 2, -1}, // music room, dining room, library, null
         {3, 4, 5, -1}, // ballroom, Great Hall, drawing room, null
+        {-1, 6, 7, 8},//Entry, garden, stables
         {-1, 9, 10, 11}}), // null, front drive, path, lake
 
     mpPemberleyUpper(new int[][]{
