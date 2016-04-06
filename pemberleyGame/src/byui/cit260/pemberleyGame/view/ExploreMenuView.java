@@ -159,7 +159,7 @@ public class ExploreMenuView extends View {
                 }
             }
             this.console.println(gameMessage);
-            this.console.print("\ncurrent inventory weight: " + inventory.getWeight());
+           
         } while (!playerSelection.equalsIgnoreCase("X"));//loop
 
     }
