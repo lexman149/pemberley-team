@@ -24,7 +24,7 @@ public class LookMenuView extends View {
                 + "\n | Look Menu"
                 + "\n----------------------------------------"
                 + "\nR - Look at the room"
-                + "\nA - Look at a actor"
+                + "\nA - Look at an actor"
                 + "\nI - Look at an inventory item"
                 + "\nH - Look at an items here"
                 + "\nX - Exit"

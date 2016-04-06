@@ -278,8 +278,7 @@ public class ExploreMenuView extends View {
                     itemSelection = Integer.parseInt(playerSelection); // converts string input to int
                     this.console.println(actorNames[itemSelection-1].getCharacterScript()); //-1 returns selection to zero
                 } catch(NumberFormatException nf) {
-                   ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number."
-                                                             + " Try again or type X to exit."); 
+                   ErrorView.display(this.getClass().getName(), nf.getMessage()); 
                 }
                 }while (!playerSelection.equalsIgnoreCase("x"));
             }

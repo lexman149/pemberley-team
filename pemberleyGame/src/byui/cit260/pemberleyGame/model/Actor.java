@@ -94,6 +94,12 @@ public class Actor implements Serializable {
     public void setAlternateQuest(Quest alternateQuest) {
         this.alternateQuest = alternateQuest;
     }
+    
+    public void printActor() {
+        System.out.println("Name:" + name 
+                            +"\nLocation:" + location
+                            +"\nDescription:" + description);
+    }
 
     @Override
     public int hashCode() {

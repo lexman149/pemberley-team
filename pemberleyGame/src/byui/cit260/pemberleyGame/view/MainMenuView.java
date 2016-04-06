@@ -105,17 +105,25 @@ private void startSavedGame() {
 
     
     private void saveGame() {
+        boolean success = true;
         this.console.println("\n\nEnter the file path for the file where the game "
-                            + "is to be saved.");
+                            + "is to be saved. Type X to exit");
         String filePath = this.getInput(); // getInput function in View.java
-        
+            if (filePath.equalsIgnoreCase("x")){ // without this here, the 'x' is seen as a filename.
+            return;
+        }
+            
         try {
             // save the game to the specified file
             GameControl.saveGame(PemberleyGame.getCurrentGame(), filePath);
         } catch (GameControlException ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
+            success = false;
         }
-        this.console.println("Your game has been saved.");
+        if (success){
+            this.console.println("Your game has been saved to\n"
+                                + "'" + filePath + "'");
+        }
     }
 
 }

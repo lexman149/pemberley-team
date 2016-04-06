@@ -118,10 +118,20 @@ public class GameMenuView extends View {
         Game game = PemberleyGame.getCurrentGame();
         Actor[] allActorArray = game.getAllActorArray(); 
 //        String[] peopleNames = ActorControl.;
-        
-//create an ArrayList to hold all of the actors in the above location.
-            for(Actor actors : allActorArray){
-                this.console.println(actors.getName());
+            this.console.println("\n\n          ACTOR & LOCATION REPORT          ");        
+            this.console.printf("%n%-30s%-14s", "Actor Name", "Location");
+            this.console.printf("%n%-30s%-14s", "----------", "--------");
+
+// print actor name and location
+            for (Actor actor : allActorArray) { // goes through all the actors
+                // null check - won't call a locationName if = null
+                String location = "N/A"; // if location is null, print this
+               
+                if (actor.getLocation() !=null) { // otherwise print locationName
+                    location = actor.getLocation().getName();
+                }
+                this.console.printf("%n%-30s%-14s", actor.getName()
+                                             , location);
             }
     }
 
